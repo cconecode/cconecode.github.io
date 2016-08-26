@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>iOS 事件拦截 | 琥珀川的异次元空间</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="事件拦截" />
+    
+    <meta name="description" content="前言在项目中遇到一个需求，检测用户三分钟未点击屏幕，就出现广告轮播图。很自然的就联想到事件拦截了，然而之前对于 iOS 的事件机制并不是太过于了解，所以利用这次机会进行了深入学习。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 事件拦截">
+<meta property="og:url" content="http://parisdog.club/2016/07/20/iOS事件拦截/index.html">
+<meta property="og:site_name" content="琥珀川的异次元空间">
+<meta property="og:description" content="前言在项目中遇到一个需求，检测用户三分钟未点击屏幕，就出现广告轮播图。很自然的就联想到事件拦截了，然而之前对于 iOS 的事件机制并不是太过于了解，所以利用这次机会进行了深入学习。">
+<meta property="og:image" content="https://lh3.googleusercontent.com/-6DVPdEbo12A/V48oTEjGXfI/AAAAAAAAAAk/Vn_s04cJOlk/I/14689996896970.jpg">
+<meta property="og:updated_time" content="2016-08-26T06:19:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 事件拦截">
+<meta name="twitter:description" content="前言在项目中遇到一个需求，检测用户三分钟未点击屏幕，就出现广告轮播图。很自然的就联想到事件拦截了，然而之前对于 iOS 的事件机制并不是太过于了解，所以利用这次机会进行了深入学习。">
+<meta name="twitter:image" content="https://lh3.googleusercontent.com/-6DVPdEbo12A/V48oTEjGXfI/AAAAAAAAAAk/Vn_s04cJOlk/I/14689996896970.jpg">
+    
+
+    
+        <link rel="alternate" href="/" title="琥珀川的异次元空间" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/titillium-web/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/lightgallery/css/lightgallery.min.css">
+    
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">我们的征途是杏仁牛奶</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Inici</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/事件机制/">事件机制</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">Quant a</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cercar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'categories',
+            TAGS: 'etiquetes',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/事件机制/">事件机制</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-iOS事件拦截" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        iOS 事件拦截
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                <a href="/2016/07/20/iOS事件拦截/" class="article-date">
+    <time datetime="2016-07-19T16:00:00.000Z" itemprop="datePublished">2016-07-20</time>
+</a>
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/事件拦截/">事件拦截</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在项目中遇到一个需求，检测用户三分钟未点击屏幕，就出现广告轮播图。很自然的就联想到事件拦截了，然而之前对于 iOS 的事件机制并不是太过于了解，所以利用这次机会进行了深入学习。</p>
+<a id="more"></a>
+<h3 id="iOS事件机制"><a href="#iOS事件机制" class="headerlink" title="iOS事件机制"></a>iOS事件机制</h3><p>iOS 中的事件分为三类：触摸事件（单点、多点、手势），传感器事件（加速传感器）和远程控制事件（<a href="https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/Introduction/Introduction.html" target="_blank" rel="external">官方文档</a>），我们遇到情况是第一种也就是触摸事件的机制。</p>
+<h4 id="响应者链"><a href="#响应者链" class="headerlink" title="响应者链"></a>响应者链</h4><p>当一个事件发生时，如果 first responder 不做处理，那么就会往下传递，如果下一个 responder 也不处理，那么就会继续传递到再下一个 responder 中，直到有一个 responder 处理或者没有 responder 了，如果没有 responder 处理这个事件，那么这个事件就被抛弃了。这些 responder 按照传递顺序连接起来就构成了响应者链。</p>
+<p>iOS 中的响应者链：<br><img src="https://lh3.googleusercontent.com/-6DVPdEbo12A/V48oTEjGXfI/AAAAAAAAAAk/Vn_s04cJOlk/I/14689996896970.jpg" alt="苹果官方关于响应者链的描述"></p>
+<p>从图中我们可以观察到，响应者链有以下几个特点：</p>
+<ul>
+<li><p>响应者链通常由 initial view 开始。</p>
+</li>
+<li><p>View 的 nextResponder 是它的 superView，如果 View 已经是它所在的 ViewController 中的 top view，那么 next responder 就是它所在的 ViewConTroller。</p>
+</li>
+<li><p>ViewController 如果有 superViewController，那么它的 nextResponder 就是它superViewController 最上面的 View。如果没有，那么它的 nextResponder 就是 Window。</p>
+</li>
+<li><p>Window 的 nextResponder 指向 Application，Application 是整个响应者链的顶层，它的 nextResponder 指向 nil。也就是说当事件传递到 Application 不被处理的话就会被抛弃了。</p>
+</li>
+</ul>
+<p>由于 UI 的复杂性，整个响应者链是需要通过计算的，而计算顺序基本是与响应者链分发相反的。<code>无论哪种事件，都是系统本身先获得，再交给 UIApplication，由 UIApplication 决定交给谁去处理。</code> 关于事件分发的计算网上有很多文章，我就不赘述了。通过上述了解，我们可以得出一个结论：<code>如果我们需要拦截一个事件，最好的机会是在 UIApplication 里面。</code></p>
+<h3 id="需求具体实现"><a href="#需求具体实现" class="headerlink" title="需求具体实现"></a>需求具体实现</h3><h4 id="OC-版"><a href="#OC-版" class="headerlink" title="OC 版"></a>OC 版</h4><p>根据上面的结论，我们目前的思路是继承 UIApplication，然后实现某一方法，进行事件拦截。根据查阅资料，重写 UIApplication 的 <code>sendEvent</code>方法可以达到目的，sendEvent介绍如下：</p>
+<blockquote>
+<p> <strong>sendEvent:</strong></p>
+<p>Dispatches an event to the appropriate responder objects in the application.</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)sendEvent:(<span class="built_in">UIEvent</span> *)event</div></pre></td></tr></table></figure>
+<p> <strong>Parameters</strong><br>event<br>A UIEvent object encapsulating the information about an event, including the touches involved.</p>
+<p><strong>Discussion</strong><br>Subclasses may override this method to intercept incoming events for inspection and special dispatching. iOS calls this method for public events only.</p>
+</blockquote>
+<p>具体代码实现：</p>
+<ol>
+<li>新建一个继承 UIApplication 的 CTApplication，重写 sendEvent 方法，并判断是否为触摸事件：</li>
+</ol>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"CTApplication.h"</span></span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">CTApplication</span></span></div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)sendEvent:(<span class="built_in">UIEvent</span> *)event &#123;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (event.type == <span class="built_in">UIEventTypeTouches</span>) &#123;</div><div class="line">        <span class="keyword">if</span> ([[event.allTouches anyObject] phase] == <span class="built_in">UITouchPhaseBegan</span>) &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"> [<span class="keyword">super</span> sendEvent:event];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>2.由于需要检测用户多长时间没有点击屏幕，需要加一个定时器来进行倒计时，设置定时器的方法写在 CTApplication 的 init 方法中：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"CTApplication.h"</span></span></div><div class="line"></div><div class="line"><span class="comment">/** 不点击屏幕的时间 */</span></div><div class="line"><span class="keyword">static</span> <span class="built_in">NSTimeInterval</span> <span class="keyword">const</span> showTime = <span class="number">180</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">CTApplication</span> ()</span></div><div class="line"></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">NSTimer</span> *timer;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">CTApplication</span></span></div><div class="line"></div><div class="line">- (<span class="keyword">instancetype</span>)init &#123;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span> == [<span class="keyword">super</span> init]) &#123;</div><div class="line">        [<span class="keyword">self</span> setTimer];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">void</span>)setTimer &#123;</div><div class="line"></div><div class="line">    <span class="keyword">self</span>.timer = [<span class="built_in">NSTimer</span> timerWithTimeInterval:showTime target:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(showPicture) userInfo:<span class="literal">nil</span> repeats:<span class="literal">NO</span>];</div><div class="line">    [[<span class="built_in">NSRunLoop</span> currentRunLoop] addTimer:<span class="keyword">self</span>.timer forMode:<span class="built_in">NSRunLoopCommonModes</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)showPicture &#123;</div><div class="line">	<span class="comment">/** 在这里对广告轮播图进行设置 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>3.再回到 sendEvent 方法中，如果该方法被触发了，那么让定时器失效，重新开始定时：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)sendEvent:(<span class="built_in">UIEvent</span> *)event &#123;</div><div class="line">    </div><div class="line">    [<span class="keyword">super</span> sendEvent:event];</div><div class="line">    <span class="keyword">if</span> (event.type == <span class="built_in">UIEventTypeTouches</span>) &#123;</div><div class="line">        <span class="keyword">if</span> ([[event.allTouches anyObject] phase] == <span class="built_in">UITouchPhaseBegan</span>) &#123;</div><div class="line"></div><div class="line">            [<span class="keyword">self</span>.timer invalidate];</div><div class="line">            [<span class="keyword">self</span> setTimer];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>4.最后，在 main 函数中还要做对应的更改，替换 UIApplication 的调用：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&lt;UIKit/UIKit.h&gt;</span></span></div><div class="line"><span class="meta">#import <span class="meta-string">"AppDelegate.h"</span></span></div><div class="line"><span class="meta">#import <span class="meta-string">"CTApplication.h"</span></span></div><div class="line"></div><div class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[]) &#123;</div><div class="line">    <span class="keyword">@autoreleasepool</span> &#123;</div><div class="line"><span class="comment">//        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));</span></div><div class="line">        <span class="keyword">return</span> <span class="built_in">UIApplicationMain</span>(argc, argv, <span class="built_in">NSStringFromClass</span>([AppDelegate <span class="keyword">class</span>]), <span class="built_in">NSStringFromClass</span>([<span class="built_in">CTApplication</span> <span class="keyword">class</span>]));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="Swift版"><a href="#Swift版" class="headerlink" title="Swift版"></a>Swift版</h4><p>首先新建一个 UIApplication 的子类 CTApplication：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Foundation</div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CTApplication</span>: <span class="title">UIApplication</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">sendEvent</span><span class="params">(event: UIEvent)</span></span> &#123;</div><div class="line"></div><div class="line">        <span class="keyword">super</span>.sendEvent(event)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>由于 Swift 中没有 main 函数，所以需要自己手动建一个 main 函数，并设置入口：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Foundation</div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="type">UIApplicationMain</span>(<span class="type">Process</span>.argc, <span class="type">Process</span>.unsafeArgv, <span class="type">NSStringFromClass</span>(<span class="type">CTApplication</span>), <span class="type">NSStringFromClass</span>(<span class="type">AppDelegate</span>))</div></pre></td></tr></table></figure>
+<p>这时，Appdelegate 中的<code>@UIApplicationMain</code>会报错。下面是苹果官方对于<code>@UIApplicationMain</code>关键字的描述：</p>
+<blockquote>
+<p>Apply this attribute to a class to indicate that it is the application delegate. Using this attribute is equivalent to calling the UIApplicationMain function and passing this class’s name as the name of the delegate class.</p>
+<p>If you do not use this attribute, supply a main.swift file with a main function that calls the UIApplicationMain(::<em>:) function. For example, if your app uses a custom subclass of UIApplication<br>as its principal class, call the UIApplicationMain(::</em>:) function instead of using this attribute.</p>
+</blockquote>
+<p>意思就是在类的最顶部声明 <code>@UIApplicationMain</code>，表示该类是Application 的 delegate，另外一种做法就是在 main.Swift 中调用 UIApplicationMain 函数，设置 delegate 和 application。而我们采取的是后面的办法，所以 delegate 冲突了，自然就会报错，只要把 Appdelegate 上的 <code>@UIApplicationMain</code> 关键字删除就可以了。剩下的操作与 OC 中的是一样的。</p>
+<p>具体的代码上传到 github 上了：</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://parisdog.club/2016/07/20/iOS事件拦截/" data-id="cisbdli8j0000bpsbglvaxb2q" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>seguir:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus" href="/" target="_blank">
+                        <i class="icon fa fa-google-plus"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/07/20/iOS事件拦截/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://lh3.googleusercontent.com/-6DVPdEbo12A/V48oTEjGXfI/AAAAAAAAAAk/Vn_s04cJOlk/I/14689996896970.jpg)" alt="iOS 事件拦截" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/事件机制/">事件机制</a></p>
+                            <p class="item-title"><a href="/2016/07/20/iOS事件拦截/" class="title">iOS 事件拦截</a></p>
+                            <p class="item-date"><time datetime="2016-07-19T16:00:00.000Z" itemprop="datePublished">2016-07-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/事件机制/">事件机制</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">arxius</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">etiquetes</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/事件拦截/">事件拦截</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">etiqueta cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/事件拦截/" style="font-size: 10px;">事件拦截</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016 巴黎有条狗</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://parisdog.club/2016/07/20/iOS事件拦截/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-share.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
