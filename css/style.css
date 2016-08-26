@@ -1078,6 +1078,19 @@ color
 .post-list li:hover a {
   color: #88acdb;
 }
+.ui-tooltip {
+  padding: 6px;
+  max-width: 30em;
+  -webkit-box-shadow: 0 0 0.8em rgba(0,0,0,0.6);
+  box-shadow: 0 0 0.8em rgba(0,0,0,0.6);
+  color: #fff;
+  font-family: "Lucida Grande", Verdana, "Helvetica Neue", Arial, "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 0.9em;
+  background: rgba(0,0,0,0.65);
+}
+body .ui-tooltip {
+  border: 1px solid #fff;
+}
 .pace .pace-progress {
   background: #77b6ff;
   -webkit-box-shadow: 0 0 10px rgba(119,182,255,0.7);
@@ -1373,6 +1386,10 @@ color
   background: rgba(255,255,255,0.4);
   -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
   box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+  border-left: 5px solid rgba(112,134,142,0.85);
+  background: rgba(255,255,255,0.7);
+  border-left: 5px solid rgba(255,224,112,0.6);
+  background: rgba(255,244,204,0.6);
 }
 .article-entry blockquote p {
   margin: 0.4em auto;
@@ -1477,55 +1494,13 @@ color
 .article-entry li ol {
   margin-left: 30px;
 }
-.article-entry ul > li:before {
-  content: "";
-  background: #dedede;
+.article-entry ul > li {
+  margin-left: 1.1em;
+  list-style-type: disc;
 }
-.article-entry ul > li:before {
-  display: inline-block;
-  content: "";
-  width: 0.4em;
-  height: 0.4em;
-  margin-right: 0.5em;
-  margin-bottom: 0.11em;
-  border: 1px solid #d3d3d3;
-  border-radius: 50%;
-  background: #d3d3d3;
-}
-.article-entry h1 {
-  margin-top: 30px;
-}
-.article-entry h2 {
-  margin: 0.5em auto;
-  color: #66be66;
-  padding-bottom: 5px;
-  border-bottom: 1px solid #ddd;
-  text-align: center;
-  font-size: 1.5rem;
-}
-.article-entry h2:hover {
-  color: #88acdb;
-}
-.article-entry h2::before,
-.article-entry h2::after {
-  content: " —— ";
-  font-family: Arial;
-}
-.article-entry h3 {
-  margin: 0.5em auto;
-  color: #438aac;
-  background: rgba(243,248,253,0.6);
-  border: 1px solid #d2e8fa;
-  padding: 0.2em 0.6em;
-  -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.15);
-  box-shadow: 1px 1px 1px rgba(0,0,0,0.15);
-}
-.article-entry h3:hover a {
-  text-decoration: underline;
-}
-.article-entry h3::after {
-  content: " >";
-}
+.article-entry h1,
+.article-entry h2,
+.article-entry h3,
 .article-entry h4,
 .article-entry h5,
 .article-entry h6 {
@@ -1533,6 +1508,9 @@ color
   color: #574c4c;
   padding-bottom: 5px;
   border-bottom: 1px solid #ddd;
+}
+.article-entry h1 {
+  margin-top: 30px;
 }
 .article-entry figure table {
   border: none;
