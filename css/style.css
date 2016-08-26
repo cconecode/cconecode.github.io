@@ -1388,7 +1388,7 @@ body .ui-tooltip {
   box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
   border-left: 5px solid rgba(112,134,142,0.85);
   background: rgba(255,255,255,0.7);
-  border-left-color: #ddd;
+  border-left: 3px solid rgba(0,0,0,0.8);
   background: none;
 }
 .article-entry blockquote p {
@@ -2233,10 +2233,10 @@ aside.comment-bar:active {
   border-radius: 3px;
   -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.08);
   box-shadow: 1px 1px 1px rgba(0,0,0,0.08);
-  var: 7;
+  var: 8;
   color: #fff;
   background: rgba(153,204,153,0.7);
-  background: rgba(129,138,145,0.35);
+  background: rgba(91,192,222,0.6);
 }
 pre .comment,
 pre .title {
