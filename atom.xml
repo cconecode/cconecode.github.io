@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://parisdog.club/"/>
-  <updated>2016-08-28T16:32:33.000Z</updated>
+  <updated>2016-08-28T16:37:36.000Z</updated>
   <id>http://parisdog.club/</id>
   
   <author>
@@ -20,13 +20,18 @@
     <link href="http://parisdog.club/2016/08/29/%E5%88%9D%E8%AF%86OpenGL%20ES/"/>
     <id>http://parisdog.club/2016/08/29/初识OpenGL ES/</id>
     <published>2016-08-28T16:00:00.000Z</published>
-    <updated>2016-08-28T16:32:33.000Z</updated>
+    <updated>2016-08-28T16:37:36.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="什么是OpenGL-ES"><a href="#什么是OpenGL-ES" class="headerlink" title="什么是OpenGL ES"></a>什么是OpenGL ES</h3>]]></content>
+    <content type="html"><![CDATA[<h3 id="什么是OpenGL-ES"><a href="#什么是OpenGL-ES" class="headerlink" title="什么是OpenGL ES"></a>什么是OpenGL ES</h3><blockquote>
+<p>OpenGL ES（OpenGL for Embedded Systems）是 OpenGL 三维图形API的子集，针对手机、PDA和游戏主机等嵌入式设备而设计。该API由Khronos集团定义推广，Khronos是一个图形软硬件行业协会，该协会主要关注图形和多媒体方面的开放标准。</p>
+<p>OpenGL ES是从OpenGL裁剪定制而来的，去除了glBegin/glEnd，四边形（GL_QUADS）、多边形（GL_POLYGONS）等复杂图元等许多非绝对必要的特性。经过多年发展，现在主要有两个版本，OpenGL ES 1.x针对固定管线硬件的，OpenGL ES 2.x针对可编程管线硬件。OpenGL ES 1.0是以OpenGL 1.3规范为基础的，OpenGL ES 1.1是以OpenGL 1.5规范为基础的，它们分别又支持common和common lite两种profile。lite profile只支持定点实数，而common profile既支持定点数又支持浮点数。OpenGL ES 2.0则是参照OpenGL 2.0规范定义的，common profile发布于2005-8，引入了对可编程管线的支持。OpenGL ES 3.0于2012年公布，加入了大量新特性。              —维基百科</p>
+</blockquote>
+]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;什么是OpenGL-ES&quot;&gt;&lt;a href=&quot;#什么是OpenGL-ES&quot; class=&quot;headerlink&quot; title=&quot;什么是OpenGL ES&quot;&gt;&lt;/a&gt;什么是OpenGL ES&lt;/h3&gt;
+      &lt;h3 id=&quot;什么是OpenGL-ES&quot;&gt;&lt;a href=&quot;#什么是OpenGL-ES&quot; class=&quot;headerlink&quot; title=&quot;什么是OpenGL ES&quot;&gt;&lt;/a&gt;什么是OpenGL ES&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;OpenGL ES（OpenGL 
     
     </summary>
     
