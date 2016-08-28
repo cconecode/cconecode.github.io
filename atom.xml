@@ -84,4 +84,22 @@
     
   </entry>
   
+  <entry>
+    <title>初识 OpenGL ES</title>
+    <link href="http://parisdog.club/2016/07/20/%E5%88%9D%E8%AF%86OpenGL%20ES/"/>
+    <id>http://parisdog.club/2016/07/20/初识OpenGL ES/</id>
+    <published>2016-07-19T16:00:00.000Z</published>
+    <updated>2016-08-28T16:12:32.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="事件机制" scheme="http://parisdog.club/categories/%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/"/>
+    
+    
+      <category term="OpenGL ES" scheme="http://parisdog.club/tags/OpenGL-ES/"/>
+    
+  </entry>
+  
 </feed>
