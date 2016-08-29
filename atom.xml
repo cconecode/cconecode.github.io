@@ -17,8 +17,8 @@
   
   <entry>
     <title>初识 OpenGL ES</title>
-    <link href="http://parisdog.club/2016/08/29/OpenGLES-1/"/>
-    <id>http://parisdog.club/2016/08/29/OpenGLES-1/</id>
+    <link href="http://parisdog.club/OpenGLES-1/"/>
+    <id>http://parisdog.club/OpenGLES-1/</id>
     <published>2016-08-28T16:00:00.000Z</published>
     <updated>2016-08-29T17:39:02.000Z</updated>
     
@@ -97,8 +97,8 @@
   
   <entry>
     <title>iOS 事件拦截</title>
-    <link href="http://parisdog.club/2016/07/20/iOSEvent/"/>
-    <id>http://parisdog.club/2016/07/20/iOSEvent/</id>
+    <link href="http://parisdog.club/iOSEvent/"/>
+    <id>http://parisdog.club/iOSEvent/</id>
     <published>2016-07-19T16:00:00.000Z</published>
     <updated>2016-08-29T17:31:47.000Z</updated>
     
