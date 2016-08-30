@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- content-Type -->
+<meta charset="utf-8">
+
+
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="language" content="en">
+<meta name="robots" content="all">
+
+
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+<meta name="author" content="theme.author, theme.email">
+<meta name="reply-to" content="theme.email">
+<meta name="owner" content="theme.author">
+
+
+
+
+<meta name="google-site-verification" content="UA-78049587-1" />
+
+
+
+
+<meta name="baidu-site-verification" content="fRBucd9VmI" />
+
+
+
+
+<meta name="baidu-gxt-verify-token" content="ca8f032797b876ef3be37c3d492168a0" />
+
+
+
+
+
+
+
+<meta name="keywords" content="事件拦截," />
+
+
+<meta name="description" content="在项目中遇到一个需求，检测用户三分钟未点击屏幕，就出现广告轮播图。很自然的就联想到事件拦截了，然而之前对于 iOS 的事件机制并不是太过于了解，所以利用这次机会进行了深入学习。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 事件拦截">
+<meta property="og:url" content="http://parisdog.club/iOSEvent.html">
+<meta property="og:site_name" content="琥珀川的异次元空间">
+<meta property="og:description" content="在项目中遇到一个需求，检测用户三分钟未点击屏幕，就出现广告轮播图。很自然的就联想到事件拦截了，然而之前对于 iOS 的事件机制并不是太过于了解，所以利用这次机会进行了深入学习。">
+<meta property="og:image" content="https://lh3.googleusercontent.com/-6DVPdEbo12A/V48oTEjGXfI/AAAAAAAAAAk/Vn_s04cJOlk/I/14689996896970.jpg">
+<meta property="og:updated_time" content="2016-08-30T04:37:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 事件拦截">
+<meta name="twitter:description" content="在项目中遇到一个需求，检测用户三分钟未点击屏幕，就出现广告轮播图。很自然的就联想到事件拦截了，然而之前对于 iOS 的事件机制并不是太过于了解，所以利用这次机会进行了深入学习。">
+<meta name="twitter:image" content="https://lh3.googleusercontent.com/-6DVPdEbo12A/V48oTEjGXfI/AAAAAAAAAAk/Vn_s04cJOlk/I/14689996896970.jpg">
+
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.0.1" />
+
+
+
+
+<link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+
+<link href="http://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.0.1"/>
+
+
+<script>
+(function(){
+  var bp = document.createElement('script');
+  bp.src = '//push.zhanzhang.baidu.com/push.js';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  <title> iOS 事件拦截 </title>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-78049587-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?47d302b006bf28a09c22990da53cd3da";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+</head>
+<body lang="zh-CN">
+
+  <!--[if lte IE 9]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+
+  <div class="another-theme layout">
+
+    
+<header class="header" id="header">
+
+  <div class="header-cont">
+    <div class="text-area">
+      
+        <h1 class="title" data-text="iOS 事件拦截"> iOS 事件拦截 </h1>
+
+        
+        <div class="post-meta">
+          <div class="post-time">
+            Veröffentlicht am
+            <time  datetime="2016-07-20T00:00:00+08:00" content="2016-07-20">
+              2016-07-20
+            </time>
+          </div>
+
+          
+            <div class="post-category" >
+              
+                <span>
+                  <a href="/categories#事件机制" itemprop="url" rel="index">
+                    <span itemprop="name">事件机制</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </div>
+          
+
+          
+            
+          
+        </div>
+        
+      
+    </div>
+    <!-- Navigation -->
+    
+    <nav class="navigation clearfix" id="navigation">
+      
+        
+        <a class="nav-link" href="/" rel="section">
+          Startseite
+        </a>
+      
+        
+        <a class="nav-link" href="/categories" rel="section">
+          Kategorien
+        </a>
+      
+        
+        <a class="nav-link" href="/tags" rel="section">
+          Tags
+        </a>
+      
+        
+        <a class="nav-link" href="/about" rel="section">
+          Über
+        </a>
+      
+    </nav>
+    
+  </div>
+  <div class="mask"></div>
+</header>
+
+
+    <main class="container">
+
+      
+
+  <article class="post-article post-type-normal post" itemscope>
+
+  <div class="post-body">
+
+    <div class="content markdown-body"><p>&#x5728;&#x9879;&#x76EE;&#x4E2D;&#x9047;&#x5230;&#x4E00;&#x4E2A;&#x9700;&#x6C42;&#xFF0C;&#x68C0;&#x6D4B;&#x7528;&#x6237;&#x4E09;&#x5206;&#x949F;&#x672A;&#x70B9;&#x51FB;&#x5C4F;&#x5E55;&#xFF0C;&#x5C31;&#x51FA;&#x73B0;&#x5E7F;&#x544A;&#x8F6E;&#x64AD;&#x56FE;&#x3002;&#x5F88;&#x81EA;&#x7136;&#x7684;&#x5C31;&#x8054;&#x60F3;&#x5230;&#x4E8B;&#x4EF6;&#x62E6;&#x622A;&#x4E86;&#xFF0C;&#x7136;&#x800C;&#x4E4B;&#x524D;&#x5BF9;&#x4E8E; iOS &#x7684;&#x4E8B;&#x4EF6;&#x673A;&#x5236;&#x5E76;&#x4E0D;&#x662F;&#x592A;&#x8FC7;&#x4E8E;&#x4E86;&#x89E3;&#xFF0C;&#x6240;&#x4EE5;&#x5229;&#x7528;&#x8FD9;&#x6B21;&#x673A;&#x4F1A;&#x8FDB;&#x884C;&#x4E86;&#x6DF1;&#x5165;&#x5B66;&#x4E60;&#x3002;</p>
+<a id="more"></a>
+<h3 id="ios&#x4E8B;&#x4EF6;&#x673A;&#x5236;"><a href="#iOS&#x4E8B;&#x4EF6;&#x673A;&#x5236;" class="headerlink" title="iOS&#x4E8B;&#x4EF6;&#x673A;&#x5236;"></a>iOS&#x4E8B;&#x4EF6;&#x673A;&#x5236;</h3><p>iOS &#x4E2D;&#x7684;&#x4E8B;&#x4EF6;&#x5206;&#x4E3A;&#x4E09;&#x7C7B;&#xFF1A;&#x89E6;&#x6478;&#x4E8B;&#x4EF6;&#xFF08;&#x5355;&#x70B9;&#x3001;&#x591A;&#x70B9;&#x3001;&#x624B;&#x52BF;&#xFF09;&#xFF0C;&#x4F20;&#x611F;&#x5668;&#x4E8B;&#x4EF6;&#xFF08;&#x52A0;&#x901F;&#x4F20;&#x611F;&#x5668;&#xFF09;&#x548C;&#x8FDC;&#x7A0B;&#x63A7;&#x5236;&#x4E8B;&#x4EF6;&#xFF08;<a href="https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/Introduction/Introduction.html" target="_blank" rel="external">&#x5B98;&#x65B9;&#x6587;&#x6863;</a>&#xFF09;&#xFF0C;&#x6211;&#x4EEC;&#x9047;&#x5230;&#x60C5;&#x51B5;&#x662F;&#x7B2C;&#x4E00;&#x79CD;&#x4E5F;&#x5C31;&#x662F;&#x89E6;&#x6478;&#x4E8B;&#x4EF6;&#x7684;&#x673A;&#x5236;&#x3002;</p>
+<h4 id="&#x54CD;&#x5E94;&#x8005;&#x94FE;"><a href="#&#x54CD;&#x5E94;&#x8005;&#x94FE;" class="headerlink" title="&#x54CD;&#x5E94;&#x8005;&#x94FE;"></a>&#x54CD;&#x5E94;&#x8005;&#x94FE;</h4><p>&#x5F53;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x65F6;&#xFF0C;&#x5982;&#x679C; first responder &#x4E0D;&#x505A;&#x5904;&#x7406;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x5F80;&#x4E0B;&#x4F20;&#x9012;&#xFF0C;&#x5982;&#x679C;&#x4E0B;&#x4E00;&#x4E2A; responder &#x4E5F;&#x4E0D;&#x5904;&#x7406;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x7EE7;&#x7EED;&#x4F20;&#x9012;&#x5230;&#x518D;&#x4E0B;&#x4E00;&#x4E2A; responder &#x4E2D;&#xFF0C;&#x76F4;&#x5230;&#x6709;&#x4E00;&#x4E2A; responder &#x5904;&#x7406;&#x6216;&#x8005;&#x6CA1;&#x6709; responder &#x4E86;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709; responder &#x5904;&#x7406;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x5C31;&#x88AB;&#x629B;&#x5F03;&#x4E86;&#x3002;&#x8FD9;&#x4E9B; responder &#x6309;&#x7167;&#x4F20;&#x9012;&#x987A;&#x5E8F;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#x5C31;&#x6784;&#x6210;&#x4E86;&#x54CD;&#x5E94;&#x8005;&#x94FE;&#x3002;</p>
+<p>iOS &#x4E2D;&#x7684;&#x54CD;&#x5E94;&#x8005;&#x94FE;&#xFF1A;<br><img src="https://lh3.googleusercontent.com/-6DVPdEbo12A/V48oTEjGXfI/AAAAAAAAAAk/Vn_s04cJOlk/I/14689996896970.jpg" alt="&#x82F9;&#x679C;&#x5B98;&#x65B9;&#x5173;&#x4E8E;&#x54CD;&#x5E94;&#x8005;&#x94FE;&#x7684;&#x63CF;&#x8FF0;"></p>
+<p>&#x4ECE;&#x56FE;&#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x89C2;&#x5BDF;&#x5230;&#xFF0C;&#x54CD;&#x5E94;&#x8005;&#x94FE;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x7279;&#x70B9;&#xFF1A;</p>
+<ul>
+<li><p>&#x54CD;&#x5E94;&#x8005;&#x94FE;&#x901A;&#x5E38;&#x7531; initial view &#x5F00;&#x59CB;&#x3002;</p>
+</li>
+<li><p>View &#x7684; nextResponder &#x662F;&#x5B83;&#x7684; superView&#xFF0C;&#x5982;&#x679C; View &#x5DF2;&#x7ECF;&#x662F;&#x5B83;&#x6240;&#x5728;&#x7684; ViewController &#x4E2D;&#x7684; top view&#xFF0C;&#x90A3;&#x4E48; next responder &#x5C31;&#x662F;&#x5B83;&#x6240;&#x5728;&#x7684; ViewConTroller&#x3002;</p>
+</li>
+<li><p>ViewController &#x5982;&#x679C;&#x6709; superViewController&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x7684; nextResponder &#x5C31;&#x662F;&#x5B83;superViewController &#x6700;&#x4E0A;&#x9762;&#x7684; View&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x7684; nextResponder &#x5C31;&#x662F; Window&#x3002;</p>
+</li>
+<li><p>Window &#x7684; nextResponder &#x6307;&#x5411; Application&#xFF0C;Application &#x662F;&#x6574;&#x4E2A;&#x54CD;&#x5E94;&#x8005;&#x94FE;&#x7684;&#x9876;&#x5C42;&#xFF0C;&#x5B83;&#x7684; nextResponder &#x6307;&#x5411; nil&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5F53;&#x4E8B;&#x4EF6;&#x4F20;&#x9012;&#x5230; Application &#x4E0D;&#x88AB;&#x5904;&#x7406;&#x7684;&#x8BDD;&#x5C31;&#x4F1A;&#x88AB;&#x629B;&#x5F03;&#x4E86;&#x3002;</p>
+</li>
+</ul>
+<p>&#x7531;&#x4E8E; UI &#x7684;&#x590D;&#x6742;&#x6027;&#xFF0C;&#x6574;&#x4E2A;&#x54CD;&#x5E94;&#x8005;&#x94FE;&#x662F;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x8BA1;&#x7B97;&#x7684;&#xFF0C;&#x800C;&#x8BA1;&#x7B97;&#x987A;&#x5E8F;&#x57FA;&#x672C;&#x662F;&#x4E0E;&#x54CD;&#x5E94;&#x8005;&#x94FE;&#x5206;&#x53D1;&#x76F8;&#x53CD;&#x7684;&#x3002;<code>&#x65E0;&#x8BBA;&#x54EA;&#x79CD;&#x4E8B;&#x4EF6;&#xFF0C;&#x90FD;&#x662F;&#x7CFB;&#x7EDF;&#x672C;&#x8EAB;&#x5148;&#x83B7;&#x5F97;&#xFF0C;&#x518D;&#x4EA4;&#x7ED9; UIApplication&#xFF0C;&#x7531; UIApplication &#x51B3;&#x5B9A;&#x4EA4;&#x7ED9;&#x8C01;&#x53BB;&#x5904;&#x7406;&#x3002;</code> &#x5173;&#x4E8E;&#x4E8B;&#x4EF6;&#x5206;&#x53D1;&#x7684;&#x8BA1;&#x7B97;&#x7F51;&#x4E0A;&#x6709;&#x5F88;&#x591A;&#x6587;&#x7AE0;&#xFF0C;&#x6211;&#x5C31;&#x4E0D;&#x8D58;&#x8FF0;&#x4E86;&#x3002;&#x901A;&#x8FC7;&#x4E0A;&#x8FF0;&#x4E86;&#x89E3;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F97;&#x51FA;&#x4E00;&#x4E2A;&#x7ED3;&#x8BBA;&#xFF1A;<code>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x62E6;&#x622A;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF0C;&#x6700;&#x597D;&#x7684;&#x673A;&#x4F1A;&#x662F;&#x5728; UIApplication &#x91CC;&#x9762;&#x3002;</code></p>
+<h3 id="&#x9700;&#x6C42;&#x5177;&#x4F53;&#x5B9E;&#x73B0;"><a href="#&#x9700;&#x6C42;&#x5177;&#x4F53;&#x5B9E;&#x73B0;" class="headerlink" title="&#x9700;&#x6C42;&#x5177;&#x4F53;&#x5B9E;&#x73B0;"></a>&#x9700;&#x6C42;&#x5177;&#x4F53;&#x5B9E;&#x73B0;</h3><h4 id="oc-&#x7248;"><a href="#OC-&#x7248;" class="headerlink" title="OC &#x7248;"></a>OC &#x7248;</h4><p>&#x6839;&#x636E;&#x4E0A;&#x9762;&#x7684;&#x7ED3;&#x8BBA;&#xFF0C;&#x6211;&#x4EEC;&#x76EE;&#x524D;&#x7684;&#x601D;&#x8DEF;&#x662F;&#x7EE7;&#x627F; UIApplication&#xFF0C;&#x7136;&#x540E;&#x5B9E;&#x73B0;&#x67D0;&#x4E00;&#x65B9;&#x6CD5;&#xFF0C;&#x8FDB;&#x884C;&#x4E8B;&#x4EF6;&#x62E6;&#x622A;&#x3002;&#x6839;&#x636E;&#x67E5;&#x9605;&#x8D44;&#x6599;&#xFF0C;&#x91CD;&#x5199; UIApplication &#x7684; <code>sendEvent</code>&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x8FBE;&#x5230;&#x76EE;&#x7684;&#xFF0C;sendEvent&#x4ECB;&#x7ECD;&#x5982;&#x4E0B;&#xFF1A;</p>
+<blockquote>
+<p> <strong>sendEvent:</strong></p>
+<p>Dispatches an event to the appropriate responder objects in the application.</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)sendEvent:(<span class="built_in">UIEvent</span> *)event</div></pre></td></tr></table></figure>
+<p> <strong>Parameters</strong><br>event<br>A UIEvent object encapsulating the information about an event, including the touches involved.</p>
+<p><strong>Discussion</strong><br>Subclasses may override this method to intercept incoming events for inspection and special dispatching. iOS calls this method for public events only.</p>
+</blockquote>
+<p>&#x5177;&#x4F53;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<ol>
+<li>&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x7EE7;&#x627F; UIApplication &#x7684; CTApplication&#xFF0C;&#x91CD;&#x5199; sendEvent &#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x5224;&#x65AD;&#x662F;&#x5426;&#x4E3A;&#x89E6;&#x6478;&#x4E8B;&#x4EF6;&#xFF1A;</li>
+</ol>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&quot;CTApplication.h&quot;</span></span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">CTApplication</span></span></div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)sendEvent:(<span class="built_in">UIEvent</span> *)event {</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (event.type == <span class="built_in">UIEventTypeTouches</span>) {</div><div class="line">        <span class="keyword">if</span> ([[event.allTouches anyObject] phase] == <span class="built_in">UITouchPhaseBegan</span>) {</div><div class="line"></div><div class="line">        }</div><div class="line">    }</div><div class="line"> [<span class="keyword">super</span> sendEvent:event];</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>2.&#x7531;&#x4E8E;&#x9700;&#x8981;&#x68C0;&#x6D4B;&#x7528;&#x6237;&#x591A;&#x957F;&#x65F6;&#x95F4;&#x6CA1;&#x6709;&#x70B9;&#x51FB;&#x5C4F;&#x5E55;&#xFF0C;&#x9700;&#x8981;&#x52A0;&#x4E00;&#x4E2A;&#x5B9A;&#x65F6;&#x5668;&#x6765;&#x8FDB;&#x884C;&#x5012;&#x8BA1;&#x65F6;&#xFF0C;&#x8BBE;&#x7F6E;&#x5B9A;&#x65F6;&#x5668;&#x7684;&#x65B9;&#x6CD5;&#x5199;&#x5728; CTApplication &#x7684; init &#x65B9;&#x6CD5;&#x4E2D;&#xFF1A;</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&quot;CTApplication.h&quot;</span></span></div><div class="line"></div><div class="line"><span class="comment">/** &#x4E0D;&#x70B9;&#x51FB;&#x5C4F;&#x5E55;&#x7684;&#x65F6;&#x95F4; */</span></div><div class="line"><span class="keyword">static</span> <span class="built_in">NSTimeInterval</span> <span class="keyword">const</span> showTime = <span class="number">180</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">CTApplication</span> ()</span></div><div class="line"></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">NSTimer</span> *timer;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">CTApplication</span></span></div><div class="line"></div><div class="line">- (<span class="keyword">instancetype</span>)init {</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span> == [<span class="keyword">super</span> init]) {</div><div class="line">        [<span class="keyword">self</span> setTimer];</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">}</div><div class="line">- (<span class="keyword">void</span>)setTimer {</div><div class="line"></div><div class="line">    <span class="keyword">self</span>.timer = [<span class="built_in">NSTimer</span> timerWithTimeInterval:showTime target:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(showPicture) userInfo:<span class="literal">nil</span> repeats:<span class="literal">NO</span>];</div><div class="line">    [[<span class="built_in">NSRunLoop</span> currentRunLoop] addTimer:<span class="keyword">self</span>.timer forMode:<span class="built_in">NSRunLoopCommonModes</span>];</div><div class="line">}</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)showPicture {</div><div class="line">	<span class="comment">/** &#x5728;&#x8FD9;&#x91CC;&#x5BF9;&#x5E7F;&#x544A;&#x8F6E;&#x64AD;&#x56FE;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E; */</span></div><div class="line">}</div></pre></td></tr></table></figure>
+<p>3.&#x518D;&#x56DE;&#x5230; sendEvent &#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x8BE5;&#x65B9;&#x6CD5;&#x88AB;&#x89E6;&#x53D1;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;&#x8BA9;&#x5B9A;&#x65F6;&#x5668;&#x5931;&#x6548;&#xFF0C;&#x91CD;&#x65B0;&#x5F00;&#x59CB;&#x5B9A;&#x65F6;&#xFF1A;</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)sendEvent:(<span class="built_in">UIEvent</span> *)event {</div><div class="line">    </div><div class="line">    [<span class="keyword">super</span> sendEvent:event];</div><div class="line">    <span class="keyword">if</span> (event.type == <span class="built_in">UIEventTypeTouches</span>) {</div><div class="line">        <span class="keyword">if</span> ([[event.allTouches anyObject] phase] == <span class="built_in">UITouchPhaseBegan</span>) {</div><div class="line"></div><div class="line">            [<span class="keyword">self</span>.timer invalidate];</div><div class="line">            [<span class="keyword">self</span> setTimer];</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>4.&#x6700;&#x540E;&#xFF0C;&#x5728; main &#x51FD;&#x6570;&#x4E2D;&#x8FD8;&#x8981;&#x505A;&#x5BF9;&#x5E94;&#x7684;&#x66F4;&#x6539;&#xFF0C;&#x66FF;&#x6362; UIApplication &#x7684;&#x8C03;&#x7528;&#xFF1A;</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&lt;UIKit/UIKit.h&gt;</span></span></div><div class="line"><span class="meta">#import <span class="meta-string">&quot;AppDelegate.h&quot;</span></span></div><div class="line"><span class="meta">#import <span class="meta-string">&quot;CTApplication.h&quot;</span></span></div><div class="line"></div><div class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[]) {</div><div class="line">    <span class="keyword">@autoreleasepool</span> {</div><div class="line"><span class="comment">//        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));</span></div><div class="line">        <span class="keyword">return</span> <span class="built_in">UIApplicationMain</span>(argc, argv, <span class="built_in">NSStringFromClass</span>([AppDelegate <span class="keyword">class</span>]), <span class="built_in">NSStringFromClass</span>([<span class="built_in">CTApplication</span> <span class="keyword">class</span>]));</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<h4 id="swift&#x7248;"><a href="#Swift&#x7248;" class="headerlink" title="Swift&#x7248;"></a>Swift&#x7248;</h4><p>&#x9996;&#x5148;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A; UIApplication &#x7684;&#x5B50;&#x7C7B; CTApplication&#xFF1A;</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Foundation</div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CTApplication</span>: <span class="title">UIApplication</span> </span>{</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">sendEvent</span><span class="params">(event: UIEvent)</span></span> {</div><div class="line"></div><div class="line">        <span class="keyword">super</span>.sendEvent(event)</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x7531;&#x4E8E; Swift &#x4E2D;&#x6CA1;&#x6709; main &#x51FD;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x624B;&#x52A8;&#x5EFA;&#x4E00;&#x4E2A; main &#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x5165;&#x53E3;&#xFF1A;</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Foundation</div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="type">UIApplicationMain</span>(<span class="type">Process</span>.argc, <span class="type">Process</span>.unsafeArgv, <span class="type">NSStringFromClass</span>(<span class="type">CTApplication</span>), <span class="type">NSStringFromClass</span>(<span class="type">AppDelegate</span>))</div></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x65F6;&#xFF0C;Appdelegate &#x4E2D;&#x7684;<code>@UIApplicationMain</code>&#x4F1A;&#x62A5;&#x9519;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x82F9;&#x679C;&#x5B98;&#x65B9;&#x5BF9;&#x4E8E;<code>@UIApplicationMain</code>&#x5173;&#x952E;&#x5B57;&#x7684;&#x63CF;&#x8FF0;&#xFF1A;</p>
+<blockquote>
+<p>Apply this attribute to a class to indicate that it is the application delegate. Using this attribute is equivalent to calling the UIApplicationMain function and passing this class&#x2019;s name as the name of the delegate class.</p>
+<p>If you do not use this attribute, supply a main.swift file with a main function that calls the UIApplicationMain(::<em>:) function. For example, if your app uses a custom subclass of UIApplication<br>as its principal class, call the UIApplicationMain(::</em>:) function instead of using this attribute.</p>
+</blockquote>
+<p>&#x610F;&#x601D;&#x5C31;&#x662F;&#x5728;&#x7C7B;&#x7684;&#x6700;&#x9876;&#x90E8;&#x58F0;&#x660E; <code>@UIApplicationMain</code>&#xFF0C;&#x8868;&#x793A;&#x8BE5;&#x7C7B;&#x662F;Application &#x7684; delegate&#xFF0C;&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x505A;&#x6CD5;&#x5C31;&#x662F;&#x5728; main.Swift &#x4E2D;&#x8C03;&#x7528; UIApplicationMain &#x51FD;&#x6570;&#xFF0C;&#x8BBE;&#x7F6E; delegate &#x548C; application&#x3002;&#x800C;&#x6211;&#x4EEC;&#x91C7;&#x53D6;&#x7684;&#x662F;&#x540E;&#x9762;&#x7684;&#x529E;&#x6CD5;&#xFF0C;&#x6240;&#x4EE5; delegate &#x51B2;&#x7A81;&#x4E86;&#xFF0C;&#x81EA;&#x7136;&#x5C31;&#x4F1A;&#x62A5;&#x9519;&#xFF0C;&#x53EA;&#x8981;&#x628A; Appdelegate &#x4E0A;&#x7684; <code>@UIApplicationMain</code> &#x5173;&#x952E;&#x5B57;&#x5220;&#x9664;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;&#x5269;&#x4E0B;&#x7684;&#x64CD;&#x4F5C;&#x4E0E; OC &#x4E2D;&#x7684;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;</p>
+<p>&#x5177;&#x4F53;&#x7684;&#x4EE3;&#x7801;&#x4E0A;&#x4F20;&#x5230; github &#x4E0A;&#x4E86;&#xFF1A;</p>
+</div>
+
+    <div class="post-sidebar">
+  <div class="toggle-btn" id="toggle-btn">
+    <i class="fa fa-reorder"></i>
+  </div>
+  <section class="post-toc-wrap" id="post-sidebar">
+    <h2 class="toc-title">内容目录</h2>
+    <div class="post-toc">
+      
+      
+        <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ios事件机制"><span class="nav-text">iOS事件机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#响应者链"><span class="nav-text">响应者链</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需求具体实现"><span class="nav-text">需求具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#oc-版"><span class="nav-text">OC 版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#swift版"><span class="nav-text">Swift版</span></a></li></ol></li></ol></div>
+      
+    </div>
+  </section>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    
+      <div class="post-tags">
+        
+          <a href="/tags#事件拦截" rel="tag">#事件拦截</a>
+        
+      </div>
+    
+    
+  <style>
+    .donation {
+      width: 100%;
+      margin-top: 2rem;
+    }
+    .donation .text {
+      color: #333;
+      font-size: .8rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .donation .text:hover {
+      color: rgb(63,134,181);
+    }
+    .donation .img-box {
+      transition: all .3s;
+      width: 0;
+      height: 0;
+      margin: 1rem auto;
+      overflow: hidden;
+    }
+    .donation .img-box img {
+      width: 100%;
+      height: 100%;
+    }
+    .donation #donation {
+      display: none;
+    }
+    .donation #donation:checked + .img-box {
+      width: 16rem;
+      height: 16rem;
+    }
+  </style>
+  <div class="donation">
+    <label class="text" for="donation">
+      如果你觉得文章对你有帮助，并且想为我买一杯咖啡，点这里～
+    </label>
+    <input type="checkbox" name="donation" id="donation">
+    <div class="img-box">
+      <img src="/img/donation.png" alt="donation" />
+    </div>
+    </style>
+  </div>
+
+
+  </footer>
+
+</article>
+
+
+
+
+      
+
+
+
+
+    </main>
+
+    <footer class="footer clearfix">
+  <div class="copyright" >
+    <span>Copyright</span>
+    
+    &copy;  2015-
+    <span itemprop="copyrightYear">2016</span>
+    <span class="author" itemprop="copyrightHolder">巴黎有条狗</span>
+  </div>
+
+  <div class="info">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+      <span id="showDays" class="show-days"></span>
+      <script>
+      var birthDay = new Date('10/04/2015');
+      var now = new Date();
+      var duration = now.getTime() - birthDay.getTime();
+      var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+      document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+      </script>
+      ---
+    
+    <span id="busuanzi_container_site_pv">
+        总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+  </div>
+
+</footer>
+
+
+  </div>
+
+  <div class="back-top-btn" id="back-top-btn"><i class="fa fa-chevron-up"></i></div>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/motto.min.js?v=0.0.1"></script>
+<script type="text/javascript" src="/js/main.js?v=0.0.1"></script>
+
+
+</body>
+</html>
