@@ -1,11 +1,11 @@
 .post pre,
 .post .highlight {
-  background: #2d2d2d;
+  background: #f7f7f7;
   margin: 20px 0;
   padding: 15px;
   overflow: auto;
   font-size: 13px;
-  color: #ccc;
+  color: #4d4d4c;
   line-height: $line-height-code-block;
 }
 .post .highlight .gutter pre,
@@ -75,7 +75,7 @@
 }
 .post .highlight figcaption {
   font-size: 0.85em;
-  color: #999;
+  color: #8e908c;
   line-height: 1em;
   margin-bottom: 1em;
 }
@@ -96,7 +96,7 @@
   border-style: solid;
   border-color: $border-color;
   border-width: 1px 0;
-  background: #2d2d2d;
+  background: #f7f7f7;
   padding: 15px $content-desktop-padding 15px 15px;
 }
 .post .gist .gist-file {
@@ -122,8 +122,8 @@
   border: none;
 }
 .post .gist .gist-file .gist-meta {
-  background: #2d2d2d;
-  color: #999;
+  background: #f7f7f7;
+  color: #8e908c;
   font: 13px $font-family-base;
   text-shadow: 0 0;
   padding: 0;
@@ -138,7 +138,7 @@
   text-decoration: underline;
 }
 pre .comment {
-  color: #999;
+  color: #8e908c;
 }
 pre .variable,
 pre .attribute,
@@ -152,7 +152,7 @@ pre .html .doctype,
 pre .css .id,
 pre .css .class,
 pre .css .pseudo {
-  color: #f2777a;
+  color: #c82829;
 }
 pre .number,
 pre .preprocessor,
@@ -160,11 +160,11 @@ pre .built_in,
 pre .literal,
 pre .params,
 pre .constant {
-  color: #f99157;
+  color: #f5871f;
 }
 pre .ruby .class .title,
 pre .css .rules .attribute {
-  color: #9c9;
+  color: #718c00;
 }
 pre .string,
 pre .value,
@@ -172,11 +172,11 @@ pre .inheritance,
 pre .header,
 pre .ruby .symbol,
 pre .xml .cdata {
-  color: #9c9;
+  color: #718c00;
 }
 pre .title,
 pre .css .hexcolor {
-  color: #6cc;
+  color: #3e999f;
 }
 pre .function,
 pre .python .decorator,
@@ -185,12 +185,14 @@ pre .ruby .function .title,
 pre .ruby .title .keyword,
 pre .perl .sub,
 pre .javascript .title,
+pre .js .title,
 pre .coffeescript .title {
-  color: #69c;
+  color: #4271ae;
 }
 pre .keyword,
-pre .javascript .function {
-  color: #c9c;
+pre .javascript .function,
+pre .js .function {
+  color: #8959a8;
 }
 /* normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
@@ -1340,13 +1342,13 @@ body {
   font-size: .9rem;
 }
 
-.header {
+header.header {
   position: relative;
   width: 100%;
   height: 400px;
   background: url("/images/bg.jpg") center/cover;
 }
-.header .mask {
+header.header .mask {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -1354,7 +1356,7 @@ body {
   left: 0;
   background-color: rgba(55,68,84,0.82);
 }
-.header .header-cont {
+header.header .header-cont {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -1362,7 +1364,7 @@ body {
   left: 0;
   z-index: 2;
 }
-.header .header-cont .text-area {
+header.header .header-cont .text-area {
   text-align: center;
   width: 100%;
   height: 4rem;
@@ -1370,7 +1372,7 @@ body {
   top: 50%;
   transform: translateY(-50%);
 }
-.header .header-cont .text-area .title {
+header.header .header-cont .text-area .title {
   text-align: center;
   margin: 0;
   color: #fff;
@@ -1380,7 +1382,7 @@ body {
   display: inline-block;
   font-family: Ebrima;
 }
-.header .header-cont .text-area .title:before {
+header.header .header-cont .text-area .title:before {
   content: attr(data-text);
   position: absolute;
   left: -2px;
@@ -1393,7 +1395,7 @@ body {
   height: 100%;
   animation: noise-anim-2 3s infinite linear alternate-reverse;
 }
-.header .header-cont .text-area .title:after {
+header.header .header-cont .text-area .title:after {
   content: attr(data-text);
   position: absolute;
   height: 100%;
@@ -1406,7 +1408,7 @@ body {
   clip: rect(0, 900px, 0, 0);
   animation: noise-anim 2s infinite linear alternate-reverse;
 }
-.header .header-cont .text-area .description {
+header.header .header-cont .text-area .description {
   width: 100%;
   text-align: center;
   margin: 0;
@@ -1415,7 +1417,7 @@ body {
   font-size: 0.8rem;
   line-height: 2em;
 }
-.header .header-cont .post-meta {
+header.header .header-cont .post-meta {
   width: 100%;
   text-align: center;
   margin: 0;
@@ -1424,30 +1426,30 @@ body {
   font-size: 0.8rem;
   line-height: 2em;
 }
-.header .header-cont .post-meta .post-time {
+header.header .header-cont .post-meta .post-time {
   color: rgba(255,255,255,0.8);
 }
-.header .header-cont .post-meta .post-category a {
+header.header .header-cont .post-meta .post-category a {
   display: inline-block;
   color: rgba(255,255,255,0.8);
   margin: 0.5rem 1rem;
   padding: 0px 6px;
   border: 1px solid rgba(255,255,255,0.8);
 }
-.header .header-cont .post-meta .post-category a:hover {
+header.header .header-cont .post-meta .post-category a:hover {
   color: #fff;
   border: 1px solid #fff;
 }
-.header .header-cont .post-meta .post-comments-count a {
+header.header .header-cont .post-meta .post-comments-count a {
   color: rgba(255,255,255,0.8);
 }
-.header .header-cont .navigation {
+header.header .header-cont .navigation {
   width: 100%;
   text-align: right;
   padding: 2rem 2rem 0 0;
   transition: all 0.3s;
 }
-.header .header-cont .navigation .nav-link {
+header.header .header-cont .navigation .nav-link {
   display: inline-block;
   color: rgba(255,255,255,0.8);
   font-size: 1rem;
@@ -1455,11 +1457,11 @@ body {
   line-height: 3em;
   transition: all 0.3s;
 }
-.header .header-cont .navigation .nav-link:hover {
+header.header .header-cont .navigation .nav-link:hover {
   color: #fff;
   transform: scale(1.2);
 }
-.header .header-cont .navigation.scrolled {
+header.header .header-cont .navigation.scrolled {
   position: fixed;
   top: 0;
   left: 0;
@@ -1468,10 +1470,10 @@ body {
   background: rgba(247,247,247,0.9);
   box-shadow: 0px 2px 2px rgba(127,142,160,0.38);
 }
-.header .header-cont .navigation.scrolled .nav-link {
+header.header .header-cont .navigation.scrolled .nav-link {
   color: #333;
 }
-.header .header-cont .navigation.scrolled .nav-link {
+header.header .header-cont .navigation.scrolled .nav-link {
   color: #000;
 }
 .footer {

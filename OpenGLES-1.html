@@ -168,8 +168,8 @@
           
             
               <span class="post-comments-count">
-                <a href="/OpenGLES-1.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="OpenGLES-1.html" itemprop="commentsCount"></span>
+                <a href="/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -358,10 +358,6 @@
       
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="OpenGLES-1.html"
-           data-title="初识 OpenGL ES" data-url="http://parisdog.club/OpenGLES-1.html">
-      </div>
-    
   </div>
 
 
@@ -407,23 +403,30 @@
 
 
 
-  
-    
+
   
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"parisdog.duoshuo.com"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-    
-     
+    <script type="text/javascript">
+      var disqus_shortname = 'ccparisdog';
+      var disqus_identifier = 'OpenGLES-1.html';
+      var disqus_title = '初识 OpenGL ES';
+      var disqus_url = 'http://parisdog.club/OpenGLES-1.html';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
 
 
 
