@@ -1485,6 +1485,10 @@ header.header .header-cont .navigation.scrolled .nav-link {
   height: 160px;
   font-size: 0.8rem;
 }
+.footer .my-theme a {
+  color: #3f86b5;
+  font-size: 0.9rem;
+}
 .pagination {
   text-align: center;
   height: 50px;
