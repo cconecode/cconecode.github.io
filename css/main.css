@@ -35,8 +35,8 @@
 .post .highlight:before {
   display: block;
   content: ' ';
-  position: absolute;
   height: 38px;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
