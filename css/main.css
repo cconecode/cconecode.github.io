@@ -36,6 +36,7 @@
   display: block;
   content: ' ';
   position: absolute;
+  height: 38px;
   top: 0;
   left: 0;
   right: 0;
@@ -51,6 +52,7 @@
   border-radius: 50%;
   background: #fc625d;
   width: 12px;
+  height: 12px;
   top: 0;
   left: 20px;
   margin-top: 13px;
