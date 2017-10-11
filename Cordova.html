@@ -59,7 +59,7 @@
 <meta property="og:url" content="http://parisdog.club/Cordova.html">
 <meta property="og:site_name" content="琥珀川的异次元空间">
 <meta property="og:description" content="Cordova &amp;#x7684;&amp;#x524D;&amp;#x8EAB;&amp;#x662F; PhoneGap&amp;#xFF0C;&amp;#x662F;&amp;#x4E00;&amp;#x4E2A; Hybrid &amp;#x6846;&amp;#x67B6;&amp;#xFF0C;&amp;#x53EF;&amp;#x4EE5;&amp;#x8BA9;&amp;#x5F00;&amp;#x53D1;&amp;#x8005;&amp;#x4F7F;&amp;#x7528;HTML&amp;#x3001;Javascript&amp;">
-<meta property="og:updated_time" content="2016-09-08T14:23:41.000Z">
+<meta property="og:updated_time" content="2016-12-17T06:42:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cordova in iOS">
 <meta name="twitter:description" content="Cordova &amp;#x7684;&amp;#x524D;&amp;#x8EAB;&amp;#x662F; PhoneGap&amp;#xFF0C;&amp;#x662F;&amp;#x4E00;&amp;#x4E2A; Hybrid &amp;#x6846;&amp;#x67B6;&amp;#xFF0C;&amp;#x53EF;&amp;#x4EE5;&amp;#x8BA9;&amp;#x5F00;&amp;#x53D1;&amp;#x8005;&amp;#x4F7F;&amp;#x7528;HTML&amp;#x3001;Javascript&amp;">
@@ -217,10 +217,7 @@
 
     <div class="content markdown-body"><p>Cordova &#x7684;&#x524D;&#x8EAB;&#x662F; PhoneGap&#xFF0C;&#x662F;&#x4E00;&#x4E2A; Hybrid &#x6846;&#x67B6;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA9;&#x5F00;&#x53D1;&#x8005;&#x4F7F;&#x7528;HTML&#x3001;Javascript&#x3001;CSS&#x5F00;&#x53D1;&#x8DE8;&#x5E73;&#x53F0;&#x7684;App&#x3002;</p>
 <h1 id="&#x73AF;&#x5883;&#x642D;&#x5EFA;"><a href="#&#x73AF;&#x5883;&#x642D;&#x5EFA;" class="headerlink" title="&#x73AF;&#x5883;&#x642D;&#x5EFA;"></a>&#x73AF;&#x5883;&#x642D;&#x5EFA;</h1><p>&#x5B89;&#x88C5;Cordova:</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g cordova</div></pre></td></tr></table></figure>
-<p>&#x5982;&#x679C;&#x63D0;&#x793A;&#x9519;&#x8BEF;&#xFF0C;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x5B89;&#x88C5; Node.js&#x3002;</p>
-<h1 id="&#x521B;&#x5EFA;&#x9879;&#x76EE;"><a href="#&#x521B;&#x5EFA;&#x9879;&#x76EE;" class="headerlink" title="&#x521B;&#x5EFA;&#x9879;&#x76EE;"></a>&#x521B;&#x5EFA;&#x9879;&#x76EE;</h1><p><strong>&#x521B;&#x5EFA;&#x5DE5;&#x7A0B;&#x9879;&#x76EE;&#xFF1A;</strong></p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cordova create Cordova com.example.CordovaTest CordovaTest</div></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g cordova</div><div class="line">``` </div><div class="line"></div><div class="line">&#x5982;&#x679C;&#x63D0;&#x793A;&#x9519;&#x8BEF;&#xFF0C;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x5B89;&#x88C5; Node.js</div><div class="line"></div><div class="line"><span class="meta"># &#x521B;&#x5EFA;&#x9879;&#x76EE;</span></div><div class="line"></div><div class="line">**&#x521B;&#x5EFA;&#x5DE5;&#x7A0B;&#x9879;&#x76EE;&#xFF1A;**</div><div class="line"></div><div class="line"></div><div class="line">```ObjectiveC</div><div class="line">cordova create Cordova com.example.CordovaTest CordovaTest</div></pre></td></tr></table></figure>
 <p>&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;&#x5DE5;&#x7A0B;&#x6587;&#x4EF6;&#x5939;<br>&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;&#x5E94;&#x7528;&#x7684;&#x7684; id &#x540D;&#xFF0C;&#x548C; Xcode &#x4E2D;&#x7684; bundle Id &#x7C7B;&#x4F3C;<br>&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;&#x5DE5;&#x7A0B;&#x540D;&#x5B57;</p>
 <p><strong>&#x6DFB;&#x52A0; iOS &#x5E73;&#x53F0;&#x652F;&#x6301;</strong></p>
 <p>&#x8FDB;&#x5165;&#x521A;&#x521A;&#x521B;&#x5EFA;&#x7684;&#x5DE5;&#x7A0B;&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x6267;&#x884C;&#xFF1A;</p>
@@ -243,7 +240,7 @@
     <div class="post-toc">
       
       
-        <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#环境搭建"><span class="nav-text">环境搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建项目"><span class="nav-text">创建项目</span></a></li></ol></div>
+        <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#环境搭建"><span class="nav-text">环境搭建</span></a></li></ol></div>
       
     </div>
   </section>
@@ -332,7 +329,7 @@
     <span>Copyright</span>
     
     &copy;  2015-
-    <span itemprop="copyrightYear">2016</span>
+    <span itemprop="copyrightYear">2017</span>
     <span class="author" itemprop="copyrightHolder">巴黎有条狗</span>
   </div>
 
