@@ -1,429 +1,730 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <!-- content-Type -->
-<meta charset="utf-8">
+
+<html lang="zh-Hans">
+    <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <!--
+        © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+        Version: 1.3.3
+    -->
+    <script>
+window.lsVersion = "1.3.3",
+window.oldVersion = [
+    
+        
+            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0","1.3.2"
+        
+    
+]
+</script>
+
+    <!-- ### DNS Prefetch ### -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
 
 
-<meta http-equiv="x-ua-compatible" content="ie=edge">
-<meta name="renderer" content="webkit|ie-comp|ie-stand">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="language" content="en">
-<meta name="robots" content="all">
-
-
-<meta content="yes" name="apple-mobile-web-app-capable">
-<meta content="black" name="apple-mobile-web-app-status-bar-style">
-<meta content="telephone=no" name="format-detection">
-<meta content="email=no" name="format-detection">
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-<meta name="author" content="theme.author, theme.email">
-<meta name="reply-to" content="theme.email">
-<meta name="owner" content="theme.author">
-
-
-
-
-<meta name="google-site-verification" content="UA-78049587-1" />
+<!-- comment -->
 
 
 
 
-<meta name="baidu-site-verification" content="fRBucd9VmI" />
+
+
+
+<!-- analytics -->
 
 
 
 
-<meta name="baidu-gxt-verify-token" content="ca8f032797b876ef3be37c3d492168a0" />
 
 
 
 
-<meta name="description" content="我们的征途是星辰大海 🍃" />
+    <!-- ### Preload ### -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
 
 
 
 
-<meta name="keywords" content="OpenGL ES," />
 
 
-<meta name="description" content="&amp;#x5728;&amp;#x4E0A;&amp;#x4E00;&amp;#x7BC7;&amp;#x6587;&amp;#x7AE0;&amp;#x4E2D;&amp;#x6211;&amp;#x4EEC;&amp;#x5B66;&amp;#x4E60;&amp;#x4E86;OpenGL ES&amp;#x7684;&amp;#x4E00;&amp;#x4E9B;&amp;#x57FA;&amp;#x672C;&amp;#x6982;&amp;#x5FF5;&amp;#xFF0C;&amp;#x5269;&amp;#x4E0B;&amp;#x7684;&amp;#x77E5">
-<meta property="og:type" content="article">
-<meta property="og:title" content="OpenGL实战(一) - 简单图形绘制">
-<meta property="og:url" content="http://parisdog.club/OpenGLES-2.html">
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<!-- Title -->
+<title>OpenGL实战(一) - 简单图形绘制 | 琥珀川的异次元空间</title>
+
+<!-- favicon -->
+<!-- Favicons -->
+
+    <link rel="icon" type="image/ico" href="/img/suka-favicon.ico">
+
+
+
+
+
+
+<!-- Android Chrome Color -->
+
+
+
+<meta name="format-detection" content="telephone=no">
+
+<!-- Description -->
+<meta name="description" content="在上一篇文章中我们学习了OpenGL ES的一些基本概念，剩下的知识我们在实战中不断的补充，后续的文章会以代码+知识点+API...">
+
+<!-- Keywords -->
+<meta name="keywords" content=", OpenGL ES">
+
+<!-- Disable Fucking Bloody Baidu Tranformation -->
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!-- ### Import File ### -->
+    
+        <!-- spectre.css -->
+
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css">
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style>
+
+<!-- style.css -->
+
+    <link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    
+        <link rel="stylesheet" href="/css/highlight/github.min.css">
+    
+
+
+
+    
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <!-- ### RSS ### -->
+    
+    
+        <link rel="alternate" type="application/atom+xml" href="/atom.xml">
+    
+
+
+    <!-- ### WebApp ### -->
+    <meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="琥珀川的异次元空间">
+<meta name="msapplication-starturl" content="http://parisdog.club">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="琥珀川的异次元空间">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Manifest Import -->
+
+<!-- Open Search -->
+
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="OpenGL实战(一) - 简单图形绘制 | 琥珀川的异次元空间">
 <meta property="og:site_name" content="琥珀川的异次元空间">
-<meta property="og:description" content="&amp;#x5728;&amp;#x4E0A;&amp;#x4E00;&amp;#x7BC7;&amp;#x6587;&amp;#x7AE0;&amp;#x4E2D;&amp;#x6211;&amp;#x4EEC;&amp;#x5B66;&amp;#x4E60;&amp;#x4E86;OpenGL ES&amp;#x7684;&amp;#x4E00;&amp;#x4E9B;&amp;#x57FA;&amp;#x672C;&amp;#x6982;&amp;#x5FF5;&amp;#xFF0C;&amp;#x5269;&amp;#x4E0B;&amp;#x7684;&amp;#x77E5">
-<meta property="og:image" content="http://ooo.0o0.ooo/2016/09/01/57c7eec495cab.jpg">
-<meta property="og:updated_time" content="2016-12-17T12:48:20.000Z">
+
+<meta property="og:locale" content="zh-Hans">
+
+<meta property="og:url" content="http://parisdog.club/OpenGLES-2.html">
+<meta property="og:image" content="http://parisdog.club/img/suka-favicon.ico">
+
+<meta property="og:description" content="在上一篇文章中我们学习了OpenGL ES的一些基本概念，剩下的知识我们在实战中不断的补充，后续的文章会以代码+知识点+API...">
+
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenGL实战(一) - 简单图形绘制">
-<meta name="twitter:description" content="&amp;#x5728;&amp;#x4E0A;&amp;#x4E00;&amp;#x7BC7;&amp;#x6587;&amp;#x7AE0;&amp;#x4E2D;&amp;#x6211;&amp;#x4EEC;&amp;#x5B66;&amp;#x4E60;&amp;#x4E86;OpenGL ES&amp;#x7684;&amp;#x4E00;&amp;#x4E9B;&amp;#x57FA;&amp;#x672C;&amp;#x6982;&amp;#x5FF5;&amp;#xFF0C;&amp;#x5269;&amp;#x4E0B;&amp;#x7684;&amp;#x77E5">
-<meta name="twitter:image" content="http://ooo.0o0.ooo/2016/09/01/57c7eec495cab.jpg">
+
+
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2016-08-30T16:00:00.000Z">
+    <meta property="article:modified_time" content="2016-08-30T16:00:00.000Z">
+    <meta property="article:author" content="巴黎有条狗">
+    <meta property="og:article:tag" content=", OpenGL ES"> 
+
+
+
+
+
+    <!-- ### Analytics ### -->
+    
 
 
 
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.0.1" />
+
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="http://parisdog.club/OpenGLES-2.html">
+
+    <!-- ### Structured Data ### -->
+    
 
 
 
-
-
-
-<link href="http://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.0.1"/>
-
-
-<script>
-(function(){
-  var bp = document.createElement('script');
-  bp.src = '//push.zhanzhang.baidu.com/push.js';
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(bp, s);
-})();
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "http://parisdog.club/OpenGLES-2.html",
+    "@type": "BlogPosting",
+    "logo": "http://parisdog.club/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://parisdog.club/OpenGLES-2.html"
+    },
+    "headline": "OpenGL实战(一) - 简单图形绘制 | 琥珀川的异次元空间",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://parisdog.club/img/suka-favicon.ico"
+    },
+    
+    "datePublished": "2016-08-30T16:00:00.000Z",
+    "dateModified": "2016-12-17T12:48:20.000Z",
+    "author": {
+        "@type": "Person",
+        "name": "巴黎有条狗",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://parisdog.club/img/default_avatar.png"
+        },
+        "description": "Hi, nice to meet you."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "琥珀川的异次元空间",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://parisdog.club/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "http://parisdog.club/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": ", OpenGL ES",
+    "description": "在上一篇文章中我们学习了OpenGL ES的一些基本概念，剩下的知识我们在实战中不断的补充，后续的文章会以代码+知识点+API..."
+}
 </script>
 
-  <title> OpenGL实战(一) - 简单图形绘制 </title>
-  
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-78049587-1', 'auto');
-  ga('send', 'pageview');
-</script>
 
 
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?47d302b006bf28a09c22990da53cd3da";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
+    <!-- ### Custom Head ### -->
+    
 
 
 </head>
-<body lang="zh-Hans">
 
-  <!--[if lte IE 9]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
-
-
-  <div class="another-theme layout">
-
-    
-<header class="header" id="header" style="background: url(/img/opengl2.jpg) center / cover">
-
-  <div class="header-cont">
-    <div class="text-area">
-      
-        <h1 class="title" data-text="OpenGL实战(一) - 简单图形绘制"> OpenGL实战(一) - 简单图形绘制 </h1>
-
+    <body>
         
-        <div class="post-meta">
-          <div class="post-time">
-            发表于
-            <time  datetime="2016-08-31T00:00:00+08:00" content="2016-08-31">
-              2016-08-31
-            </time>
-          </div>
 
-          
-            <div class="post-category" >
-              
-                <span>
-                  <a href="/categories#OpenGL ES" itemprop="url" rel="index">
-                    <span itemprop="name">OpenGL ES</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </div>
-          
-
-          
             
-              <span class="post-comments-count">
-                <a href="/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="" itemprop="commentsCount"></span>
-                </a>
-              </span>
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">琥珀川的异次元空间</a></h1>
+
+    <p class="text-center header-slogan">
+        
             
-          
-        </div>
+                Hi, nice to meet you.
+            
         
-      
-    </div>
-    <!-- Navigation -->
+    </p>
+
+    <nav class="navbar-section text-center">
     
-    <nav class="navigation clearfix" id="navigation">
-      
-        
-        <a class="nav-link" href="/" rel="section">
-          首页
-        </a>
-      
-        
-        <a class="nav-link" href="/categories" rel="section">
-          分类
-        </a>
-      
-        
-        <a class="nav-link" href="/tags" rel="section">
-          标签
-        </a>
-      
-        
-        <a class="nav-link" href="/about" rel="section">
-          关于
-        </a>
-      
-    </nav>
+        <a href="/" class="navbar-link">首页</a>
     
-  </div>
-  <div class="mask"></div>
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=琥珀川的异次元空间&url=http://parisdog.club&pic=http://parisdog.club/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=琥珀川的异次元空间&url=http://parisdog.club&via=巴黎有条狗" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+        <li class="menu-item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://parisdog.club" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+        </li>
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=http://parisdog.club" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://parisdog.club&title=OpenGL实战(一) - 简单图形绘制" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=琥珀川的异次元空间&title=OpenGL实战(一) - 简单图形绘制&summary=我们的征途是星辰大海 🍃&pics=http://parisdog.club/img/suka-favicon.ico&url=http://parisdog.club" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=http://parisdog.club&text=OpenGL实战(一) - 简单图形绘制" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAAAAAB0L9x7AAABg0lEQVR42u3au27DMBBEUf3/T9uVG4O7MxRtaShcNQbihDwFw33peAU8BwgQILZAHM3z+b77LDcQ64LIRlSLVAt2m06tCyIaUR3IboPRZ/Wz4bogtkSMNpj9HsTzEOoB8UxEFWiqzapL7S9RFMTliJVEV11ul2TbIH6KkEWrkeg4ifBSVQ7iUsT3H1WXUnXYVKHUFUUgchFng5K63E7fmCBuRzgByN28WtdukoC4HaECkxPQVGOkbLaA2ALhJMDdZeYcVhD5iNGhUYHM2VA2UkDEIlRCqxJfZ0DXNs5ARCHcYrZDzQxrQOQj3IGam7RMJb0gIhEKMNMQ6Q6y/O8AEYNwG6dOEqx+p42iIOIQ6mCeTYjtghhEDKJKZlThO1tIWw12EBEIZxA3O5BpGyMg4hHuwN5pliy9AAgiCqEOpGqKOMmNlW2DiEK4Q1bnxQ4neIHYF6ESYSf4Lb+ZCiIS4QxpnAsQxD4ItZAauKiCCMReiJkXhV2EAwSRibjzAQECRDTiDRoWOfmqOrxAAAAAAElFTkSuQmCC" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
 </header>
 
+            
+    <!-- ## Post ## -->
+    
+    
 
-    <main class="container">
 
-      
+<div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">OpenGL实战(一) - 简单图形绘制</h1>
 
-  <article class="post-article post-type-normal post" itemscope>
 
-  <div class="post-body">
 
-    <div class="content markdown-body"><p>&#x5728;<a href="http://parisdog.club/OpenGLES-1.html">&#x4E0A;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x4E2D;</a>&#x6211;&#x4EEC;&#x5B66;&#x4E60;&#x4E86;OpenGL ES&#x7684;&#x4E00;&#x4E9B;&#x57FA;&#x672C;&#x6982;&#x5FF5;&#xFF0C;&#x5269;&#x4E0B;&#x7684;&#x77E5;&#x8BC6;&#x6211;&#x4EEC;&#x5728;&#x5B9E;&#x6218;&#x4E2D;&#x4E0D;&#x65AD;&#x7684;&#x8865;&#x5145;&#xFF0C;&#x540E;&#x7EED;&#x7684;&#x6587;&#x7AE0;&#x4F1A;&#x4EE5;&#x4EE3;&#x7801;+&#x77E5;&#x8BC6;&#x70B9;+API&#x89E3;&#x91CA;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x5199;&#xFF0C;&#x540C;&#x6837;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5199;&#x7684;&#x4E0D;&#x597D;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x8BC4;&#x8BBA;&#x4E2D;&#x6307;&#x51FA;&#x6216;&#x8005;&#x76F4;&#x63A5;&#x8054;&#x7CFB;&#x6211;&#xFF08;&#x8BC4;&#x8BBA;&#x91C7;&#x7528;disqus&#xFF0C;&#x5982;&#x679C;&#x52A0;&#x8F7D;&#x4E0D;&#x51FA;&#x6765;&#xFF0C;&#x7FFB;&#x4E2A;&#x5899;&#x8BD5;&#x4E00;&#x4E0B;&#xFF0C;&#x8054;&#x7CFB;&#x65B9;&#x5F0F;&#x89C1;&#x5173;&#x4E8E;&#x6211;&#xFF09;&#x3002;</p>
-<h1 id="&#x6E32;&#x67D3;&#x5C4F;&#x5E55;"><a href="#&#x6E32;&#x67D3;&#x5C4F;&#x5E55;" class="headerlink" title="&#x6E32;&#x67D3;&#x5C4F;&#x5E55;===="></a>&#x6E32;&#x67D3;&#x5C4F;&#x5E55;====</h1><p>&#x9996;&#x5148;&#xFF0C;&#x5C06;&#x63A7;&#x5236;&#x5668;&#x7EE7;&#x627F;&#x81EA;GLKViewController&#xFF0C;&#x5E76;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A;GLKView&#xFF0C;&#x8BBE;&#x7F6E;&#x4E3A;&#x5B83;&#x7684;View&#xFF1A;</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// &#x76F4;&#x63A5;&#x628A;&#x4E0A;&#x7BC7;&#x6587;&#x7AE0;&#x7684;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;copy&#x8FC7;&#x6765;</span></div><div class="line"></div><div class="line"><span class="comment">// &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x4E3A;&#x5F53;&#x524D;&#x4E0A;&#x4E0B;&#x6587;</span></div><div class="line">EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];</div><div class="line">[EAGLContext setCurrentContext:context];</div><div class="line">    </div><div class="line"><span class="comment">//    &#x4F7F;&#x7528;&#x4EE3;&#x7801;&#x521D;&#x59CB;&#x5316;</span></div><div class="line"><span class="comment">//    GLKView *view = [GLKView alloc] initWithFrame:self.view.bounds context:context</span></div><div class="line">    </div><div class="line"><span class="comment">//    &#x4F7F;&#x7528;Storyboard&#x521D;&#x59CB;&#x5316;</span></div><div class="line">GLKView *view = (GLKView *)<span class="keyword">self</span>.view;</div><div class="line">view.context = context; <span class="comment">// &#x5173;&#x8054;&#x4E0A;&#x4E0B;&#x6587;</span></div></pre></td></tr></table></figure>
-<p>&#x53EA;&#x9700;&#x5728;GLKView&#x7684;&#x4EE3;&#x7406;&#x65B9;&#x6CD5;<code>(void)glkView:(GLKView *)view drawInRect:(CGRect)rect</code>&#x4E2D;&#xFF0C;&#x8C03;&#x7528;<code>glClear</code>&#x7684;&#x7CFB;&#x5217;&#x51FD;&#x6570;&#x5C31;&#x53EF;&#x4EE5;&#x7528;OpenGL ES&#x5BF9;&#x5C4F;&#x5E55;&#x8FDB;&#x884C;&#x6E32;&#x67D3;&#x4E86;&#xFF1A;</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)glkView:(GLKView *)view drawInRect:(<span class="built_in">CGRect</span>)rect {</div><div class="line"></div><div class="line">    glClearColor(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>); <span class="comment">// &#x6E05;&#x7406;&#x5C4F;&#x5E55;&#x7684;RGB&#x989C;&#x8272;&#x548C;alpha&#x503C;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x8BBE;&#x7F6E;&#x6210;&#x4E86;&#x7EA2;&#x8272;</span></div><div class="line">    glClear(GL_COLOR_BUFFER_BIT); <span class="comment">// &#x8C03;&#x7528;glClear&#x6765;&#x5B9E;&#x9645;&#x6267;&#x884C;&#x6E05;&#x7406;&#x64CD;&#x4F5C;, &#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x7F13;&#x51B2;&#x533A;&#x6709;&#x591A;&#x79CD;&#x683C;&#x5F0F;&#xFF0C;&#x4E0A;&#x7BC7;&#x6587;&#x7AE0;&#x6709;&#x63D0;&#x53CA;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6267;&#x884C;&#x7684;&#x662F;&#x989C;&#x8272;&#x7F13;&#x51B2;&#x533A;</span></div><div class="line">}</div></pre></td></tr></table></figure>
-<p>&#x73B0;&#x5728;&#x6765;&#x505A;&#x4E00;&#x4E2A;&#x9177;&#x70AB;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x8BA9;&#x5C4F;&#x5E55;&#x663E;&#x793A;&#x95EA;&#x70C1;&#x3002;&#x5F53;&#x8BBE;&#x7F6E;GLKViewController&#x4EE3;&#x7406;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6BCF;&#x4E00;&#x5E27;&#x52A8;&#x753B;GLKViewController&#x90FD;&#x4F1A;&#x544A;&#x8BC9;&#x6211;&#x4EEC;&#xFF0C;&#x5B83;&#x4F1A;&#x5728;1&#x79D2;&#x5185;&#x591A;&#x6B21;&#x8C03;&#x7528;<code>draw</code>&#x65B9;&#x6CD5;&#xFF0C;GLKViewController&#x7684;&#x4EE3;&#x7406;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;GLKViewController&#x7684;&#x4EE3;&#x7406;&#x65B9;&#x6CD5;<code>(void)glkViewControllerUpdate:(GLKViewController *)controller</code>&#x65B9;&#x6CD5;&#x6765;&#x66F4;&#x65B0;&#x5C4F;&#x5E55;&#x7684;&#x989C;&#x8272;&#x3002;</p>
-<p>&#x9996;&#x5148;&#x5B9A;&#x4E49;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x5E76;&#x521D;&#x59CB;&#x5316;:</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">CGFloat</span> redColorFloat; <span class="comment">// RGB&#x4E2D;&#x7EA2;&#x8272;&#x7684;&#x8272;&#x503C;</span></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>, <span class="keyword">getter</span>=isIncreasing) <span class="built_in">BOOL</span> increasing; <span class="comment">// &#x5224;&#x65AD;&#x662F;&#x5426;&#x589E;&#x52A0;</span></div><div class="line"></div><div class="line"><span class="keyword">self</span>.increasing = <span class="literal">YES</span>;</div><div class="line"><span class="keyword">self</span>.redColorFloat = <span class="number">0.0</span>;</div></pre></td></tr></table></figure>
-<p>&#x8BBE;&#x5B9A;GLKViewController&#x7684;&#x5237;&#x65B0;&#x9891;&#x7387;:</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">self</span>.preferredFramesPerSecond = <span class="number">60</span>;</div></pre></td></tr></table></figure>
-<p>&#x66F4;&#x65B0;<code>(void)glkView:(GLKView *)view drawInRect:(CGRect)rect</code>&#x4E2D;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5728;GLKViewController&#x7684;&#x4EE3;&#x7406;&#x65B9;&#x6CD5;&#x4E2D;&#x66F4;&#x65B0;&#x5C4F;&#x5E55;&#x989C;&#x8272;:</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)glkView:(GLKView *)view drawInRect:(<span class="built_in">CGRect</span>)rect {</div><div class="line"></div><div class="line">    glClearColor(<span class="keyword">self</span>.redColorFloat, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>); <span class="comment">// &#x6E05;&#x7406;&#x5C4F;&#x5E55;&#x7684;RGB&#x989C;&#x8272;&#x548C;alpha&#x503C;</span></div><div class="line">    glClear(GL_COLOR_BUFFER_BIT); <span class="comment">// &#x8C03;&#x7528;glClear&#x6765;&#x5B9E;&#x9645;&#x6267;&#x884C;&#x6E05;&#x7406;&#x64CD;&#x4F5C;, &#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x7F13;&#x51B2;&#x533A;&#x6709;&#x591A;&#x79CD;&#x683C;&#x5F0F;&#xFF0C;&#x4E0A;&#x7BC7;&#x6587;&#x7AE0;&#x6709;&#x63D0;&#x53CA;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6267;&#x884C;&#x7684;&#x662F;&#x989C;&#x8272;&#x7F13;&#x51B2;&#x533A;</span></div><div class="line">}</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)glkViewControllerUpdate:(GLKViewController *)controller {</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.isIncreasing) {</div><div class="line">        <span class="keyword">self</span>.redColorFloat += <span class="number">1.0</span> * <span class="keyword">self</span>.timeSinceLastUpdate;</div><div class="line">    }<span class="keyword">else</span> {</div><div class="line">        <span class="keyword">self</span>.redColorFloat -= <span class="number">1.0</span> * <span class="keyword">self</span>.timeSinceLastUpdate;</div><div class="line">    }</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.redColorFloat &gt;= <span class="number">1.0</span>) {</div><div class="line">        <span class="keyword">self</span>.redColorFloat = <span class="number">1.0</span>;</div><div class="line">        <span class="keyword">self</span>.increasing = <span class="literal">NO</span>;</div><div class="line">    }</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.redColorFloat &lt;= <span class="number">0</span>) {</div><div class="line">        <span class="keyword">self</span>.redColorFloat = <span class="number">0</span>;</div><div class="line">        <span class="keyword">self</span>.increasing = <span class="literal">YES</span>;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
-<p>&#x8FD9;&#x6837;&#x5C31;&#x5B9E;&#x73B0;&#x4E86;&#x5C4F;&#x5E55;&#x9ED1;&#x7EA2;&#x95EA;&#x70C1;&#x6548;&#x679C;&#xFF0C;Demo&#x53EF;&#x4EE5;&#x5728;<a href="https://github.com/cconecode/OpenGLESTutorials/tree/master/Tutorial1-ScreenRendering" target="_blank" rel="external">&#x8FD9;&#x91CC;</a>&#x627E;&#x5230;&#x3002;</p>
-<h1 id="&#x7ED8;&#x5236;&#x56FE;&#x5F62;"><a href="#&#x7ED8;&#x5236;&#x56FE;&#x5F62;" class="headerlink" title="&#x7ED8;&#x5236;&#x56FE;&#x5F62;"></a>&#x7ED8;&#x5236;&#x56FE;&#x5F62;</h1><p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6765;&#x5229;&#x7528;OpenGL ES&#x7ED8;&#x5236;&#x4E00;&#x4E2A;&#x6B63;&#x65B9;&#x5F62;&#x3002;&#x56E0;&#x4E3A;OpenGL ES&#x53EA;&#x80FD;&#x6E32;&#x67D3;&#x4E09;&#x89D2;&#x5F62;&#xFF0C;&#x6240;&#x4EE5;&#x8981;&#x7528;&#x4E24;&#x4E2A;&#x4E09;&#x89D2;&#x5F62;&#x6765;&#x7EC4;&#x6210;&#x4E00;&#x4E2A;&#x6B63;&#x65B9;&#x5F62;&#x3002;&#x9996;&#x5148;&#x521B;&#x5EFA;&#x4E00;&#x7EC4;&#x9876;&#x70B9;&#x6570;&#x636E;&#x548C;&#x7D22;&#x5F15;&#x6570;&#x636E;&#xFF1A;</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// &#x9876;&#x70B9;&#x6570;&#x636E;</span></div><div class="line">    GLfloat verties[] = {</div><div class="line">        <span class="number">0.5</span>, <span class="number">-0.5</span>, <span class="number">0.0</span>,  <span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>,   <span class="comment">// &#x524D;&#x9762;&#x4E3A;x, y, z, &#x540E;&#x9762;&#x4E3A;&#x989C;&#x8272;</span></div><div class="line">        <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0</span>,     <span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>,</div><div class="line">        <span class="number">-0.5</span>, <span class="number">-0.5</span>, <span class="number">0</span>,   <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>,</div><div class="line">        <span class="number">-0.5</span>, <span class="number">0.5</span>, <span class="number">0</span>,    <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span></div><div class="line">    };</div><div class="line">    </div><div class="line">    <span class="comment">// &#x7D22;&#x5F15;&#x6570;&#x636E;</span></div><div class="line">    GLuint indecs[] = {</div><div class="line">        <span class="number">0</span>, <span class="number">3</span>, <span class="number">2</span>,</div><div class="line">        <span class="number">1</span>, <span class="number">3</span>, <span class="number">0</span></div><div class="line">    };</div></pre></td></tr></table></figure>
-<p>&#x9876;&#x70B9;&#x6570;&#x636E;&#x4E2D;&#x5305;&#x62EC;&#x4E86;&#x9876;&#x70B9;&#x4F4D;&#x7F6E;&#x548C;&#x5BF9;&#x5E94;&#x7684;&#x989C;&#x8272;&#xFF0C;&#x7D22;&#x5F15;&#x6570;&#x636E;&#x5219;&#x662F;&#x9876;&#x70B9;&#x6570;&#x7EC4;&#x7684;&#x7D22;&#x5F15;&#x3002;&#x7136;&#x540E;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5411;OpenGL ES&#x53D1;&#x9001;&#x6570;&#x636E;&#x548C;&#x7F13;&#x5B58;&#x6570;&#x636E;&#xFF1A;</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">glGenBuffers(<span class="number">1</span>, &amp;vertBuffer); <span class="comment">// &#x521B;&#x5EFA;&#x7F13;&#x51B2;&#x533A;&#x5BF9;&#x8C61;</span></div><div class="line">glBindBuffer(GL_ARRAY_BUFFER, vertBuffer); <span class="comment">// &#x6307;&#x5B9A;&#x5F53;&#x524D;&#x6D3B;&#x52A8;&#x7F13;&#x51B2;&#x533A;&#x5BF9;&#x8C61;</span></div><div class="line">                                           <span class="comment">// GL_ARRAY_BUFFER &#x5750;&#x6807;&#xFF0C;&#x989C;&#x8272;&#x7B49;</span></div><div class="line">                                           <span class="comment">// GL_ELEMENT_ARRAY_BUFFER &#x7D22;&#x5F15;&#x5750;&#x6807;</span></div><div class="line"></div><div class="line"><span class="comment">// &#x628A;&#x9876;&#x70B9;&#x6570;&#x636E;&#x4ECE; CPU &#x590D;&#x5236;&#x5230; GPU</span></div><div class="line">glBufferData(GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(verties), verties, GL_STATIC_DRAW);</div><div class="line"><span class="comment">// glBufferData(&lt;#GLenum target#&gt;, &lt;#GLsizeiptr size#&gt;, &lt;#const GLvoid *data#&gt;, &lt;#GLenum usage#&gt;)</span></div><div class="line"><span class="comment">// target: &#x53EF;&#x4EE5;&#x662F;GL_ARRAY_BUFFER(&#x9876;&#x70B9;&#x6570;&#x636E;)&#xFF0C;&#x6216;&#x8005;GL_ELEMENT_ARRAY_BUFFER(&#x7D22;&#x5F15;&#x6570;&#x636E;)</span></div><div class="line"><span class="comment">// size: &#x5B58;&#x50A8;&#x76F8;&#x5173;&#x6570;&#x636E;&#x6240;&#x9700;&#x8981;&#x7684;&#x5185;&#x5B58;&#x5BB9;&#x91CF;</span></div><div class="line"><span class="comment">// data: &#x7528;&#x4E8E;&#x521D;&#x59CB;&#x5316;&#x7F13;&#x51B2;&#x533A;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x6307;&#x5411;&#x67D0;&#x4E00;&#x5757;&#x5185;&#x5B58;&#x5730;&#x5740;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;NULL</span></div><div class="line"><span class="comment">//usage: &#x6570;&#x636E;&#x5206;&#x914D;&#x540E;&#x5982;&#x4F55;&#x8BFB;&#x5199;&#xFF0C;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x89C1;&#xFF1A;http://parisdog.club/OpenGLES-2.html</span></div><div class="line"></div><div class="line">glGenBuffers(<span class="number">1</span>, &amp;indeBuffer); <span class="comment">// &#x7D22;&#x5F15;&#x6570;&#x636E;</span></div><div class="line">glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indeBuffer);</div><div class="line">glBufferData(GL_ELEMENT_ARRAY_BUFFER, <span class="keyword">sizeof</span>(indecs), indecs, GL_STATIC_DRAW);</div></pre></td></tr></table></figure>
-<p>&#x5173;&#x4E8E; usage &#x7684;&#x4E00;&#x4E9B;&#x8BF4;&#x660E;&#xFF1A;</p>
-<ul>
-<li>GL_STREAM_DRAW: &#x6570;&#x636E;&#x53EA;&#x6307;&#x5B9A;&#x4E00;&#x6B21;&#xFF0C;&#x5E76;&#x4E14;&#x6700;&#x591A;&#x53EA;&#x6709;&#x51E0;&#x6B21;&#x4F5C;&#x4E3A;&#x7ED8;&#x56FE;&#x548C;&#x6307;&#x5B9A;&#x56FE;&#x50CF;&#x51FD;&#x6570;&#x7684;&#x6E90;&#x6570;&#x636E;</li>
-<li>GL_STREAM_READ: &#x6570;&#x636E;&#x4ECE; OpenGL &#x7F13;&#x51B2;&#x533A;&#x590D;&#x5236;&#x8FC7;&#x6765;&#xFF0C;&#x5E76;&#x4E14;&#x6700;&#x591A;&#x53EA;&#x6709;&#x51E0;&#x6B21;&#x7531;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4F5C;&#x4E3A;&#x6570;&#x636E;&#x503C;&#x4F7F;&#x7528;</li>
-<li>GL_STREAM_COPY: &#x6570;&#x636E;&#x4ECE; OpenGL &#x7F13;&#x51B2;&#x533A;&#x590D;&#x5236;&#x8FC7;&#x6765;&#xFF0C;&#x5E76;&#x4E14;&#x6700;&#x591A;&#x53EA;&#x6709;&#x51E0;&#x6B21;&#x4F5C;&#x4E3A;&#x7ED8;&#x56FE;&#x548C;&#x6307;&#x5B9A;&#x56FE;&#x50CF;&#x51FD;&#x6570;&#x7684;&#x6E90;&#x6570;&#x636E;</li>
-<li>GL_STATIC_DRAW: &#x6570;&#x636E;&#x53EA;&#x6307;&#x5B9A;&#x4E00;&#x6B21;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x591A;&#x6B21;&#x51E0;&#x6B21;&#x4F5C;&#x4E3A;&#x7ED8;&#x56FE;&#x548C;&#x6307;&#x5B9A;&#x56FE;&#x50CF;&#x51FD;&#x6570;&#x7684;&#x6E90;&#x6570;&#x636E;</li>
-<li>GL_STATIC_READ:  &#x6570;&#x636E;&#x4ECE; OpenGL &#x7F13;&#x51B2;&#x533A;&#x590D;&#x5236;&#x8FC7;&#x6765;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x591A;&#x6B21;&#x7531;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4F5C;&#x4E3A;&#x6570;&#x636E;&#x503C;&#x4F7F;&#x7528;</li>
-<li>GL_STATIC_COPY: &#x6570;&#x636E;&#x4ECE; OpenGL &#x7F13;&#x51B2;&#x533A;&#x590D;&#x5236;&#x8FC7;&#x6765;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x591A;&#x6B21;&#x51E0;&#x6B21;&#x4F5C;&#x4E3A;&#x7ED8;&#x56FE;&#x548C;&#x6307;&#x5B9A;&#x56FE;&#x50CF;&#x51FD;&#x6570;&#x7684;&#x6E90;&#x6570;&#x636E;</li>
-<li>GL_DYNAMIC_DRAW: &#x6570;&#x636E;&#x53EF;&#x4EE5;&#x591A;&#x6B21;&#x6307;&#x5B9A;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x591A;&#x6B21;&#x51E0;&#x6B21;&#x4F5C;&#x4E3A;&#x7ED8;&#x56FE;&#x548C;&#x6307;&#x5B9A;&#x56FE;&#x50CF;&#x51FD;&#x6570;&#x7684;&#x6E90;&#x6570;&#x636E;</li>
-<li>GL_DYNAMIC_READ: &#x6570;&#x636E;&#x53EF;&#x4EE5;&#x591A;&#x6B21;&#x4ECE; OpenGL &#x7F13;&#x51B2;&#x533A;&#x590D;&#x5236;&#x8FC7;&#x6765;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x591A;&#x6B21;&#x7531;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4F5C;&#x4E3A;&#x6570;&#x636E;&#x503C;&#x4F7F;&#x7528; </li>
-<li>GL_DYNAMIC_COPY: &#x6570;&#x636E;&#x53EF;&#x4EE5;&#x591A;&#x6B21;&#x4ECE; OpenGL &#x7F13;&#x51B2;&#x533A;&#x590D;&#x5236;&#x8FC7;&#x6765;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x591A;&#x6B21;&#x51E0;&#x6B21;&#x4F5C;&#x4E3A;&#x7ED8;&#x56FE;&#x548C;&#x6307;&#x5B9A;&#x56FE;&#x50CF;&#x51FD;&#x6570;&#x7684;&#x6E90;&#x6570;&#x636E;</li>
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="巴黎有条狗's Avatar">
+        <span>2016-08-31</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/OpenGL-ES/">OpenGL ES</a>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=OpenGL实战(一) - 简单图形绘制&url=http://parisdog.club/OpenGLES-2.html&pic=http://parisdog.club/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=OpenGL实战(一) - 简单图形绘制&url=http://parisdog.club/OpenGLES-2.html&via=巴黎有条狗" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://parisdog.club/OpenGLES-2.html" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=http://parisdog.club/OpenGLES-2.html" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://parisdog.club/OpenGLES-2.html&title=琥珀川的异次元空间" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=琥珀川的异次元空间&title=琥珀川的异次元空间&summary=我们的征途是星辰大海 🍃&pics=http://parisdog.club/img/suka-favicon.ico&url=http://parisdog.club/OpenGLES-2.html" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=http://parisdog.club/OpenGLES-2.html&text=琥珀川的异次元空间" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAAAAAB0L9x7AAABg0lEQVR42u3au27DMBBEUf3/T9uVG4O7MxRtaShcNQbihDwFw33peAU8BwgQILZAHM3z+b77LDcQ64LIRlSLVAt2m06tCyIaUR3IboPRZ/Wz4bogtkSMNpj9HsTzEOoB8UxEFWiqzapL7S9RFMTliJVEV11ul2TbIH6KkEWrkeg4ifBSVQ7iUsT3H1WXUnXYVKHUFUUgchFng5K63E7fmCBuRzgByN28WtdukoC4HaECkxPQVGOkbLaA2ALhJMDdZeYcVhD5iNGhUYHM2VA2UkDEIlRCqxJfZ0DXNs5ARCHcYrZDzQxrQOQj3IGam7RMJb0gIhEKMNMQ6Q6y/O8AEYNwG6dOEqx+p42iIOIQ6mCeTYjtghhEDKJKZlThO1tIWw12EBEIZxA3O5BpGyMg4hHuwN5pliy9AAgiCqEOpGqKOMmNlW2DiEK4Q1bnxQ4neIHYF6ESYSf4Lb+ZCiIS4QxpnAsQxD4ItZAauKiCCMReiJkXhV2EAwSRibjzAQECRDTiDRoWOfmqOrxAAAAAAElFTkSuQmCC" alt="QRCode">
+    </li>
+    
+
 </ul>
-<p>&#x5728;OpenGL ES2.0&#x5F53;&#x4E2D;&#xFF0C;&#x65E0;&#x8BBA;&#x6E32;&#x67D3;&#x4EC0;&#x4E48;&#x56FE;&#x5F62;&#xFF0C;&#x90FD;&#x5FC5;&#x987B;&#x7528;&#x5230;&#x7740;&#x8272;&#x5668;&#x3002;&#x7740;&#x8272;&#x5668;&#x662F;&#x7528;&#x7C7B;C&#x8BED;&#x8A00;-GLSL&#x8BED;&#x8A00;&#x5199;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x8981;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x7740;&#x8272;&#x5668;&#xFF0C;&#x90A3;&#x4E48;&#x5B66;&#x4E60;&#x8FD9;&#x95E8;&#x8BED;&#x8A00;&#x5341;&#x5206;&#x6709;&#x5FC5;&#x8981;&#x3002;&#x73B0;&#x5728;<code>GLKBaseEffect</code>&#x8FD9;&#x4E2A;&#x7C7B;&#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;&#x901A;&#x7528;&#x7684;&#x7740;&#x8272;&#x5668;&#xFF0C;&#x5728;&#x8FD8;&#x6CA1;&#x6709;&#x638C;&#x63E1;GLSL&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x76EE;&#x524D;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5B83;&#x6765;&#x5E2E;&#x6211;&#x4EEC;&#x5B9E;&#x73B0;&#x6548;&#x679C;&#xFF1A;</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// &#x5B9A;&#x4E49;&#x548C;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A;GLKBaseEffect&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;</span></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) GLKBaseEffect *effect;</div><div class="line"></div><div class="line"><span class="keyword">self</span>.effect = [[GLKBaseEffect alloc] init];</div><div class="line"><span class="comment">// &#x53EF;&#x4EE5;&#x8BBE;&#x7F6E; effect &#x7684;&#x4E00;&#x4E9B;&#x5C5E;&#x6027;&#xFF0C;&#x914D;&#x7F6E;&#x5149;&#xFF0C;&#x8F6C;&#x5316;&#x7B49;</span></div></pre></td></tr></table></figure>
-<p>&#x6700;&#x540E;&#x5728;&#x4EE3;&#x7406;&#x65B9;&#x6CD5;&#x4E2D;&#x542F;&#x52A8;&#x7740;&#x8272;&#x5668;:</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)glkView:(GLKView *)view drawInRect:(<span class="built_in">CGRect</span>)rect {</div><div class="line"></div><div class="line">    glClearColor(<span class="number">0.3</span>, <span class="number">0.6</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</div><div class="line">    glClear(GL_COLOR_BUFFER_BIT);</div><div class="line">    </div><div class="line">    <span class="comment">// &#x542F;&#x52A8;&#x7740;&#x8272;&#x5668;</span></div><div class="line">    [<span class="keyword">self</span>.effect prepareToDraw];</div><div class="line">    glDrawElements(GL_TRIANGLES, <span class="keyword">self</span>.count, GL_UNSIGNED_INT, <span class="number">0</span>);</div><div class="line">}</div></pre></td></tr></table></figure>
-<p>&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6700;&#x7EC8;&#x7684;&#x6548;&#x679C;&#x4E86;&#xFF1A;</p>
-<div align="center"><br><img src="http://ooo.0o0.ooo/2016/09/01/57c7eec495cab.jpg" width="200" alt="&#x6700;&#x7EC8;&#x6548;&#x679C;"><br></div>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                            <div id="post-toc">
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#null"><span class="post-toc-number">1.</span> <span class="post-toc-text">渲染屏幕====</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#null"><span class="post-toc-number">2.</span> <span class="post-toc-text">绘制图形</span></a></li></ol>
+                            </div>
+                        
+                    
+                    <article id="post-content">
+                        <p>在<a href="http://parisdog.club/OpenGLES-1.html">上一篇文章中</a>我们学习了OpenGL ES的一些基本概念，剩下的知识我们在实战中不断的补充，后续的文章会以代码+知识点+API解释的方式来写，同样的，如果有写的不好的地方，可以在评论中指出或者直接联系我（评论采用disqus，如果加载不出来，翻个墙试一下，联系方式见关于我）。</p>
+<h1><span id="渲染屏幕">渲染屏幕====</span></h1><p>首先，将控制器继承自GLKViewController，并初始化一个GLKView，设置为它的View：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 直接把上篇文章的初始化方法copy过来</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个上下文，并设置为当前上下文</span></span><br><span class="line">EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];</span><br><span class="line">[EAGLContext setCurrentContext:context];</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    使用代码初始化</span></span><br><span class="line"><span class="comment">//    GLKView *view = [GLKView alloc] initWithFrame:self.view.bounds context:context</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//    使用Storyboard初始化</span></span><br><span class="line">GLKView *view = (GLKView *)<span class="keyword">self</span>.view;</span><br><span class="line">view.context = context; <span class="comment">// 关联上下文</span></span><br></pre></td></tr></table></figure>
+<p>只需在GLKView的代理方法<code>(void)glkView:(GLKView *)view drawInRect:(CGRect)rect</code>中，调用<code>glClear</code>的系列函数就可以用OpenGL ES对屏幕进行渲染了：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)glkView:(GLKView *)view drawInRect:(<span class="built_in">CGRect</span>)rect &#123;</span><br><span class="line"></span><br><span class="line">    glClearColor(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>); <span class="comment">// 清理屏幕的RGB颜色和alpha值，这里我们设置成了红色</span></span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT); <span class="comment">// 调用glClear来实际执行清理操作, 参数是一个缓冲区，缓冲区有多种格式，上篇文章有提及，现在我们执行的是颜色缓冲区</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在来做一个酷炫的效果，让屏幕显示闪烁。当设置GLKViewController代理的时候，每一帧动画GLKViewController都会告诉我们，它会在1秒内多次调用<code>draw</code>方法，GLKViewController的代理中，我们可以在GLKViewController的代理方法<code>(void)glkViewControllerUpdate:(GLKViewController *)controller</code>方法来更新屏幕的颜色。</p>
+<p>首先定义两个参数并初始化:</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">CGFloat</span> redColorFloat; <span class="comment">// RGB中红色的色值</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>, <span class="keyword">getter</span>=isIncreasing) <span class="built_in">BOOL</span> increasing; <span class="comment">// 判断是否增加</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">self</span>.increasing = <span class="literal">YES</span>;</span><br><span class="line"><span class="keyword">self</span>.redColorFloat = <span class="number">0.0</span>;</span><br></pre></td></tr></table></figure>
+<p>设定GLKViewController的刷新频率:</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.preferredFramesPerSecond = <span class="number">60</span>;</span><br></pre></td></tr></table></figure>
+<p>更新<code>(void)glkView:(GLKView *)view drawInRect:(CGRect)rect</code>中的代码，在GLKViewController的代理方法中更新屏幕颜色:</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)glkView:(GLKView *)view drawInRect:(<span class="built_in">CGRect</span>)rect &#123;</span><br><span class="line"></span><br><span class="line">    glClearColor(<span class="keyword">self</span>.redColorFloat, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>); <span class="comment">// 清理屏幕的RGB颜色和alpha值</span></span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT); <span class="comment">// 调用glClear来实际执行清理操作, 参数是一个缓冲区，缓冲区有多种格式，上篇文章有提及，现在我们执行的是颜色缓冲区</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)glkViewControllerUpdate:(GLKViewController *)controller &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.isIncreasing) &#123;</span><br><span class="line">        <span class="keyword">self</span>.redColorFloat += <span class="number">1.0</span> * <span class="keyword">self</span>.timeSinceLastUpdate;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.redColorFloat -= <span class="number">1.0</span> * <span class="keyword">self</span>.timeSinceLastUpdate;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.redColorFloat &gt;= <span class="number">1.0</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.redColorFloat = <span class="number">1.0</span>;</span><br><span class="line">        <span class="keyword">self</span>.increasing = <span class="literal">NO</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.redColorFloat &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.redColorFloat = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">self</span>.increasing = <span class="literal">YES</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就实现了屏幕黑红闪烁效果，Demo可以在<a href="https://github.com/cconecode/OpenGLESTutorials/tree/master/Tutorial1-ScreenRendering" target="_blank" rel="noopener">这里</a>找到。</p>
+<h1><span id="绘制图形">绘制图形</span></h1><p>现在我们来利用OpenGL ES绘制一个正方形。因为OpenGL ES只能渲染三角形，所以要用两个三角形来组成一个正方形。首先创建一组顶点数据和索引数据：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 顶点数据</span></span><br><span class="line">    GLfloat verties[] = &#123;</span><br><span class="line">        <span class="number">0.5</span>, <span class="number">-0.5</span>, <span class="number">0.0</span>,  <span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>,   <span class="comment">// 前面为x, y, z, 后面为颜色</span></span><br><span class="line">        <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0</span>,     <span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>,</span><br><span class="line">        <span class="number">-0.5</span>, <span class="number">-0.5</span>, <span class="number">0</span>,   <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>,</span><br><span class="line">        <span class="number">-0.5</span>, <span class="number">0.5</span>, <span class="number">0</span>,    <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span></span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 索引数据</span></span><br><span class="line">    GLuint indecs[] = &#123;</span><br><span class="line">        <span class="number">0</span>, <span class="number">3</span>, <span class="number">2</span>,</span><br><span class="line">        <span class="number">1</span>, <span class="number">3</span>, <span class="number">0</span></span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p>顶点数据中包括了顶点位置和对应的颜色，索引数据则是顶点数组的索引。然后我们需要向OpenGL ES发送数据和缓存数据：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">glGenBuffers(<span class="number">1</span>, &amp;vertBuffer); <span class="comment">// 创建缓冲区对象</span></span><br><span class="line">glBindBuffer(GL_ARRAY_BUFFER, vertBuffer); <span class="comment">// 指定当前活动缓冲区对象</span></span><br><span class="line">                                           <span class="comment">// GL_ARRAY_BUFFER 坐标，颜色等</span></span><br><span class="line">                                           <span class="comment">// GL_ELEMENT_ARRAY_BUFFER 索引坐标</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 把顶点数据从 CPU 复制到 GPU</span></span><br><span class="line">glBufferData(GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(verties), verties, GL_STATIC_DRAW);</span><br><span class="line"><span class="comment">// glBufferData(&lt;#GLenum target#&gt;, &lt;#GLsizeiptr size#&gt;, &lt;#const GLvoid *data#&gt;, &lt;#GLenum usage#&gt;)</span></span><br><span class="line"><span class="comment">// target: 可以是GL_ARRAY_BUFFER(顶点数据)，或者GL_ELEMENT_ARRAY_BUFFER(索引数据)</span></span><br><span class="line"><span class="comment">// size: 存储相关数据所需要的内存容量</span></span><br><span class="line"><span class="comment">// data: 用于初始化缓冲区对象，可以是指向某一块内存地址，也可以是NULL</span></span><br><span class="line"><span class="comment">//usage: 数据分配后如何读写，详细介绍见：http://parisdog.club/OpenGLES-2.html</span></span><br><span class="line"></span><br><span class="line">glGenBuffers(<span class="number">1</span>, &amp;indeBuffer); <span class="comment">// 索引数据</span></span><br><span class="line">glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indeBuffer);</span><br><span class="line">glBufferData(GL_ELEMENT_ARRAY_BUFFER, <span class="keyword">sizeof</span>(indecs), indecs, GL_STATIC_DRAW);</span><br></pre></td></tr></table></figure>
+<p>关于 usage 的一些说明：</p>
+<ul>
+<li>GL_STREAM_DRAW: 数据只指定一次，并且最多只有几次作为绘图和指定图像函数的源数据</li>
+<li>GL_STREAM_READ: 数据从 OpenGL 缓冲区复制过来，并且最多只有几次由应用程序作为数据值使用</li>
+<li>GL_STREAM_COPY: 数据从 OpenGL 缓冲区复制过来，并且最多只有几次作为绘图和指定图像函数的源数据</li>
+<li>GL_STATIC_DRAW: 数据只指定一次，但是可以多次几次作为绘图和指定图像函数的源数据</li>
+<li>GL_STATIC_READ:  数据从 OpenGL 缓冲区复制过来，并且可以多次由应用程序作为数据值使用</li>
+<li>GL_STATIC_COPY: 数据从 OpenGL 缓冲区复制过来，并且可以多次几次作为绘图和指定图像函数的源数据</li>
+<li>GL_DYNAMIC_DRAW: 数据可以多次指定，并且可以多次几次作为绘图和指定图像函数的源数据</li>
+<li>GL_DYNAMIC_READ: 数据可以多次从 OpenGL 缓冲区复制过来，并且可以多次由应用程序作为数据值使用 </li>
+<li>GL_DYNAMIC_COPY: 数据可以多次从 OpenGL 缓冲区复制过来，并且可以多次几次作为绘图和指定图像函数的源数据</li>
+</ul>
+<p>在OpenGL ES2.0当中，无论渲染什么图形，都必须用到着色器。着色器是用类C语言-GLSL语言写的，如果想要自定义一个着色器，那么学习这门语言十分有必要。现在<code>GLKBaseEffect</code>这个类为我们提供了一些通用的着色器，在还没有掌握GLSL的情况下，我们目前可以使用它来帮我们实现效果：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义和初始化一个GLKBaseEffect实例对象</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) GLKBaseEffect *effect;</span><br><span class="line"></span><br><span class="line"><span class="keyword">self</span>.effect = [[GLKBaseEffect alloc] init];</span><br><span class="line"><span class="comment">// 可以设置 effect 的一些属性，配置光，转化等</span></span><br></pre></td></tr></table></figure>
+<p>最后在代理方法中启动着色器:</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)glkView:(GLKView *)view drawInRect:(<span class="built_in">CGRect</span>)rect &#123;</span><br><span class="line"></span><br><span class="line">    glClearColor(<span class="number">0.3</span>, <span class="number">0.6</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 启动着色器</span></span><br><span class="line">    [<span class="keyword">self</span>.effect prepareToDraw];</span><br><span class="line">    glDrawElements(GL_TRIANGLES, <span class="keyword">self</span>.count, GL_UNSIGNED_INT, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样我们就可以看到最终的效果了：</p>
+<div align="center"><br><img src="http://ooo.0o0.ooo/2016/09/01/57c7eec495cab.jpg" width="200" alt="最终效果"><br></div>
 
-<p>&#x7EC6;&#x5FC3;&#x89C2;&#x5BDF;&#x5C31;&#x4F1A;&#x53D1;&#x73B0;&#xFF0C;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x6B63;&#x65B9;&#x5F62;&#xFF0C;&#x73B0;&#x5728;&#x51FA;&#x6765;&#x7684;&#x6548;&#x679C;&#x5374;&#x662F;&#x4E00;&#x4E2A;&#x77E9;&#x5F62;&#xFF0C;&#x8FD9;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;&#x56E0;&#x4E3A;&#x9ED8;&#x8BA4;&#x7684;&#xFF0C;&#x201C;Effect&#x201D;&#x7684;&#x6295;&#x5F71;&#x77E9;&#x9635;&#x662F;&#x4E00;&#x4E2A;&#x5355;&#x4F4D;&#x77E9;&#x9635;&#xFF0C;&#x5B83;&#x4E0D;&#x505A;&#x4EFB;&#x4F55;&#x53D8;&#x6362;&#xFF0C;&#x5C06;&#x573A;&#x666F;&#xFF08;-1&#xFF0C;-1&#xFF0C;-1&#xFF09;&#x5230;&#xFF08;1&#xFF0C;1&#xFF0C;1&#xFF09;&#x7684;&#x7ACB;&#x6587;&#x4F53;&#x8303;&#x56F4;&#x7684;&#x7269;&#x4F53;&#xFF0C;&#x6295;&#x5C04;&#x5230;&#x5C4F;&#x5E55;&#x7684;X&#xFF1A;-1&#xFF0C;1&#xFF0C;Y&#xFF1A;-1&#xFF0C;1&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5F53;&#x5C4F;&#x5E55;&#x672C;&#x8EAB;&#x662F;&#x975E;&#x6B63;&#x65B9;&#x5F62;&#x65F6;&#xFF0C;&#x6B63;&#x65B9;&#x5F62;&#x7684;&#x7269;&#x4F53;&#x5C06;&#x88AB;&#x62C9;&#x4F38;&#xFF0C;&#x4ECE;&#x800C;&#x663E;&#x793A;&#x4E3A;&#x77E9;&#x5F62;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x8981;&#x5728;<code>update</code> &#x4E2D;&#x4FEE;&#x6539;&#x6295;&#x5F71;&#x77E9;&#x9635;&#xFF1A;</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)update {</div><div class="line"> </div><div class="line">    <span class="built_in">CGSize</span> size = <span class="keyword">self</span>.view.bounds.size;</div><div class="line">    <span class="keyword">float</span> aspect = fabs(size.width / size.height);</div><div class="line">    </div><div class="line">    GLKMatrix4 projectMartix =    GLKMatrix4MakePerspective(GLKMathDegreesToRadians(<span class="number">130.0</span>), aspect, <span class="number">0.1</span>, <span class="number">10.0</span>);</div><div class="line">    <span class="comment">// &#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4EE3;&#x8868;&#x89C6;&#x89D2;</span></div><div class="line">    <span class="comment">// &#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x4EE3;&#x8868;&#x6BD4;&#x4F8B;</span></div><div class="line">    <span class="comment">// &#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x4EE3;&#x8868;&#x8FD1;&#x5E73;&#x9762;&#x8DDD;&#x79BB;</span></div><div class="line">    <span class="comment">// &#x7B2C;&#x56DB;&#x4E2A;&#x53C2;&#x6570;&#x4EE3;&#x8868;&#x8FDC;&#x5E73;&#x9762;&#x8DDD;&#x79BB;</span></div><div class="line">    </div><div class="line">    <span class="keyword">self</span>.effect.transform.projectionMatrix = projectMartix;</div><div class="line">    </div><div class="line">    GLKMatrix4 modelMatrix =     GLKMatrix4Translate(GLKMatrix4Identity, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">-1.0</span>); <span class="comment">// &#x4FEE;&#x6539; Z &#x8F74;&#x7684;&#x8DDD;&#x79BB;</span></div><div class="line">    <span class="keyword">self</span>.effect.transform.modelviewMatrix = modelMatrix;</div><div class="line">}</div></pre></td></tr></table></figure>
-<p>&#x6700;&#x7EC8;&#x901A;&#x8FC7;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x5C31;&#x80FD;&#x5F97;&#x5230;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x7684;&#x7ED3;&#x679C;&#x4E86;&#xFF1A;&#x4E00;&#x4E2A;&#x6B63;&#x65B9;&#x5F62;&#xFF08;Demo &#x5728;<a href="https://github.com/cconecode/OpenGLESTutorials" target="_blank" rel="external">&#x8FD9;&#x91CC;</a>&#xFF09;&#x3002;&#x5728;&#x5B66;&#x4E60;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x8E29;&#x4E86;&#x5F88;&#x591A;&#x5751;&#xFF0C;&#x5305;&#x62EC;&#x4E00;&#x5F00;&#x59CB;&#x7684;&#x56FE;&#x50CF;&#x663E;&#x793A;&#x4E0D;&#x51FA;&#x6765;&#xFF0C;API &#x7684;&#x610F;&#x601D;&#x4E5F;&#x4E0D;&#x660E;&#x786E;&#x3002;&#x540E;&#x6765;&#x901A;&#x8FC7; Google &#x67E5;&#x9605;&#x76F8;&#x5173;&#x8D44;&#x6599;&#xFF0C;&#x628A;&#x4E00;&#x4E9B; bug &#x89E3;&#x51B3;&#x4E86;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x52A0;&#x6DF1;&#x4E86;&#x5BF9; OpenGL ES &#x7684;&#x7406;&#x89E3;&#xFF0C;&#x5B66;&#x4E60;&#x5230;&#x4E86;&#x5F88;&#x591A;&#x7684;&#x4E1C;&#x897F;&#x3002;&#x4E0A;&#x9762;&#x7684;&#x77E5;&#x8BC6;&#xFF0C;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x6211;&#x5DF2;&#x7ECF;&#x6CE8;&#x91CA;&#x7684;&#x5F88;&#x6E05;&#x695A;&#x4E86;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x4E0D;&#x61C2;&#x7684;&#x5730;&#x65B9;&#x6216;&#x8005;&#x4E0D;&#x6B63;&#x786E;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x6B22;&#x8FCE;&#x6307;&#x6B63;&#x4EA4;&#x6D41;~</p>
+<p>细心观察就会发现，我们想要的结果是一个正方形，现在出来的效果却是一个矩形，这是为什么呢？因为默认的，“Effect”的投影矩阵是一个单位矩阵，它不做任何变换，将场景（-1，-1，-1）到（1，1，1）的立文体范围的物体，投射到屏幕的X：-1，1，Y：-1，1。因此，当屏幕本身是非正方形时，正方形的物体将被拉伸，从而显示为矩形。所以我们要在<code>update</code> 中修改投影矩阵：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)update &#123;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">CGSize</span> size = <span class="keyword">self</span>.view.bounds.size;</span><br><span class="line">    <span class="keyword">float</span> aspect = fabs(size.width / size.height);</span><br><span class="line">    </span><br><span class="line">    GLKMatrix4 projectMartix =    GLKMatrix4MakePerspective(GLKMathDegreesToRadians(<span class="number">130.0</span>), aspect, <span class="number">0.1</span>, <span class="number">10.0</span>);</span><br><span class="line">    <span class="comment">// 第一个参数代表视角</span></span><br><span class="line">    <span class="comment">// 第二个参数代表比例</span></span><br><span class="line">    <span class="comment">// 第三个参数代表近平面距离</span></span><br><span class="line">    <span class="comment">// 第四个参数代表远平面距离</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">self</span>.effect.transform.projectionMatrix = projectMartix;</span><br><span class="line">    </span><br><span class="line">    GLKMatrix4 modelMatrix =     GLKMatrix4Translate(GLKMatrix4Identity, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">-1.0</span>); <span class="comment">// 修改 Z 轴的距离</span></span><br><span class="line">    <span class="keyword">self</span>.effect.transform.modelviewMatrix = modelMatrix;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最终通过这段代码就能得到我们想要的结果了：一个正方形（Demo 在<a href="https://github.com/cconecode/OpenGLESTutorials" target="_blank" rel="noopener">这里</a>）。在学习过程中，踩了很多坑，包括一开始的图像显示不出来，API 的意思也不明确。后来通过 Google 查阅相关资料，把一些 bug 解决了，同时也加深了对 OpenGL ES 的理解，学习到了很多的东西。上面的知识，在代码中我已经注释的很清楚了，如果有不懂的地方或者不正确的地方，欢迎指正交流~</p>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+        var dateUpdate = Date.parse("2016-12-17");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2016-08-30T16:00:00.000Z" itemprop="datePublished">2016-08-31</time>
+
+    , 最后修改于&nbsp;<time datetime="2016-12-17T12:48:20.000Z" itemprop="dateModified">2016-12-17</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+
+<a class="post-categories-list-item" href='/categories/OpenGL-ES/'>OpenGL ES</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+
+<a class="post-tags-list-item" href="/tags/OpenGL-ES/" rel="tag">#&nbsp;OpenGL ES</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                
+<div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/Cordova.html" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">Cordova in iOS</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/OpenGLES-1.html" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">初识 OpenGL ES</div>
+            </a>
+        </li>
+    
+</ul>
 </div>
 
-    <div class="post-sidebar">
-  <div class="toggle-btn" id="toggle-btn">
-    <i class="fa fa-reorder"></i>
-  </div>
-  <section class="post-toc-wrap" id="post-sidebar">
-    <h2 class="toc-title">内容目录</h2>
-    <div class="post-toc">
-      
-      
-        <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#渲染屏幕"><span class="nav-text">渲染屏幕====</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绘制图形"><span class="nav-text">绘制图形</span></a></li></ol></div>
-      
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
     </div>
-  </section>
 </div>
 
-
-  </div>
-
-  <footer class="post-footer">
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span data-year></span>
+        <a class="footer-copyright-a" href="http://parisdog.club">琥珀川的异次元空间</a>
+    </p>
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
     
-      <div class="post-tags">
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
         
-          <a href="/tags#OpenGL ES" rel="tag">#OpenGL ES</a>
+            
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
         
-      </div>
-    
-    
-  <style>
-    .donation {
-      width: 100%;
-      margin-top: 2rem;
-    }
-    .donation .text {
-      color: #333;
-      font-size: .8rem;
-      cursor: pointer;
-      text-decoration: underline;
-    }
-    .donation .text:hover {
-      color: rgb(63,134,181);
-    }
-    .donation .img-box {
-      transition: all .3s;
-      width: 0;
-      height: 0;
-      margin: 1rem auto;
-      overflow: hidden;
-    }
-    .donation .img-box img {
-      width: 100%;
-      height: 100%;
-    }
-    .donation #donation {
-      display: none;
-    }
-    .donation #donation:checked + .img-box {
-      width: 16rem;
-      height: 16rem;
-    }
-  </style>
-  <div class="donation">
-    <label class="text" for="donation">
-      如果你觉得文章对你有帮助，并且想为我买一杯咖啡，点这里～
-    </label>
-    <input type="checkbox" name="donation" id="donation">
-    <div class="img-box">
-      <img src="/img/donation.png" alt="donation" />
-    </div>
-    </style>
-  </div>
-
-
-  </footer>
-
-</article>
-
-
-
-
-      
-  <div class="comments" id="comments">
-    
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </div>
-    
-  </div>
-
-
-
-
-    </main>
-
-    <footer class="footer clearfix">
-  <div class="copyright" >
-    <span>Copyright</span>
-    
-    &copy;  2015-
-    <span itemprop="copyrightYear">2017</span>
-    <span class="author" itemprop="copyrightHolder">巴黎有条狗</span>
-  </div>
-
-  <div class="info">
-    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-      <span id="showDays" class="show-days"></span>
-      <script>
-      var birthDay = new Date('10/09/2015');
-      var now = new Date();
-      var duration = now.getTime() - birthDay.getTime();
-      var total= Math.floor(duration / (1000 * 60 * 60 * 24));
-      document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
-      </script>
-      ---
-    
-    <span id="busuanzi_container_site_pv">
-        总访问量<span id="busuanzi_value_site_pv"></span>次
+            <span>|</span>
+        
     </span>
-  </div>
 
-  <div class="my-theme">
-    Theme by <a href="//qiutc.me">qiutc</a> | <iframe style="margin-left: 5px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=TongchengQiu&amp;repo=hexo-theme-another&amp;type=star&amp;count=true"></iframe>
-  </div>
 
+
+        
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
 </footer>
 
+        
 
-  </div>
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
 
-  <div class="back-top-btn" id="back-top-btn"><i class="fa fa-chevron-up"></i></div>
-
-
-
-
-
-
-  
-
-    <script type="text/javascript">
-      var disqus_shortname = 'ccparisdog';
-      var disqus_identifier = 'OpenGLES-2.html';
-      var disqus_title = 'OpenGL实战(一) - 简单图形绘制';
-      var disqus_url = 'http://parisdog.club/OpenGLES-2.html';
-
-      function run_disqus_script(disqus_script){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      }
-
-      run_disqus_script('count.js');
-      
-        run_disqus_script('embed.js');
-      
-    </script>
-  
+<script>
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
 
 
 
+    /* Copyright */
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.querySelector('span[data-year]')
+    
+        copyrightContent.textContent = copyrightNow
+    
 
 
-<script type="text/javascript" src="/js/motto.min.js?v=0.0.1"></script>
-<script type="text/javascript" src="/js/main.js?v=0.0.1"></script>
+
+/* Cnosole Log */
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+</script>
+
+<!-- vanilla-lazyload -->
+
+    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
 
 
-</body>
+
+    <!-- Busuanzi -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+
+
+
+<!-- gallery.js -->
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+
+    </body>
+
 </html>
