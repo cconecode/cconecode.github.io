@@ -2,30 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://superchun.cn/test.html</loc>
+    
+    <lastmod>2019-11-05T12:08:44.428Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://superchun.cn/tags.html</loc>
     
-    <lastmod>2019-11-05T10:48:11.035Z</lastmod>
+    <lastmod>2019-11-05T10:48:11.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://superchun.cn/What-s-New-in-Xcode11.html</loc>
     
-    <lastmod>2019-11-05T10:32:29.834Z</lastmod>
+    <lastmod>2019-11-05T10:32:29.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://superchun.cn//search/index.html</loc>
     
-    <lastmod>2019-11-05T07:32:27.487Z</lastmod>
+    <lastmod>2019-11-05T07:32:27.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://superchun.cn//about/index.html</loc>
     
-    <lastmod>2019-11-05T06:26:11.791Z</lastmod>
+    <lastmod>2019-11-05T06:26:11.000Z</lastmod>
     
   </url>
   
