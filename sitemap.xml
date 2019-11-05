@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://superchun.cn/about.html</loc>
+    
+    <lastmod>2019-11-05T03:41:45.350Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://superchun.cn/OpenGLES-2.html</loc>
     
     <lastmod>2016-12-17T12:48:20.000Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://superchun.cn/tags/index.html</loc>
     
     <lastmod>2016-08-30T08:02:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://superchun.cn/about/index.html</loc>
-    
-    <lastmod>2016-08-30T08:01:36.000Z</lastmod>
     
   </url>
   
