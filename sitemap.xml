@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://superchun.cn/What-s-New-in-Xcode11.html</loc>
+    
+    <lastmod>2019-11-05T12:20:34.737Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://superchun.cn/test.html</loc>
     
     <lastmod>2019-11-05T12:08:44.428Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://superchun.cn/tags.html</loc>
     
     <lastmod>2019-11-05T10:48:11.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://superchun.cn/What-s-New-in-Xcode11.html</loc>
-    
-    <lastmod>2019-11-05T10:32:29.000Z</lastmod>
     
   </url>
   
