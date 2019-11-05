@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <!--
+        © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+        Version: 1.3.3
+    -->
+    <script>
+window.lsVersion = "1.3.3",
+window.oldVersion = [
+    
+        
+            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0"
+        
+    
+]
+</script>
+
+    <!-- ### DNS Prefetch ### -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+    <link rel="dns-prefetch" href="//api.github.com">
+    <link rel="dns-prefetch" href="//cors-anywhere.herokuapp.com">
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+
+    <!-- ### Preload ### -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+    <!-- Hanabi -->
+    <!-- Import Hanabi -->
+
+    <link rel="preload" href="/lib/hanabi/hanabi.min.js" as="script">
+
+
+<!-- Import Hanabi Broswser -->
+
+    <link rel="preload" href="/js/hanabi-browser.min.js" as="script">
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<!-- Title -->
+<title>iOS 事件拦截 | 悉达多｜Pain Maker</title>
+
+<!-- favicon -->
+<!-- Favicons -->
+
+    <link rel="icon" type="image/ico" href="/img/favicon.ico">
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+
+
+    <link rel="icon" type="image/png" sizes="192x192" href="/img/large.png">
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-medium.png">
+
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.png">
+
+
+    <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="null">
+
+<!-- Android Chrome Color -->
+
+
+
+<meta name="format-detection" content="telephone=no">
+
+<!-- Description -->
+<meta name="description" content="在项目中遇到一个需求，检测用户三分钟未点击屏幕，就出现广告轮播图。很自然的就联想到事件拦截了，然而之前对于 iOS 的事件机制并不是太过于了解，所以利用这次机会进行了深入学习。
+">
+
+<!-- Keywords -->
+<meta name="keywords" content=", 事件拦截">
+
+<!-- Disable Fucking Bloody Baidu Tranformation -->
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!-- ### Import File ### -->
+    
+        <!-- spectre.css -->
+
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css">
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style>
+
+<!-- style.css -->
+
+    <link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    
+        <link rel="stylesheet" href="/css/highlight/github.min.css">
+    
+
+
+
+    
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <!-- ### RSS ### -->
+    
+    
+        <link rel="alternate" type="application/atom+xml" href="/atom.xml">
+    
+
+
+    <!-- ### WebApp ### -->
+    <meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="悉达多｜Pain Maker">
+<meta name="msapplication-starturl" content="http://superchun.cn">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="悉达多｜Pain Maker">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Manifest Import -->
+
+<!-- Open Search -->
+
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="iOS 事件拦截 | 悉达多｜Pain Maker">
+<meta property="og:site_name" content="悉达多｜Pain Maker">
+
+<meta property="og:locale" content="zh-CN">
+
+<meta property="og:url" content="http://superchun.cn/iOSEvent.html">
+<meta property="og:image" content="http://superchun.cn/img/large.png">
+
+<meta property="og:description" content="在项目中遇到一个需求，检测用户三分钟未点击屏幕，就出现广告轮播图。很自然的就联想到事件拦截了，然而之前对于 iOS 的事件机制并不是太过于了解，所以利用这次机会进行了深入学习。
+">
+
+<meta name="twitter:card" content="summary">
+
+
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2016-07-19T16:00:00.000Z">
+    <meta property="article:modified_time" content="2016-07-19T16:00:00.000Z">
+    <meta property="article:author" content="悉达多">
+    <meta property="og:article:tag" content=", 事件拦截"> 
+
+
+
+
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="http://superchun.cn/iOSEvent.html">
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "http://superchun.cn/iOSEvent.html",
+    "@type": "BlogPosting",
+    "logo": "http://superchun.cn/img/large.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://superchun.cn/iOSEvent.html"
+    },
+    "headline": "iOS 事件拦截 | 悉达多｜Pain Maker",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://superchun.cn/img/large.png"
+    },
+    
+    "datePublished": "2016-07-19T16:00:00.000Z",
+    "dateModified": "2016-08-30T14:12:27.000Z",
+    "author": {
+        "@type": "Person",
+        "name": "悉达多",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://superchun.cn/img/avatar.png"
+        },
+        "description": "知也者，所以知也，而不必知"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "悉达多｜Pain Maker",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://superchun.cn/img/large.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "http://superchun.cn/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": ", 事件拦截",
+    "description": "在项目中遇到一个需求，检测用户三分钟未点击屏幕，就出现广告轮播图。很自然的就联想到事件拦截了，然而之前对于 iOS 的事件机制并不是太过于了解，所以利用这次机会进行了深入学习。
+"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+
+
+</head>
+
+    <body>
+        
+
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">悉达多｜Pain Maker</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                知也者，所以知也，而不必知
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a href="/tags/" class="navbar-link">标签</a>
+    
+        <a href="/about/" class="navbar-link">关于</a>
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=悉达多｜Pain Maker&url=http://superchun.cn&pic=http://superchun.cn/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=悉达多｜Pain Maker&url=http://superchun.cn&via=悉达多" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=http://superchun.cn" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://superchun.cn&title=iOS 事件拦截" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=悉达多｜Pain Maker&title=iOS 事件拦截&summary=知也者，所以知也，而不必知&pics=http://superchun.cn/img/large.png&url=http://superchun.cn" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=http://superchun.cn&text=iOS 事件拦截" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAAAAAB0L9x7AAABhUlEQVR42u3b0Y6DMAxEUf7/p9vXqoo9E0Bhgi4v1bYlnJUiO3bS4xNwHSBAgNgCcTTX6Du/77UPcMYFEYuoBqleu3v+v1+NCyIf8T9xqonZTc7RZ+24IF6BUJ+BeD9iFHSqCQjiXQj1oG6hMwpmt2ZREMsRzmBnXm9bbYNYirhU0BYBaWlVDuJ2hJpgswWPs/gFsQfCWciogOQ0VGQWBRGBqCZjO0CRlLpiWWZREBEI1SxTg1WT0CmkQGQiugddCVTdPSDyEaoB5ia0mX8CRC6iu9F9gGqulH+DiESookctfFRCsxMYiBhE10BTwUwlMDn5QWyBmGmYqs0W9T6ITIQThJzi2Gmm2QkMxKOImQM5zkaKczgIRDbiTGGjDvs4QBC5CGezzVkEzx7wAZGLcAOQtYkimmUg9kG4B3u6pOY0TaYiJojHEU4h7DZW1Y8TQOyNOBusnEMeIPZEuIdD7U16ENsgVAKbCWxdUXUpi4JYhnAPgTsHe5wGPIhsxJMXCBAgohFfZTeIuJcra5UAAAAASUVORK5CYII=" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    
+    
+
+
+<div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">iOS 事件拦截</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/avatar.png" src="/img/suka-lazyload.gif" alt="悉达多's Avatar">
+        <span>2016-07-20</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/事件机制/">事件机制</a>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=iOS 事件拦截&url=http://superchun.cn/iOSEvent.html&pic=http://superchun.cn/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=iOS 事件拦截&url=http://superchun.cn/iOSEvent.html&via=悉达多" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=http://superchun.cn/iOSEvent.html" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://superchun.cn/iOSEvent.html&title=悉达多｜Pain Maker" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=悉达多｜Pain Maker&title=悉达多｜Pain Maker&summary=知也者，所以知也，而不必知&pics=http://superchun.cn/img/large.png&url=http://superchun.cn/iOSEvent.html" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=http://superchun.cn/iOSEvent.html&text=悉达多｜Pain Maker" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAAAAAB0L9x7AAABhUlEQVR42u3b0Y6DMAxEUf7/p9vXqoo9E0Bhgi4v1bYlnJUiO3bS4xNwHSBAgNgCcTTX6Du/77UPcMYFEYuoBqleu3v+v1+NCyIf8T9xqonZTc7RZ+24IF6BUJ+BeD9iFHSqCQjiXQj1oG6hMwpmt2ZREMsRzmBnXm9bbYNYirhU0BYBaWlVDuJ2hJpgswWPs/gFsQfCWciogOQ0VGQWBRGBqCZjO0CRlLpiWWZREBEI1SxTg1WT0CmkQGQiugddCVTdPSDyEaoB5ia0mX8CRC6iu9F9gGqulH+DiESookctfFRCsxMYiBhE10BTwUwlMDn5QWyBmGmYqs0W9T6ITIQThJzi2Gmm2QkMxKOImQM5zkaKczgIRDbiTGGjDvs4QBC5CGezzVkEzx7wAZGLcAOQtYkimmUg9kG4B3u6pOY0TaYiJojHEU4h7DZW1Y8TQOyNOBusnEMeIPZEuIdD7U16ENsgVAKbCWxdUXUpi4JYhnAPgTsHe5wGPIhsxJMXCBAgohFfZTeIuJcra5UAAAAASUVORK5CYII=" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                            <div id="post-toc">
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#null"><span class="post-toc-text">iOS事件机制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">响应者链</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#null"><span class="post-toc-text">需求具体实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">OC 版</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">Swift版</span></a></li></ol></li></ol>
+                            </div>
+                        
+                    
+                    <article id="post-content">
+                        <p>在项目中遇到一个需求，检测用户三分钟未点击屏幕，就出现广告轮播图。很自然的就联想到事件拦截了，然而之前对于 iOS 的事件机制并不是太过于了解，所以利用这次机会进行了深入学习。</p>
+<h1><span id="ios事件机制">iOS事件机制</span></h1><p>iOS 中的事件分为三类：触摸事件（单点、多点、手势），传感器事件（加速传感器）和远程控制事件（<a href="https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/Introduction/Introduction.html" target="_blank" rel="noopener">官方文档</a>），我们遇到情况是第一种也就是触摸事件的机制。</p>
+<h2><span id="响应者链">响应者链</span></h2><p>当一个事件发生时，如果 first responder 不做处理，那么就会往下传递，如果下一个 responder 也不处理，那么就会继续传递到再下一个 responder 中，直到有一个 responder 处理或者没有 responder 了，如果没有 responder 处理这个事件，那么这个事件就被抛弃了。这些 responder 按照传递顺序连接起来就构成了响应者链。</p>
+<p>iOS 中的响应者链：<br><img src="https://lh3.googleusercontent.com/-6DVPdEbo12A/V48oTEjGXfI/AAAAAAAAAAk/Vn_s04cJOlk/I/14689996896970.jpg" alt="苹果官方关于响应者链的描述"></p>
+<p>从图中我们可以观察到，响应者链有以下几个特点：</p>
+<ul>
+<li><p>响应者链通常由 initial view 开始。</p>
+</li>
+<li><p>View 的 nextResponder 是它的 superView，如果 View 已经是它所在的 ViewController 中的 top view，那么 next responder 就是它所在的 ViewConTroller。</p>
+</li>
+<li><p>ViewController 如果有 superViewController，那么它的 nextResponder 就是它superViewController 最上面的 View。如果没有，那么它的 nextResponder 就是 Window。</p>
+</li>
+<li><p>Window 的 nextResponder 指向 Application，Application 是整个响应者链的顶层，它的 nextResponder 指向 nil。也就是说当事件传递到 Application 不被处理的话就会被抛弃了。</p>
+</li>
+</ul>
+<p>由于 UI 的复杂性，整个响应者链是需要通过计算的，而计算顺序基本是与响应者链分发相反的。<code>无论哪种事件，都是系统本身先获得，再交给 UIApplication，由 UIApplication 决定交给谁去处理。</code> 关于事件分发的计算网上有很多文章，我就不赘述了。通过上述了解，我们可以得出一个结论：<code>如果我们需要拦截一个事件，最好的机会是在 UIApplication 里面。</code></p>
+<h1><span id="需求具体实现">需求具体实现</span></h1><h2><span id="oc-版">OC 版</span></h2><p>根据上面的结论，我们目前的思路是继承 UIApplication，然后实现某一方法，进行事件拦截。根据查阅资料，重写 UIApplication 的 <code>sendEvent</code>方法可以达到目的，sendEvent介绍如下：</p>
+<blockquote>
+<p> <strong>sendEvent:</strong></p>
+<p>Dispatches an event to the appropriate responder objects in the application.</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-(<span class="keyword">void</span>)sendEvent:(<span class="built_in">UIEvent</span> *)event</span><br></pre></td></tr></table></figure>
+<p> <strong>Parameters</strong><br>event<br>A UIEvent object encapsulating the information about an event, including the touches involved.</p>
+<p><strong>Discussion</strong><br>Subclasses may override this method to intercept incoming events for inspection and special dispatching. iOS calls this method for public events only.</p>
+</blockquote>
+<p>具体代码实现：</p>
+<ol>
+<li>新建一个继承 UIApplication 的 CTApplication，重写 sendEvent 方法，并判断是否为触摸事件：</li>
+</ol>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"CTApplication.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">CTApplication</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)sendEvent:(<span class="built_in">UIEvent</span> *)event &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (event.type == <span class="built_in">UIEventTypeTouches</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> ([[event.allTouches anyObject] phase] == <span class="built_in">UITouchPhaseBegan</span>) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> [<span class="keyword">super</span> sendEvent:event];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>2.由于需要检测用户多长时间没有点击屏幕，需要加一个定时器来进行倒计时，设置定时器的方法写在 CTApplication 的 init 方法中：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"CTApplication.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** 不点击屏幕的时间 */</span></span><br><span class="line"><span class="keyword">static</span> <span class="built_in">NSTimeInterval</span> <span class="keyword">const</span> showTime = <span class="number">180</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">CTApplication</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">NSTimer</span> *timer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">CTApplication</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">instancetype</span>)init &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span> == [<span class="keyword">super</span> init]) &#123;</span><br><span class="line">        [<span class="keyword">self</span> setTimer];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line">- (<span class="keyword">void</span>)setTimer &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">self</span>.timer = [<span class="built_in">NSTimer</span> timerWithTimeInterval:showTime target:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(showPicture) userInfo:<span class="literal">nil</span> repeats:<span class="literal">NO</span>];</span><br><span class="line">    [[<span class="built_in">NSRunLoop</span> currentRunLoop] addTimer:<span class="keyword">self</span>.timer forMode:<span class="built_in">NSRunLoopCommonModes</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)showPicture &#123;</span><br><span class="line">	<span class="comment">/** 在这里对广告轮播图进行设置 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.再回到 sendEvent 方法中，如果该方法被触发了，那么让定时器失效，重新开始定时：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)sendEvent:(<span class="built_in">UIEvent</span> *)event &#123;</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">super</span> sendEvent:event];</span><br><span class="line">    <span class="keyword">if</span> (event.type == <span class="built_in">UIEventTypeTouches</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> ([[event.allTouches anyObject] phase] == <span class="built_in">UITouchPhaseBegan</span>) &#123;</span><br><span class="line"></span><br><span class="line">            [<span class="keyword">self</span>.timer invalidate];</span><br><span class="line">            [<span class="keyword">self</span> setTimer];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4.最后，在 main 函数中还要做对应的更改，替换 UIApplication 的调用：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;UIKit/UIKit.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"AppDelegate.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"CTApplication.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[]) &#123;</span><br><span class="line">    <span class="keyword">@autoreleasepool</span> &#123;</span><br><span class="line"><span class="comment">//        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">UIApplicationMain</span>(argc, argv, <span class="built_in">NSStringFromClass</span>([AppDelegate <span class="keyword">class</span>]), <span class="built_in">NSStringFromClass</span>([<span class="built_in">CTApplication</span> <span class="keyword">class</span>]));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2><span id="swift版">Swift版</span></h2><p>首先新建一个 UIApplication 的子类 CTApplication：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Foundation</span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CTApplication</span>: <span class="title">UIApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">sendEvent</span><span class="params">(event: UIEvent)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">super</span>.sendEvent(event)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于 Swift 中没有 main 函数，所以需要自己手动建一个 main 函数，并设置入口：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Foundation</span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="type">UIApplicationMain</span>(<span class="type">Process</span>.argc, <span class="type">Process</span>.unsafeArgv, <span class="type">NSStringFromClass</span>(<span class="type">CTApplication</span>), <span class="type">NSStringFromClass</span>(<span class="type">AppDelegate</span>))</span><br></pre></td></tr></table></figure>
+<p>这时，Appdelegate 中的<code>@UIApplicationMain</code>会报错。下面是苹果官方对于<code>@UIApplicationMain</code>关键字的描述：</p>
+<blockquote>
+<p>Apply this attribute to a class to indicate that it is the application delegate. Using this attribute is equivalent to calling the UIApplicationMain function and passing this class’s name as the name of the delegate class.</p>
+<p>If you do not use this attribute, supply a main.swift file with a main function that calls the UIApplicationMain(::<em>:) function. For example, if your app uses a custom subclass of UIApplication<br>as its principal class, call the UIApplicationMain(::</em>:) function instead of using this attribute.</p>
+</blockquote>
+<p>意思就是在类的最顶部声明 <code>@UIApplicationMain</code>，表示该类是Application 的 delegate，另外一种做法就是在 main.Swift 中调用 UIApplicationMain 函数，设置 delegate 和 application。而我们采取的是后面的办法，所以 delegate 冲突了，自然就会报错，只要把 Appdelegate 上的 <code>@UIApplicationMain</code> 关键字删除就可以了。剩下的操作与 OC 中的是一样的。</p>
+<p>具体的代码上传到 github 上了：</p>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;悉达多</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="http://superchun.cn/iOSEvent.html">http://superchun.cn/iOSEvent.html</a>
+        </p>
+    </blockquote>
+
+
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2016-07-19T16:00:00.000Z" itemprop="datePublished">2016-07-20</time>
+
+    , 最后修改于&nbsp;<time datetime="2016-08-30T14:12:27.000Z" itemprop="dateModified">2016-08-30</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+
+<a class="post-categories-list-item" href='/categories/事件机制/'>事件机制</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+
+<a class="post-tags-list-item" href="/tags/事件拦截/" rel="tag">#&nbsp;事件拦截</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                
+<div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/OpenGLES-1.html" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">初识 OpenGL ES</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                        <div class="card-footer post-comment">
+                            <!-- Gitalk Container -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+            clientID: '2d69cd1627ab2df1a73d',
+            clientSecret: '49ab070ec39f66f13c8d3cfad3d8071dd9be6840',
+            repo: 'blogcomment',
+            owner: 'cconecode',
+            admin: ['cconecode'],
+            // facebook-like distraction free mode
+            distractionFreeMode: false,
+            id: window.location.pathname
+        })
+   gitalk.render('gitalk-container')
+</script>
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span data-year></span>
+        <a class="footer-copyright-a" href="http://superchun.cn">悉达多｜Pain Maker</a>
+    </p>
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+            
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+        
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+        
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+
+
+    /* Copyright */
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.querySelector('span[data-year]')
+    
+        copyrightContent.textContent = copyrightNow
+    
+
+
+
+/* Cnosole Log */
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+</script>
+
+<!-- vanilla-lazyload -->
+
+    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+
+
+
+    <!-- Busuanzi -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+    <!-- Hanabi -->
+    <!-- Import Hanabi -->
+
+    <script src="/lib/hanabi/hanabi.min.js"></script>
+
+
+<!-- Import Hanabi Broswser -->
+
+    <script src="/js/hanabi-browser.min.js"></script>
+
+
+
+
+
+
+<!-- gallery.js -->
+
+
+<!-- Comment -->
+
+    
+        <!-- GitTalk -->
+    
+
+
+<!-- ### Custom Footer ### -->
+
+
+    </body>
+
+</html>
