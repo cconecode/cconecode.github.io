@@ -13,7 +13,7 @@ window.lsVersion = "1.3.3",
 window.oldVersion = [
     
         
-            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0","1.3.2"
+            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0"
         
     
 ]
@@ -50,6 +50,18 @@ window.oldVersion = [
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
 
 
+
+
+
+    <!-- Hanabi -->
+    <!-- Import Hanabi -->
+
+    <link rel="preload" href="/lib/hanabi/hanabi.min.js" as="script">
+
+
+<!-- Import Hanabi Broswser -->
+
+    <link rel="preload" href="/js/hanabi-browser.min.js" as="script">
 
 
 
@@ -311,15 +323,19 @@ window.oldVersion = [
 
         <!-- Share Facebook -->
         
-        <li class="menu-item">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=http://superchun.cn" target="_blank" rel="external noopener noreferrer nofollow">Share to Facebook</a>
-        </li>
-        
 
         <!-- Share Google+ -->
         
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=http://superchun.cn" target="_blank" rel="external noopener noreferrer nofollow">Share to Google+</a>
+        </li>
+        
 
         <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://superchun.cn&title=categories" target="_blank" rel="external noopener noreferrer nofollow">Share to LinkedIn</a>
+        </li>
         
 
         <!-- Share QQ -->
@@ -406,15 +422,19 @@ window.oldVersion = [
 
     <!-- Share Facebook -->
     
-    <li class="menu-item">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=http://superchun.cn/categories/" target="_blank" rel="external noopener noreferrer nofollow">Share to Facebook</a>
-    </li>
-    
 
     <!-- Share Google+ -->
     
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=http://superchun.cn/categories/" target="_blank" rel="external noopener noreferrer nofollow">Share to Google+</a>
+    </li>
+    
 
     <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://superchun.cn/categories/&title=悉达多｜Pain Maker" target="_blank" rel="external noopener noreferrer nofollow">Share to LinkedIn</a>
+    </li>
     
 
     <!-- Share QQ -->
@@ -452,21 +472,20 @@ window.oldVersion = [
                         
                     </article>
                     
+    <blockquote class="post-license">
+        <p>
+            <strong>Author&nbsp;:&nbsp;悉达多</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>Link to this article&nbsp;:&nbsp;</strong><a href="http://superchun.cn/categories/index.html">http://superchun.cn/categories/index.html</a>
+        </p>
+    </blockquote>
 
 
-    <blockquote id="date-expire-notification" class="post-expired-notify">This article was last updated on <span id="date-expire-num"></span> days ago, and the information described in the article may have changed.</blockquote>
-    <script>
-        var dateUpdate = Date.parse("2016-08-30");
-        var nowDate = new Date();
-        var a = nowDate.getTime();
-        var b = a - dateUpdate;
-        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
-        if (daysUpdateExpire >= 120) {
-            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
-        } else {
-            document.getElementById('date-expire-notification').style.display = 'none';
-        }
-    </script>
 
 
 <p class="post-footer-info mb-0 pt-0">Published at&nbsp;<time datetime="2016-08-30T08:00:18.000Z" itemprop="datePublished">2016-08-30</time>
@@ -573,6 +592,18 @@ console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c 
 
 <!-- Offset -->
 
+
+
+
+    <!-- Hanabi -->
+    <!-- Import Hanabi -->
+
+    <script src="/lib/hanabi/hanabi.min.js"></script>
+
+
+<!-- Import Hanabi Broswser -->
+
+    <script src="/js/hanabi-browser.min.js"></script>
 
 
 
