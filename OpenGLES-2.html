@@ -90,7 +90,7 @@ window.oldVersion = [
 <meta name="format-detection" content="telephone=no">
 
 <!-- Description -->
-<meta name="description" content="在上一篇文章中我们学习了OpenGL ES的一些基本概念，剩下的知识我们在实战中不断的补充，后续的文章会以代码+知识点+API...">
+<meta name="description" content="在上一篇文章中我们学习了OpenGL ES的一些基本概念，剩下的...">
 
 <!-- Keywords -->
 <meta name="keywords" content=", OpenGL ES">
@@ -183,13 +183,6 @@ window.oldVersion = [
 
 
 
-    <!-- Prettify Theme -->
-    
-    
-        <link rel="stylesheet" href="/css/highlight/github.min.css">
-    
-
-
 
     
 
@@ -227,7 +220,7 @@ window.oldVersion = [
 <meta property="og:url" content="http://superchun.cn/OpenGLES-2.html">
 <meta property="og:image" content="http://superchun.cn/img/large.png">
 
-<meta property="og:description" content="在上一篇文章中我们学习了OpenGL ES的一些基本概念，剩下的知识我们在实战中不断的补充，后续的文章会以代码+知识点+API...">
+<meta property="og:description" content="在上一篇文章中我们学习了OpenGL ES的一些基本概念，剩下的...">
 
 <meta name="twitter:card" content="summary">
 
@@ -304,7 +297,7 @@ window.oldVersion = [
     },
     
     "keywords": ", OpenGL ES",
-    "description": "在上一篇文章中我们学习了OpenGL ES的一些基本概念，剩下的知识我们在实战中不断的补充，后续的文章会以代码+知识点+API..."
+    "description": "在上一篇文章中我们学习了OpenGL ES的一些基本概念，剩下的..."
 }
 </script>
 
@@ -511,23 +504,99 @@ window.oldVersion = [
                         
                     
                     <article id="post-content">
-                        <p>在<a href="http://parisdog.club/OpenGLES-1.html">上一篇文章中</a>我们学习了OpenGL ES的一些基本概念，剩下的知识我们在实战中不断的补充，后续的文章会以代码+知识点+API解释的方式来写，同样的，如果有写的不好的地方，可以在评论中指出或者直接联系我（评论采用disqus，如果加载不出来，翻个墙试一下，联系方式见关于我）。</p>
+                        <p>在<a href="http://parisdog.club/OpenGLES-1.html" target="_blank" rel="noopener">上一篇文章中</a>我们学习了OpenGL ES的一些基本概念，剩下的知识我们在实战中不断的补充，后续的文章会以代码+知识点+API解释的方式来写，同样的，如果有写的不好的地方，可以在评论中指出或者直接联系我（评论采用disqus，如果加载不出来，翻个墙试一下，联系方式见关于我）。</p>
 <h1><span id="渲染屏幕">渲染屏幕====</span></h1><p>首先，将控制器继承自GLKViewController，并初始化一个GLKView，设置为它的View：</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 直接把上篇文章的初始化方法copy过来</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个上下文，并设置为当前上下文</span></span><br><span class="line">EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];</span><br><span class="line">[EAGLContext setCurrentContext:context];</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    使用代码初始化</span></span><br><span class="line"><span class="comment">//    GLKView *view = [GLKView alloc] initWithFrame:self.view.bounds context:context</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//    使用Storyboard初始化</span></span><br><span class="line">GLKView *view = (GLKView *)<span class="keyword">self</span>.view;</span><br><span class="line">view.context = context; <span class="comment">// 关联上下文</span></span><br></pre></td></tr></table></figure>
+<pre><code class="ObjectiveC">// 直接把上篇文章的初始化方法copy过来
+
+// 创建一个上下文，并设置为当前上下文
+EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+[EAGLContext setCurrentContext:context];
+
+//    使用代码初始化
+//    GLKView *view = [GLKView alloc] initWithFrame:self.view.bounds context:context
+
+//    使用Storyboard初始化
+GLKView *view = (GLKView *)self.view;
+view.context = context; // 关联上下文
+</code></pre>
 <p>只需在GLKView的代理方法<code>(void)glkView:(GLKView *)view drawInRect:(CGRect)rect</code>中，调用<code>glClear</code>的系列函数就可以用OpenGL ES对屏幕进行渲染了：</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)glkView:(GLKView *)view drawInRect:(<span class="built_in">CGRect</span>)rect &#123;</span><br><span class="line"></span><br><span class="line">    glClearColor(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>); <span class="comment">// 清理屏幕的RGB颜色和alpha值，这里我们设置成了红色</span></span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT); <span class="comment">// 调用glClear来实际执行清理操作, 参数是一个缓冲区，缓冲区有多种格式，上篇文章有提及，现在我们执行的是颜色缓冲区</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="ObjectiveC">- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
+
+    glClearColor(1, 0, 0, 1); // 清理屏幕的RGB颜色和alpha值，这里我们设置成了红色
+    glClear(GL_COLOR_BUFFER_BIT); // 调用glClear来实际执行清理操作, 参数是一个缓冲区，缓冲区有多种格式，上篇文章有提及，现在我们执行的是颜色缓冲区
+}
+</code></pre>
 <p>现在来做一个酷炫的效果，让屏幕显示闪烁。当设置GLKViewController代理的时候，每一帧动画GLKViewController都会告诉我们，它会在1秒内多次调用<code>draw</code>方法，GLKViewController的代理中，我们可以在GLKViewController的代理方法<code>(void)glkViewControllerUpdate:(GLKViewController *)controller</code>方法来更新屏幕的颜色。</p>
 <p>首先定义两个参数并初始化:</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">CGFloat</span> redColorFloat; <span class="comment">// RGB中红色的色值</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>, <span class="keyword">getter</span>=isIncreasing) <span class="built_in">BOOL</span> increasing; <span class="comment">// 判断是否增加</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">self</span>.increasing = <span class="literal">YES</span>;</span><br><span class="line"><span class="keyword">self</span>.redColorFloat = <span class="number">0.0</span>;</span><br></pre></td></tr></table></figure>
+<pre><code class="ObjectiveC">@property (nonatomic, assign) CGFloat redColorFloat; // RGB中红色的色值
+@property (nonatomic, assign, getter=isIncreasing) BOOL increasing; // 判断是否增加
+
+self.increasing = YES;
+self.redColorFloat = 0.0;
+</code></pre>
 <p>设定GLKViewController的刷新频率:</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.preferredFramesPerSecond = <span class="number">60</span>;</span><br></pre></td></tr></table></figure>
+<pre><code class="ObjectiveC">self.preferredFramesPerSecond = 60;
+</code></pre>
 <p>更新<code>(void)glkView:(GLKView *)view drawInRect:(CGRect)rect</code>中的代码，在GLKViewController的代理方法中更新屏幕颜色:</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)glkView:(GLKView *)view drawInRect:(<span class="built_in">CGRect</span>)rect &#123;</span><br><span class="line"></span><br><span class="line">    glClearColor(<span class="keyword">self</span>.redColorFloat, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>); <span class="comment">// 清理屏幕的RGB颜色和alpha值</span></span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT); <span class="comment">// 调用glClear来实际执行清理操作, 参数是一个缓冲区，缓冲区有多种格式，上篇文章有提及，现在我们执行的是颜色缓冲区</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)glkViewControllerUpdate:(GLKViewController *)controller &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.isIncreasing) &#123;</span><br><span class="line">        <span class="keyword">self</span>.redColorFloat += <span class="number">1.0</span> * <span class="keyword">self</span>.timeSinceLastUpdate;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.redColorFloat -= <span class="number">1.0</span> * <span class="keyword">self</span>.timeSinceLastUpdate;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.redColorFloat &gt;= <span class="number">1.0</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.redColorFloat = <span class="number">1.0</span>;</span><br><span class="line">        <span class="keyword">self</span>.increasing = <span class="literal">NO</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.redColorFloat &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.redColorFloat = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">self</span>.increasing = <span class="literal">YES</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="ObjectiveC">- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
+
+    glClearColor(self.redColorFloat, 0, 0, 1); // 清理屏幕的RGB颜色和alpha值
+    glClear(GL_COLOR_BUFFER_BIT); // 调用glClear来实际执行清理操作, 参数是一个缓冲区，缓冲区有多种格式，上篇文章有提及，现在我们执行的是颜色缓冲区
+}
+
+- (void)glkViewControllerUpdate:(GLKViewController *)controller {
+
+    if (self.isIncreasing) {
+        self.redColorFloat += 1.0 * self.timeSinceLastUpdate;
+    }else {
+        self.redColorFloat -= 1.0 * self.timeSinceLastUpdate;
+    }
+
+    if (self.redColorFloat &gt;= 1.0) {
+        self.redColorFloat = 1.0;
+        self.increasing = NO;
+    }
+
+    if (self.redColorFloat &lt;= 0) {
+        self.redColorFloat = 0;
+        self.increasing = YES;
+    }
+}
+</code></pre>
 <p>这样就实现了屏幕黑红闪烁效果，Demo可以在<a href="https://github.com/cconecode/OpenGLESTutorials/tree/master/Tutorial1-ScreenRendering" target="_blank" rel="noopener">这里</a>找到。</p>
 <h1><span id="绘制图形">绘制图形</span></h1><p>现在我们来利用OpenGL ES绘制一个正方形。因为OpenGL ES只能渲染三角形，所以要用两个三角形来组成一个正方形。首先创建一组顶点数据和索引数据：</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 顶点数据</span></span><br><span class="line">    GLfloat verties[] = &#123;</span><br><span class="line">        <span class="number">0.5</span>, <span class="number">-0.5</span>, <span class="number">0.0</span>,  <span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>,   <span class="comment">// 前面为x, y, z, 后面为颜色</span></span><br><span class="line">        <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0</span>,     <span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>,</span><br><span class="line">        <span class="number">-0.5</span>, <span class="number">-0.5</span>, <span class="number">0</span>,   <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>,</span><br><span class="line">        <span class="number">-0.5</span>, <span class="number">0.5</span>, <span class="number">0</span>,    <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span></span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 索引数据</span></span><br><span class="line">    GLuint indecs[] = &#123;</span><br><span class="line">        <span class="number">0</span>, <span class="number">3</span>, <span class="number">2</span>,</span><br><span class="line">        <span class="number">1</span>, <span class="number">3</span>, <span class="number">0</span></span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<pre><code class="ObjectiveC">// 顶点数据
+    GLfloat verties[] = {
+        0.5, -0.5, 0.0,  1.0, 0.0, 0.0, 1.0,   // 前面为x, y, z, 后面为颜色
+        0.5, 0.5, 0,     0.0, 1.0, 0.0, 1.0,
+        -0.5, -0.5, 0,   0.0, 0.0, 1.0, 1.0,
+        -0.5, 0.5, 0,    0.0, 0.0, 0.0, 1.0
+    };
+
+    // 索引数据
+    GLuint indecs[] = {
+        0, 3, 2,
+        1, 3, 0
+    };
+</code></pre>
 <p>顶点数据中包括了顶点位置和对应的颜色，索引数据则是顶点数组的索引。然后我们需要向OpenGL ES发送数据和缓存数据：</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">glGenBuffers(<span class="number">1</span>, &amp;vertBuffer); <span class="comment">// 创建缓冲区对象</span></span><br><span class="line">glBindBuffer(GL_ARRAY_BUFFER, vertBuffer); <span class="comment">// 指定当前活动缓冲区对象</span></span><br><span class="line">                                           <span class="comment">// GL_ARRAY_BUFFER 坐标，颜色等</span></span><br><span class="line">                                           <span class="comment">// GL_ELEMENT_ARRAY_BUFFER 索引坐标</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 把顶点数据从 CPU 复制到 GPU</span></span><br><span class="line">glBufferData(GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(verties), verties, GL_STATIC_DRAW);</span><br><span class="line"><span class="comment">// glBufferData(&lt;#GLenum target#&gt;, &lt;#GLsizeiptr size#&gt;, &lt;#const GLvoid *data#&gt;, &lt;#GLenum usage#&gt;)</span></span><br><span class="line"><span class="comment">// target: 可以是GL_ARRAY_BUFFER(顶点数据)，或者GL_ELEMENT_ARRAY_BUFFER(索引数据)</span></span><br><span class="line"><span class="comment">// size: 存储相关数据所需要的内存容量</span></span><br><span class="line"><span class="comment">// data: 用于初始化缓冲区对象，可以是指向某一块内存地址，也可以是NULL</span></span><br><span class="line"><span class="comment">//usage: 数据分配后如何读写，详细介绍见：http://parisdog.club/OpenGLES-2.html</span></span><br><span class="line"></span><br><span class="line">glGenBuffers(<span class="number">1</span>, &amp;indeBuffer); <span class="comment">// 索引数据</span></span><br><span class="line">glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indeBuffer);</span><br><span class="line">glBufferData(GL_ELEMENT_ARRAY_BUFFER, <span class="keyword">sizeof</span>(indecs), indecs, GL_STATIC_DRAW);</span><br></pre></td></tr></table></figure>
+<pre><code class="ObjectiveC">    glGenBuffers(1, &amp;vertBuffer); // 创建缓冲区对象
+    glBindBuffer(GL_ARRAY_BUFFER, vertBuffer); // 指定当前活动缓冲区对象
+                                               // GL_ARRAY_BUFFER 坐标，颜色等
+                                               // GL_ELEMENT_ARRAY_BUFFER 索引坐标
+
+    // 把顶点数据从 CPU 复制到 GPU
+    glBufferData(GL_ARRAY_BUFFER, sizeof(verties), verties, GL_STATIC_DRAW);
+    // glBufferData(&lt;#GLenum target#&gt;, &lt;#GLsizeiptr size#&gt;, &lt;#const GLvoid *data#&gt;, &lt;#GLenum usage#&gt;)
+    // target: 可以是GL_ARRAY_BUFFER(顶点数据)，或者GL_ELEMENT_ARRAY_BUFFER(索引数据)
+    // size: 存储相关数据所需要的内存容量
+    // data: 用于初始化缓冲区对象，可以是指向某一块内存地址，也可以是NULL
+    //usage: 数据分配后如何读写，详细介绍见：http://parisdog.club/OpenGLES-2.html
+
+    glGenBuffers(1, &amp;indeBuffer); // 索引数据
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indeBuffer);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indecs), indecs, GL_STATIC_DRAW);
+</code></pre>
 <p>关于 usage 的一些说明：</p>
 <ul>
 <li>GL_STREAM_DRAW: 数据只指定一次，并且最多只有几次作为绘图和指定图像函数的源数据</li>
@@ -541,14 +610,44 @@ window.oldVersion = [
 <li>GL_DYNAMIC_COPY: 数据可以多次从 OpenGL 缓冲区复制过来，并且可以多次几次作为绘图和指定图像函数的源数据</li>
 </ul>
 <p>在OpenGL ES2.0当中，无论渲染什么图形，都必须用到着色器。着色器是用类C语言-GLSL语言写的，如果想要自定义一个着色器，那么学习这门语言十分有必要。现在<code>GLKBaseEffect</code>这个类为我们提供了一些通用的着色器，在还没有掌握GLSL的情况下，我们目前可以使用它来帮我们实现效果：</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义和初始化一个GLKBaseEffect实例对象</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) GLKBaseEffect *effect;</span><br><span class="line"></span><br><span class="line"><span class="keyword">self</span>.effect = [[GLKBaseEffect alloc] init];</span><br><span class="line"><span class="comment">// 可以设置 effect 的一些属性，配置光，转化等</span></span><br></pre></td></tr></table></figure>
+<pre><code class="ObjectiveC">// 定义和初始化一个GLKBaseEffect实例对象
+@property (nonatomic, strong) GLKBaseEffect *effect;
+
+self.effect = [[GLKBaseEffect alloc] init];
+// 可以设置 effect 的一些属性，配置光，转化等
+</code></pre>
 <p>最后在代理方法中启动着色器:</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)glkView:(GLKView *)view drawInRect:(<span class="built_in">CGRect</span>)rect &#123;</span><br><span class="line"></span><br><span class="line">    glClearColor(<span class="number">0.3</span>, <span class="number">0.6</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 启动着色器</span></span><br><span class="line">    [<span class="keyword">self</span>.effect prepareToDraw];</span><br><span class="line">    glDrawElements(GL_TRIANGLES, <span class="keyword">self</span>.count, GL_UNSIGNED_INT, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="ObjectiveC">- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
+
+    glClearColor(0.3, 0.6, 1.0, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    // 启动着色器
+    [self.effect prepareToDraw];
+    glDrawElements(GL_TRIANGLES, self.count, GL_UNSIGNED_INT, 0);
+}
+</code></pre>
 <p>这样我们就可以看到最终的效果了：</p>
 <div align="center"><br><img src="http://ooo.0o0.ooo/2016/09/01/57c7eec495cab.jpg" width="200" alt="最终效果"><br></div>
 
 <p>细心观察就会发现，我们想要的结果是一个正方形，现在出来的效果却是一个矩形，这是为什么呢？因为默认的，“Effect”的投影矩阵是一个单位矩阵，它不做任何变换，将场景（-1，-1，-1）到（1，1，1）的立文体范围的物体，投射到屏幕的X：-1，1，Y：-1，1。因此，当屏幕本身是非正方形时，正方形的物体将被拉伸，从而显示为矩形。所以我们要在<code>update</code> 中修改投影矩阵：</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)update &#123;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">CGSize</span> size = <span class="keyword">self</span>.view.bounds.size;</span><br><span class="line">    <span class="keyword">float</span> aspect = fabs(size.width / size.height);</span><br><span class="line">    </span><br><span class="line">    GLKMatrix4 projectMartix =    GLKMatrix4MakePerspective(GLKMathDegreesToRadians(<span class="number">130.0</span>), aspect, <span class="number">0.1</span>, <span class="number">10.0</span>);</span><br><span class="line">    <span class="comment">// 第一个参数代表视角</span></span><br><span class="line">    <span class="comment">// 第二个参数代表比例</span></span><br><span class="line">    <span class="comment">// 第三个参数代表近平面距离</span></span><br><span class="line">    <span class="comment">// 第四个参数代表远平面距离</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">self</span>.effect.transform.projectionMatrix = projectMartix;</span><br><span class="line">    </span><br><span class="line">    GLKMatrix4 modelMatrix =     GLKMatrix4Translate(GLKMatrix4Identity, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">-1.0</span>); <span class="comment">// 修改 Z 轴的距离</span></span><br><span class="line">    <span class="keyword">self</span>.effect.transform.modelviewMatrix = modelMatrix;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="ObjectiveC">- (void)update {
+
+    CGSize size = self.view.bounds.size;
+    float aspect = fabs(size.width / size.height);
+
+    GLKMatrix4 projectMartix =    GLKMatrix4MakePerspective(GLKMathDegreesToRadians(130.0), aspect, 0.1, 10.0);
+    // 第一个参数代表视角
+    // 第二个参数代表比例
+    // 第三个参数代表近平面距离
+    // 第四个参数代表远平面距离
+
+    self.effect.transform.projectionMatrix = projectMartix;
+
+    GLKMatrix4 modelMatrix =     GLKMatrix4Translate(GLKMatrix4Identity, 0.0, 0.0, -1.0); // 修改 Z 轴的距离
+    self.effect.transform.modelviewMatrix = modelMatrix;
+}
+</code></pre>
 <p>最终通过这段代码就能得到我们想要的结果了：一个正方形（Demo 在<a href="https://github.com/cconecode/OpenGLESTutorials" target="_blank" rel="noopener">这里</a>）。在学习过程中，踩了很多坑，包括一开始的图像显示不出来，API 的意思也不明确。后来通过 Google 查阅相关资料，把一些 bug 解决了，同时也加深了对 OpenGL ES 的理解，学习到了很多的东西。上面的知识，在代码中我已经注释的很清楚了，如果有不懂的地方或者不正确的地方，欢迎指正交流~</p>
 
                     </article>
