@@ -183,6 +183,13 @@ window.oldVersion = [
 
 
 
+    <!-- Prettify Theme -->
+    
+    
+        <link rel="stylesheet" href="/css/highlight/shades-of-purple.min.css">
+    
+
+
 
     
 
@@ -521,28 +528,10 @@ window.oldVersion = [
 <p>一般OpenGL ES中的纹理坐标都是二维的，原点在左下角，与计算机中的图像坐标并不一致，二者的差别在于围绕横轴翻转180°。</p>
 <p><strong>顶点数据&amp;&amp;索引</strong></p>
 <p>顶点数据是一个数组，里面存的是顶点坐标。而索引则是顶点数组的对应的索引和串联关系。</p>
-<pre><code class="C">// 顶点数据
-GLFloat squareVertexData[] = {
-    0.5, -0.5, 0.0, //x,y,z
-    -0.5, 0.0, 0.0,
-    -0.5, -0.5, 0.0,
-    0.5, 0.5, 0.0 
-}
-
-// 顶点索引
-GLuint indices[] = {
-    0, 1, 2,
-    1, 3, 0
-}
-</code></pre>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 顶点数据</span></span><br><span class="line">GLFloat squareVertexData[] = &#123;</span><br><span class="line">    <span class="number">0.5</span>, <span class="number">-0.5</span>, <span class="number">0.0</span>, <span class="comment">//x,y,z</span></span><br><span class="line">    <span class="number">-0.5</span>, <span class="number">0.0</span>, <span class="number">0.0</span>,</span><br><span class="line">    <span class="number">-0.5</span>, <span class="number">-0.5</span>, <span class="number">0.0</span>,</span><br><span class="line">    <span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.0</span> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顶点索引</span></span><br><span class="line">GLuint indices[] = &#123;</span><br><span class="line">    <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>,</span><br><span class="line">    <span class="number">1</span>, <span class="number">3</span>, <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面顶点数组里面的一行就代表了坐标系里面的x,y,z三个坐标系，代表了一个顶点的位置，里面总共包含了4个点。索引数组则是顶点数据的索引，每一行代表一个连接关系，从0-1-2，从1-3-0。</p>
 <h1><span id="eaglcontext">EAGLContext</span></h1><p>在使用OpenGL ES之前，必须初始化一个EAGLContext对象，并且将它设置为当前上下文</p>
-<pre><code class="ObjectiveC">// 初始化EAGLContext
-EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2]; 
-
-// 设置为当前上下文
-[EAGLContext setCurrentContext:context];
-</code></pre>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化EAGLContext</span></span><br><span class="line">EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2]; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置为当前上下文</span></span><br><span class="line">[EAGLContext setCurrentContext:context];</span><br></pre></td></tr></table></figure>
 <p>注意事项：</p>
 <ul>
 <li>每个线程都会维护一个当前上下文。</li>
@@ -550,39 +539,15 @@ EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLE
 <li>当在同一个线程中转换两个或者更多的上下文时，在设置一个新的上下文作为当前上下文之前，需要调用<code>glFlush</code>函数，确保之前的一些命令可以及时传递给图像硬件设备。</li>
 </ul>
 <p>调用<code>glFlush</code>函数时需导入<code>OpenGLES/ES2/gl.h</code>框架。</p>
-<pre><code class="C">glFlush()
-</code></pre>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">glFlush()</span><br></pre></td></tr></table></figure>
 <h1><span id="glkview">GLKView</span></h1><p><strong>GLKView介绍</strong></p>
 <p>GLKView管理着OpenGL ES的基础，来提供绘制代码的地方。GLKView提供了基于OpenGL ES并等效于标准UIView的绘图生命周期。一个UIView实例自动配置图像上下文，所以<code>drawRect:</code>只需执行Quartz 2D绘图命令，GLKView实例自动配置本身，所以你的绘图方法只需执行OpenGL ES命令。GLKView通过维护一个保存着OpenGL ES绘图命令的帧缓冲对象来实现这一功能，一旦你的绘图方法完成，就会自动把结果呈现给Core Animation。</p>
 <div align="center"><br><img src="http://ooo.0o0.ooo/2016/08/29/57c460e7a3f36.png" height="300" alt="通过GLKView渲染OpenGL ES内容"><br></div>
 
 <p><strong>GLKView初始化方法</strong></p>
-<pre><code class="ObjectiveC">EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
-[EAGLContext setCurrentContext:context];
-
-//  使用代码初始化
-//  GLKView *view = [GLKView alloc] initWithFrame:self.view.bounds context:context
-
-//    使用Storyboard初始化
-GLKView *view = (GLKView *)self.view;
-view.context = context; // 关联上下文
-
-view.drawableColorFormat = GLKViewDrawableColorFormatRGBA8888; // 颜色缓冲区格式
-view.drawableDepthFormat = GLKViewDrawableDepthFormat24; // 深度缓冲区格式
-view.drawableStencilFormat = GLKViewDrawableStencilFormat8; // 模型缓冲区格式
-view.drawableMultisample = GLKViewDrawableMultisample4X; // 允许多重采样 (多重采样主要用于反锯齿，只对多边形的边缘进行抗锯齿处理，资源消耗较小，最常见的反锯齿), 如果允许了多重采样，必须测试性能
-</code></pre>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];</span><br><span class="line">[EAGLContext setCurrentContext:context];</span><br><span class="line"></span><br><span class="line"><span class="comment">//  使用代码初始化</span></span><br><span class="line"><span class="comment">//  GLKView *view = [GLKView alloc] initWithFrame:self.view.bounds context:context</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//    使用Storyboard初始化</span></span><br><span class="line">GLKView *view = (GLKView *)<span class="keyword">self</span>.view;</span><br><span class="line">view.context = context; <span class="comment">// 关联上下文</span></span><br><span class="line">    </span><br><span class="line">view.drawableColorFormat = GLKViewDrawableColorFormatRGBA8888; <span class="comment">// 颜色缓冲区格式</span></span><br><span class="line">view.drawableDepthFormat = GLKViewDrawableDepthFormat24; <span class="comment">// 深度缓冲区格式</span></span><br><span class="line">view.drawableStencilFormat = GLKViewDrawableStencilFormat8; <span class="comment">// 模型缓冲区格式</span></span><br><span class="line">view.drawableMultisample = GLKViewDrawableMultisample4X; <span class="comment">// 允许多重采样 (多重采样主要用于反锯齿，只对多边形的边缘进行抗锯齿处理，资源消耗较小，最常见的反锯齿), 如果允许了多重采样，必须测试性能</span></span><br></pre></td></tr></table></figure>
 <p><strong>GLKViewDelegate</strong></p>
-<pre><code class="ObjectiveC">// 渲染场景代码
-- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
-
-}
-
-// 场景数据变化
-- (void)update {
-
-}
-</code></pre>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 渲染场景代码</span></span><br><span class="line">- (<span class="keyword">void</span>)glkView:(GLKView *)view drawInRect:(<span class="built_in">CGRect</span>)rect &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 场景数据变化</span></span><br><span class="line">- (<span class="keyword">void</span>)update &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>GLKView能够为OpenGL ES的绘制提供一个简单的界面，因为它管理着OpenGL ES渲染过程的部分标准：</p>
 <ul>
 <li>在调用绘图方法之前，视图：<ul>
