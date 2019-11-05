@@ -180,22 +180,15 @@ window.oldVersion = [
 
 
 
-    <!-- prism.css -->
-    
-    <!-- prism.line_number -->
-    
-        
-            <link rel="stylesheet" href="/lib/prism/prism-line-numbers.min.css">
-        
-    
-    <!-- prism.theme -->
-    
-        <link rel="stylesheet" href="/lib/prism/prism-duotone-light.min.css">
-    
 
 
 
 
+    <!-- Prettify Theme -->
+    
+    
+        <link rel="stylesheet" href="/css/highlight/an-old-hope.min.css">
+    
 
 
 
@@ -541,8 +534,7 @@ window.oldVersion = [
 <blockquote>
 <p> <strong>sendEvent:</strong></p>
 <p>Dispatches an event to the appropriate responder objects in the application.</p>
-<pre class="line-numbers highlight language-ObjectiveC"><code class="language-ObjectiveC">-(void)sendEvent:(UIEvent *)event
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-(<span class="keyword">void</span>)sendEvent:(<span class="built_in">UIEvent</span> *)event</span><br></pre></td></tr></table></figure>
 <p> <strong>Parameters</strong><br>event<br>A UIEvent object encapsulating the information about an event, including the touches involved.</p>
 <p><strong>Discussion</strong><br>Subclasses may override this method to intercept incoming events for inspection and special dispatching. iOS calls this method for public events only.</p>
 </blockquote>
@@ -550,96 +542,17 @@ window.oldVersion = [
 <ol>
 <li>新建一个继承 UIApplication 的 CTApplication，重写 sendEvent 方法，并判断是否为触摸事件：</li>
 </ol>
-<pre class="line-numbers highlight language-ObjectiveC"><code class="language-ObjectiveC">#import "CTApplication.h"
-
-@implementation CTApplication
-
-- (void)sendEvent:(UIEvent *)event {
-
-    if (event.type == UIEventTypeTouches) {
-        if ([[event.allTouches anyObject] phase] == UITouchPhaseBegan) {
-
-        }
-    }
- [super sendEvent:event];
-}
-
-@end
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"CTApplication.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">CTApplication</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)sendEvent:(<span class="built_in">UIEvent</span> *)event &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (event.type == <span class="built_in">UIEventTypeTouches</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> ([[event.allTouches anyObject] phase] == <span class="built_in">UITouchPhaseBegan</span>) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> [<span class="keyword">super</span> sendEvent:event];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
 <p>2.由于需要检测用户多长时间没有点击屏幕，需要加一个定时器来进行倒计时，设置定时器的方法写在 CTApplication 的 init 方法中：</p>
-<pre class="line-numbers highlight language-ObjectiveC"><code class="language-ObjectiveC">#import "CTApplication.h"
-
-/** 不点击屏幕的时间 */
-static NSTimeInterval const showTime = 180;
-
-@interface CTApplication ()
-
-@property (nonatomic, strong) NSTimer *timer;
-
-@end
-
-@implementation CTApplication
-
-- (instancetype)init {
-
-    if (self == [super init]) {
-        [self setTimer];
-    }
-    return self;
-}
-- (void)setTimer {
-
-    self.timer = [NSTimer timerWithTimeInterval:showTime target:self selector:@selector(showPicture) userInfo:nil repeats:NO];
-    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
-}
-
-- (void)showPicture {
-    /** 在这里对广告轮播图进行设置 */
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"CTApplication.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** 不点击屏幕的时间 */</span></span><br><span class="line"><span class="keyword">static</span> <span class="built_in">NSTimeInterval</span> <span class="keyword">const</span> showTime = <span class="number">180</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">CTApplication</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">NSTimer</span> *timer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">CTApplication</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">instancetype</span>)init &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span> == [<span class="keyword">super</span> init]) &#123;</span><br><span class="line">        [<span class="keyword">self</span> setTimer];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line">- (<span class="keyword">void</span>)setTimer &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">self</span>.timer = [<span class="built_in">NSTimer</span> timerWithTimeInterval:showTime target:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(showPicture) userInfo:<span class="literal">nil</span> repeats:<span class="literal">NO</span>];</span><br><span class="line">    [[<span class="built_in">NSRunLoop</span> currentRunLoop] addTimer:<span class="keyword">self</span>.timer forMode:<span class="built_in">NSRunLoopCommonModes</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)showPicture &#123;</span><br><span class="line">	<span class="comment">/** 在这里对广告轮播图进行设置 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>3.再回到 sendEvent 方法中，如果该方法被触发了，那么让定时器失效，重新开始定时：</p>
-<pre class="line-numbers highlight language-ObjectiveC"><code class="language-ObjectiveC">- (void)sendEvent:(UIEvent *)event {
-
-    [super sendEvent:event];
-    if (event.type == UIEventTypeTouches) {
-        if ([[event.allTouches anyObject] phase] == UITouchPhaseBegan) {
-
-            [self.timer invalidate];
-            [self setTimer];
-        }
-    }
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)sendEvent:(<span class="built_in">UIEvent</span> *)event &#123;</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">super</span> sendEvent:event];</span><br><span class="line">    <span class="keyword">if</span> (event.type == <span class="built_in">UIEventTypeTouches</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> ([[event.allTouches anyObject] phase] == <span class="built_in">UITouchPhaseBegan</span>) &#123;</span><br><span class="line"></span><br><span class="line">            [<span class="keyword">self</span>.timer invalidate];</span><br><span class="line">            [<span class="keyword">self</span> setTimer];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>4.最后，在 main 函数中还要做对应的更改，替换 UIApplication 的调用：</p>
-<pre class="line-numbers highlight language-ObjectiveC"><code class="language-ObjectiveC">#import <UIKit/UIKit.h>
-#import "AppDelegate.h"
-#import "CTApplication.h"
-
-int main(int argc, char * argv[]) {
-    @autoreleasepool {
-//        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
-        return UIApplicationMain(argc, argv, NSStringFromClass([AppDelegate class]), NSStringFromClass([CTApplication class]));
-    }
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;UIKit/UIKit.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"AppDelegate.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"CTApplication.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[]) &#123;</span><br><span class="line">    <span class="keyword">@autoreleasepool</span> &#123;</span><br><span class="line"><span class="comment">//        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">UIApplicationMain</span>(argc, argv, <span class="built_in">NSStringFromClass</span>([AppDelegate <span class="keyword">class</span>]), <span class="built_in">NSStringFromClass</span>([<span class="built_in">CTApplication</span> <span class="keyword">class</span>]));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2><span id="swift版">Swift版</span></h2><p>首先新建一个 UIApplication 的子类 CTApplication：</p>
-<pre class="line-numbers highlight language-Swift"><code class="language-Swift">import Foundation
-import UIKit
-
-class CTApplication: UIApplication {
-
-    override func sendEvent(event: UIEvent) {
-
-        super.sendEvent(event)
-    }
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Foundation</span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CTApplication</span>: <span class="title">UIApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">sendEvent</span><span class="params">(event: UIEvent)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">super</span>.sendEvent(event)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>由于 Swift 中没有 main 函数，所以需要自己手动建一个 main 函数，并设置入口：</p>
-<pre class="line-numbers highlight language-Swift"><code class="language-Swift">import Foundation
-import UIKit
-
-UIApplicationMain(Process.argc, Process.unsafeArgv, NSStringFromClass(CTApplication), NSStringFromClass(AppDelegate))
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Foundation</span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="type">UIApplicationMain</span>(<span class="type">Process</span>.argc, <span class="type">Process</span>.unsafeArgv, <span class="type">NSStringFromClass</span>(<span class="type">CTApplication</span>), <span class="type">NSStringFromClass</span>(<span class="type">AppDelegate</span>))</span><br></pre></td></tr></table></figure>
 <p>这时，Appdelegate 中的<code>@UIApplicationMain</code>会报错。下面是苹果官方对于<code>@UIApplicationMain</code>关键字的描述：</p>
 <blockquote>
 <p>Apply this attribute to a class to indicate that it is the application delegate. Using this attribute is equivalent to calling the UIApplicationMain function and passing this class’s name as the name of the delegate class.</p>

@@ -180,22 +180,15 @@ window.oldVersion = [
 
 
 
-    <!-- prism.css -->
-    
-    <!-- prism.line_number -->
-    
-        
-            <link rel="stylesheet" href="/lib/prism/prism-line-numbers.min.css">
-        
-    
-    <!-- prism.theme -->
-    
-        <link rel="stylesheet" href="/lib/prism/prism-duotone-light.min.css">
-    
 
 
 
 
+    <!-- Prettify Theme -->
+    
+    
+        <link rel="stylesheet" href="/css/highlight/an-old-hope.min.css">
+    
 
 
 
@@ -516,31 +509,23 @@ window.oldVersion = [
                     
                         
                             <div id="post-toc">
-                                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#null"><span class="post-toc-text">环境搭建</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#null"><span class="post-toc-text">创建项目</span></a></li></ol>
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#null"><span class="post-toc-text">环境搭建</span></a></li></ol>
                             </div>
                         
                     
                     <article id="post-content">
                         <p>Cordova 的前身是 PhoneGap，是一个 Hybrid 框架，可以让开发者使用HTML、Javascript、CSS开发跨平台的App。</p>
 <h1><span id="环境搭建">环境搭建</span></h1><p>安装Cordova:</p>
-<pre class="line-numbers highlight language-ObjectiveC"><code class="language-ObjectiveC">sudo npm install -g cordova
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>如果提示错误，检查是否安装 Node.js</p>
-<h1><span id="创建项目">创建项目</span></h1><p><strong>创建工程项目：</strong></p>
-<pre class="line-numbers highlight language-ObjectiveC"><code class="language-ObjectiveC">cordova create Cordova com.example.CordovaTest CordovaTest
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g cordova</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">如果提示错误，检查是否安装 Node.js</span><br><span class="line"></span><br><span class="line"><span class="meta"># 创建项目</span></span><br><span class="line"></span><br><span class="line">**创建工程项目：**</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```ObjectiveC</span><br><span class="line">cordova create Cordova com.example.CordovaTest CordovaTest</span><br></pre></td></tr></table></figure>
 <p>第一个参数为工程文件夹<br>第二个参数为应用的的 id 名，和 Xcode 中的 bundle Id 类似<br>第三个参数为工程名字</p>
 <p><strong>添加 iOS 平台支持</strong></p>
 <p>进入刚刚创建的工程目录下，执行：</p>
-<pre class="line-numbers highlight language-ObjectiveC"><code class="language-ObjectiveC">cordova platform add ios
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cordova platform add ios</span><br></pre></td></tr></table></figure>
 <p>执行这个命令只出现光标没有反应的话，是因为网络原因。由于国内的网络环境，虽然的 npm 官方站点 <a href="http://www.npmjs.org/" target="_blank" rel="noopener">http://www.npmjs.org/</a> 并没有被墙，但是下载第三方依赖包的速度有时还是不理想，我们可以改用淘宝的 NPM 镜像。</p>
 <p>打开 ~/.npmrc 文件：</p>
-<pre class="line-numbers highlight language-ObjectiveC"><code class="language-ObjectiveC">vim ~/.npmrc
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.npmrc</span><br></pre></td></tr></table></figure>
 <p>添加以下内容：</p>
-<pre class="line-numbers highlight language-ObjectiveC"><code class="language-ObjectiveC">registry = https://registry.npm.taobao.org
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">registry = https:<span class="comment">//registry.npm.taobao.org</span></span><br></pre></td></tr></table></figure>
 <p>保存退出，再执行命令就会发现很快就配置好了。</p>
 <p>打开 platforms/ios 目录，就可以运行我们的创建的工程了。</p>
 
