@@ -365,6 +365,8 @@ window.oldVersion = [
     
         <a href="/about/" class="navbar-link">关于</a>
     
+        <a href="/tags/" class="navbar-link">标签</a>
+    
     
         <div class="dropdown dropdown-right">
     <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
@@ -558,9 +560,17 @@ window.oldVersion = [
 <h1><span id="需求具体实现">需求具体实现</span></h1><h2><span id="oc-版">OC 版</span></h2><p>根据上面的结论，我们目前的思路是继承 UIApplication，然后实现某一方法，进行事件拦截。根据查阅资料，重写 UIApplication 的 <code>sendEvent</code>方法可以达到目的，sendEvent介绍如下：</p>
 <blockquote>
 <p> <strong>sendEvent:</strong></p>
+</blockquote>
+<blockquote>
 <p>Dispatches an event to the appropriate responder objects in the application.</p>
+</blockquote>
+<blockquote>
+</blockquote>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-(<span class="keyword">void</span>)sendEvent:(<span class="built_in">UIEvent</span> *)event</span><br></pre></td></tr></table></figure>
+<blockquote>
 <p> <strong>Parameters</strong><br>event<br>A UIEvent object encapsulating the information about an event, including the touches involved.</p>
+</blockquote>
+<blockquote>
 <p><strong>Discussion</strong><br>Subclasses may override this method to intercept incoming events for inspection and special dispatching. iOS calls this method for public events only.</p>
 </blockquote>
 <p>具体代码实现：</p>
@@ -581,6 +591,8 @@ window.oldVersion = [
 <p>这时，Appdelegate 中的<code>@UIApplicationMain</code>会报错。下面是苹果官方对于<code>@UIApplicationMain</code>关键字的描述：</p>
 <blockquote>
 <p>Apply this attribute to a class to indicate that it is the application delegate. Using this attribute is equivalent to calling the UIApplicationMain function and passing this class’s name as the name of the delegate class.</p>
+</blockquote>
+<blockquote>
 <p>If you do not use this attribute, supply a main.swift file with a main function that calls the UIApplicationMain(::<em>:) function. For example, if your app uses a custom subclass of UIApplication<br>as its principal class, call the UIApplicationMain(::</em>:) function instead of using this attribute.</p>
 </blockquote>
 <p>意思就是在类的最顶部声明 <code>@UIApplicationMain</code>，表示该类是Application 的 delegate，另外一种做法就是在 main.Swift 中调用 UIApplicationMain 函数，设置 delegate 和 application。而我们采取的是后面的办法，所以 delegate 冲突了，自然就会报错，只要把 Appdelegate 上的 <code>@UIApplicationMain</code> 关键字删除就可以了。剩下的操作与 OC 中的是一样的。</p>

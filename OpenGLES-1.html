@@ -362,6 +362,8 @@ window.oldVersion = [
     
         <a href="/about/" class="navbar-link">关于</a>
     
+        <a href="/tags/" class="navbar-link">标签</a>
+    
     
         <div class="dropdown dropdown-right">
     <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
@@ -539,6 +541,8 @@ window.oldVersion = [
                         <p>在如今直播盛行，VR可能即将崛起的时代，OpenGL ES将会变得不可或缺。而OpenGL ES的学习曲线比较陡峭，所以写博文来记录学习过程，同时也希望能够帮助到一起想学习OpenGL ES的同学。由于能力尚浅，文中错误之处敬请指出，谢谢！</p>
 <h1><span id="什么是opengl-es">什么是OpenGL ES</span></h1><blockquote>
 <p>OpenGL ES（OpenGL for Embedded Systems）是 OpenGL 三维图形API的子集，针对手机、PDA和游戏主机等嵌入式设备而设计。该API由Khronos集团定义推广，Khronos是一个图形软硬件行业协会，该协会主要关注图形和多媒体方面的开放标准。</p>
+</blockquote>
+<blockquote>
 <p>OpenGL ES是从OpenGL裁剪定制而来的，去除了glBegin/glEnd，四边形（GL_QUADS）、多边形（GL_POLYGONS）等复杂图元等许多非绝对必要的特性。经过多年发展，现在主要有两个版本，OpenGL ES 1.x针对固定管线硬件的，OpenGL ES 2.x针对可编程管线硬件。OpenGL ES 1.0是以OpenGL 1.3规范为基础的，OpenGL ES 1.1是以OpenGL 1.5规范为基础的，它们分别又支持common和common lite两种profile。lite profile只支持定点实数，而common profile既支持定点数又支持浮点数。OpenGL ES 2.0则是参照OpenGL 2.0规范定义的，common profile发布于2005-8，引入了对可编程管线的支持。OpenGL ES 3.0于2012年公布，加入了大量新特性。              - - - - 维基百科</p>
 </blockquote>
 <p>苹果官方文档中对于OpenGL ES的描述为：<br>OpenGL ES让App拥有了利用底层图形处理器的能力，iOS设备上的GPU可以执行复杂的2D和3D绘图，以及在最终图像上的每个像素的复杂着色计算。OpenGL ES是低级的、以硬件为中心的基于C的API，可以与iOS应用无缝集成。OpenGL ES规范没有定义窗口层，取而代之，当有任何绘图命令写入，主机操作系统必须定义一个方法来创建OpenGL ES<code>渲染上下文</code>，用来接受命令和帧缓冲。</p>
