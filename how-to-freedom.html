@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <!--
+        © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+        Version: 1.3.3
+    -->
+    <script>
+window.lsVersion = "1.3.3",
+window.oldVersion = [
+    
+        
+            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0"
+        
+    
+]
+</script>
+
+    <!-- ### DNS Prefetch ### -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+    <link rel="dns-prefetch" href="//api.github.com">
+    <link rel="dns-prefetch" href="//cors-anywhere.herokuapp.com">
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+
+    <!-- ### Preload ### -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+    <!-- Hanabi -->
+    <!-- Import Hanabi -->
+
+    <link rel="preload" href="/lib/hanabi/hanabi.min.js" as="script">
+
+
+<!-- Import Hanabi Broswser -->
+
+    <link rel="preload" href="/js/hanabi-browser.min.js" as="script">
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<!-- Title -->
+<title>如何用V2Ray科学上网 | 悉达多｜Pain Maker</title>
+
+<!-- favicon -->
+<!-- Favicons -->
+
+    <link rel="icon" type="image/ico" href="/img/favicon.ico">
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+
+
+    <link rel="icon" type="image/png" sizes="192x192" href="/img/large.png">
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-medium.png">
+
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.png">
+
+
+    <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="null">
+
+<!-- Android Chrome Color -->
+
+
+
+<meta name="format-detection" content="telephone=no">
+
+<!-- Description -->
+<meta name="description" content="什么是 V2Ray想要通过 V2Ray 科学上网，先得了解 V2Ray 是什么。根据 V2Ray 指南比较官方的描述：
+
+...">
+
+<!-- Keywords -->
+<meta name="keywords" content=", 科学上网">
+
+<!-- Disable Fucking Bloody Baidu Tranformation -->
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!-- ### Import File ### -->
+    
+        <!-- spectre.css -->
+
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css">
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style>
+
+<!-- style.css -->
+
+    <link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    
+        <link rel="stylesheet" href="/css/highlight/github.min.css">
+    
+
+
+
+    
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <!-- ### RSS ### -->
+    
+    
+        <link rel="alternate" type="application/atom+xml" href="/atom.xml">
+    
+
+
+    <!-- ### WebApp ### -->
+    <meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="悉达多｜Pain Maker">
+<meta name="msapplication-starturl" content="http://superchun.cn">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="悉达多｜Pain Maker">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Manifest Import -->
+
+<!-- Open Search -->
+
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="如何用V2Ray科学上网 | 悉达多｜Pain Maker">
+<meta property="og:site_name" content="悉达多｜Pain Maker">
+
+<meta property="og:locale" content="zh-CN">
+
+<meta property="og:url" content="http://superchun.cn/how-to-freedom.html">
+<meta property="og:image" content="http://superchun.cn/img/large.png">
+
+<meta property="og:description" content="什么是 V2Ray想要通过 V2Ray 科学上网，先得了解 V2Ray 是什么。根据 V2Ray 指南比较官方的描述：
+
+...">
+
+<meta name="twitter:card" content="summary">
+
+
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2019-11-29T06:06:21.000Z">
+    <meta property="article:modified_time" content="2019-11-29T06:06:21.000Z">
+    <meta property="article:author" content="悉达多">
+    <meta property="og:article:tag" content=", 科学上网"> 
+
+
+
+
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="http://superchun.cn/how-to-freedom.html">
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "http://superchun.cn/how-to-freedom.html",
+    "@type": "BlogPosting",
+    "logo": "http://superchun.cn/img/large.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://superchun.cn/how-to-freedom.html"
+    },
+    "headline": "如何用V2Ray科学上网 | 悉达多｜Pain Maker",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://superchun.cn/img/large.png"
+    },
+    
+    "datePublished": "2019-11-29T06:06:21.000Z",
+    "dateModified": "2019-11-29T07:48:20.911Z",
+    "author": {
+        "@type": "Person",
+        "name": "悉达多",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://superchun.cn/img/avatar.png"
+        },
+        "description": "知也者，所以知也，而不必知"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "悉达多｜Pain Maker",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://superchun.cn/img/large.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "http://superchun.cn/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": ", 科学上网",
+    "description": "什么是 V2Ray想要通过 V2Ray 科学上网，先得了解 V2Ray 是什么。根据 V2Ray 指南比较官方的描述：
+
+..."
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+
+
+</head>
+
+    <body>
+        
+
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">悉达多｜Pain Maker</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                知也者，所以知也，而不必知
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a href="/about/" class="navbar-link">关于</a>
+    
+        <a href="/tags/" class="navbar-link">标签</a>
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=悉达多｜Pain Maker&url=http://superchun.cn&pic=http://superchun.cn/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=悉达多｜Pain Maker&url=http://superchun.cn&via=悉达多" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=http://superchun.cn" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://superchun.cn&title=如何用V2Ray科学上网" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=悉达多｜Pain Maker&title=如何用V2Ray科学上网&summary=知也者，所以知也，而不必知&pics=http://superchun.cn/img/large.png&url=http://superchun.cn" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=http://superchun.cn&text=如何用V2Ray科学上网" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAAAAAB0L9x7AAABiElEQVR42u3a0Q6CQAxEUf7/p/XJRHGnMyBCl1xeVARzTJrutnR5NDgWECBATIFYiuP1/ejajx9bfU5+F0RvxDBo3hBfNwtEdc3oPIjeCBWQ6tz6OwUqAx3ElAiVsKqEBOLeiBHGBTCIeyDKhcYkJbWpOWwVBXE6Ik06W18P322DOAURFa6DRUslKBWQP1flIE5DqIJXBtOGza4tokC0RiQLkkpEVaFcYkG0R6gNqdvs7G2agOiJUDepAEwbp1EiA9EasafxkTZWQcyFqJoiCuqCsQpqEPMgqg2qa46kRXHUqQFxOcI1ydQilBQ9tjkLoj0iKWpcMkuuBdEboYKsWrySBos7D6I/IklE1WZ4zxAQiN6IZMAnSV7pnwLRH+EKXRegrkEfJysQlyPSh3BJckoCFUR/xNYH9m6YJ32IA6I3Ilm4XNM83QyBmAeRBGQ6xOFQIOZHpIGYBDOI+RFpYz19D2IeRNIUKwcyzIDX4cPjIP6KcBvdLQPiySAHiN6IKw8QIEC0RjwBZkrJaaXP0/4AAAAASUVORK5CYII=" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    
+    
+
+
+<div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">如何用V2Ray科学上网</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/avatar.png" src="/img/suka-lazyload.gif" alt="悉达多's Avatar">
+        <span>2019-11-29</span>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=如何用V2Ray科学上网&url=http://superchun.cn/how-to-freedom.html&pic=http://superchun.cn/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=如何用V2Ray科学上网&url=http://superchun.cn/how-to-freedom.html&via=悉达多" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=http://superchun.cn/how-to-freedom.html" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://superchun.cn/how-to-freedom.html&title=悉达多｜Pain Maker" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=悉达多｜Pain Maker&title=悉达多｜Pain Maker&summary=知也者，所以知也，而不必知&pics=http://superchun.cn/img/large.png&url=http://superchun.cn/how-to-freedom.html" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=http://superchun.cn/how-to-freedom.html&text=悉达多｜Pain Maker" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAAAAAB0L9x7AAABiElEQVR42u3a0Q6CQAxEUf7/p/XJRHGnMyBCl1xeVARzTJrutnR5NDgWECBATIFYiuP1/ejajx9bfU5+F0RvxDBo3hBfNwtEdc3oPIjeCBWQ6tz6OwUqAx3ElAiVsKqEBOLeiBHGBTCIeyDKhcYkJbWpOWwVBXE6Ik06W18P322DOAURFa6DRUslKBWQP1flIE5DqIJXBtOGza4tokC0RiQLkkpEVaFcYkG0R6gNqdvs7G2agOiJUDepAEwbp1EiA9EasafxkTZWQcyFqJoiCuqCsQpqEPMgqg2qa46kRXHUqQFxOcI1ydQilBQ9tjkLoj0iKWpcMkuuBdEboYKsWrySBos7D6I/IklE1WZ4zxAQiN6IZMAnSV7pnwLRH+EKXRegrkEfJysQlyPSh3BJckoCFUR/xNYH9m6YJ32IA6I3Ilm4XNM83QyBmAeRBGQ6xOFQIOZHpIGYBDOI+RFpYz19D2IeRNIUKwcyzIDX4cPjIP6KcBvdLQPiySAHiN6IKw8QIEC0RjwBZkrJaaXP0/4AAAAASUVORK5CYII=" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                            <div id="post-toc">
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">什么是 V2Ray</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">搭建 V2Ray 需要什么</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">前期准备</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#null"><span class="post-toc-text">为域名申请 SSL 证书</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">1. 下载并给 cerbot 赋予可执行权限</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">2. 利用 cerbot 申请 Let’s Encry 证书</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#null"><span class="post-toc-text">安装 Nginx</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">CentOS 系统添加 Nginx 官方源</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">Ubuntu 及 Debain 系统添加官方源</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">安装 V2Ray</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">配置 V2Ray</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">配置 Nginx 转发 websocket</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">客户端的配置</span></a></li></ol>
+                            </div>
+                        
+                    
+                    <article id="post-content">
+                        <h2><span id="什么是-v2ray">什么是 V2Ray</span></h2><p>想要通过 V2Ray 科学上网，先得了解 V2Ray 是什么。根据 V2Ray 指南比较官方的描述：</p>
+<blockquote>
+<p>V2Ray 是 Project V 下的一个工具。Project V 是一个包含一系列构建特定网络环境工具的项目，而 V2Ray 属于最核心的一个。 官方中介绍Project V 提供了单一的内核和多种界面操作方式。内核（V2Ray）用于实际的网络交互、路由等针对网络数据的处理，而外围的用户界面程序提供了方便直接的操作流程。</p>
+</blockquote>
+<p>简单点说，V2Ray 就是一个跟 Shadowsocks 差不多的代理软件，可以让我们科学上网。只不过相对来说，V2Ray 功能更强大一点，同时配置也更复杂一点。而且鉴于现在走 SS 协议的代理基本都会受到干扰，科学上网起来也没那么流畅，这时候就需要了解及配置一套自己的 V2Ray了。V2Ray 更加稳定，而且传输速度相对 SS 也更快一点。</p>
+<h2><span id="搭建-v2ray-需要什么">搭建 V2Ray 需要什么</span></h2><p>首先，简单的 V2Ray 只需要一台墙外的 VPS 就可以了，同时也需要一点 Linux 系统的知识。VPS 的话香港、日本、新加坡、美国的都行。只不过是延迟的差异而已，地理位置越靠近国内的延迟越低。在搬瓦工、Vlutr、DigitOcean 都可以买到对应的 VPS，其中搬瓦工是最出名的，也是最多人购买的，比较推荐。只不过如果你的 IP 不幸被封，需要 8 美刀更换一个 IP，而且搬瓦工一般都是按年付费的。Vlutr 则是我之前用的比较多的一家平台，可以免费更换 IP，被封了随时可以新建实例，而且是按时按月收费的，如果大环境不太爽畅，可以用 Vlutr 过度一下。它的缺点就是比较不稳定，配置相对也没有那么好。DigitOcean 我没有用过，所以就不做评价了。</p>
+<p>但是，如果你很幸运的拥有一个 Google 账号，则可以通过 GoogleCloud 新用户的规则白嫖一年 VPS（<del>我现在就白嫖着～</del>）。GoogleCloud 会赠送新用户 300 美刀，可以使用其下面的云产品，300 美刀在一年之内需用完，过期作废。但国内用户开通 GoogleCloud 会比较麻烦，首先你得已经番羽墙了，然后要拥有一个境外的双币卡，才能完成新用户的认证。不过，有一个解决办法就是通过 P 卡去开通（P 卡：<a href="http://payoneer.com" target="_blank" rel="noopener">Payoneer</a>，一个虚拟信用卡网站），在知乎上有一篇文章，<a href="https://zhuanlan.zhihu.com/p/58747135" target="_blank" rel="noopener">新用户申请谷歌云300美金失败，怎么办？</a>，我就是通过这个方法申请开通成功的。然后就是注册实例之类的，就不再赘述了，网上都有许多相关的文章，随便找篇看看就知道怎么回事了。</p>
+<p>当然，上面只是最简单的需要的东西。如果想更安全更稳定更快速的科学上网，就还需要一个域名，域名的作用是解析 VPS 主机，并通过它进行再次代理转发的。域名是个很便宜的东西，随便申请一个就好了，越便宜越好的那种。</p>
+<blockquote>
+<p><strong>个人建议：VPS 最好选择 Ubuntu 或者 Debain 系统的</strong></p>
+</blockquote>
+<h2><span id="前期准备">前期准备</span></h2><p>到了这一步，就默认上面所说的东西你都已经准备好了。现在开始前期的准备工作：</p>
+<ol>
+<li>将申请下来的 VPS 解析到申请好的域名</li>
+<li>为域名申请 SSL 证书</li>
+<li>安装 Nginx</li>
+</ol>
+<p>将 VPS 解析到申请好的域名就不做过多描述了，通过 DNSPod 或者申请域名的平台应该都可以进行解析。首先，登入到申请好的 VPS 上：</p>
+<h3><span id="为域名申请-ssl-证书">为域名申请 SSL 证书</span></h3><p>我们可以通过 <a href="https://certbot.eff.org" target="_blank" rel="noopener">cerbot</a> 给域名生成对应的 SSL 证书：</p>
+<h4><span id="1-下载并给-cerbot-赋予可执行权限">1. 下载并给 cerbot 赋予可执行权限</span></h4><p>首先，选择保存 cerbot 的目录，我们可以选择 <code>/usr/local/src</code>，cd 到想保存的目录。然后用 wget 命令下载 cerbot：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.eff.org/cerbot-auto</span><br></pre></td></tr></table></figure>
+<p>然后再给 cerbot 赋予可执行权限：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x cerbot-auto</span><br></pre></td></tr></table></figure>
+<h4><span id="2-利用-cerbot-申请-lets-encry-证书">2. 利用 cerbot 申请 Let’s Encry 证书</span></h4><p>申请 Let’s Encry 证书需要以下几个条件：</p>
+<ol>
+<li>系统的 root 权限</li>
+<li>443 端口未被占用，防火墙放行 443 端口，且外网能够直接访问本机的 443 端口</li>
+<li>域名解析到了当前主机</li>
+</ol>
+<p>如果申请失败了，确认一下以上几点是否都满足。现在可以申请 SSL 证书了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./certbot-auto certonly</span><br></pre></td></tr></table></figure>
+<p>第一次安装需要输入一些必要的信息，主要如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">How would  you like to authenticate with the ACME CA? </span><br><span class="line">--------------------------------------------------</span><br><span class="line">1: Spin up a temporary webserver (standalone)</span><br><span class="line">2: Place files in webroot directory (webroot)</span><br><span class="line">一般选择 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Enter email address (used for urgent renewal and security notices) (Enter 'c' to cancel): # 输入想使用的邮箱，用于接收证书到期等信息</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Please enter in your domain name(s) (comma and/or space separated) (Enter 'c' to cancel): #输入想申请的域名</span><br></pre></td></tr></table></figure>
+<p>申请成功之后，会有一个证书保存的路径显示，可以记录下来，后面需要用到。如果忘记了也没关系，证书一般都保存在 <code>/etc/letsencrypt/live/xxx</code>下面，在这里你可以找到申请好的证书，有你的域名的那两个文件就是对应的证书。</p>
+<p>在证书快到期时，也可以通过下面的命令更新证书信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./certbot-auto renrew</span><br></pre></td></tr></table></figure>
+<h3><span id="安装-nginx">安装 Nginx</span></h3><h4><span id="centos-系统添加-nginx-官方源">CentOS 系统添加 Nginx 官方源</span></h4><p>CentOS 系统官方源仓库文件在 <code>/etc/yum.repos.d</code>，只需要在下面新建一个文件保存 Nginx 的源就可以了，例如新建一个叫 <code>nginx.repo</code> 的文件，然后复制以下内容进去：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[nginx]</span><br><span class="line">		</span><br><span class="line">name=nginx repo</span><br><span class="line"><span class="meta">#</span> 下面的 OS 用实际发行版替换，如 centos 或 rhel，OSRELEASE 用具体发行版本号代替，如 6 或者 7。也就是说如果是 CentOS6，则需要将 OS/OSRELEASE 替换成 centos/6</span><br><span class="line">baseurl=http://nginx.org/packages/OS/OSRELEASE/$basearch/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br></pre></td></tr></table></figure>
+<p>保存文件后，就可以直接安装 Nginx 了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nginx</span><br></pre></td></tr></table></figure>
+<h4><span id="ubuntu-及-debain-系统添加官方源">Ubuntu 及 Debain 系统添加官方源</span></h4><p>用编辑器打开 <code>/etc/apt/sources.list</code>，Debain 添加以下内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://nginx.org/packages/debian/ codename nginx</span><br><span class="line">deb-src http://nginx.org/packages/debian/ codename nginx</span><br></pre></td></tr></table></figure>
+<p>Ubuntu 添加以下内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://nginx.org/packages/ubuntu codename nginx</span><br><span class="line">deb-src http://nginx.org/packages/ubuntu codename nginx</span><br></pre></td></tr></table></figure>
+<p>用命令 <code>cat/etc/os-release</code> 查询到实际发行版本号，替换上面内容中的 <code>codename</code>。</p>
+<p>添加完上面内容后，还需要添加 Nginx 官方的 Key，不然会提示 Key 错误：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://nginx.org/keys/nginx_signing.key -O /tmp/nginx_signing.key</span><br><span class="line">apt-key add /tmp/nginx_signing.key</span><br></pre></td></tr></table></figure>
+<p>最后先更新仓库源信息再安装 Nginx：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install nginx</span><br></pre></td></tr></table></figure>
+<p>到了这里，前期的准备工作基本完成了，下面则需要进入配置环节了。</p>
+<h2><span id="安装-v2ray">安装 V2Ray</span></h2><p>用官方提供的命令一键安装 V2Ray：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -L -s https://install.direct/go.sh)</span><br></pre></td></tr></table></figure>
+<h2><span id="配置-v2ray">配置 V2Ray</span></h2><p>V2Ray 的配置文件放在 <code>/etc/V2Ray/config.json</code>，修改之前先备份一下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /etc/V2Ray/config.json /etc/V2Ray/config.json.bak</span><br></pre></td></tr></table></figure>
+<p>在原先的默认配置中，修改或者添加下面的配置：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"inbound"</span>:[&#123;</span><br><span class="line">   	"port": 1000, # 设置 websocket 的端口号，用于和 Nginx 通信</span><br><span class="line">    "protocol": "vmess", # 选择 vmess 协议</span><br><span class="line">    "streamSettings":&#123;</span><br><span class="line">    	"network":"ws",</span><br><span class="line">    	"wsSettings":&#123;</span><br><span class="line">    		"connectionReuse": false,</span><br><span class="line">    		"path": "/ws", # Nginx 监听路径，后面 Nginx 设置及 V2Ray 客户端配置需要</span><br><span class="line">    		"headers": &#123;</span><br><span class="line">    			"Host": "申请的域名"</span><br><span class="line">  			&#125;</span><br><span class="line">  		&#125;</span><br><span class="line">  	&#125;</span><br><span class="line">  &#125;],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改配置之后，可以用 V2Ray 自带的测试工具检测一下配置是否正确：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/V2Ray/V2Ray -test -config /etc/V2Ray/config.json</span><br></pre></td></tr></table></figure>
+<h2><span id="配置-nginx-转发-websocket">配置 Nginx 转发 websocket</span></h2><p>在 <code>/etc/nginx/conf.d</code> 新建一个虚拟主机配置文件，内容如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">			listen 443 ssl;</span><br><span class="line">			listen [::]:443 ssl;</span><br><span class="line">			</span><br><span class="line">			ssl_certificate       # 第一步生成的 SSL 证书目录</span><br><span class="line">			ssl_certificate_key  # 第一步生成的 SSL key 目录</span><br><span class="line">			ssl_protocols   TLSv1 TLSv1.1 TLSv1.2</span><br><span class="line">			ssl_ciphers    HIGH:!aNull:!MD5;</span><br><span class="line"></span><br><span class="line">			# 域名</span><br><span class="line">			server_name   xxxxx;</span><br><span class="line">			</span><br><span class="line">			location /ws &#123;</span><br><span class="line">				proxy_redirect  off;</span><br><span class="line">				proxy_pass  http://127.0.0.1:22125;  # V2Ray 配置的 websocket 端口</span><br><span class="line">				proxy_http_version 1.1;</span><br><span class="line">				proxy_set_header  Upgrade $http_upgrade;</span><br><span class="line">				proxy_set_header  Connection “upgrade”;</span><br><span class="line">				proxy_set_header  Host $http_host;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			location / &#123;</span><br><span class="line">				root  /var/www/html;</span><br><span class="line">				index  index.html index.htm;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;	</span><br><span class="line">	</span><br><span class="line">		server &#123;</span><br><span class="line">			listen 80;</span><br><span class="line">			listen [::]:80;</span><br><span class="line">			server_name  xxxx; # 域名</span><br><span class="line">			return 301 https://域名$request_uri;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<p>保存之后用 Nginx 自带的配置文件检测功能检查下是否有问题：<code>nginx -t</code></p>
+<p>没问题的话重启一下 V2Ray 和 Nginx 就可以了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart V2Ray</span><br><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
+<h2><span id="客户端的配置">客户端的配置</span></h2><p>其实 V2Ray 并没有所谓的客户端，它只是个配置而已，客户端的功能主要是保持和服务器的配置一样。Windows 上推荐的客户端是 V2RayW，Mac 上推荐的是 V2RayX，iOS 客户端推荐 Kitsunebi（需要在美区下载），Android 客户端推荐 V2RayNG。这里主要介绍一下 Mac 上 V2RayX 的配置，其他配置基本雷同。</p>
+<p>V2RayX 的配置界面长这样：</p>
+<p><img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-074008.png" alt="image-20191129152702069" style="zoom:50%;"></p>
+<p>下面对各个功能及配置进行详细说明：</p>
+<p><img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-074002.png" alt="image-20191129153014081" style="zoom:50%;"></p>
+<p><img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-073955.png" alt="image-20191129153149501" style="zoom:50%;"></p>
+<p><img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-073949.png" alt="image-20191129153413732" style="zoom:50%;"></p>
+<p>到这里基本配置就完成了，接下来配置 websocket 和 TLS，点击配置中的 <code>transport settings...</code>，进入到：</p>
+<p><img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-074227.png" alt="image-20191129154226871" style="zoom:50%;"></p>
+<p><img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-074344.png" alt="image-20191129154343698" style="zoom:50%;"></p>
+<p>到这里，客户端的配置也就已经完成了，可以愉快的科学上网了：)</p>
+<p>如果，你并不想做那么复杂的配置，只想简单的科学上网，则只需要使用 V2Ray 默认生成的配置文件，将客户端的 id 及传输类型，配置成跟服务器中的一样就可以了。初次配置 V2Ray 会有点懵圈，因为它并不像 SS 一样，有严格的客户端功能配置，它只是一系列的配置文件而已，inbound 和 outbound 只是出站跟入站的配置，客户端也就是我们上网是 inbound，服务器则是 outbound。理清这些概念，就可以解决 V2Ray 中大部分的问题。</p>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;悉达多</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="http://superchun.cn/how-to-freedom.html">http://superchun.cn/how-to-freedom.html</a>
+        </p>
+    </blockquote>
+
+
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-11-29T06:06:21.000Z" itemprop="datePublished">2019-11-29</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+
+
+<span class="post-tags-list mt-2">
+
+
+<a class="post-tags-list-item" href="/tags/科学上网/" rel="tag">#&nbsp;科学上网</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                
+<div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/git使用SSH配置一直需要输入密码的坑.html" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">git使用SSH配置一直需要输入密码的坑</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                        <div class="card-footer post-comment">
+                            <!-- Gitalk Container -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+            clientID: '2d69cd1627ab2df1a73d',
+            clientSecret: '49ab070ec39f66f13c8d3cfad3d8071dd9be6840',
+            repo: 'blogcomment',
+            owner: 'cconecode',
+            admin: ['cconecode'],
+            // facebook-like distraction free mode
+            distractionFreeMode: false,
+            id: window.location.pathname
+        })
+   gitalk.render('gitalk-container')
+</script>
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span data-year></span>
+        <a class="footer-copyright-a" href="http://superchun.cn">悉达多｜Pain Maker</a>
+    </p>
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+            
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+        
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+        
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+
+
+    /* Copyright */
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.querySelector('span[data-year]')
+    
+        copyrightContent.textContent = copyrightNow
+    
+
+
+
+/* Cnosole Log */
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+</script>
+
+<!-- vanilla-lazyload -->
+
+    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+
+
+
+    <!-- Busuanzi -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+    <!-- Hanabi -->
+    <!-- Import Hanabi -->
+
+    <script src="/lib/hanabi/hanabi.min.js"></script>
+
+
+<!-- Import Hanabi Broswser -->
+
+    <script src="/js/hanabi-browser.min.js"></script>
+
+
+
+
+
+
+<!-- gallery.js -->
+
+
+<!-- Comment -->
+
+    
+        <!-- GitTalk -->
+    
+
+
+<!-- ### Custom Footer ### -->
+
+
+    </body>
+
+</html>
