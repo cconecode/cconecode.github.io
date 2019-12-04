@@ -1,26 +1,18 @@
 <!DOCTYPE html>
 
 <html lang="zh-CN">
-    <head><meta name="generator" content="Hexo 3.9.0">
+    <head>
     <meta charset="utf-8">
     <!--
-        © SukkaW
+        hexo-theme-suka © SukkaW
         GitHub: https://github.com/SukkaW/hexo-theme-suka
-        Version: 1.3.3
     -->
-    <script>
-window.lsVersion = "1.3.3",
-window.oldVersion = [
-    
-        
-            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0"
-        
-    
-]
-</script>
 
-    <!-- ### DNS Prefetch ### -->
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
     <meta http-equiv="x-dns-prefetch-control" content="on">
+
 <!-- busuanzi -->
 
     <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
@@ -45,8 +37,7 @@ window.oldVersion = [
 
 
 
-
-    <!-- ### Preload ### -->
+    <!-- ## Preload ## -->
     
     <!-- Busuanzi -->
     
@@ -71,57 +62,18 @@ window.oldVersion = [
 
 
     <!-- ### Meta & Title & Info ### -->
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
-<meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
 
-<!-- Title -->
-<title>Mac快捷键 | 悉达多｜Pain Maker</title>
+    <!-- Title -->
+    <title>Mac快捷键 | 悉达多｜Pain Maker</title>
 
-<!-- favicon -->
-<!-- Favicons -->
-
-    <link rel="icon" type="image/ico" href="/img/favicon.ico">
-
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-
-
-    <link rel="icon" type="image/png" sizes="192x192" href="/img/large.png">
-
-
-    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-medium.png">
-
-
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.png">
-
-
-    <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="null">
-
-<!-- Android Chrome Color -->
-
-
-
-<meta name="format-detection" content="telephone=no">
-
-<!-- Description -->
-<meta name="description" content="Mac 内置了很多对于文本操作的快捷键组合，在 Apple 的官方文档里也给出了所有 Mac 操作的快捷键。熟悉这些快捷键可以让我们日常的使用和工作更有效率，双手不需要离开键盘去摸鼠标了。因为本身是个程序员，所以罗列了一些比较重要的快捷键组合，大部分都是关于文本操作的。">
-
-<!-- Keywords -->
-<meta name="keywords" content=", 杂谈低语">
-
-<!-- Disable Fucking Bloody Baidu Tranformation -->
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/img/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/img/large.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/img/favicon-medium.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/img/favicon.png"><link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="">
 
     <!-- ### Import File ### -->
-    
-        <!-- spectre.css -->
-
-    <link rel="stylesheet" href="/lib/spectre/spectre.min.css">
-
-
-<style>
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
     body {
         background-color: #f8f9fa;
     }
@@ -142,6 +94,8 @@ window.oldVersion = [
         color: #005eb9;
         opacity: 1;
     }
+
+    
 
     .post-entry .card-body a {
         color: #0070ff;
@@ -184,12 +138,7 @@ window.oldVersion = [
         background: #f8f9fa;
         opacity: .85;
     }
-</style>
-
-<!-- style.css -->
-
-    <link rel="stylesheet" href="/css/style.min.css">
-
+</style><link rel="stylesheet" href="/css/style.min.css">
 
 
 
@@ -200,62 +149,32 @@ window.oldVersion = [
 
     <!-- Prettify Theme -->
     
-    
-        <link rel="stylesheet" href="/css/highlight/github.min.css">
-    
+    <link rel="preload" href="/css/highlight/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/github.min.css"></noscript>
 
 
 
-    
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
 
     <!-- ### Site Verification ### -->
     
 
 
-    <!-- ### RSS ### -->
-    
-    
-        <link rel="alternate" type="application/atom+xml" href="/atom.xml">
-    
-
-
-    <!-- ### WebApp ### -->
-    <meta name="mobile-web-app-capable" content="yes">
-<meta name="application-name" content="悉达多｜Pain Maker">
-<meta name="msapplication-starturl" content="http://superchun.cn">
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="悉达多｜Pain Maker">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-<!-- Manifest Import -->
-
-<!-- Open Search -->
-
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="悉达多｜Pain Maker"><meta name="msapplication-starturl" content="http://superchun.cn"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="悉达多｜Pain Maker"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- ### The Open Graph & Twitter Card Protocol ### -->
-    <meta property="og:title" content="Mac快捷键 | 悉达多｜Pain Maker">
-<meta property="og:site_name" content="悉达多｜Pain Maker">
+    <meta property="og:title" content="Mac快捷键 | 悉达多｜Pain Maker"><meta property="og:site_name" content="悉达多｜Pain Maker"><meta property="og:type" content="article"><meta property="og:url" content="http:&#x2F;&#x2F;superchun.cn&#x2F;Mac%E5%BF%AB%E6%8D%B7%E9%94%AE.html"><meta property="og:locale" content="zh-CN"><meta name="description" content="Mac 内置了很多对于文本操作的快捷键组合，在 Apple 的官方文档里也给出了所有 Mac 操作的快捷键。熟悉这些快捷键可以让我们日常的使用和工作更有效率，双手不需要离开键盘去摸鼠标了。因为本身是个程序员，所以罗列了一些比较重要的快捷键组合，大部分都是关于文本操作的。 - 悉达多 - 悉达多｜Pain Maker"><meta name="keywords" content="杂谈低语"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6ly1g8qmrx1xtgj30nm0mq47h.jpg"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6ly1g8qmwfl0kaj30nm0mq0xz.jpg"><meta property="article:published_time" content="2019-11-08T06:26:02.000Z"><meta property="article:modified_time" content="2019-11-08T07:06:56.320Z"><meta property="og:updated_time" content="2019-11-08T07:06:56.320Z"><meta property="article:author" content="悉达多"><meta property="article:tag" content="杂谈低语"><meta name="twitter:card" content="summary">
 
-<meta property="og:locale" content="zh-CN">
+    
 
-<meta property="og:url" content="http://superchun.cn/Mac快捷键.html">
-<meta property="og:image" content="http://superchun.cn/img/large.png">
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="http://superchun.cn/Mac%E5%BF%AB%E6%8D%B7%E9%94%AE.html">
 
-<meta property="og:description" content="Mac 内置了很多对于文本操作的快捷键组合，在 Apple 的官方文档里也给出了所有 Mac 操作的快捷键。熟悉这些快捷键可以让我们日常的使用和工作更有效率，双手不需要离开键盘去摸鼠标了。因为本身是个程序员，所以罗列了一些比较重要的快捷键组合，大部分都是关于文本操作的。">
-
-<meta name="twitter:card" content="summary">
-
-
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2019-11-08T06:26:02.000Z">
-    <meta property="article:modified_time" content="2019-11-08T06:26:02.000Z">
-    <meta property="article:author" content="悉达多">
-    <meta property="og:article:tag" content=", 杂谈低语"> 
-
-
-
-
+    <meta name="generator" content="Hexo 4.0.0">
 
     <!-- ### Analytics ### -->
     
@@ -266,10 +185,6 @@ window.oldVersion = [
 
 
 
-
-    <!-- ### Canonical link ### -->
-    <link rel="canonical" href="http://superchun.cn/Mac快捷键.html">
-
     <!-- ### Structured Data ### -->
     
 
@@ -278,12 +193,12 @@ window.oldVersion = [
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
-    "url": "http://superchun.cn/Mac快捷键.html",
+    "url": "http://superchun.cn/Mac%E5%BF%AB%E6%8D%B7%E9%94%AE.html",
     "@type": "BlogPosting",
     "logo": "http://superchun.cn/img/large.png",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://superchun.cn/Mac快捷键.html"
+        "@id": "http://superchun.cn/Mac%E5%BF%AB%E6%8D%B7%E9%94%AE.html"
     },
     "headline": "Mac快捷键 | 悉达多｜Pain Maker",
     
@@ -318,8 +233,8 @@ window.oldVersion = [
         "query-input": "required name=search_term_string"
     },
     
-    "keywords": ", 杂谈低语",
-    "description": "Mac 内置了很多对于文本操作的快捷键组合，在 Apple 的官方文档里也给出了所有 Mac 操作的快捷键。熟悉这些快捷键可以让我们日常的使用和工作更有效率，双手不需要离开键盘去摸鼠标了。因为本身是个程序员，所以罗列了一些比较重要的快捷键组合，大部分都是关于文本操作的。"
+    "keywords": "杂谈低语",
+    "description": "Mac 内置了很多对于文本操作的快捷键组合，在 Apple 的官方文档里也给出了所有 Mac 操作的快捷键。熟悉这些快捷键可以让我们日常的使用和工作更有效率，双手不需要离开键盘去摸鼠标了。因为本身是个程序员，所以罗列了一些比较重要的快捷键组合，大部分都是关于文本操作的。 - 悉达多 - 悉达多｜Pain Maker"
 }
 </script>
 
@@ -327,13 +242,9 @@ window.oldVersion = [
 
     <!-- ### Custom Head ### -->
     
-
-
 </head>
 
     <body>
-        
-
             
 
             <!-- ### Main content ### -->
@@ -417,7 +328,7 @@ window.oldVersion = [
         <!-- QRCode -->
         
         <li class="menu-item">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAAAAAB0L9x7AAABjklEQVR42u3b0YrDMAxE0fz/T+++h2hmRLvZMdy8tIXUOQUjS7J7/RRcFwgQII5AXOJ6/OJwz/RZjQuiFzE97P56f68gblwQ/Yj7oPfB5WAP76NxQRyLmCboUxBb/TgQRyKmAJUsYCDORqhgNH1WC9pXV1EQryPUpPvk9WvZNohXEXHxOiQ7U1D6k6ocxCsIN8GeJnBaJLuEGUQvwhUyKtFVwcmOCaIWoQZTgcoVQ25ig+hFuEL46R41Qacmmg1WIGoQLlmZsMklAx2ISsSmwZEkP2oDZlzAQNQjElgS7GxzDUQtQmGSwsclOXYBA1GJSJMb952kcAZxJiIpgpPNWZk8gahEJIc4NsCpyRpl2yAqEPZGE3RUQz0uiEFUIVTT0zXTXOHsNmFAdCKSDTjVDEsSH9tMBVGFSA8Kb4pj1VQFcQbCHsBZPlRtvtiICaIGsdl8SwKaWvRAnI3YbOJvCiEQ5yI2h3+jTXoQxyDcAuYOAycHhaOCGEQFYrPZnvyxwDXgQXQj/vMCAQJENeIXGerJaZ/iVF0AAAAASUVORK5CYII=" alr="QRCode">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB40lEQVR42u3ay46EMAxEUf7/p2dWI6FWUlWmBylxLpte0JCDlIft5PpZ8LpAgQIFaoC6xPV3//57f+bz+dH9tB1QvVDDTldsdASf3Zs+A6oVynXwakceDQjVDqhzUOrlrmH1f1DnomYvmC2yo/eCOhOlFkq3UKvJ9JUoAdTyqEri8M3va9kMqKVQUeFBTIxJ8PdK1QXUsqjRS13HnyUHs49RH2RndFDbopJChgroqgHeo8gT1BaoNIBLi7QJorQgg9oOpRbQpMjhJtKkaAKqF0oFdpWJ70kAGE2eoLZDVRZgV0CrFNSGQFDtUK6jPtkEcoMFVF+UW4jVwlot3k7bBdUO5Yr17kPUprbq4KD6oVSRQ0HSDaL4EAaoNqgZLkkiqpvjsvgGqgUq2dhRk6kbAKUJGlQLVHLoplKUTQbQ9BlQbVCVJMINhnTjsVR1AbU9Kkkc3cSbdPB4tx3U1qjkwIwM/h8cWgXVD+WCOJekPlnI7YYRqG1RSadONqzTiTU61AVqa1T1YGC1wJEUy0D1Q1UOSyRJQ1oYiQ91gdoSlRwCVMFaMnDsRhSoY1Cu8J8Ed8lCD+oMVBL4uaQz3fAE1QulAv60gJYkEKDOQFUSh2SCTQ90/Vs2A2op1EoXKFCgQN2uX7vgkSDrjNJAAAAAAElFTkSuQmCC" alr="QRCode">
         </li>
         
 
@@ -430,11 +341,7 @@ window.oldVersion = [
 
             
     <!-- ## Post ## -->
-    
-    
-
-
-<div class="post-container">
+    <div class="post-container">
     <div id="post-card" class="card">
         
         <div class="card-item-container">
@@ -471,14 +378,14 @@ window.oldVersion = [
     <!-- Share Weibo -->
     
     <li class="menu-item">
-        <a href="http://service.weibo.com/share/share.php?appkey=&title=Mac快捷键&url=http://superchun.cn/Mac快捷键.html&pic=http://superchun.cn/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=Mac快捷键&url=http://superchun.cn/Mac%E5%BF%AB%E6%8D%B7%E9%94%AE.html&pic=http://superchun.cn/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
     </li>
     
 
     <!-- Share Twitter -->
     
     <li class="menu-item">
-        <a href="https://twitter.com/intent/tweet?text=Mac快捷键&url=http://superchun.cn/Mac快捷键.html&via=悉达多" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        <a href="https://twitter.com/intent/tweet?text=Mac快捷键&url=http://superchun.cn/Mac%E5%BF%AB%E6%8D%B7%E9%94%AE.html&via=悉达多" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
     </li>
     
 
@@ -488,35 +395,35 @@ window.oldVersion = [
     <!-- Share Google+ -->
     
     <li class="menu-item">
-        <a href="https://plus.google.com/share?url=http://superchun.cn/Mac快捷键.html" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        <a href="https://plus.google.com/share?url=http://superchun.cn/Mac%E5%BF%AB%E6%8D%B7%E9%94%AE.html" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
     </li>
     
 
     <!-- Share LinkedIn -->
     
     <li class="menu-item">
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://superchun.cn/Mac快捷键.html&title=悉达多｜Pain Maker" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://superchun.cn/Mac%E5%BF%AB%E6%8D%B7%E9%94%AE.html&title=悉达多｜Pain Maker" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
     </li>
     
 
     <!-- Share QQ -->
     
     <li class="menu-item">
-        <a href="http://connect.qq.com/widget/shareqq/index.html?site=悉达多｜Pain Maker&title=悉达多｜Pain Maker&summary=知也者，所以知也，而不必知&pics=http://superchun.cn/img/large.png&url=http://superchun.cn/Mac快捷键.html" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=悉达多｜Pain Maker&title=悉达多｜Pain Maker&summary=知也者，所以知也，而不必知&pics=http://superchun.cn/img/large.png&url=http://superchun.cn/Mac%E5%BF%AB%E6%8D%B7%E9%94%AE.html" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
     </li>
     
 
     <!-- Share Telegram -->
     
     <li class="menu-item">
-        <a href="https://t.me/share/url?url=http://superchun.cn/Mac快捷键.html&text=悉达多｜Pain Maker" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        <a href="https://t.me/share/url?url=http://superchun.cn/Mac%E5%BF%AB%E6%8D%B7%E9%94%AE.html&text=悉达多｜Pain Maker" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
     </li>
     
 
     <!-- QRCode -->
     
     <li class="menu-item">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAAAAAB0L9x7AAABjklEQVR42u3b0YrDMAxE0fz/T+++h2hmRLvZMdy8tIXUOQUjS7J7/RRcFwgQII5AXOJ6/OJwz/RZjQuiFzE97P56f68gblwQ/Yj7oPfB5WAP76NxQRyLmCboUxBb/TgQRyKmAJUsYCDORqhgNH1WC9pXV1EQryPUpPvk9WvZNohXEXHxOiQ7U1D6k6ocxCsIN8GeJnBaJLuEGUQvwhUyKtFVwcmOCaIWoQZTgcoVQ25ig+hFuEL46R41Qacmmg1WIGoQLlmZsMklAx2ISsSmwZEkP2oDZlzAQNQjElgS7GxzDUQtQmGSwsclOXYBA1GJSJMb952kcAZxJiIpgpPNWZk8gahEJIc4NsCpyRpl2yAqEPZGE3RUQz0uiEFUIVTT0zXTXOHsNmFAdCKSDTjVDEsSH9tMBVGFSA8Kb4pj1VQFcQbCHsBZPlRtvtiICaIGsdl8SwKaWvRAnI3YbOJvCiEQ5yI2h3+jTXoQxyDcAuYOAycHhaOCGEQFYrPZnvyxwDXgQXQj/vMCAQJENeIXGerJaZ/iVF0AAAAASUVORK5CYII=" alt="QRCode">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB40lEQVR42u3ay46EMAxEUf7/p2dWI6FWUlWmBylxLpte0JCDlIft5PpZ8LpAgQIFaoC6xPV3//57f+bz+dH9tB1QvVDDTldsdASf3Zs+A6oVynXwakceDQjVDqhzUOrlrmH1f1DnomYvmC2yo/eCOhOlFkq3UKvJ9JUoAdTyqEri8M3va9kMqKVQUeFBTIxJ8PdK1QXUsqjRS13HnyUHs49RH2RndFDbopJChgroqgHeo8gT1BaoNIBLi7QJorQgg9oOpRbQpMjhJtKkaAKqF0oFdpWJ70kAGE2eoLZDVRZgV0CrFNSGQFDtUK6jPtkEcoMFVF+UW4jVwlot3k7bBdUO5Yr17kPUprbq4KD6oVSRQ0HSDaL4EAaoNqgZLkkiqpvjsvgGqgUq2dhRk6kbAKUJGlQLVHLoplKUTQbQ9BlQbVCVJMINhnTjsVR1AbU9Kkkc3cSbdPB4tx3U1qjkwIwM/h8cWgXVD+WCOJekPlnI7YYRqG1RSadONqzTiTU61AVqa1T1YGC1wJEUy0D1Q1UOSyRJQ1oYiQ91gdoSlRwCVMFaMnDsRhSoY1Cu8J8Ed8lCD+oMVBL4uaQz3fAE1QulAv60gJYkEKDOQFUSh2SCTQ90/Vs2A2op1EoXKFCgQN2uX7vgkSDrjNJAAAAAAElFTkSuQmCC" alt="QRCode">
     </li>
     
 
@@ -529,14 +436,14 @@ window.oldVersion = [
                 <div class="card-body">
                     
                         
-                            <div id="post-toc">
-                                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">光标移动</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">选取</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">删除</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">Snap</span></a></li></ol>
-                            </div>
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">光标移动</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">选取</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">删除</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">Snap</span></a></li></ol></div>
                         
                     
                     <article id="post-content">
                         <p>Mac 内置了很多对于文本操作的快捷键组合，在 Apple 的<a href="https://support.apple.com/zh-cn/HT201236" target="_blank" rel="noopener">官方文档</a>里也给出了所有 Mac 操作的快捷键。熟悉这些快捷键可以让我们日常的使用和工作更有效率，双手不需要离开键盘去摸鼠标了。因为本身是个程序员，所以罗列了一些比较重要的快捷键组合，大部分都是关于文本操作的。</p>
 <a id="more"></a>
+
 <p>这些快捷键在 Mac 里面是通用的，也就意味着在几乎所有的有文本输入的地方，都可以用得上，一次学习，使用Anywhere :)。要熟悉掌握这些组合，还是要下一定功夫勤加练习的，不然右手又会不自觉地去触摸鼠标了。不过还是有一定技巧的，主要是掌握 <code>ctl</code>、<code>shift</code>、<code>fn</code> 的组合而已。</p>
 <p><strong><em>（强烈建议大家将键盘上的大小写切换键改为 <code>ctl</code> 键，因为 <code>ctl</code> 的作用远比大小写切换重要多了，大小写切换完全可以使用 <code>shift</code> + 字母的方式进行输入，但大小写键在键盘上却占据了很重要的位置，<code>ctl</code>缩在角落瑟瑟发抖）。修改方法：系统设置 -&gt; 键盘 -&gt; 修饰键（在右下角）-&gt; 大写锁定键改为 Control</em></strong></p>
 <h2><span id="光标移动">光标移动</span></h2><p><code>cmd</code> + <code>←</code>      移动至行首</p>
@@ -562,10 +469,12 @@ window.oldVersion = [
 <p><code>fn</code> + <code>cmd</code> + <code>delete</code>     从当前光标删除到行尾</p>
 <h2><span id="snap">Snap</span></h2><p>最后，也推荐给大家一个软件 <strong><code>Snap</code></strong>，在 AppStore 可以直接下载。这个软件的作用是绑定应用快捷键的，可以把对应的应用绑定成自己喜欢的快捷键，通过快捷键快速启动和切换应用，时间复杂度是 <em>O(1)</em>，远比用 <code>cmd</code> + <code>tab</code>（时间复杂度 <em>O(n)</em>）或者用鼠标点击（时间复杂度 <em>O(n^2)</em>）快多了</p>
 <p>软件主界面长这样：</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8qmrx1xtgj30nm0mq47h.jpg" alt="image-20191108144757647" style="zoom:50%;"></p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8qmrx1xtgj30nm0mq47h.jpg" alt="image-20191108144757647" style="zoom:50%;">
+
 <p>这个主要是设置默认快捷键的，比如这里设置了 <code>ctl</code> + <code>cmd</code>，那么你就可以通过 <code>ctl</code> + <code>cmd</code> + <code>1</code>  的快捷键来启动或者切换 Dock 上的第一个应用，<code>ctl</code> + <code>cmd</code> + <code>2</code> 启动或者切换第二个，以此类推。</p>
 <p>上面这种方法不是很建议，因为需要记住应用在 Dock 上的位置或者自己手动排列 Dock 位置。还有另外一种方法就是 <code>Manual</code>，就是上面说的应用绑定快捷键，界面长这样：</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8qmwfl0kaj30nm0mq0xz.jpg" alt="image-20191108145217899" style="zoom:50%;"></p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8qmwfl0kaj30nm0mq0xz.jpg" alt="image-20191108145217899" style="zoom:50%;">
+
 <p>点击左下角就可以选择一个应用，然后输入对应的快捷键，后面就可以愉快的玩耍了 ^-^</p>
 
                     </article>
@@ -579,7 +488,7 @@ window.oldVersion = [
                 本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
             </strong>
             <br>
-            <strong>本文链接&nbsp;:&nbsp;</strong><a href="http://superchun.cn/Mac快捷键.html">http://superchun.cn/Mac快捷键.html</a>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="http://superchun.cn/Mac%E5%BF%AB%E6%8D%B7%E9%94%AE.html">http://superchun.cn/Mac%E5%BF%AB%E6%8D%B7%E9%94%AE.html</a>
         </p>
     </blockquote>
 
@@ -595,8 +504,7 @@ window.oldVersion = [
 
 <span class="post-tags-list mt-2">
 
-
-<a class="post-tags-list-item" href="/tags/杂谈低语/" rel="tag">#&nbsp;杂谈低语</a>
+<a class="post-tags-list-item" href="/tags/%E6%9D%82%E8%B0%88%E4%BD%8E%E8%AF%AD/" rel="tag">#&nbsp;杂谈低语</a>
 
 </span>
 
@@ -604,13 +512,12 @@ window.oldVersion = [
 </p>
 
                 </div>
-                
-<div class="post-nav px-2 bg-gray">
+                <div class="post-nav px-2 bg-gray">
 <ul class="pagination">
     <!-- Prev Nav -->
     
         <li class="page-item page-prev">
-            <a href="/git使用SSH配置一直需要输入密码的坑.html" rel="prev">
+            <a href="/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91.html" rel="prev">
                 <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">git使用SSH配置一直需要输入密码的坑</div>
             </a>
@@ -636,7 +543,7 @@ window.oldVersion = [
                             <!-- Gitalk Container -->
 <div id="gitalk-container"></div>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.css"></noscript>
 
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.js"></script>
 
@@ -664,9 +571,11 @@ window.oldVersion = [
             <!-- ### Footer ### -->
             <footer class="text-center">
     <!-- footer copyright -->
-    <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span data-year></span>
-        <a class="footer-copyright-a" href="http://superchun.cn">悉达多｜Pain Maker</a>
-    </p>
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="http://superchun.cn">悉达多｜Pain Maker</a>
+        </p>
+
     <!-- footer custom text -->
     <p class="footer-text mb-0">
     
@@ -674,7 +583,6 @@ window.oldVersion = [
     <!-- footer develop info -->
     <p class="footer-develop mb-0">
         
-            
     <!-- Busuanzi User Views -->
     <span id="busuanzi_container_site_uv" hidden>
         <span></span>
@@ -687,7 +595,7 @@ window.oldVersion = [
 
 
 
-        
+
         
         Powered by&nbsp;<!--
          --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
@@ -695,50 +603,28 @@ window.oldVersion = [
     </p>
 </footer>
 
-        
 
         <!-- ### Import File ### -->
         <!-- ### Footer JS Import ### -->
 
 <script>
+
+    
 window.lazyLoadOptions = {
     elements_selector: ".lazyload",
     threshold: 50
 };
-
-
-
-    /* Copyright */
-    var copyrightNow = new Date().getFullYear();
-    var copyrightContent = document.querySelector('span[data-year]')
-    
-        copyrightContent.textContent = copyrightNow
-    
-
-
-
-/* Cnosole Log */
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
 console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
 </script>
 
-<!-- vanilla-lazyload -->
-
-    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
-
-
-
-    <!-- Busuanzi -->
-    
+<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
     <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
 
 
 <!-- Offset -->
-
-
-
-
-    <!-- Hanabi -->
-    <!-- Import Hanabi -->
+<!-- Import Hanabi -->
 
     <script src="/lib/hanabi/hanabi.min.js"></script>
 
@@ -751,10 +637,6 @@ console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c 
 
 
 
-
-<!-- gallery.js -->
-
-
 <!-- Comment -->
 
     
@@ -763,7 +645,6 @@ console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c 
 
 
 <!-- ### Custom Footer ### -->
-
 
     </body>
 

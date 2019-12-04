@@ -1,26 +1,18 @@
 <!DOCTYPE html>
 
 <html lang="zh-CN">
-    <head><meta name="generator" content="Hexo 3.9.0">
+    <head>
     <meta charset="utf-8">
     <!--
-        © SukkaW
+        hexo-theme-suka © SukkaW
         GitHub: https://github.com/SukkaW/hexo-theme-suka
-        Version: 1.3.3
     -->
-    <script>
-window.lsVersion = "1.3.3",
-window.oldVersion = [
-    
-        
-            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0"
-        
-    
-]
-</script>
 
-    <!-- ### DNS Prefetch ### -->
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
     <meta http-equiv="x-dns-prefetch-control" content="on">
+
 <!-- busuanzi -->
 
     <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
@@ -45,8 +37,7 @@ window.oldVersion = [
 
 
 
-
-    <!-- ### Preload ### -->
+    <!-- ## Preload ## -->
     
     <!-- Busuanzi -->
     
@@ -71,57 +62,18 @@ window.oldVersion = [
 
 
     <!-- ### Meta & Title & Info ### -->
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
-<meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
 
-<!-- Title -->
-<title>git使用SSH配置一直需要输入密码的坑 | 悉达多｜Pain Maker</title>
+    <!-- Title -->
+    <title>git使用SSH配置一直需要输入密码的坑 | 悉达多｜Pain Maker</title>
 
-<!-- favicon -->
-<!-- Favicons -->
-
-    <link rel="icon" type="image/ico" href="/img/favicon.ico">
-
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-
-
-    <link rel="icon" type="image/png" sizes="192x192" href="/img/large.png">
-
-
-    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-medium.png">
-
-
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.png">
-
-
-    <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="null">
-
-<!-- Android Chrome Color -->
-
-
-
-<meta name="format-detection" content="telephone=no">
-
-<!-- Description -->
-<meta name="description" content="一般 git 提供了 HTTPS 和 SSH（Secure Shell） 两种认证方式。HTTPS 比较简单，只需要输入对应的 user 和 password 就可以了。SSH 则相对复杂一点，需要使用 ssh 命令生成 RSA...">
-
-<!-- Keywords -->
-<meta name="keywords" content=", git ssh">
-
-<!-- Disable Fucking Bloody Baidu Tranformation -->
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/img/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/img/large.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/img/favicon-medium.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/img/favicon.png"><link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="">
 
     <!-- ### Import File ### -->
-    
-        <!-- spectre.css -->
-
-    <link rel="stylesheet" href="/lib/spectre/spectre.min.css">
-
-
-<style>
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
     body {
         background-color: #f8f9fa;
     }
@@ -142,6 +94,8 @@ window.oldVersion = [
         color: #005eb9;
         opacity: 1;
     }
+
+    
 
     .post-entry .card-body a {
         color: #0070ff;
@@ -184,12 +138,7 @@ window.oldVersion = [
         background: #f8f9fa;
         opacity: .85;
     }
-</style>
-
-<!-- style.css -->
-
-    <link rel="stylesheet" href="/css/style.min.css">
-
+</style><link rel="stylesheet" href="/css/style.min.css">
 
 
 
@@ -200,62 +149,32 @@ window.oldVersion = [
 
     <!-- Prettify Theme -->
     
-    
-        <link rel="stylesheet" href="/css/highlight/github.min.css">
-    
+    <link rel="preload" href="/css/highlight/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/github.min.css"></noscript>
 
 
 
-    
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
 
     <!-- ### Site Verification ### -->
     
 
 
-    <!-- ### RSS ### -->
-    
-    
-        <link rel="alternate" type="application/atom+xml" href="/atom.xml">
-    
-
-
-    <!-- ### WebApp ### -->
-    <meta name="mobile-web-app-capable" content="yes">
-<meta name="application-name" content="悉达多｜Pain Maker">
-<meta name="msapplication-starturl" content="http://superchun.cn">
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="悉达多｜Pain Maker">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-<!-- Manifest Import -->
-
-<!-- Open Search -->
-
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="悉达多｜Pain Maker"><meta name="msapplication-starturl" content="http://superchun.cn"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="悉达多｜Pain Maker"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- ### The Open Graph & Twitter Card Protocol ### -->
-    <meta property="og:title" content="git使用SSH配置一直需要输入密码的坑 | 悉达多｜Pain Maker">
-<meta property="og:site_name" content="悉达多｜Pain Maker">
+    <meta property="og:title" content="git使用SSH配置一直需要输入密码的坑 | 悉达多｜Pain Maker"><meta property="og:site_name" content="悉达多｜Pain Maker"><meta property="og:type" content="article"><meta property="og:url" content="http:&#x2F;&#x2F;superchun.cn&#x2F;git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91.html"><meta property="og:locale" content="zh-CN"><meta name="description" content="一般 git 提供了 HTTPS 和 SSH（Secure Shell） 两种认证方式。HTTPS 比较简单，只需要输入对应的 user 和 password 就可以了。SSH 则相对复杂一点，需要使用 ssh 命令生成 RSA 密钥对，将 public key 提交到服务器，本地保留 private key。SSH 还可以允许我们通过 config 来管理多用户，例如：一般我们会有一个自己的 g - 悉达多 - 悉达多｜Pain Maker"><meta name="keywords" content="git ssh"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6gy1g9djh01xtcj316m0n6dli.jpg"><meta property="article:published_time" content="2019-11-28T02:07:07.000Z"><meta property="article:modified_time" content="2019-11-28T02:49:54.714Z"><meta property="og:updated_time" content="2019-11-28T02:49:54.714Z"><meta property="article:author" content="悉达多"><meta property="article:tag" content="git ssh"><meta name="twitter:card" content="summary">
 
-<meta property="og:locale" content="zh-CN">
+    
 
-<meta property="og:url" content="http://superchun.cn/git使用SSH配置一直需要输入密码的坑.html">
-<meta property="og:image" content="http://superchun.cn/img/large.png">
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="http://superchun.cn/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91.html">
 
-<meta property="og:description" content="一般 git 提供了 HTTPS 和 SSH（Secure Shell） 两种认证方式。HTTPS 比较简单，只需要输入对应的 user 和 password 就可以了。SSH 则相对复杂一点，需要使用 ssh 命令生成 RSA...">
-
-<meta name="twitter:card" content="summary">
-
-
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2019-11-28T02:07:07.000Z">
-    <meta property="article:modified_time" content="2019-11-28T02:07:07.000Z">
-    <meta property="article:author" content="悉达多">
-    <meta property="og:article:tag" content=", git ssh"> 
-
-
-
-
+    <meta name="generator" content="Hexo 4.0.0">
 
     <!-- ### Analytics ### -->
     
@@ -266,10 +185,6 @@ window.oldVersion = [
 
 
 
-
-    <!-- ### Canonical link ### -->
-    <link rel="canonical" href="http://superchun.cn/git使用SSH配置一直需要输入密码的坑.html">
-
     <!-- ### Structured Data ### -->
     
 
@@ -278,12 +193,12 @@ window.oldVersion = [
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
-    "url": "http://superchun.cn/git使用SSH配置一直需要输入密码的坑.html",
+    "url": "http://superchun.cn/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91.html",
     "@type": "BlogPosting",
     "logo": "http://superchun.cn/img/large.png",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://superchun.cn/git使用SSH配置一直需要输入密码的坑.html"
+        "@id": "http://superchun.cn/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91.html"
     },
     "headline": "git使用SSH配置一直需要输入密码的坑 | 悉达多｜Pain Maker",
     
@@ -318,8 +233,8 @@ window.oldVersion = [
         "query-input": "required name=search_term_string"
     },
     
-    "keywords": ", git ssh",
-    "description": "一般 git 提供了 HTTPS 和 SSH（Secure Shell） 两种认证方式。HTTPS 比较简单，只需要输入对应的 user 和 password 就可以了。SSH 则相对复杂一点，需要使用 ssh 命令生成 RSA..."
+    "keywords": "git ssh",
+    "description": "一般 git 提供了 HTTPS 和 SSH（Secure Shell） 两种认证方式。HTTPS 比较简单，只需要输入对应的 user 和 password 就可以了。SSH 则相对复杂一点，需要使用 ssh 命令生成 RSA 密钥对，将 public key 提交到服务器，本地保留 private key。SSH 还可以允许我们通过 config 来管理多用户，例如：一般我们会有一个自己的 g - 悉达多 - 悉达多｜Pain Maker"
 }
 </script>
 
@@ -327,13 +242,9 @@ window.oldVersion = [
 
     <!-- ### Custom Head ### -->
     
-
-
 </head>
 
     <body>
-        
-
             
 
             <!-- ### Main content ### -->
@@ -417,7 +328,7 @@ window.oldVersion = [
         <!-- QRCode -->
         
         <li class="menu-item">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkCAAAAAA83tqdAAACM0lEQVR42u3b0W6DMAxGYd7/pdfbqiL+jynduvhws1WD5EMiqW284+cfHIdIkSJFfgHyKI7nc57Pfb329ZzVNWfXlvOKHIs8fWgXmDP46mYqKJpX5Gjk2cArRMIRRJpXpMgKWS2c7uKi84oUSZEpCKnO+bWFI3ILZNp0VwukwldB7a1RkMjtkGSwT/y8LVsUuRUyFo0WCRW9piou3FZVE7kVsnqQ04Z/BlsFuKtiV3mdyJFI+sDTDTiN2QqQRY5EkiJUdQMp6V/9Xi0wkbORKUFPn6sJq029VRwQOQpJC1SpYECKpORFq0iRKZAlBfpOsEyKViJnI1MTBwkQOo0gtKgvci6SNH6kZD8tGJKwlYV9kaOQtFEkBaukeYQkbiJFpoJASvS7DUzVBt8qWIkcgewk8TGxbzQxL78URI5E0gefFAtS0SvdUCsKErktsrW5FgN3geRllciZSLpYaNMI/TspiImciaRFpqqIQBMv0sAsUmS3QakqQKXggRYkRM5G0qYN0uSRzk1FgxgFiRyFpC8mSSNSp1n5UmQucnvklZeXadNPCR4JpEWKTM1EJMgtm5FA45JIkaTBKCVmdGLaWCdyNrLTuEGSLVJMxTcpciTyUkPwwf4JKH0JxORO5FgkGSxN8O6LUVzYFzkG2Z2ILhASWKDNXKTIxiIgQTFtihIpkiBbD3sYo/PyVORsJNmMU9Kfmk7SjceFI3IMkhTiSaEgbdZvBRgixyC/+RApUqTIPzweh4A3FUJCWR0AAAAASUVORK5CYII=" alr="QRCode">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOQAAADkCAAAAACtPNdRAAAEJUlEQVR42u2aQXIbQQwD9f9PJ1fbpSUaKx+W49ZFsRVJ06wyBwTx+vcHHi8hhRRSSCGF/BDyNTy+vv7tzV9ee/vhX35PPn886I//Tz9XSCE3Q6aDxj/woQhXMD9//66wU7FRgYUUcjHk1BDe/Tu9712zaIqamhQ6t5BCHgiZLlzy5algpCjTs5BC/kXIq8t9Ar4q0tX7p+9KgkNIIU+DbP7gU/OYhPS718kQnYr50RQipJAPgyRG0xOff9WtE1LIh0ASk2oytaiwJg2DNLnKYBNSyIWQVPgmk2kS0rFBgGFgMp8vxYmQQi6FJIuVyeSdRHg6KB2wU9Hfnl1IIRdCJnOYXtykcU3NJIkMUrjLxiOkkMsg06FaUzgJ97aoJEwRG4+QQi6BJEKXhIvSsieZUKQwJGghpJCnQNLlzJ0wRRp86TBOBm4hhTwBMi1Hk7ncLGSpOZwWs0RQCCnkRsh04dJGQQJG8fKGQSgytAsp5GmQjSl8d7maDGRiWI1DhZBCLoe8c/GmQXn6TBI8msR5PLeQQi6EJGED0pjI0E1CEGRAqBc+Qgq5EJKYw+nip+HBNGi3RULmspBCLoGcRPVVs2mEdype+13JfBsVj5BCLoEkAd4m4JAM4gRGgkrIgBZSyIWQ5M2tGZUE+JWJ3IYSb00hQgr5cEhyOHqZpwOnoBMVF6QgQgq5GTKJZjr40oKkQpGgRhL1Qgq5HTINuCmQlBaqdGFEmiE2moUUcikkCe5SMUADSNMgfOc5BgiFFHIZJG0UTaiBGMs0bHGrMQop5CGQjVD/DYHeLnDxYklIIRdC3jn89AXkNRJYTM0tiQchhdwOSQKD7XKnCT6kgbkZtoUUcjPknbBeCvnRxSs1v0iTFFLIkyBJoCiZvzSk2wzQTRPEbp2QQj4ckixTpiZARXQrBMgSNgp9IYVcCEkOki7xdsmTzKsUfkrDgpBCboakTYAsWGmYggakSDEqZ0BIIRdAkrACGZQn4UACgWTpOy2U0FZLSCEXQeLFJmhCZJHbmNpkEIiKR0ghF0GmoZgsYelBadCCCgPs1gkp5DLIu5fwZD6TISCJ9ab4yMgSUsiHQ7YGbhNSSMWj4QkiEIQU8hRIslxtgg+NIRYPCcOMtUAXUsgHQ6bLPxm8bbGoYU2WvligCynkIsgrs5h+4J2mFJenHwwFQgp5AuRvDLqpAU0ivAkJk8FaSCFPgSSXcLt0bYNJTRjp9hQipJAPhmwDQy1QY4bRpe4kVIQU8gTIJAxS00g/3xkG6HvHZbCQQi6GTMuWxrQiCx0S9CVm22hqCynkgZB3DOhkWiUTi7w3CQEhhTwZkkITA+wFHs1idxzshRRyMWQymmlI4RPzmBhcVWhCSCGXQtKFDGkY7cU9Fapdyo6NR0ghl0Ce/BBSSCGFFFLIm4//kCxk0OtLMbsAAAAASUVORK5CYII=" alr="QRCode">
         </li>
         
 
@@ -430,11 +341,7 @@ window.oldVersion = [
 
             
     <!-- ## Post ## -->
-    
-    
-
-
-<div class="post-container">
+    <div class="post-container">
     <div id="post-card" class="card">
         
         <div class="card-item-container">
@@ -471,14 +378,14 @@ window.oldVersion = [
     <!-- Share Weibo -->
     
     <li class="menu-item">
-        <a href="http://service.weibo.com/share/share.php?appkey=&title=git使用SSH配置一直需要输入密码的坑&url=http://superchun.cn/git使用SSH配置一直需要输入密码的坑.html&pic=http://superchun.cn/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=git使用SSH配置一直需要输入密码的坑&url=http://superchun.cn/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91.html&pic=http://superchun.cn/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
     </li>
     
 
     <!-- Share Twitter -->
     
     <li class="menu-item">
-        <a href="https://twitter.com/intent/tweet?text=git使用SSH配置一直需要输入密码的坑&url=http://superchun.cn/git使用SSH配置一直需要输入密码的坑.html&via=悉达多" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        <a href="https://twitter.com/intent/tweet?text=git使用SSH配置一直需要输入密码的坑&url=http://superchun.cn/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91.html&via=悉达多" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
     </li>
     
 
@@ -488,35 +395,35 @@ window.oldVersion = [
     <!-- Share Google+ -->
     
     <li class="menu-item">
-        <a href="https://plus.google.com/share?url=http://superchun.cn/git使用SSH配置一直需要输入密码的坑.html" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        <a href="https://plus.google.com/share?url=http://superchun.cn/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91.html" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
     </li>
     
 
     <!-- Share LinkedIn -->
     
     <li class="menu-item">
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://superchun.cn/git使用SSH配置一直需要输入密码的坑.html&title=悉达多｜Pain Maker" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://superchun.cn/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91.html&title=悉达多｜Pain Maker" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
     </li>
     
 
     <!-- Share QQ -->
     
     <li class="menu-item">
-        <a href="http://connect.qq.com/widget/shareqq/index.html?site=悉达多｜Pain Maker&title=悉达多｜Pain Maker&summary=知也者，所以知也，而不必知&pics=http://superchun.cn/img/large.png&url=http://superchun.cn/git使用SSH配置一直需要输入密码的坑.html" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=悉达多｜Pain Maker&title=悉达多｜Pain Maker&summary=知也者，所以知也，而不必知&pics=http://superchun.cn/img/large.png&url=http://superchun.cn/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91.html" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
     </li>
     
 
     <!-- Share Telegram -->
     
     <li class="menu-item">
-        <a href="https://t.me/share/url?url=http://superchun.cn/git使用SSH配置一直需要输入密码的坑.html&text=悉达多｜Pain Maker" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        <a href="https://t.me/share/url?url=http://superchun.cn/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91.html&text=悉达多｜Pain Maker" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
     </li>
     
 
     <!-- QRCode -->
     
     <li class="menu-item">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkCAAAAAA83tqdAAACM0lEQVR42u3b0W6DMAxGYd7/pdfbqiL+jynduvhws1WD5EMiqW284+cfHIdIkSJFfgHyKI7nc57Pfb329ZzVNWfXlvOKHIs8fWgXmDP46mYqKJpX5Gjk2cArRMIRRJpXpMgKWS2c7uKi84oUSZEpCKnO+bWFI3ILZNp0VwukwldB7a1RkMjtkGSwT/y8LVsUuRUyFo0WCRW9piou3FZVE7kVsnqQ04Z/BlsFuKtiV3mdyJFI+sDTDTiN2QqQRY5EkiJUdQMp6V/9Xi0wkbORKUFPn6sJq029VRwQOQpJC1SpYECKpORFq0iRKZAlBfpOsEyKViJnI1MTBwkQOo0gtKgvci6SNH6kZD8tGJKwlYV9kaOQtFEkBaukeYQkbiJFpoJASvS7DUzVBt8qWIkcgewk8TGxbzQxL78URI5E0gefFAtS0SvdUCsKErktsrW5FgN3geRllciZSLpYaNMI/TspiImciaRFpqqIQBMv0sAsUmS3QakqQKXggRYkRM5G0qYN0uSRzk1FgxgFiRyFpC8mSSNSp1n5UmQucnvklZeXadNPCR4JpEWKTM1EJMgtm5FA45JIkaTBKCVmdGLaWCdyNrLTuEGSLVJMxTcpciTyUkPwwf4JKH0JxORO5FgkGSxN8O6LUVzYFzkG2Z2ILhASWKDNXKTIxiIgQTFtihIpkiBbD3sYo/PyVORsJNmMU9Kfmk7SjceFI3IMkhTiSaEgbdZvBRgixyC/+RApUqTIPzweh4A3FUJCWR0AAAAASUVORK5CYII=" alt="QRCode">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOQAAADkCAAAAACtPNdRAAAEJUlEQVR42u2aQXIbQQwD9f9PJ1fbpSUaKx+W49ZFsRVJ06wyBwTx+vcHHi8hhRRSSCGF/BDyNTy+vv7tzV9ee/vhX35PPn886I//Tz9XSCE3Q6aDxj/woQhXMD9//66wU7FRgYUUcjHk1BDe/Tu9712zaIqamhQ6t5BCHgiZLlzy5algpCjTs5BC/kXIq8t9Ar4q0tX7p+9KgkNIIU+DbP7gU/OYhPS718kQnYr50RQipJAPgyRG0xOff9WtE1LIh0ASk2oytaiwJg2DNLnKYBNSyIWQVPgmk2kS0rFBgGFgMp8vxYmQQi6FJIuVyeSdRHg6KB2wU9Hfnl1IIRdCJnOYXtykcU3NJIkMUrjLxiOkkMsg06FaUzgJ97aoJEwRG4+QQi6BJEKXhIvSsieZUKQwJGghpJCnQNLlzJ0wRRp86TBOBm4hhTwBMi1Hk7ncLGSpOZwWs0RQCCnkRsh04dJGQQJG8fKGQSgytAsp5GmQjSl8d7maDGRiWI1DhZBCLoe8c/GmQXn6TBI8msR5PLeQQi6EJGED0pjI0E1CEGRAqBc+Qgq5EJKYw+nip+HBNGi3RULmspBCLoGcRPVVs2mEdype+13JfBsVj5BCLoEkAd4m4JAM4gRGgkrIgBZSyIWQ5M2tGZUE+JWJ3IYSb00hQgr5cEhyOHqZpwOnoBMVF6QgQgq5GTKJZjr40oKkQpGgRhL1Qgq5HTINuCmQlBaqdGFEmiE2moUUcikkCe5SMUADSNMgfOc5BgiFFHIZJG0UTaiBGMs0bHGrMQop5CGQjVD/DYHeLnDxYklIIRdC3jn89AXkNRJYTM0tiQchhdwOSQKD7XKnCT6kgbkZtoUUcjPknbBeCvnRxSs1v0iTFFLIkyBJoCiZvzSk2wzQTRPEbp2QQj4ckixTpiZARXQrBMgSNgp9IYVcCEkOki7xdsmTzKsUfkrDgpBCboakTYAsWGmYggakSDEqZ0BIIRdAkrACGZQn4UACgWTpOy2U0FZLSCEXQeLFJmhCZJHbmNpkEIiKR0ghF0GmoZgsYelBadCCCgPs1gkp5DLIu5fwZD6TISCJ9ab4yMgSUsiHQ7YGbhNSSMWj4QkiEIQU8hRIslxtgg+NIRYPCcOMtUAXUsgHQ6bLPxm8bbGoYU2WvligCynkIsgrs5h+4J2mFJenHwwFQgp5AuRvDLqpAU0ivAkJk8FaSCFPgSSXcLt0bYNJTRjp9hQipJAPhmwDQy1QY4bRpe4kVIQU8gTIJAxS00g/3xkG6HvHZbCQQi6GTMuWxrQiCx0S9CVm22hqCynkgZB3DOhkWiUTi7w3CQEhhTwZkkITA+wFHs1idxzshRRyMWQymmlI4RPzmBhcVWhCSCGXQtKFDGkY7cU9Fapdyo6NR0ghl0Ce/BBSSCGFFFLIm4//kCxk0OtLMbsAAAAASUVORK5CYII=" alt="QRCode">
     </li>
     
 
@@ -529,13 +436,16 @@ window.oldVersion = [
                 <div class="card-body">
                     
                         
+                        
                     
                     <article id="post-content">
                         <p>一般 git 提供了 HTTPS 和 SSH（Secure Shell） 两种认证方式。HTTPS 比较简单，只需要输入对应的 user 和 password 就可以了。SSH 则相对复杂一点，需要使用 ssh 命令生成 RSA 密钥对，将 public key 提交到服务器，本地保留 private key。SSH 还可以允许我们通过 config 来管理多用户，例如：一般我们会有一个自己的 github 账户，通过 SSH 管理；同时，公司可能会有一个另外的源码管理平台，如 gitlab 或 gitee 等，一些公司还会在 gitlab 上搭建自有服务器。<em>SSH 如何生成密钥对，如何通过 config 管理，这里就不做过多赘述了，网上随便一搜或者 github 中都有详细的说明：）</em></p>
 <p>SSH 的 config 格式一般如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host # 登陆主机的别名</span><br><span class="line">HostName # 服务器的真实地址</span><br><span class="line">Identityfile # 私钥目录</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Host # 登陆主机的别名</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">HostName # 服务器的真实地址</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">Identityfile # 私钥目录</span></pre></td></tr></table></figure>
+
 <p>在前不久，<del>上班摸鱼</del>逛 v2ex 的时候，看见一个人发了一个帖子：</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g9djh01xtcj316m0n6dli.jpg" alt="image-20191128102137393" style="zoom:50%;"></p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g9djh01xtcj316m0n6dli.jpg" alt="image-20191128102137393" style="zoom:50%;">
+
 <p>在上家公司的时候，我也遇到了同样的问题。每次重启 iTerm2 或者电脑，再 pull 或者 push 代码，就提示要输入密码，无论输入什么密码都提示错误。我一度以为是我人品问题，后来一阵摸索<del>瞎试</del>之后，将 Host 改成 HostName 相同的，就可以解决了。也就是说，如果你公司源码管理平台的地址是 gitlab.xxx.xxx，只需要将 Host 和 HostName 一起改成这个，就可以了。</p>
 <p>再回过头来看看，config 中的 Host 和 HostName，Host 是指主机别名，HostName 是指向真实地址。也就是说如果服务器的别名是 test，真实 IP 地址是 0.0.0.0，只需要将 Host 配置成 test，HostName 指向 0.0.0.0，然后再配合本地私钥就可以登陆上去访问了。但在实际中，公司搭建自有主机的时候，其实际主机别名跟其实际地址指向是一样的。如果是搭建在 gitlab 中，如果只在 config 中将 Host 指向 gitlab，那么就会出现一直需要密码的情况，只能重新生成密钥对去进行一次性的访问。</p>
 <p>希望这篇文章能解决你在 SSH 使用过程中出现的类似的问题：），Have a good day！</p>
@@ -551,7 +461,7 @@ window.oldVersion = [
                 本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
             </strong>
             <br>
-            <strong>本文链接&nbsp;:&nbsp;</strong><a href="http://superchun.cn/git使用SSH配置一直需要输入密码的坑.html">http://superchun.cn/git使用SSH配置一直需要输入密码的坑.html</a>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="http://superchun.cn/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91.html">http://superchun.cn/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91.html</a>
         </p>
     </blockquote>
 
@@ -567,7 +477,6 @@ window.oldVersion = [
 
 <span class="post-tags-list mt-2">
 
-
 <a class="post-tags-list-item" href="/tags/git-ssh/" rel="tag">#&nbsp;git ssh</a>
 
 </span>
@@ -576,8 +485,7 @@ window.oldVersion = [
 </p>
 
                 </div>
-                
-<div class="post-nav px-2 bg-gray">
+                <div class="post-nav px-2 bg-gray">
 <ul class="pagination">
     <!-- Prev Nav -->
     
@@ -592,7 +500,7 @@ window.oldVersion = [
     <!-- Next Nav -->
     
         <li class="page-item page-next">
-            <a href="/Mac快捷键.html" rel="next">
+            <a href="/Mac%E5%BF%AB%E6%8D%B7%E9%94%AE.html" rel="next">
                 <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">Mac快捷键</div>
             </a>
@@ -608,7 +516,7 @@ window.oldVersion = [
                             <!-- Gitalk Container -->
 <div id="gitalk-container"></div>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.css"></noscript>
 
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.js"></script>
 
@@ -636,9 +544,11 @@ window.oldVersion = [
             <!-- ### Footer ### -->
             <footer class="text-center">
     <!-- footer copyright -->
-    <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span data-year></span>
-        <a class="footer-copyright-a" href="http://superchun.cn">悉达多｜Pain Maker</a>
-    </p>
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="http://superchun.cn">悉达多｜Pain Maker</a>
+        </p>
+
     <!-- footer custom text -->
     <p class="footer-text mb-0">
     
@@ -646,7 +556,6 @@ window.oldVersion = [
     <!-- footer develop info -->
     <p class="footer-develop mb-0">
         
-            
     <!-- Busuanzi User Views -->
     <span id="busuanzi_container_site_uv" hidden>
         <span></span>
@@ -659,7 +568,7 @@ window.oldVersion = [
 
 
 
-        
+
         
         Powered by&nbsp;<!--
          --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
@@ -667,50 +576,28 @@ window.oldVersion = [
     </p>
 </footer>
 
-        
 
         <!-- ### Import File ### -->
         <!-- ### Footer JS Import ### -->
 
 <script>
+
+    
 window.lazyLoadOptions = {
     elements_selector: ".lazyload",
     threshold: 50
 };
-
-
-
-    /* Copyright */
-    var copyrightNow = new Date().getFullYear();
-    var copyrightContent = document.querySelector('span[data-year]')
-    
-        copyrightContent.textContent = copyrightNow
-    
-
-
-
-/* Cnosole Log */
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
 console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
 </script>
 
-<!-- vanilla-lazyload -->
-
-    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
-
-
-
-    <!-- Busuanzi -->
-    
+<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
     <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
 
 
 <!-- Offset -->
-
-
-
-
-    <!-- Hanabi -->
-    <!-- Import Hanabi -->
+<!-- Import Hanabi -->
 
     <script src="/lib/hanabi/hanabi.min.js"></script>
 
@@ -723,10 +610,6 @@ console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c 
 
 
 
-
-<!-- gallery.js -->
-
-
 <!-- Comment -->
 
     
@@ -735,7 +618,6 @@ console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c 
 
 
 <!-- ### Custom Footer ### -->
-
 
     </body>
 

@@ -1,26 +1,18 @@
 <!DOCTYPE html>
 
 <html lang="zh-CN">
-    <head><meta name="generator" content="Hexo 3.9.0">
+    <head>
     <meta charset="utf-8">
     <!--
-        © SukkaW
+        hexo-theme-suka © SukkaW
         GitHub: https://github.com/SukkaW/hexo-theme-suka
-        Version: 1.3.3
     -->
-    <script>
-window.lsVersion = "1.3.3",
-window.oldVersion = [
-    
-        
-            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0"
-        
-    
-]
-</script>
 
-    <!-- ### DNS Prefetch ### -->
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
     <meta http-equiv="x-dns-prefetch-control" content="on">
+
 <!-- busuanzi -->
 
     <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
@@ -45,8 +37,7 @@ window.oldVersion = [
 
 
 
-
-    <!-- ### Preload ### -->
+    <!-- ## Preload ## -->
     
     <!-- Busuanzi -->
     
@@ -71,57 +62,18 @@ window.oldVersion = [
 
 
     <!-- ### Meta & Title & Info ### -->
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
-<meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
 
-<!-- Title -->
-<title>What&#39;s New in Xcode11 | 悉达多｜Pain Maker</title>
+    <!-- Title -->
+    <title>What&#39;s New in Xcode11 | 悉达多｜Pain Maker</title>
 
-<!-- favicon -->
-<!-- Favicons -->
-
-    <link rel="icon" type="image/ico" href="/img/favicon.ico">
-
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-
-
-    <link rel="icon" type="image/png" sizes="192x192" href="/img/large.png">
-
-
-    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-medium.png">
-
-
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.png">
-
-
-    <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="null">
-
-<!-- Android Chrome Color -->
-
-
-
-<meta name="format-detection" content="telephone=no">
-
-<!-- Description -->
-<meta name="description" content="WWDC19 - What’s New in Xcode11WWDC 2019 已经过去快半年多了，Xcode 11 更新也有段时间了。用了一段时间之后，发现 Xcode 11 较之 Xcode 10 还是有许多地方不一样的，于是便看了 WWDC 2019 Session 401，顺便做一下记录。">
-
-<!-- Keywords -->
-<meta name="keywords" content=", iOS">
-
-<!-- Disable Fucking Bloody Baidu Tranformation -->
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/img/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/img/large.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/img/favicon-medium.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/img/favicon.png"><link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="">
 
     <!-- ### Import File ### -->
-    
-        <!-- spectre.css -->
-
-    <link rel="stylesheet" href="/lib/spectre/spectre.min.css">
-
-
-<style>
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
     body {
         background-color: #f8f9fa;
     }
@@ -142,6 +94,8 @@ window.oldVersion = [
         color: #005eb9;
         opacity: 1;
     }
+
+    
 
     .post-entry .card-body a {
         color: #0070ff;
@@ -184,12 +138,7 @@ window.oldVersion = [
         background: #f8f9fa;
         opacity: .85;
     }
-</style>
-
-<!-- style.css -->
-
-    <link rel="stylesheet" href="/css/style.min.css">
-
+</style><link rel="stylesheet" href="/css/style.min.css">
 
 
 
@@ -200,62 +149,32 @@ window.oldVersion = [
 
     <!-- Prettify Theme -->
     
-    
-        <link rel="stylesheet" href="/css/highlight/github.min.css">
-    
+    <link rel="preload" href="/css/highlight/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/github.min.css"></noscript>
 
 
 
-    
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
 
     <!-- ### Site Verification ### -->
     
 
 
-    <!-- ### RSS ### -->
-    
-    
-        <link rel="alternate" type="application/atom+xml" href="/atom.xml">
-    
-
-
-    <!-- ### WebApp ### -->
-    <meta name="mobile-web-app-capable" content="yes">
-<meta name="application-name" content="悉达多｜Pain Maker">
-<meta name="msapplication-starturl" content="http://superchun.cn">
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="悉达多｜Pain Maker">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-<!-- Manifest Import -->
-
-<!-- Open Search -->
-
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="悉达多｜Pain Maker"><meta name="msapplication-starturl" content="http://superchun.cn"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="悉达多｜Pain Maker"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- ### The Open Graph & Twitter Card Protocol ### -->
-    <meta property="og:title" content="What&#39;s New in Xcode11 | 悉达多｜Pain Maker">
-<meta property="og:site_name" content="悉达多｜Pain Maker">
+    <meta property="og:title" content="What&#39;s New in Xcode11 | 悉达多｜Pain Maker"><meta property="og:site_name" content="悉达多｜Pain Maker"><meta property="og:type" content="article"><meta property="og:url" content="http:&#x2F;&#x2F;superchun.cn&#x2F;What-s-New-in-Xcode11.html"><meta property="og:locale" content="zh-CN"><meta name="description" content="WWDC19 - What’s New in Xcode11WWDC 2019 已经过去快半年多了，Xcode 11 更新也有段时间了。用了一段时间之后，发现 Xcode 11 较之 Xcode 10 还是有许多地方不一样的，于是便看了 WWDC 2019 Session 401，顺便做一下记录。 - 悉达多 - 悉达多｜Pain Maker"><meta name="keywords" content="iOS"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6ly1g8n98whgi4j30wc0ha7fe.jpg"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6ly1g8n9nrz958j30ee03gq32.jpg"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6ly1g8n9mwnaxgj30cc03iweo.jpg"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6ly1g8n9p9xusdj30ec05ktam.jpg"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6ly1g8n9qc8ozdj30ee054dg7.jpg"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6ly1g8n9wj9q5yj30ec05uwgf.jpg"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6ly1g8n9x9yx7vj30a00bgdlp.jpg"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6ly1g8na7koerqj30b203iwex.jpg"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6ly1g8na1dqbffj307c0460sm.jpg"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6ly1g8napo7hbsj309w0lmjxt.jpg"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6ly1g8naszwn6tj30h40l0mxq.jpg"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6ly1g8nau5ip8rj30so0zi461.jpg"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6ly1g8nawlhq2ej307w0isglu.jpg"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6ly1g8nb0ed9c3j30860s8dgh.jpg"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6ly1g8nbutwblij31he0b67en.jpg"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6ly1g8nbwii6k1j314e08stb8.jpg"><meta property="og:image" content="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;006y8mN6ly1g8nc3aq6aqj30im06atdg.jpg"><meta property="article:published_time" content="2019-11-05T07:38:21.000Z"><meta property="article:modified_time" content="2019-11-05T12:22:11.000Z"><meta property="og:updated_time" content="2019-11-05T12:22:11.000Z"><meta property="article:author" content="悉达多"><meta property="article:tag" content="iOS"><meta name="twitter:card" content="summary">
 
-<meta property="og:locale" content="zh-CN">
+    
 
-<meta property="og:url" content="http://superchun.cn/What-s-New-in-Xcode11.html">
-<meta property="og:image" content="http://superchun.cn/img/large.png">
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="http://superchun.cn/What-s-New-in-Xcode11.html">
 
-<meta property="og:description" content="WWDC19 - What’s New in Xcode11WWDC 2019 已经过去快半年多了，Xcode 11 更新也有段时间了。用了一段时间之后，发现 Xcode 11 较之 Xcode 10 还是有许多地方不一样的，于是便看了 WWDC 2019 Session 401，顺便做一下记录。">
-
-<meta name="twitter:card" content="summary">
-
-
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2019-11-05T07:38:21.000Z">
-    <meta property="article:modified_time" content="2019-11-05T07:38:21.000Z">
-    <meta property="article:author" content="悉达多">
-    <meta property="og:article:tag" content=", iOS"> 
-
-
-
-
+    <meta name="generator" content="Hexo 4.0.0">
 
     <!-- ### Analytics ### -->
     
@@ -265,10 +184,6 @@ window.oldVersion = [
 
 
 
-
-
-    <!-- ### Canonical link ### -->
-    <link rel="canonical" href="http://superchun.cn/What-s-New-in-Xcode11.html">
 
     <!-- ### Structured Data ### -->
     
@@ -318,8 +233,8 @@ window.oldVersion = [
         "query-input": "required name=search_term_string"
     },
     
-    "keywords": ", iOS",
-    "description": "WWDC19 - What’s New in Xcode11WWDC 2019 已经过去快半年多了，Xcode 11 更新也有段时间了。用了一段时间之后，发现 Xcode 11 较之 Xcode 10 还是有许多地方不一样的，于是便看了 WWDC 2019 Session 401，顺便做一下记录。"
+    "keywords": "iOS",
+    "description": "WWDC19 - What’s New in Xcode11WWDC 2019 已经过去快半年多了，Xcode 11 更新也有段时间了。用了一段时间之后，发现 Xcode 11 较之 Xcode 10 还是有许多地方不一样的，于是便看了 WWDC 2019 Session 401，顺便做一下记录。 - 悉达多 - 悉达多｜Pain Maker"
 }
 </script>
 
@@ -327,13 +242,9 @@ window.oldVersion = [
 
     <!-- ### Custom Head ### -->
     
-
-
 </head>
 
     <body>
-        
-
             
 
             <!-- ### Main content ### -->
@@ -430,11 +341,7 @@ window.oldVersion = [
 
             
     <!-- ## Post ## -->
-    
-    
-
-
-<div class="post-container">
+    <div class="post-container">
     <div id="post-card" class="card">
         
         <div class="card-item-container">
@@ -529,14 +436,14 @@ window.oldVersion = [
                 <div class="card-body">
                     
                         
-                            <div id="post-toc">
-                                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#null"><span class="post-toc-text">WWDC19 - What’s New in Xcode11</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">右上角功能键的改进</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">Editor Splitting</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">Minimap</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">源码 Editor</span></a></li></ol></li></ol>
-                            </div>
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#null"><span class="post-toc-text">WWDC19 - What’s New in Xcode11</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">右上角功能键的改进</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">Editor Splitting</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">Minimap</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">源码 Editor</span></a></li></ol></li></ol></div>
                         
                     
                     <article id="post-content">
                         <h1><span id="wwdc19-whats-new-in-xcode11">WWDC19 - What’s New in Xcode11</span></h1><p>WWDC 2019 已经过去快半年多了，Xcode 11 更新也有段时间了。用了一段时间之后，发现 Xcode 11 较之 Xcode 10 还是有许多地方不一样的，于是便看了 <a href="https://developer.apple.com/videos/play/wwdc2019/401/" target="_blank" rel="noopener">WWDC 2019 Session 401</a>，顺便做一下记录。</p>
 <a id="more"></a>
+
 <p>首先，对 Xcode11 的整体改进做一个预览：</p>
 <p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8n98whgi4j30wc0ha7fe.jpg" alt="preview"></p>
 <p>整体的改变还是挺多的，下面一一对改进的功能进行说明。</p>
@@ -556,22 +463,32 @@ window.oldVersion = [
 <p>Editor Spliting 默认的是往右边增加，按住 option 键再点击这个按钮，就可以在下面增加新的 Editor</p>
 <p>可以通过按住 shift + option 并点击源文件，来管理 Editor，点击的源文件那个窗口会变成选中效果，可以用鼠标或者键盘方向键进行移动，移动完成后，点击键盘上的 return，原先选中的源文件就会插入或者移动到当前位置</p>
 <h2><span id="minimap">Minimap</span></h2><p>Xcode 11 比较大的一个改动就是新增了 Minimap：</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8napo7hbsj309w0lmjxt.jpg" alt="image-20191105173354397" style="zoom:50%;"></p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8napo7hbsj309w0lmjxt.jpg" alt="image-20191105173354397" style="zoom:50%;">
+
 <p>Minimap 主要是提供导航作用的，点击 Minimap 的任意位置，源码便会滚动到点击的地方。 当鼠标悬停在上面时，会显示当前的方法名：</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8naszwn6tj30h40l0mxq.jpg" alt="image-20191105173706542" style="zoom:50%;"></p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8naszwn6tj30h40l0mxq.jpg" alt="image-20191105173706542" style="zoom:50%;">
+
 <p>同时按住 cmd 键的话，会显示当前所有的方法名：</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8nau5ip8rj30so0zi461.jpg" alt="image-20191105173813596" style="zoom:33%;"></p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8nau5ip8rj30so0zi461.jpg" alt="image-20191105173813596" style="zoom:33%;">
+
 <p>当源码中有 warning 或者断点时，在 Minimap 中也会显示</p>
 <p>源码中的 marks 在 Minimap 里可以直接看到：</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8nawlhq2ej307w0isglu.jpg" alt="image-20191105174034623" style="zoom:50%;"></p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8nawlhq2ej307w0isglu.jpg" alt="image-20191105174034623" style="zoom:50%;">
+
 <p>当在源码中搜索关键字时，所有符合条件的在 Minimap 中会有选中效果：</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8nb0ed9c3j30860s8dgh.jpg" alt="image-20191105174413261" style="zoom:33%;"></p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8nb0ed9c3j30860s8dgh.jpg" alt="image-20191105174413261" style="zoom:33%;">
+
+
+
 <h2><span id="源码-editor">源码 Editor</span></h2><p>Xcode 11 中通过 cmd + 右键点击方法名，可以给方法添加参数注释。新增了参数时，通过这个方法会自动拼接新的参数：</p>
 <p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8nbutwblij31he0b67en.jpg" alt="image-20191105181327456"></p>
 <p>cmd + 右键点击参数，选择 Edit All in Scope，可以同时修改方法名、方法内、注释里面的参数名称：</p>
 <p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8nbwii6k1j314e08stb8.jpg" alt="image-20191105181504863"></p>
 <p>当对源码进行了修改时，在 Editor 的左侧会出现一个蓝色条，点击这个蓝色条，可以选择 Show Change 和 Discard Change。Discard Change 的作用是撤销修改，Show Change 的作用是显示哪些地方进行了改动：</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8nc3aq6aqj30im06atdg.jpg" alt="image-20191105182136776" style="zoom:50%;"></p>
+<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8nc3aq6aqj30im06atdg.jpg" alt="image-20191105182136776" style="zoom:50%;">
+
+
+
 <p>除此之外，Xcode 11 还有着更好的自动补全、增加了新的 Theme，优化了一些细节体验</p>
 
                     </article>
@@ -601,7 +518,6 @@ window.oldVersion = [
 
 <span class="post-tags-list mt-2">
 
-
 <a class="post-tags-list-item" href="/tags/iOS/" rel="tag">#&nbsp;iOS</a>
 
 </span>
@@ -610,13 +526,12 @@ window.oldVersion = [
 </p>
 
                 </div>
-                
-<div class="post-nav px-2 bg-gray">
+                <div class="post-nav px-2 bg-gray">
 <ul class="pagination">
     <!-- Prev Nav -->
     
         <li class="page-item page-prev">
-            <a href="/Mac快捷键.html" rel="prev">
+            <a href="/Mac%E5%BF%AB%E6%8D%B7%E9%94%AE.html" rel="prev">
                 <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">Mac快捷键</div>
             </a>
@@ -642,7 +557,7 @@ window.oldVersion = [
                             <!-- Gitalk Container -->
 <div id="gitalk-container"></div>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.css"></noscript>
 
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.js"></script>
 
@@ -670,9 +585,11 @@ window.oldVersion = [
             <!-- ### Footer ### -->
             <footer class="text-center">
     <!-- footer copyright -->
-    <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span data-year></span>
-        <a class="footer-copyright-a" href="http://superchun.cn">悉达多｜Pain Maker</a>
-    </p>
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="http://superchun.cn">悉达多｜Pain Maker</a>
+        </p>
+
     <!-- footer custom text -->
     <p class="footer-text mb-0">
     
@@ -680,7 +597,6 @@ window.oldVersion = [
     <!-- footer develop info -->
     <p class="footer-develop mb-0">
         
-            
     <!-- Busuanzi User Views -->
     <span id="busuanzi_container_site_uv" hidden>
         <span></span>
@@ -693,7 +609,7 @@ window.oldVersion = [
 
 
 
-        
+
         
         Powered by&nbsp;<!--
          --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
@@ -701,50 +617,28 @@ window.oldVersion = [
     </p>
 </footer>
 
-        
 
         <!-- ### Import File ### -->
         <!-- ### Footer JS Import ### -->
 
 <script>
+
+    
 window.lazyLoadOptions = {
     elements_selector: ".lazyload",
     threshold: 50
 };
-
-
-
-    /* Copyright */
-    var copyrightNow = new Date().getFullYear();
-    var copyrightContent = document.querySelector('span[data-year]')
-    
-        copyrightContent.textContent = copyrightNow
-    
-
-
-
-/* Cnosole Log */
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
 console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
 </script>
 
-<!-- vanilla-lazyload -->
-
-    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
-
-
-
-    <!-- Busuanzi -->
-    
+<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
     <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
 
 
 <!-- Offset -->
-
-
-
-
-    <!-- Hanabi -->
-    <!-- Import Hanabi -->
+<!-- Import Hanabi -->
 
     <script src="/lib/hanabi/hanabi.min.js"></script>
 
@@ -757,10 +651,6 @@ console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c 
 
 
 
-
-<!-- gallery.js -->
-
-
 <!-- Comment -->
 
     
@@ -769,7 +659,6 @@ console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c 
 
 
 <!-- ### Custom Footer ### -->
-
 
     </body>
 

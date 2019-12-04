@@ -1,26 +1,18 @@
 <!DOCTYPE html>
 
 <html lang="zh-CN">
-    <head><meta name="generator" content="Hexo 3.9.0">
+    <head>
     <meta charset="utf-8">
     <!--
-        © SukkaW
+        hexo-theme-suka © SukkaW
         GitHub: https://github.com/SukkaW/hexo-theme-suka
-        Version: 1.3.3
     -->
-    <script>
-window.lsVersion = "1.3.3",
-window.oldVersion = [
-    
-        
-            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0"
-        
-    
-]
-</script>
 
-    <!-- ### DNS Prefetch ### -->
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
     <meta http-equiv="x-dns-prefetch-control" content="on">
+
 <!-- busuanzi -->
 
     <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
@@ -45,8 +37,7 @@ window.oldVersion = [
 
 
 
-
-    <!-- ### Preload ### -->
+    <!-- ## Preload ## -->
     
     <!-- Busuanzi -->
     
@@ -71,59 +62,18 @@ window.oldVersion = [
 
 
     <!-- ### Meta & Title & Info ### -->
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
-<meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
 
-<!-- Title -->
-<title>如何用V2Ray科学上网 | 悉达多｜Pain Maker</title>
+    <!-- Title -->
+    <title>如何用V2Ray科学上网 | 悉达多｜Pain Maker</title>
 
-<!-- favicon -->
-<!-- Favicons -->
-
-    <link rel="icon" type="image/ico" href="/img/favicon.ico">
-
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-
-
-    <link rel="icon" type="image/png" sizes="192x192" href="/img/large.png">
-
-
-    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-medium.png">
-
-
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.png">
-
-
-    <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="null">
-
-<!-- Android Chrome Color -->
-
-
-
-<meta name="format-detection" content="telephone=no">
-
-<!-- Description -->
-<meta name="description" content="什么是 V2Ray想要通过 V2Ray 科学上网，先得了解 V2Ray 是什么。根据 V2Ray 指南比较官方的描述：
-
-...">
-
-<!-- Keywords -->
-<meta name="keywords" content=", 科学上网">
-
-<!-- Disable Fucking Bloody Baidu Tranformation -->
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/img/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/img/large.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/img/favicon-medium.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/img/favicon.png"><link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="">
 
     <!-- ### Import File ### -->
-    
-        <!-- spectre.css -->
-
-    <link rel="stylesheet" href="/lib/spectre/spectre.min.css">
-
-
-<style>
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
     body {
         background-color: #f8f9fa;
     }
@@ -144,6 +94,8 @@ window.oldVersion = [
         color: #005eb9;
         opacity: 1;
     }
+
+    
 
     .post-entry .card-body a {
         color: #0070ff;
@@ -186,12 +138,7 @@ window.oldVersion = [
         background: #f8f9fa;
         opacity: .85;
     }
-</style>
-
-<!-- style.css -->
-
-    <link rel="stylesheet" href="/css/style.min.css">
-
+</style><link rel="stylesheet" href="/css/style.min.css">
 
 
 
@@ -202,64 +149,32 @@ window.oldVersion = [
 
     <!-- Prettify Theme -->
     
-    
-        <link rel="stylesheet" href="/css/highlight/github.min.css">
-    
+    <link rel="preload" href="/css/highlight/github.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/github.min.css"></noscript>
 
 
 
-    
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
 
     <!-- ### Site Verification ### -->
     
 
 
-    <!-- ### RSS ### -->
-    
-    
-        <link rel="alternate" type="application/atom+xml" href="/atom.xml">
-    
-
-
-    <!-- ### WebApp ### -->
-    <meta name="mobile-web-app-capable" content="yes">
-<meta name="application-name" content="悉达多｜Pain Maker">
-<meta name="msapplication-starturl" content="http://superchun.cn">
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="悉达多｜Pain Maker">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-<!-- Manifest Import -->
-
-<!-- Open Search -->
-
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="悉达多｜Pain Maker"><meta name="msapplication-starturl" content="http://superchun.cn"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="悉达多｜Pain Maker"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- ### The Open Graph & Twitter Card Protocol ### -->
-    <meta property="og:title" content="如何用V2Ray科学上网 | 悉达多｜Pain Maker">
-<meta property="og:site_name" content="悉达多｜Pain Maker">
+    <meta property="og:title" content="如何用V2Ray科学上网 | 悉达多｜Pain Maker"><meta property="og:site_name" content="悉达多｜Pain Maker"><meta property="og:type" content="article"><meta property="og:url" content="http:&#x2F;&#x2F;superchun.cn&#x2F;how-to-freedom.html"><meta property="og:locale" content="zh-CN"><meta name="description" content="什么是 V2Ray想要通过 V2Ray 科学上网，先得了解 V2Ray 是什么。根据 V2Ray 指南比较官方的描述：  V2Ray 是 Project V 下的一个工具。Project V 是一个包含一系列构建特定网络环境工具的项目，而 V2Ray 属于最核心的一个。 官方中介绍Project V 提供了单一的内核和多种界面操作方式。内核（V2Ray）用于实际的网络交互、路由等针对网络数据的处理 - 悉达多 - 悉达多｜Pain Maker"><meta name="keywords" content="科学上网"><meta property="og:image" content="http:&#x2F;&#x2F;q0izzaygp.bkt.clouddn.com&#x2F;2019-11-29-074008.png"><meta property="og:image" content="http:&#x2F;&#x2F;q0izzaygp.bkt.clouddn.com&#x2F;2019-11-29-074002.png"><meta property="og:image" content="http:&#x2F;&#x2F;q0izzaygp.bkt.clouddn.com&#x2F;2019-11-29-073955.png"><meta property="og:image" content="http:&#x2F;&#x2F;q0izzaygp.bkt.clouddn.com&#x2F;2019-11-29-073949.png"><meta property="og:image" content="http:&#x2F;&#x2F;q0izzaygp.bkt.clouddn.com&#x2F;2019-11-29-074227.png"><meta property="og:image" content="http:&#x2F;&#x2F;q0izzaygp.bkt.clouddn.com&#x2F;2019-11-29-074344.png"><meta property="article:published_time" content="2019-11-29T06:06:21.000Z"><meta property="article:modified_time" content="2019-11-29T07:48:20.911Z"><meta property="og:updated_time" content="2019-11-29T07:48:20.911Z"><meta property="article:author" content="悉达多"><meta property="article:tag" content="科学上网"><meta name="twitter:card" content="summary">
 
-<meta property="og:locale" content="zh-CN">
+    
 
-<meta property="og:url" content="http://superchun.cn/how-to-freedom.html">
-<meta property="og:image" content="http://superchun.cn/img/large.png">
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="http://superchun.cn/how-to-freedom.html">
 
-<meta property="og:description" content="什么是 V2Ray想要通过 V2Ray 科学上网，先得了解 V2Ray 是什么。根据 V2Ray 指南比较官方的描述：
-
-...">
-
-<meta name="twitter:card" content="summary">
-
-
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2019-11-29T06:06:21.000Z">
-    <meta property="article:modified_time" content="2019-11-29T06:06:21.000Z">
-    <meta property="article:author" content="悉达多">
-    <meta property="og:article:tag" content=", 科学上网"> 
-
-
-
-
+    <meta name="generator" content="Hexo 4.0.0">
 
     <!-- ### Analytics ### -->
     
@@ -269,10 +184,6 @@ window.oldVersion = [
 
 
 
-
-
-    <!-- ### Canonical link ### -->
-    <link rel="canonical" href="http://superchun.cn/how-to-freedom.html">
 
     <!-- ### Structured Data ### -->
     
@@ -322,10 +233,8 @@ window.oldVersion = [
         "query-input": "required name=search_term_string"
     },
     
-    "keywords": ", 科学上网",
-    "description": "什么是 V2Ray想要通过 V2Ray 科学上网，先得了解 V2Ray 是什么。根据 V2Ray 指南比较官方的描述：
-
-..."
+    "keywords": "科学上网",
+    "description": "什么是 V2Ray想要通过 V2Ray 科学上网，先得了解 V2Ray 是什么。根据 V2Ray 指南比较官方的描述：  V2Ray 是 Project V 下的一个工具。Project V 是一个包含一系列构建特定网络环境工具的项目，而 V2Ray 属于最核心的一个。 官方中介绍Project V 提供了单一的内核和多种界面操作方式。内核（V2Ray）用于实际的网络交互、路由等针对网络数据的处理 - 悉达多 - 悉达多｜Pain Maker"
 }
 </script>
 
@@ -333,13 +242,9 @@ window.oldVersion = [
 
     <!-- ### Custom Head ### -->
     
-
-
 </head>
 
     <body>
-        
-
             
 
             <!-- ### Main content ### -->
@@ -436,11 +341,7 @@ window.oldVersion = [
 
             
     <!-- ## Post ## -->
-    
-    
-
-
-<div class="post-container">
+    <div class="post-container">
     <div id="post-card" class="card">
         
         <div class="card-item-container">
@@ -535,9 +436,8 @@ window.oldVersion = [
                 <div class="card-body">
                     
                         
-                            <div id="post-toc">
-                                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">什么是 V2Ray</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">搭建 V2Ray 需要什么</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">前期准备</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#null"><span class="post-toc-text">为域名申请 SSL 证书</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">1. 下载并给 cerbot 赋予可执行权限</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">2. 利用 cerbot 申请 Let’s Encry 证书</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#null"><span class="post-toc-text">安装 Nginx</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">CentOS 系统添加 Nginx 官方源</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">Ubuntu 及 Debain 系统添加官方源</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">安装 V2Ray</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">配置 V2Ray</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">配置 Nginx 转发 websocket</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">客户端的配置</span></a></li></ol>
-                            </div>
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">什么是 V2Ray</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">搭建 V2Ray 需要什么</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">前期准备</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#null"><span class="post-toc-text">为域名申请 SSL 证书</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">1. 下载并给 cerbot 赋予可执行权限</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">2. 利用 cerbot 申请 Let’s Encry 证书</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#null"><span class="post-toc-text">安装 Nginx</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">CentOS 系统添加 Nginx 官方源</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#null"><span class="post-toc-text">Ubuntu 及 Debain 系统添加官方源</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">安装 V2Ray</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">配置 V2Ray</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">配置 Nginx 转发 websocket</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#null"><span class="post-toc-text">客户端的配置</span></a></li></ol></div>
                         
                     
                     <article id="post-content">
@@ -561,9 +461,11 @@ window.oldVersion = [
 <p>将 VPS 解析到申请好的域名就不做过多描述了，通过 DNSPod 或者申请域名的平台应该都可以进行解析。首先，登入到申请好的 VPS 上：</p>
 <h3><span id="为域名申请-ssl-证书">为域名申请 SSL 证书</span></h3><p>我们可以通过 <a href="https://certbot.eff.org" target="_blank" rel="noopener">cerbot</a> 给域名生成对应的 SSL 证书：</p>
 <h4><span id="1-下载并给-cerbot-赋予可执行权限">1. 下载并给 cerbot 赋予可执行权限</span></h4><p>首先，选择保存 cerbot 的目录，我们可以选择 <code>/usr/local/src</code>，cd 到想保存的目录。然后用 wget 命令下载 cerbot：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.eff.org/cerbot-auto</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">wget https://dl.eff.org/cerbot-auto</span></pre></td></tr></table></figure>
+
 <p>然后再给 cerbot 赋予可执行权限：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x cerbot-auto</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">chmod +x cerbot-auto</span></pre></td></tr></table></figure>
+
 <h4><span id="2-利用-cerbot-申请-lets-encry-证书">2. 利用 cerbot 申请 Let’s Encry 证书</span></h4><p>申请 Let’s Encry 证书需要以下几个条件：</p>
 <ol>
 <li>系统的 root 权限</li>
@@ -571,49 +473,70 @@ window.oldVersion = [
 <li>域名解析到了当前主机</li>
 </ol>
 <p>如果申请失败了，确认一下以上几点是否都满足。现在可以申请 SSL 证书了：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./certbot-auto certonly</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">./certbot-auto certonly</span></pre></td></tr></table></figure>
+
 <p>第一次安装需要输入一些必要的信息，主要如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">How would  you like to authenticate with the ACME CA? </span><br><span class="line">--------------------------------------------------</span><br><span class="line">1: Spin up a temporary webserver (standalone)</span><br><span class="line">2: Place files in webroot directory (webroot)</span><br><span class="line">一般选择 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Enter email address (used for urgent renewal and security notices) (Enter 'c' to cancel): # 输入想使用的邮箱，用于接收证书到期等信息</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Please enter in your domain name(s) (comma and/or space separated) (Enter 'c' to cancel): #输入想申请的域名</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">How would  you like to authenticate with the ACME CA? </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">--------------------------------------------------</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">1: Spin up a temporary webserver (standalone)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">2: Place files in webroot directory (webroot)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">一般选择 1</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">Enter email address (used for urgent renewal and security notices) (Enter 'c' to cancel): # 输入想使用的邮箱，用于接收证书到期等信息</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">Please enter in your domain name(s) (comma and/or space separated) (Enter 'c' to cancel): #输入想申请的域名</span></pre></td></tr></table></figure>
+
 <p>申请成功之后，会有一个证书保存的路径显示，可以记录下来，后面需要用到。如果忘记了也没关系，证书一般都保存在 <code>/etc/letsencrypt/live/xxx</code>下面，在这里你可以找到申请好的证书，有你的域名的那两个文件就是对应的证书。</p>
 <p>在证书快到期时，也可以通过下面的命令更新证书信息：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./certbot-auto renrew</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">./certbot-auto renrew</span></pre></td></tr></table></figure>
+
 <h3><span id="安装-nginx">安装 Nginx</span></h3><h4><span id="centos-系统添加-nginx-官方源">CentOS 系统添加 Nginx 官方源</span></h4><p>CentOS 系统官方源仓库文件在 <code>/etc/yum.repos.d</code>，只需要在下面新建一个文件保存 Nginx 的源就可以了，例如新建一个叫 <code>nginx.repo</code> 的文件，然后复制以下内容进去：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[nginx]</span><br><span class="line">		</span><br><span class="line">name=nginx repo</span><br><span class="line"><span class="meta">#</span> 下面的 OS 用实际发行版替换，如 centos 或 rhel，OSRELEASE 用具体发行版本号代替，如 6 或者 7。也就是说如果是 CentOS6，则需要将 OS/OSRELEASE 替换成 centos/6</span><br><span class="line">baseurl=http://nginx.org/packages/OS/OSRELEASE/$basearch/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">[nginx]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">		</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">name=nginx repo</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 下面的 OS 用实际发行版替换，如 centos 或 rhel，OSRELEASE 用具体发行版本号代替，如 6 或者 7。也就是说如果是 CentOS6，则需要将 OS/OSRELEASE 替换成 centos/6</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">baseurl=http://nginx.org/packages/OS/OSRELEASE/$basearch/</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">gpgcheck=0</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">enabled=1</span></pre></td></tr></table></figure>
+
 <p>保存文件后，就可以直接安装 Nginx 了：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">yum install nginx</span></pre></td></tr></table></figure>
+
 <h4><span id="ubuntu-及-debain-系统添加官方源">Ubuntu 及 Debain 系统添加官方源</span></h4><p>用编辑器打开 <code>/etc/apt/sources.list</code>，Debain 添加以下内容：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://nginx.org/packages/debian/ codename nginx</span><br><span class="line">deb-src http://nginx.org/packages/debian/ codename nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">deb http://nginx.org/packages/debian/ codename nginx</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">deb-src http://nginx.org/packages/debian/ codename nginx</span></pre></td></tr></table></figure>
+
 <p>Ubuntu 添加以下内容：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://nginx.org/packages/ubuntu codename nginx</span><br><span class="line">deb-src http://nginx.org/packages/ubuntu codename nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">deb http://nginx.org/packages/ubuntu codename nginx</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">deb-src http://nginx.org/packages/ubuntu codename nginx</span></pre></td></tr></table></figure>
+
 <p>用命令 <code>cat/etc/os-release</code> 查询到实际发行版本号，替换上面内容中的 <code>codename</code>。</p>
 <p>添加完上面内容后，还需要添加 Nginx 官方的 Key，不然会提示 Key 错误：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://nginx.org/keys/nginx_signing.key -O /tmp/nginx_signing.key</span><br><span class="line">apt-key add /tmp/nginx_signing.key</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">wget https://nginx.org/keys/nginx_signing.key -O /tmp/nginx_signing.key</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">apt-key add /tmp/nginx_signing.key</span></pre></td></tr></table></figure>
+
 <p>最后先更新仓库源信息再安装 Nginx：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">apt-get update</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">apt-get install nginx</span></pre></td></tr></table></figure>
+
 <p>到了这里，前期的准备工作基本完成了，下面则需要进入配置环节了。</p>
 <h2><span id="安装-v2ray">安装 V2Ray</span></h2><p>用官方提供的命令一键安装 V2Ray：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -L -s https://install.direct/go.sh)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -L -s https://install.direct/go.sh)</span></pre></td></tr></table></figure>
+
 <h2><span id="配置-v2ray">配置 V2Ray</span></h2><p>V2Ray 的配置文件放在 <code>/etc/V2Ray/config.json</code>，修改之前先备份一下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /etc/V2Ray/config.json /etc/V2Ray/config.json.bak</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">cp /etc/V2Ray/config.json /etc/V2Ray/config.json.bak</span></pre></td></tr></table></figure>
+
 <p>在原先的默认配置中，修改或者添加下面的配置：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"inbound"</span>:[&#123;</span><br><span class="line">   	"port": 1000, # 设置 websocket 的端口号，用于和 Nginx 通信</span><br><span class="line">    "protocol": "vmess", # 选择 vmess 协议</span><br><span class="line">    "streamSettings":&#123;</span><br><span class="line">    	"network":"ws",</span><br><span class="line">    	"wsSettings":&#123;</span><br><span class="line">    		"connectionReuse": false,</span><br><span class="line">    		"path": "/ws", # Nginx 监听路径，后面 Nginx 设置及 V2Ray 客户端配置需要</span><br><span class="line">    		"headers": &#123;</span><br><span class="line">    			"Host": "申请的域名"</span><br><span class="line">  			&#125;</span><br><span class="line">  		&#125;</span><br><span class="line">  	&#125;</span><br><span class="line">  &#125;],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	<span class="attr">"inbound"</span>:[&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">   	"port": 1000, # 设置 websocket 的端口号，用于和 Nginx 通信</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    "protocol": "vmess", # 选择 vmess 协议</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    "streamSettings":&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    	"network":"ws",</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    	"wsSettings":&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    		"connectionReuse": false,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    		"path": "/ws", # Nginx 监听路径，后面 Nginx 设置及 V2Ray 客户端配置需要</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    		"headers": &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    			"Host": "申请的域名"</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">  			&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">  		&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">  	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">  &#125;],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
 <p>修改配置之后，可以用 V2Ray 自带的测试工具检测一下配置是否正确：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/V2Ray/V2Ray -test -config /etc/V2Ray/config.json</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">/usr/bin/V2Ray/V2Ray -test -config /etc/V2Ray/config.json</span></pre></td></tr></table></figure>
+
 <h2><span id="配置-nginx-转发-websocket">配置 Nginx 转发 websocket</span></h2><p>在 <code>/etc/nginx/conf.d</code> 新建一个虚拟主机配置文件，内容如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">			listen 443 ssl;</span><br><span class="line">			listen [::]:443 ssl;</span><br><span class="line">			</span><br><span class="line">			ssl_certificate       # 第一步生成的 SSL 证书目录</span><br><span class="line">			ssl_certificate_key  # 第一步生成的 SSL key 目录</span><br><span class="line">			ssl_protocols   TLSv1 TLSv1.1 TLSv1.2</span><br><span class="line">			ssl_ciphers    HIGH:!aNull:!MD5;</span><br><span class="line"></span><br><span class="line">			# 域名</span><br><span class="line">			server_name   xxxxx;</span><br><span class="line">			</span><br><span class="line">			location /ws &#123;</span><br><span class="line">				proxy_redirect  off;</span><br><span class="line">				proxy_pass  http://127.0.0.1:22125;  # V2Ray 配置的 websocket 端口</span><br><span class="line">				proxy_http_version 1.1;</span><br><span class="line">				proxy_set_header  Upgrade $http_upgrade;</span><br><span class="line">				proxy_set_header  Connection “upgrade”;</span><br><span class="line">				proxy_set_header  Host $http_host;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			location / &#123;</span><br><span class="line">				root  /var/www/html;</span><br><span class="line">				index  index.html index.htm;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;	</span><br><span class="line">	</span><br><span class="line">		server &#123;</span><br><span class="line">			listen 80;</span><br><span class="line">			listen [::]:80;</span><br><span class="line">			server_name  xxxx; # 域名</span><br><span class="line">			return 301 https://域名$request_uri;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">server &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">			listen 443 ssl;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">			listen [::]:443 ssl;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">			</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">			ssl_certificate       # 第一步生成的 SSL 证书目录</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">			ssl_certificate_key  # 第一步生成的 SSL key 目录</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">			ssl_protocols   TLSv1 TLSv1.1 TLSv1.2</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">			ssl_ciphers    HIGH:!aNull:!MD5;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">			# 域名</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">			server_name   xxxxx;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">			</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">			location /ws &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">				proxy_redirect  off;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">				proxy_pass  http://127.0.0.1:22125;  # V2Ray 配置的 websocket 端口</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">				proxy_http_version 1.1;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">				proxy_set_header  Upgrade $http_upgrade;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">				proxy_set_header  Connection “upgrade”;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">				proxy_set_header  Host $http_host;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">			&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">			</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">			location / &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">				root  /var/www/html;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">				index  index.html index.htm;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">			&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">		&#125;	</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">	</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">		server &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">			listen 80;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">			listen [::]:80;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">			server_name  xxxx; # 域名</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">			return 301 https://域名$request_uri;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">		&#125;</span></pre></td></tr></table></figure>
+
 <p>保存之后用 Nginx 自带的配置文件检测功能检查下是否有问题：<code>nginx -t</code></p>
 <p>没问题的话重启一下 V2Ray 和 Nginx 就可以了：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart V2Ray</span><br><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">systemctl restart V2Ray</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">systemctl restart nginx</span></pre></td></tr></table></figure>
+
 <h2><span id="客户端的配置">客户端的配置</span></h2><p>其实 V2Ray 并没有所谓的客户端，它只是个配置而已，客户端的功能主要是保持和服务器的配置一样。Windows 上推荐的客户端是 V2RayW，Mac 上推荐的是 V2RayX，iOS 客户端推荐 Kitsunebi（需要在美区下载），Android 客户端推荐 V2RayNG。这里主要介绍一下 Mac 上 V2RayX 的配置，其他配置基本雷同。</p>
 <p>V2RayX 的配置界面长这样：</p>
-<p><img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-074008.png" alt="image-20191129152702069" style="zoom:50%;"></p>
+<img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-074008.png" alt="image-20191129152702069" style="zoom:50%;">
+
 <p>下面对各个功能及配置进行详细说明：</p>
-<p><img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-074002.png" alt="image-20191129153014081" style="zoom:50%;"></p>
-<p><img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-073955.png" alt="image-20191129153149501" style="zoom:50%;"></p>
-<p><img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-073949.png" alt="image-20191129153413732" style="zoom:50%;"></p>
+<img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-074002.png" alt="image-20191129153014081" style="zoom:50%;">
+
+<img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-073955.png" alt="image-20191129153149501" style="zoom:50%;">
+
+<img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-073949.png" alt="image-20191129153413732" style="zoom:50%;">
+
 <p>到这里基本配置就完成了，接下来配置 websocket 和 TLS，点击配置中的 <code>transport settings...</code>，进入到：</p>
-<p><img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-074227.png" alt="image-20191129154226871" style="zoom:50%;"></p>
-<p><img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-074344.png" alt="image-20191129154343698" style="zoom:50%;"></p>
+<img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-074227.png" alt="image-20191129154226871" style="zoom:50%;">
+
+<img src="http://q0izzaygp.bkt.clouddn.com/2019-11-29-074344.png" alt="image-20191129154343698" style="zoom:50%;">
+
 <p>到这里，客户端的配置也就已经完成了，可以愉快的科学上网了：)</p>
 <p>如果，你并不想做那么复杂的配置，只想简单的科学上网，则只需要使用 V2Ray 默认生成的配置文件，将客户端的 id 及传输类型，配置成跟服务器中的一样就可以了。初次配置 V2Ray 会有点懵圈，因为它并不像 SS 一样，有严格的客户端功能配置，它只是一系列的配置文件而已，inbound 和 outbound 只是出站跟入站的配置，客户端也就是我们上网是 inbound，服务器则是 outbound。理清这些概念，就可以解决 V2Ray 中大部分的问题。</p>
 
@@ -644,8 +567,7 @@ window.oldVersion = [
 
 <span class="post-tags-list mt-2">
 
-
-<a class="post-tags-list-item" href="/tags/科学上网/" rel="tag">#&nbsp;科学上网</a>
+<a class="post-tags-list-item" href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="tag">#&nbsp;科学上网</a>
 
 </span>
 
@@ -653,8 +575,7 @@ window.oldVersion = [
 </p>
 
                 </div>
-                
-<div class="post-nav px-2 bg-gray">
+                <div class="post-nav px-2 bg-gray">
 <ul class="pagination">
     <!-- Prev Nav -->
     
@@ -669,7 +590,7 @@ window.oldVersion = [
     <!-- Next Nav -->
     
         <li class="page-item page-next">
-            <a href="/git使用SSH配置一直需要输入密码的坑.html" rel="next">
+            <a href="/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91.html" rel="next">
                 <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
                 <div class="page-item-subtitle">git使用SSH配置一直需要输入密码的坑</div>
             </a>
@@ -685,7 +606,7 @@ window.oldVersion = [
                             <!-- Gitalk Container -->
 <div id="gitalk-container"></div>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.css"></noscript>
 
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1.3.3/dist/gitalk.min.js"></script>
 
@@ -713,9 +634,11 @@ window.oldVersion = [
             <!-- ### Footer ### -->
             <footer class="text-center">
     <!-- footer copyright -->
-    <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span data-year></span>
-        <a class="footer-copyright-a" href="http://superchun.cn">悉达多｜Pain Maker</a>
-    </p>
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="http://superchun.cn">悉达多｜Pain Maker</a>
+        </p>
+
     <!-- footer custom text -->
     <p class="footer-text mb-0">
     
@@ -723,7 +646,6 @@ window.oldVersion = [
     <!-- footer develop info -->
     <p class="footer-develop mb-0">
         
-            
     <!-- Busuanzi User Views -->
     <span id="busuanzi_container_site_uv" hidden>
         <span></span>
@@ -736,7 +658,7 @@ window.oldVersion = [
 
 
 
-        
+
         
         Powered by&nbsp;<!--
          --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
@@ -744,50 +666,28 @@ window.oldVersion = [
     </p>
 </footer>
 
-        
 
         <!-- ### Import File ### -->
         <!-- ### Footer JS Import ### -->
 
 <script>
+
+    
 window.lazyLoadOptions = {
     elements_selector: ".lazyload",
     threshold: 50
 };
-
-
-
-    /* Copyright */
-    var copyrightNow = new Date().getFullYear();
-    var copyrightContent = document.querySelector('span[data-year]')
-    
-        copyrightContent.textContent = copyrightNow
-    
-
-
-
-/* Cnosole Log */
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
 console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
 </script>
 
-<!-- vanilla-lazyload -->
-
-    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
-
-
-
-    <!-- Busuanzi -->
-    
+<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
     <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
 
 
 <!-- Offset -->
-
-
-
-
-    <!-- Hanabi -->
-    <!-- Import Hanabi -->
+<!-- Import Hanabi -->
 
     <script src="/lib/hanabi/hanabi.min.js"></script>
 
@@ -800,10 +700,6 @@ console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c 
 
 
 
-
-<!-- gallery.js -->
-
-
 <!-- Comment -->
 
     
@@ -812,7 +708,6 @@ console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c 
 
 
 <!-- ### Custom Footer ### -->
-
 
     </body>
 
