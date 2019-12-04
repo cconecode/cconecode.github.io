@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>事件拦截 on 悉达多｜PainMaker</title>
+    <link>http://superchun.cn/tags/%E4%BA%8B%E4%BB%B6%E6%8B%A6%E6%88%AA/</link>
+    <description>Recent content in 事件拦截 on 悉达多｜PainMaker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    
+	<atom:link href="http://superchun.cn/tags/%E4%BA%8B%E4%BB%B6%E6%8B%A6%E6%88%AA/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>iOS 事件拦截</title>
+      <link>http://superchun.cn/posts/ios%E4%BA%8B%E4%BB%B6%E6%8B%A6%E6%88%AA/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://superchun.cn/posts/ios%E4%BA%8B%E4%BB%B6%E6%8B%A6%E6%88%AA/</guid>
+      <description>在项目中遇到一个需求，检测用户三分钟未点击屏幕，就出现广告轮播图。很自然的就联想到事件拦截了，然而之前对于 iOS 的事件机制并不是太过于了解，所以利用这次机会进行了深入学习。
+iOS事件机制 iOS 中的事件分为三类：触摸事件（单点、多点、手势），传感器事件（加速传感器）和远程控制事件（官方文档），我们遇到情况是第一种也就是触摸事件的机制。
+响应者链 当一个事件发生时，如果 first responder 不做处理，那么就会往下传递，如果下一个 responder 也不处理，那么就会继续传递到再下一个 responder 中，直到有一个 responder 处理或者没有 responder 了，如果没有 responder 处理这个事件，那么这个事件就被抛弃了。这些 responder 按照传递顺序连接起来就构成了响应者链。
+iOS 中的响应者链： 从图中我们可以观察到，响应者链有以下几个特点：
+ 响应者链通常由 initial view 开始。
+ View 的 nextResponder 是它的 superView，如果 View 已经是它所在的 ViewController 中的 top view，那么 next responder 就是它所在的 ViewConTroller。
+ ViewController 如果有 superViewController，那么它的 nextResponder 就是它superViewController 最上面的 View。如果没有，那么它的 nextResponder 就是 Window。
+ Window 的 nextResponder 指向 Application，Application 是整个响应者链的顶层，它的 nextResponder 指向 nil。也就是说当事件传递到 Application 不被处理的话就会被抛弃了。</description>
+    </item>
+    
+  </channel>
+</rss>

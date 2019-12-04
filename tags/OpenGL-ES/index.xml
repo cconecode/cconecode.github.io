@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OpenGL ES on 悉达多｜PainMaker</title>
+    <link>http://superchun.cn/tags/opengl-es/</link>
+    <description>Recent content in OpenGL ES on 悉达多｜PainMaker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    
+	<atom:link href="http://superchun.cn/tags/opengl-es/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>OpenGL实战(一) - 简单图形绘制</title>
+      <link>http://superchun.cn/posts/opengl-es%E6%95%99%E7%A8%8B%E4%B8%80-%E7%AE%80%E5%8D%95%E5%9B%BE%E5%BD%A2%E7%BB%98%E5%88%B6-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://superchun.cn/posts/opengl-es%E6%95%99%E7%A8%8B%E4%B8%80-%E7%AE%80%E5%8D%95%E5%9B%BE%E5%BD%A2%E7%BB%98%E5%88%B6-/</guid>
+      <description>在上一篇文章中我们学习了OpenGL ES的一些基本概念，剩下的知识我们在实战中不断的补充，后续的文章会以代码+知识点+API解释的方式来写，同样的，如果有写的不好的地方，可以在评论中指出或者直接联系我（评论采用disqus，如果加载不出来，翻个墙试一下，联系方式见关于我）。
+渲染屏幕==== 首先，将控制器继承自GLKViewController，并初始化一个GLKView，设置为它的View：
+// 直接把上篇文章的初始化方法copy过来 // 创建一个上下文，并设置为当前上下文 EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2]; [EAGLContext setCurrentContext:context]; // 使用代码初始化 // GLKView *view = [GLKView alloc] initWithFrame:self.view.bounds context:context // 使用Storyboard初始化 GLKView *view = (GLKView *)self.view; view.context = context; // 关联上下文  只需在GLKView的代理方法(void)glkView:(GLKView *)view drawInRect:(CGRect)rect中，调用glClear的系列函数就可以用OpenGL ES对屏幕进行渲染了：
+- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect { glClearColor(1, 0, 0, 1); // 清理屏幕的RGB颜色和alpha值，这里我们设置成了红色 glClear(GL_COLOR_BUFFER_BIT); // 调用glClear来实际执行清理操作, 参数是一个缓冲区，缓冲区有多种格式，上篇文章有提及，现在我们执行的是颜色缓冲区 }  现在来做一个酷炫的效果，让屏幕显示闪烁。当设置GLKViewController代理的时候，每一帧动画GLKViewController都会告诉我们，它会在1秒内多次调用draw方法，GLKViewController的代理中，我们可以在GLKViewController的代理方法(void)glkViewControllerUpdate:(GLKViewController *)controller方法来更新屏幕的颜色。
+首先定义两个参数并初始化:
+@property (nonatomic, assign) CGFloat redColorFloat; // RGB中红色的色值 @property (nonatomic, assign, getter=isIncreasing) BOOL increasing; // 判断是否增加 self.</description>
+    </item>
+    
+    <item>
+      <title>初识 OpenGL ES</title>
+      <link>http://superchun.cn/posts/%E5%88%9D%E8%AF%86opengl-es/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://superchun.cn/posts/%E5%88%9D%E8%AF%86opengl-es/</guid>
+      <description>在如今直播盛行，VR可能即将崛起的时代，OpenGL ES将会变得不可或缺。而OpenGL ES的学习曲线比较陡峭，所以写博文来记录学习过程，同时也希望能够帮助到一起想学习OpenGL ES的同学。由于能力尚浅，文中错误之处敬请指出，谢谢！
+什么是OpenGL ES  OpenGL ES（OpenGL for Embedded Systems）是 OpenGL 三维图形API的子集，针对手机、PDA和游戏主机等嵌入式设备而设计。该API由Khronos集团定义推广，Khronos是一个图形软硬件行业协会，该协会主要关注图形和多媒体方面的开放标准。
+OpenGL ES是从OpenGL裁剪定制而来的，去除了glBegin/glEnd，四边形（GL_QUADS）、多边形（GL_POLYGONS）等复杂图元等许多非绝对必要的特性。经过多年发展，现在主要有两个版本，OpenGL ES 1.x针对固定管线硬件的，OpenGL ES 2.x针对可编程管线硬件。OpenGL ES 1.0是以OpenGL 1.3规范为基础的，OpenGL ES 1.1是以OpenGL 1.5规范为基础的，它们分别又支持common和common lite两种profile。lite profile只支持定点实数，而common profile既支持定点数又支持浮点数。OpenGL ES 2.0则是参照OpenGL 2.0规范定义的，common profile发布于2005-8，引入了对可编程管线的支持。OpenGL ES 3.0于2012年公布，加入了大量新特性。 - - - - 维基百科
+ 苹果官方文档中对于OpenGL ES的描述为： OpenGL ES让App拥有了利用底层图形处理器的能力，iOS设备上的GPU可以执行复杂的2D和3D绘图，以及在最终图像上的每个像素的复杂着色计算。OpenGL ES是低级的、以硬件为中心的基于C的API，可以与iOS应用无缝集成。OpenGL ES规范没有定义窗口层，取而代之，当有任何绘图命令写入，主机操作系统必须定义一个方法来创建OpenGL ES渲染上下文，用来接受命令和帧缓冲。
+OpenGL ES基本概念 坐标系
+ 由于OpenGL ES可以用来绘制2D和3D图形，所以它的坐标是一个三维坐标，如果应用只涉及到2D，那么可以不考虑Z轴。
+纹理坐标
+ 一般OpenGL ES中的纹理坐标都是二维的，原点在左下角，与计算机中的图像坐标并不一致，二者的差别在于围绕横轴翻转180°。
+顶点数据&amp;amp;&amp;amp;索引
+顶点数据是一个数组，里面存的是顶点坐标。而索引则是顶点数组的对应的索引和串联关系。
+// 顶点数据 GLFloat squareVertexData[] = { 0.5, -0.5, 0.0, //x,y,z -0.</description>
+    </item>
+    
+  </channel>
+</rss>

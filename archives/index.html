@@ -1,557 +1,291 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="zh-CN">
-    <head>
+<head>
+
     <meta charset="utf-8">
-    <!--
-        hexo-theme-suka © SukkaW
-        GitHub: https://github.com/SukkaW/hexo-theme-suka
-    -->
-
-    <!-- ### Resource Hint ### -->
-
-    <!-- ## DNS Prefetch ## -->
-    <meta http-equiv="x-dns-prefetch-control" content="on">
-
-<!-- busuanzi -->
-
-    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
-
-
-<!-- comment -->
-
-
-
-    <link rel="dns-prefetch" href="//api.github.com">
-    <link rel="dns-prefetch" href="//cors-anywhere.herokuapp.com">
-
-
-
-
-
-<!-- analytics -->
-
-
-
-
-
-
-
-    <!-- ## Preload ## -->
-    
-    <!-- Busuanzi -->
-    
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
-
-
-
-
-
-    <!-- Hanabi -->
-    <!-- Import Hanabi -->
-
-    <link rel="preload" href="/lib/hanabi/hanabi.min.js" as="script">
-
-
-<!-- Import Hanabi Broswser -->
-
-    <link rel="preload" href="/js/hanabi-browser.min.js" as="script">
-
-
-
-
-
-    <!-- ### Meta & Title & Info ### -->
+    <meta name="generator" content="Hugo 0.58.3" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
-    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Title -->
-    <title>归档 | 悉达多｜Pain Maker</title>
+    <title>归档 | 悉达多｜PainMaker</title>
+    <meta property="og:title" content="归档 - 悉达多｜PainMaker">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2019-12-04T16:25:22&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2019-12-04T16:25:22&#43;08:00">
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="归档">
+        
+    <meta name="author" content="悉达多">
+    <meta property="og:url" content="http://superchun.cn/archives/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-    <!-- Favicons -->
-    <link rel="icon" type="image&#x2F;ico" href="/img/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/img/large.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/img/favicon-medium.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/img/favicon.png"><link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="">
-
-    <!-- ### Import File ### -->
-    <link rel="stylesheet" href="/lib/spectre/spectre.min.css"><style>
-    body {
-        background-color: #f8f9fa;
-    }
-
-    a, a:visited {
-        color: #0070ff;
-    }
-
-    a:active, a:focus, a:hover {
-        color: #0070ff;
-        opacity: .75;
-    }
-
-    #post-content a,
-    #post-content a:hover,
-    #post-content a:focus,
-    #post-content a:visited {
-        color: #005eb9;
-        opacity: 1;
-    }
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
 
-    .post-entry .card-body a {
-        color: #0070ff;
-    }
-
-    .avatar {
-        background: #444;
-    }
-
-    .navbar-link,
-    .navbar-link:visited,
-    .timeline .timeline-item .timeline-icon.icon-lg {
-        color: #0070ff;
-    }
-
-    .navbar-link:hover {
-        color: #0070ff;
-        opacity: .8;
-    }
-
-    #search-input .btn,
-    #disqus_click_btn,
-    #disqus-switch-to-direct,
-    #disqus-loadmore-button {
-        background: #727e96;
-        border-color: #727e96;
-        color: #fff;
-    }
-
-    #post-toc a.post-toc-link,
-    #post-toc a.post-toc-link:visited,
-    .share-menu.menu .menu-item>a {
-        color: #727e96;
-    }
-
-    .share-menu.menu .menu-item>a:hover,
-    .share-menu.menu .menu-item>a:focus,
-    .share-menu.menu .menu-item>a:visited {
-        color: #50596c;
-        background: #f8f9fa;
-        opacity: .85;
-    }
-</style><link rel="stylesheet" href="/css/style.min.css">
-
-
-
-
-
-
-
-
-    <!-- Prettify Theme -->
-    
-
-
-
-
-<script>
-/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
-!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
-</script>
-
-    <!-- ### Site Verification ### -->
-    
-
-
-    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="悉达多｜Pain Maker"><meta name="msapplication-starturl" content="http://superchun.cn"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="悉达多｜Pain Maker"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <!-- ### The Open Graph & Twitter Card Protocol ### -->
-    <meta property="og:title" content="归档 | 悉达多｜Pain Maker"><meta property="og:site_name" content="悉达多｜Pain Maker"><meta property="og:type" content="website"><meta property="og:url" content="http:&#x2F;&#x2F;superchun.cn&#x2F;archives&#x2F;"><meta property="og:locale" content="zh-CN"><meta name="description" content="知也者，所以知也，而不必知 - 悉达多 - 悉达多｜Pain Maker">
 
     
-
-    <!-- ### Canonical link ### -->
-    <link rel="canonical" href="http://superchun.cn/archives/">
-
-    <meta name="generator" content="Hexo 4.0.0">
-
-    <!-- ### Analytics ### -->
-    
-
-
-
-
-
-
-
-    <!-- ### Structured Data ### -->
-    
-
-
-
-
-    <!-- ### Custom Head ### -->
     
 </head>
 
-    <body>
-            
 
-            <!-- ### Main content ### -->
-            <!-- ## Header ##-->
-<header>
-    <h1 class="header-title text-center"><a href="/">悉达多｜Pain Maker</a></h1>
-
-    <p class="text-center header-slogan">
-        
-            
-                知也者，所以知也，而不必知
-            
-        
-    </p>
-
-    <nav class="navbar-section text-center">
-    
-        <a href="/" class="navbar-link">首页</a>
-    
-    
-        <a href="/archives/" class="navbar-link">归档</a>
-    
-    
-        <a href="/search" class="navbar-link">搜索</a>
-    
-    
-        <a href="/about/" class="navbar-link">关于</a>
-    
-        <a href="/tags/" class="navbar-link">标签</a>
-    
-    
-        <div class="dropdown dropdown-right">
-    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
-    <ul class="menu share-menu">
-
-        <!-- Share Weibo -->
-        
-        <li class="menu-item">
-            <a href="http://service.weibo.com/share/share.php?appkey=&title=悉达多｜Pain Maker&url=http://superchun.cn&pic=http://superchun.cn/img/large.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
-        </li>
-        
-
-        <!-- Share Twitter -->
-        
-        <li class="menu-item">
-            <a href="https://twitter.com/intent/tweet?text=悉达多｜Pain Maker&url=http://superchun.cn&via=悉达多" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
-        </li>
-        
-
-        <!-- Share Facebook -->
-        
-
-        <!-- Share Google+ -->
-        
-        <li class="menu-item">
-            <a href="https://plus.google.com/share?url=http://superchun.cn" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
-        </li>
-        
-
-        <!-- Share LinkedIn -->
-        
-        <li class="menu-item">
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://superchun.cn&title=undefined" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
-        </li>
-        
-
-        <!-- Share QQ -->
-        
-        <li class="menu-item">
-            <a href="http://connect.qq.com/widget/shareqq/index.html?site=悉达多｜Pain Maker&title=undefined&summary=知也者，所以知也，而不必知&pics=http://superchun.cn/img/large.png&url=http://superchun.cn" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
-        </li>
-        
-
-        <!-- Share Telegram -->
-        
-        <li class="menu-item">
-            <a href="https://t.me/share/url?url=http://superchun.cn&text=undefined" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
-        </li>
-        
-
-        <!-- QRCode -->
-        
-        <li class="menu-item">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAAAAAB0L9x7AAABiUlEQVR42u3awRLCIAyE4b7/S+vVqZDd1A5dnL8XHUX6HSIkoccr4DpAgACxBeIors/vP8eff3uex5kXRDZiGDQDRIUb/a6aF0Q+YhRYs0mGQXYa78wLYk/ELABHC9YoMEH8H0LddLoQgdgeoSZUi9Nog7ttFwWxHKES3auvt2bbIJYhZNFqbGoqYH+uykEsRVSFjQo6N/Gd4kFEIqqNx2mYOJfcwEBEIZwNyF3E1JgvEIhIRHdDUouTDEbn3wHicYTadGZjVIDKxiuISESVvDjfz4JVFcwgchFu0eNAnSY7iHyEGjgLwAriFM4g8hHqZh0giL0RnQcznOaYClwQ+QgFcG/uFEuymQoiAlEVO1Wh0zmwmS6KIGIRKpicYqjbVAWRjXAXH6fRqorly4ezIJYhugf26r06tCsbZyBiEFVAOg8Aus3XWx4eB7EM4SQkTlLcSnRAbInoNFU7D3CA+D+Ec9gigxtENMJJWNWiphr2l5MaEMsRasPpHNa6n4HIRTx5gQABIhrxBvjfqJhKOexHAAAAAElFTkSuQmCC" alr="QRCode">
-        </li>
-        
-
-    </ul>
-</div>
-    
-    
-</nav>
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="http://superchun.cn">
+                        悉达多｜PainMaker
+                    </a>
+                
+                <p class="description">知也者，所以知也，而不必知</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="http://superchun.cn">首页</a>
+                    
+                    <a class="current" href="http://superchun.cn/archives/" title="归档">归档</a>
+                    
+                    <a  href="http://superchun.cn/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
 </header>
 
-            <div class="container">
-    <div class="main-container">
-        <main>
 
-            <div class="timeline">
+<div id="body">
+    <div class="container">
+        <div class="col-group">
 
-                <div class="timeline-item">
-                    <div class="timeline-left">
-                        <div class="timeline-icon"></div>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="tile">
-                            <div class="tile-content">
-                                <p class="tile-title">
-                                    目前共计 9 篇文章
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-8" id="main">
+                <div class="post-archive">
+                    
+                    <h2>2019</h2>
+                    <ul class="listing">
+                        
+                        <li>
+                            <span class="date">2019/12/03</span>
+                            <a href="http://superchun.cn/posts/%E4%BB%8Eheapsort%E4%B8%8Emergesort%E7%9C%8B%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="从Heapsort与Mergesort看排序算法">从Heapsort与Mergesort看排序算法</a>
+                        </li>
+                        
+                        <li>
+                            <span class="date">2019/11/29</span>
+                            <a href="http://superchun.cn/posts/%E5%A6%82%E4%BD%95%E7%94%A8v2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" title="如何用V2Ray科学上网">如何用V2Ray科学上网</a>
+                        </li>
+                        
+                        <li>
+                            <span class="date">2019/11/28</span>
+                            <a href="http://superchun.cn/posts/git%E4%BD%BF%E7%94%A8ssh%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91/" title="git使用SSH配置一直需要输入密码的坑">git使用SSH配置一直需要输入密码的坑</a>
+                        </li>
+                        
+                        <li>
+                            <span class="date">2019/11/08</span>
+                            <a href="http://superchun.cn/posts/mac%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="Mac快捷键">Mac快捷键</a>
+                        </li>
+                        
+                        <li>
+                            <span class="date">2019/11/05</span>
+                            <a href="http://superchun.cn/posts/what-s-new-in-xcode11/" title="What&#39;s New in Xcode11">What&#39;s New in Xcode11</a>
+                        </li>
+                        
+                    </ul>
+                    
+                    <h2>0001</h2>
+                    <ul class="listing">
+                        
+                        <li>
+                            <span class="date">0001/01/01</span>
+                            <a href="http://superchun.cn/posts/%E5%88%9D%E8%AF%86opengl-es/" title="初识 OpenGL ES">初识 OpenGL ES</a>
+                        </li>
+                        
+                        <li>
+                            <span class="date">0001/01/01</span>
+                            <a href="http://superchun.cn/posts/opengl-es%E6%95%99%E7%A8%8B%E4%B8%80-%E7%AE%80%E5%8D%95%E5%9B%BE%E5%BD%A2%E7%BB%98%E5%88%B6-/" title="OpenGL实战(一) - 简单图形绘制">OpenGL实战(一) - 简单图形绘制</a>
+                        </li>
+                        
+                        <li>
+                            <span class="date">0001/01/01</span>
+                            <a href="http://superchun.cn/posts/ios%E4%BA%8B%E4%BB%B6%E6%8B%A6%E6%88%AA/" title="iOS 事件拦截">iOS 事件拦截</a>
+                        </li>
+                        
+                        <li>
+                            <span class="date">0001/01/01</span>
+                            <a href="http://superchun.cn/posts/cordova-in-ios/" title="Cordova in iOS">Cordova in iOS</a>
+                        </li>
+                        
+                    </ul>
+                    
+
                 </div>
-
-                
-                
-                    <div class="timeline-item">
-                        <div class="timeline-left">
-                            <div class="timeline-icon icon-lg"></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="tile">
-                                <div class="tile-content">
-                                    <p class="tile-title mb-0 h4">2019</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-left">
-                            <div class="timeline-icon"></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="tile">
-                                <div class="tile-content">
-                                    <span class="tile-subtitle text-gray mb-1">12-03</span>
-                                    <a href="/fromHeapsortAndMergesortThinkSortAlgorithm.html" class="timeline-tile-title ml-1" rel="bookmark"><span class="tile-title">从Heapsort与Mergesort看排序算法</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-left">
-                            <div class="timeline-icon"></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="tile">
-                                <div class="tile-content">
-                                    <span class="tile-subtitle text-gray mb-1">11-29</span>
-                                    <a href="/how-to-freedom.html" class="timeline-tile-title ml-1" rel="bookmark"><span class="tile-title">如何用V2Ray科学上网</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-left">
-                            <div class="timeline-icon"></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="tile">
-                                <div class="tile-content">
-                                    <span class="tile-subtitle text-gray mb-1">11-28</span>
-                                    <a href="/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91.html" class="timeline-tile-title ml-1" rel="bookmark"><span class="tile-title">git使用SSH配置一直需要输入密码的坑</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-left">
-                            <div class="timeline-icon"></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="tile">
-                                <div class="tile-content">
-                                    <span class="tile-subtitle text-gray mb-1">11-08</span>
-                                    <a href="/Mac%E5%BF%AB%E6%8D%B7%E9%94%AE.html" class="timeline-tile-title ml-1" rel="bookmark"><span class="tile-title">Mac快捷键</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-left">
-                            <div class="timeline-icon"></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="tile">
-                                <div class="tile-content">
-                                    <span class="tile-subtitle text-gray mb-1">11-05</span>
-                                    <a href="/What-s-New-in-Xcode11.html" class="timeline-tile-title ml-1" rel="bookmark"><span class="tile-title">What's New in Xcode11</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                
-                        
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-left">
-                            <div class="timeline-icon icon-lg"></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="tile">
-                                <div class="tile-content">
-                                    <p class="tile-title mb-0 h4">2016</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-left">
-                            <div class="timeline-icon"></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="tile">
-                                <div class="tile-content">
-                                    <span class="tile-subtitle text-gray mb-1">09-08</span>
-                                    <a href="/Cordova.html" class="timeline-tile-title ml-1" rel="bookmark"><span class="tile-title">Cordova in iOS</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-left">
-                            <div class="timeline-icon"></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="tile">
-                                <div class="tile-content">
-                                    <span class="tile-subtitle text-gray mb-1">08-31</span>
-                                    <a href="/OpenGLES-2.html" class="timeline-tile-title ml-1" rel="bookmark"><span class="tile-title">OpenGL实战(一) - 简单图形绘制</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-left">
-                            <div class="timeline-icon"></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="tile">
-                                <div class="tile-content">
-                                    <span class="tile-subtitle text-gray mb-1">08-29</span>
-                                    <a href="/OpenGLES-1.html" class="timeline-tile-title ml-1" rel="bookmark"><span class="tile-title">初识 OpenGL ES</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-left">
-                            <div class="timeline-icon"></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="tile">
-                                <div class="tile-content">
-                                    <span class="tile-subtitle text-gray mb-1">07-20</span>
-                                    <a href="/iOSEvent.html" class="timeline-tile-title ml-1" rel="bookmark"><span class="tile-title">iOS 事件拦截</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                
-                        
-                    
             </div>
 
-        </main>
-        
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="/search/" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="http://superchun.cn">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="http://superchun.cn/posts/%E4%BB%8Eheapsort%E4%B8%8Emergesort%E7%9C%8B%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="从Heapsort与Mergesort看排序算法">从Heapsort与Mergesort看排序算法</a>
+    </li>
+    
+    <li>
+        <a href="http://superchun.cn/posts/%E5%A6%82%E4%BD%95%E7%94%A8v2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" title="如何用V2Ray科学上网">如何用V2Ray科学上网</a>
+    </li>
+    
+    <li>
+        <a href="http://superchun.cn/posts/git%E4%BD%BF%E7%94%A8ssh%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91/" title="git使用SSH配置一直需要输入密码的坑">git使用SSH配置一直需要输入密码的坑</a>
+    </li>
+    
+    <li>
+        <a href="http://superchun.cn/posts/mac%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="Mac快捷键">Mac快捷键</a>
+    </li>
+    
+    <li>
+        <a href="http://superchun.cn/posts/what-s-new-in-xcode11/" title="What&#39;s New in Xcode11">What&#39;s New in Xcode11</a>
+    </li>
+    
+    <li>
+        <a href="http://superchun.cn/posts/cordova-in-ios/" title="Cordova in iOS">Cordova in iOS</a>
+    </li>
+    
+    <li>
+        <a href="http://superchun.cn/posts/ios%E4%BA%8B%E4%BB%B6%E6%8B%A6%E6%88%AA/" title="iOS 事件拦截">iOS 事件拦截</a>
+    </li>
+    
+    <li>
+        <a href="http://superchun.cn/posts/opengl-es%E6%95%99%E7%A8%8B%E4%B8%80-%E7%AE%80%E5%8D%95%E5%9B%BE%E5%BD%A2%E7%BB%98%E5%88%B6-/" title="OpenGL实战(一) - 简单图形绘制">OpenGL实战(一) - 简单图形绘制</a>
+    </li>
+    
+    <li>
+        <a href="http://superchun.cn/posts/%E5%88%9D%E8%AF%86opengl-es/" title="初识 OpenGL ES">初识 OpenGL ES</a>
+    </li>
+    
+</ul>
+    </section>
 
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="http://superchun.cn/tags/cordova/">Cordova</a>
+    
+    <a href="http://superchun.cn/tags/git-ssh/">git ssh</a>
+    
+    <a href="http://superchun.cn/tags/ios/">iOS</a>
+    
+    <a href="http://superchun.cn/tags/opengl-es/">OpenGL ES</a>
+    
+    <a href="http://superchun.cn/tags/%E4%BA%8B%E4%BB%B6%E6%8B%A6%E6%88%AA/">事件拦截</a>
+    
+    <a href="http://superchun.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+    
+    <a href="http://superchun.cn/tags/%E6%9D%82%E8%B0%88%E4%BD%8E%E8%AF%AD/">杂谈低语</a>
+    
+    <a href="http://superchun.cn/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">科学上网</a>
+    
+    <a href="http://superchun.cn/tags/%E7%AE%97%E6%B3%95/">算法</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="http://superchun.cn/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
     </div>
 </div>
-            <!-- ### Footer ### -->
-            <footer class="text-center">
-    <!-- footer copyright -->
-    
-        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
-            <a class="footer-copyright-a" href="http://superchun.cn">悉达多｜Pain Maker</a>
-        </p>
-
-    <!-- footer custom text -->
-    <p class="footer-text mb-0">
-    
-    </p>
-    <!-- footer develop info -->
-    <p class="footer-develop mb-0">
+<footer id="footer">
+    <div class="container">
+        &copy; 2019 <a href="http://superchun.cn">悉达多｜PainMaker By 悉达多</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
         
-    <!-- Busuanzi User Views -->
-    <span id="busuanzi_container_site_uv" hidden>
-        <span></span>
-        <span id="busuanzi_value_site_uv"></span>
-        <span>Viewers</span>
-        
-            <span>|</span>
-        
-    </span>
-
-
-
-
-        
-        Powered by&nbsp;<!--
-         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
-         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
-    </p>
+    </div>
 </footer>
 
 
-        <!-- ### Import File ### -->
-        <!-- ### Footer JS Import ### -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.8/raphael.min.js" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/flowchart/1.12.2/flowchart.min.js" crossorigin="anonymous"></script>
+        <script>(function () {
+                if (!window.flowchart) return;
+                const blocks = document.querySelectorAll('pre code.language-flowchart, pre code.language-flow');
+                for (let i = 0; i < blocks.length; i++) {
+                    const block = blocks[i];
+                    const rootElement = block.parentNode;
+                    const container = document.createElement('div');
+                    const id = `js-flowchart-diagrams-${i}`;
+                    container.id = id;
+                    container.className = 'align-center';
+                    container.setAttribute("style", "overFlow-x:auto");
+                    rootElement.parentNode.replaceChild(container, rootElement);
+                    const diagram = flowchart.parse(block.childNodes[0].nodeValue);
+                    diagram.drawSVG(id, window.flowchartDiagramsOptions ? window.flowchartDiagramsOptions : {});
+                }
+            })();
+        </script>
+    <script type="text/javascript">
+        
+        (function () {
+            $("pre code").parent().addClass("line-numbers")
+        }());
 
-<script>
-
-    
-window.lazyLoadOptions = {
-    elements_selector: ".lazyload",
-    threshold: 50
-};
-document.getElementById('copyright-year').textContent = new Date().getFullYear();
-console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
-
-</script>
-
-<script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
-    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
-
-
-<!-- Offset -->
-<!-- Import Hanabi -->
-
-    <script src="/lib/hanabi/hanabi.min.js"></script>
-
-
-<!-- Import Hanabi Broswser -->
-
-    <script src="/js/hanabi-browser.min.js"></script>
-
-
-
-
-
-<!-- Comment -->
-
-    
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 
-<!-- ### Custom Footer ### -->
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
 
-    </body>
 
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+
+</body>
 </html>

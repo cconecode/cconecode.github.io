@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>科学上网 on 悉达多｜PainMaker</title>
+    <link>http://superchun.cn/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</link>
+    <description>Recent content in 科学上网 on 悉达多｜PainMaker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 29 Nov 2019 14:06:21 +0000</lastBuildDate>
+    
+	<atom:link href="http://superchun.cn/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>如何用V2Ray科学上网</title>
+      <link>http://superchun.cn/posts/%E5%A6%82%E4%BD%95%E7%94%A8v2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</link>
+      <pubDate>Fri, 29 Nov 2019 14:06:21 +0000</pubDate>
+      
+      <guid>http://superchun.cn/posts/%E5%A6%82%E4%BD%95%E7%94%A8v2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</guid>
+      <description>什么是 V2Ray 想要通过 V2Ray 科学上网，先得了解 V2Ray 是什么。根据 V2Ray 指南比较官方的描述：
+ V2Ray 是 Project V 下的一个工具。Project V 是一个包含一系列构建特定网络环境工具的项目，而 V2Ray 属于最核心的一个。 官方中介绍Project V 提供了单一的内核和多种界面操作方式。内核（V2Ray）用于实际的网络交互、路由等针对网络数据的处理，而外围的用户界面程序提供了方便直接的操作流程。
+ 简单点说，V2Ray 就是一个跟 Shadowsocks 差不多的代理软件，可以让我们科学上网。只不过相对来说，V2Ray 功能更强大一点，同时配置也更复杂一点。而且鉴于现在走 SS 协议的代理基本都会受到干扰，科学上网起来也没那么流畅，这时候就需要了解及配置一套自己的 V2Ray了。V2Ray 更加稳定，而且传输速度相对 SS 也更快一点。
+搭建 V2Ray 需要什么 首先，简单的 V2Ray 只需要一台墙外的 VPS 就可以了，同时也需要一点 Linux 系统的知识。VPS 的话香港、日本、新加坡、美国的都行。只不过是延迟的差异而已，地理位置越靠近国内的延迟越低。在搬瓦工、Vlutr、DigitOcean 都可以买到对应的 VPS，其中搬瓦工是最出名的，也是最多人购买的，比较推荐。只不过如果你的 IP 不幸被封，需要 8 美刀更换一个 IP，而且搬瓦工一般都是按年付费的。Vlutr 则是我之前用的比较多的一家平台，可以免费更换 IP，被封了随时可以新建实例，而且是按时按月收费的，如果大环境不太爽畅，可以用 Vlutr 过度一下。它的缺点就是比较不稳定，配置相对也没有那么好。DigitOcean 我没有用过，所以就不做评价了。
+但是，如果你很幸运的拥有一个 Google 账号，则可以通过 GoogleCloud 新用户的规则白嫖一年 VPS（我现在就白嫖着～）。GoogleCloud 会赠送新用户 300 美刀，可以使用其下面的云产品，300 美刀在一年之内需用完，过期作废。但国内用户开通 GoogleCloud 会比较麻烦，首先你得已经番羽墙了，然后要拥有一个境外的双币卡，才能完成新用户的认证。不过，有一个解决办法就是通过 P 卡去开通（P 卡：Payoneer，一个虚拟信用卡网站），在知乎上有一篇文章，新用户申请谷歌云300美金失败，怎么办？，我就是通过这个方法申请开通成功的。然后就是注册实例之类的，就不再赘述了，网上都有许多相关的文章，随便找篇看看就知道怎么回事了。</description>
+    </item>
+    
+  </channel>
+</rss>

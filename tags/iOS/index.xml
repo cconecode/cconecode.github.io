@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>iOS on 悉达多｜PainMaker</title>
+    <link>http://superchun.cn/tags/ios/</link>
+    <description>Recent content in iOS on 悉达多｜PainMaker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 05 Nov 2019 15:38:21 +0000</lastBuildDate>
+    
+	<atom:link href="http://superchun.cn/tags/ios/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>What&#39;s New in Xcode11</title>
+      <link>http://superchun.cn/posts/what-s-new-in-xcode11/</link>
+      <pubDate>Tue, 05 Nov 2019 15:38:21 +0000</pubDate>
+      
+      <guid>http://superchun.cn/posts/what-s-new-in-xcode11/</guid>
+      <description>WWDC19 - What&amp;rsquo;s New in Xcode11 WWDC 2019 已经过去快半年多了，Xcode 11 更新也有段时间了。用了一段时间之后，发现 Xcode 11 较之 Xcode 10 还是有许多地方不一样的，于是便看了 WWDC 2019 Session 401，顺便做一下记录。
+首先，对 Xcode11 的整体改进做一个预览：
+整体的改变还是挺多的，下面一一对改进的功能进行说明。
+右上角功能键的改进 首先，Xcode 11 改变的是右上角的按钮，Xcode 10 上是三个按钮，到了 11 已经变成了两个按钮：原先的 Source Control Log 被移到了右侧栏里面：
+原先的比较常用的切换 Assitant Editor 和 Authors 一起并入到了 Editor Options 里面，并将 Editor Options 移到了每个独立的编辑窗口里面：
+上面 Xcode 11 的 Assistant 就是原先 Xcode 10 右上角的那两个圈圈
+Editor Options 中同时新增了一个 Swift UI 的预览，当项目中使用到了 Swfit UI 的时候，可以预览 Swift UI 的效果</description>
+    </item>
+    
+  </channel>
+</rss>

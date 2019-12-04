@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>杂谈低语 on 悉达多｜PainMaker</title>
+    <link>http://superchun.cn/tags/%E6%9D%82%E8%B0%88%E4%BD%8E%E8%AF%AD/</link>
+    <description>Recent content in 杂谈低语 on 悉达多｜PainMaker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 08 Nov 2019 14:26:02 +0000</lastBuildDate>
+    
+	<atom:link href="http://superchun.cn/tags/%E6%9D%82%E8%B0%88%E4%BD%8E%E8%AF%AD/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mac快捷键</title>
+      <link>http://superchun.cn/posts/mac%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <pubDate>Fri, 08 Nov 2019 14:26:02 +0000</pubDate>
+      
+      <guid>http://superchun.cn/posts/mac%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      <description>Mac 内置了很多对于文本操作的快捷键组合，在 Apple 的官方文档里也给出了所有 Mac 操作的快捷键。熟悉这些快捷键可以让我们日常的使用和工作更有效率，双手不需要离开键盘去摸鼠标了。因为本身是个程序员，所以罗列了一些比较重要的快捷键组合，大部分都是关于文本操作的。
+这些快捷键在 Mac 里面是通用的，也就意味着在几乎所有的有文本输入的地方，都可以用得上，一次学习，使用Anywhere :)。要熟悉掌握这些组合，还是要下一定功夫勤加练习的，不然右手又会不自觉地去触摸鼠标了。不过还是有一定技巧的，主要是掌握 ctl、shift、fn 的组合而已。
+（强烈建议大家将键盘上的大小写切换键改为 ctl 键，因为 ctl 的作用远比大小写切换重要多了，大小写切换完全可以使用 shift + 字母的方式进行输入，但大小写键在键盘上却占据了很重要的位置，ctl缩在角落瑟瑟发抖）。修改方法：系统设置 -&amp;gt; 键盘 -&amp;gt; 修饰键（在右下角）-&amp;gt; 大写锁定键改为 Control
+光标移动 cmd + ← 移动至行首
+cmd + → 移动至行尾
+fn + ↓ 向下翻页
+fn + ↑ 向上翻页
+option + ← 向前跳一个词
+option + → 向后跳一个词
+ctl + p 光标向上移动一行
+ctl + n 光标向下移动一行
+ctl + b 光标向前移动一个字母
+ctl + f 光标向后移动一个字母
+ctl + e 光标移动到行尾</description>
+    </item>
+    
+  </channel>
+</rss>
