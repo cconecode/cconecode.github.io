@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git ssh on 悉达多｜PainMaker</title>
+    <link>http://superchun.cn/tags/git-ssh/</link>
+    <description>Recent content in git ssh on 悉达多｜PainMaker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 28 Nov 2019 10:07:07 +0000</lastBuildDate>
+    
+	<atom:link href="http://superchun.cn/tags/git-ssh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>git使用SSH配置一直需要输入密码的坑</title>
+      <link>http://superchun.cn/posts/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91/</link>
+      <pubDate>Thu, 28 Nov 2019 10:07:07 +0000</pubDate>
+      
+      <guid>http://superchun.cn/posts/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91/</guid>
+      <description>&lt;p&gt;一般 git 提供了 HTTPS 和 SSH（Secure Shell） 两种认证方式。HTTPS 比较简单，只需要输入对应的 user 和 password 就可以了。SSH 则相对复杂一点，需要使用 ssh 命令生成 RSA 密钥对，将 public key 提交到服务器，本地保留 private key。SSH 还可以允许我们通过 config 来管理多用户，例如：一般我们会有一个自己的 github 账户，通过 SSH 管理；同时，公司可能会有一个另外的源码管理平台，如 gitlab 或 gitee 等，一些公司还会在 gitlab 上搭建自有服务器。&lt;em&gt;SSH 如何生成密钥对，如何通过 config 管理，这里就不做过多赘述了，网上随便一搜或者 github 中都有详细的说明：）&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

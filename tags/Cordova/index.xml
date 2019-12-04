@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cordova on 悉达多｜PainMaker</title>
+    <link>http://superchun.cn/tags/Cordova/</link>
+    <description>Recent content in Cordova on 悉达多｜PainMaker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    
+	<atom:link href="http://superchun.cn/tags/Cordova/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cordova in iOS</title>
+      <link>http://superchun.cn/posts/Cordova-in-iOS/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://superchun.cn/posts/Cordova-in-iOS/</guid>
+      <description>&lt;p&gt;Cordova 的前身是 PhoneGap，是一个 Hybrid 框架，可以让开发者使用HTML、Javascript、CSS开发跨平台的App。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

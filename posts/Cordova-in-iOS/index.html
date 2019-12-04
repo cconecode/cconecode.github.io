@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.3" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cordova in iOS | 悉达多｜PainMaker</title>
+    <meta property="og:title" content="Cordova in iOS - 悉达多｜PainMaker">
+    <meta property="og:type" content="article">
+        
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="Cordova in iOS">
+        
+    <meta name="author" content="悉达多">
+    <meta property="og:url" content="http://superchun.cn/posts/Cordova-in-iOS/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="http://superchun.cn">
+                        悉达多｜PainMaker
+                    </a>
+                
+                <p class="description">知也者，所以知也，而不必知</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="http://superchun.cn">首页</a>
+                    
+                    <a  href="http://superchun.cn/archives/" title="归档">归档</a>
+                    
+                    <a  href="http://superchun.cn/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+        
+        <div id="virtual_toc_list" style="display: none">
+            <nav id="TableOfContents">
+<ul>
+<li><a href="#环境搭建">环境搭建</a></li>
+<li><a href="#创建项目">创建项目</a></li>
+</ul>
+</nav>
+        </div>
+        <div id="float_toc_div" style="margin: 10px;border: 1px solid gray;z-index:99999;display: none;">
+            <header style="background-color: #f3f3f3;color: black;border-bottom: 1px solid gray;padding: 10px 10px 10px 10px;">
+                <strong id="toc_btn_open" style="color: black;font-size: large;">目录</strong>
+                <strong id="toc_btn_close" style="color: black;font-size: large;float: right">╳</strong>
+            </header>
+            <div id="toc_list" style="background-color: #f3f3f3;color: black;padding: 10px;">
+        
+            </div>
+        </div>
+        <style type="text/css">
+            #float_toc_div {
+                position: fixed;
+                display: none;
+                 
+                height: auto;
+                font-size: 13px;
+            }
+        
+            #toc_list a:hover,
+            #toc_list a:active {
+                color: #ba3925;
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                let tocNavElem = document.getElementById("TableOfContents");
+                let floatTocDivElem = document.getElementById("float_toc_div");
+                let tocListElem = floatTocDivElem.getElementsByTagName('div')[0];
+                let colGroupElem = document.getElementById("body").getElementsByClassName("col-group")[0]
+                let floatTocWidth = (document.body.clientWidth - colGroupElem.offsetWidth) / 2 - 16;
+                var useFloatToc = false;
+
+                if (floatTocWidth >= 100) {
+                    useFloatToc = true;
+                    document.getElementById("toc_list").appendChild(tocNavElem);
+                    floatTocDivElem.style.display = 'block';
+                    floatTocDivElem.style.width = floatTocWidth + 'px';
+                    top();
+                    floatTocDivElem.style.left = '0px';
+
+                    function top() {
+                        if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
+                            floatTocDivElem.style.top = '0px';
+                        } else {
+                            floatTocDivElem.style.top = window.innerHeight / 9 + 'px';
+                        }
+                    }
+
+                    function ishide() {
+                        if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
+                            floatTocDivElem.style.top = '0px';
+                        } else {
+                            floatTocDivElem.style.display = 'block';
+                        }
+                    }
+
+                    window.onscroll = function () {
+                        ishide();
+                        if ((document.documentElement.scrollTop != 0) && (floatTocDivElem.style.display == 'block')) {
+                            top();
+                        }
+                    };
+
+                    window.onresize = function () {
+                        ishide();
+                    }
+
+                    document.getElementById("toc_btn_open").addEventListener('click', function () {
+                        switch (tocListElem.style.display) {
+                            case "none":
+                                document.getElementById("toc_btn_close").style.display = "";
+                                tocListElem.style.display = "";
+                                floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "1px solid gray";
+                                break;
+                            default:
+                                break;
+                        }
+                    }, false);
+
+                    document.getElementById("toc_btn_close").addEventListener('click', function () {
+                        switch (tocListElem.style.display) {
+                            case "":
+                                document.getElementById("toc_btn_close").style.display = "none";
+                                tocListElem.style.display = "none";
+                                floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "";
+                                break;
+                            default:
+                                break;
+                        }
+                    }, false);
+                } else {
+                    let fixedTocElem = document.getElementsByClassName("toc-article")[0];
+                    fixedTocElem.appendChild(tocNavElem);
+                    fixedTocElem.parentElement.style.display = "";
+                }
+                document.getElementById("virtual_toc_list").remove();
+            };   
+        </script>
+        
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">Cordova in iOS</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            1年1月1日
+                        </date>
+                        
+                        
+                        <div class="post-meta">
+                            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span> 阅读</span></span>
+                        </div>
+                        
+                        
+                        <div class="clear" style="display: none">
+                            <div class="toc-article">
+                                <div class="toc-title">文章目录</div>
+                            </div>
+                        </div>
+                        
+                        <div class="post-content">
+                            <p>Cordova 的前身是 PhoneGap，是一个 Hybrid 框架，可以让开发者使用HTML、Javascript、CSS开发跨平台的App。</p>
+
+<h1 id="环境搭建">环境搭建</h1>
+
+<p>安装Cordova:</p>
+
+<pre><code class="language-ObjectiveC">sudo npm install -g cordova
+</code></pre>
+
+<p>如果提示错误，检查是否安装 Node.js</p>
+
+<h1 id="创建项目">创建项目</h1>
+
+<p><strong>创建工程项目：</strong></p>
+
+<pre><code class="language-ObjectiveC">cordova create Cordova com.example.CordovaTest CordovaTest
+</code></pre>
+
+<p>第一个参数为工程文件夹
+第二个参数为应用的的 id 名，和 Xcode 中的 bundle Id 类似
+第三个参数为工程名字</p>
+
+<p><strong>添加 iOS 平台支持</strong></p>
+
+<p>进入刚刚创建的工程目录下，执行：</p>
+
+<pre><code class="language-ObjectiveC">cordova platform add ios
+</code></pre>
+
+<p>执行这个命令只出现光标没有反应的话，是因为网络原因。由于国内的网络环境，虽然的 npm 官方站点 <a href="http://www.npmjs.org/">http://www.npmjs.org/</a> 并没有被墙，但是下载第三方依赖包的速度有时还是不理想，我们可以改用淘宝的 NPM 镜像。</p>
+
+<p>打开 ~/.npmrc 文件：</p>
+
+<pre><code class="language-ObjectiveC">vim ~/.npmrc
+</code></pre>
+
+<p>添加以下内容：</p>
+
+<pre><code class="language-ObjectiveC">registry = https://registry.npm.taobao.org
+</code></pre>
+
+<p>保存退出，再执行命令就会发现很快就配置好了。</p>
+
+<p>打开 platforms/ios 目录，就可以运行我们的创建的工程了。</p>
+                        </div>
+
+                        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="http://superchun.cn">悉达多</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="http://superchun.cn/posts/Cordova-in-iOS/">http://superchun.cn/posts/Cordova-in-iOS/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+                        
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="http://superchun.cn/tags/Cordova">Cordova</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "cconecode/blogcomment"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="/search/" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="http://superchun.cn">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="http://superchun.cn/posts/%E4%BB%8EHeapsort%E4%B8%8EMergesort%E7%9C%8B%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="从Heapsort与Mergesort看排序算法">从Heapsort与Mergesort看排序算法</a>
+    </li>
+    
+    <li>
+        <a href="http://superchun.cn/posts/%E5%A6%82%E4%BD%95%E7%94%A8V2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" title="如何用V2Ray科学上网">如何用V2Ray科学上网</a>
+    </li>
+    
+    <li>
+        <a href="http://superchun.cn/posts/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91/" title="git使用SSH配置一直需要输入密码的坑">git使用SSH配置一直需要输入密码的坑</a>
+    </li>
+    
+    <li>
+        <a href="http://superchun.cn/posts/Mac%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="Mac快捷键">Mac快捷键</a>
+    </li>
+    
+    <li>
+        <a href="http://superchun.cn/posts/What-s-New-in-Xcode11/" title="What&#39;s New in Xcode11">What&#39;s New in Xcode11</a>
+    </li>
+    
+    <li>
+        <a href="http://superchun.cn/posts/Cordova-in-iOS/" title="Cordova in iOS">Cordova in iOS</a>
+    </li>
+    
+    <li>
+        <a href="http://superchun.cn/posts/iOS%E4%BA%8B%E4%BB%B6%E6%8B%A6%E6%88%AA/" title="iOS 事件拦截">iOS 事件拦截</a>
+    </li>
+    
+    <li>
+        <a href="http://superchun.cn/posts/OpenGL-ES%E6%95%99%E7%A8%8B%E4%B8%80-%E7%AE%80%E5%8D%95%E5%9B%BE%E5%BD%A2%E7%BB%98%E5%88%B6-/" title="OpenGL实战(一) - 简单图形绘制">OpenGL实战(一) - 简单图形绘制</a>
+    </li>
+    
+    <li>
+        <a href="http://superchun.cn/posts/%E5%88%9D%E8%AF%86OpenGL-ES/" title="初识 OpenGL ES">初识 OpenGL ES</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="http://superchun.cn/tags/Cordova/">Cordova</a>
+    
+    <a href="http://superchun.cn/tags/OpenGL-ES/">OpenGL ES</a>
+    
+    <a href="http://superchun.cn/tags/git-ssh/">git ssh</a>
+    
+    <a href="http://superchun.cn/tags/iOS/">iOS</a>
+    
+    <a href="http://superchun.cn/tags/%E4%BA%8B%E4%BB%B6%E6%8B%A6%E6%88%AA/">事件拦截</a>
+    
+    <a href="http://superchun.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+    
+    <a href="http://superchun.cn/tags/%E6%9D%82%E8%B0%88%E4%BD%8E%E8%AF%AD/">杂谈低语</a>
+    
+    <a href="http://superchun.cn/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">科学上网</a>
+    
+    <a href="http://superchun.cn/tags/%E7%AE%97%E6%B3%95/">算法</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="http://superchun.cn/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2019 <a href="http://superchun.cn">悉达多｜PainMaker By 悉达多</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.8/raphael.min.js" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/flowchart/1.12.2/flowchart.min.js" crossorigin="anonymous"></script>
+        <script>(function () {
+                if (!window.flowchart) return;
+                const blocks = document.querySelectorAll('pre code.language-flowchart, pre code.language-flow');
+                for (let i = 0; i < blocks.length; i++) {
+                    const block = blocks[i];
+                    const rootElement = block.parentNode;
+                    const container = document.createElement('div');
+                    const id = `js-flowchart-diagrams-${i}`;
+                    container.id = id;
+                    container.className = 'align-center';
+                    container.setAttribute("style", "overFlow-x:auto");
+                    rootElement.parentNode.replaceChild(container, rootElement);
+                    const diagram = flowchart.parse(block.childNodes[0].nodeValue);
+                    diagram.drawSVG(id, window.flowchartDiagramsOptions ? window.flowchartDiagramsOptions : {});
+                }
+            })();
+        </script>
+    <script type="text/javascript">
+        
+        (function () {
+            $("pre code").parent().addClass("line-numbers")
+        }());
+
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+<script type="text/javascript">
+(function(){
+	if (typeof self === 'undefined' || !self.Prism || !self.document) {
+		return;
+	}
+
+	if (!Prism.plugins.toolbar) {
+		console.warn('Copy to Clipboard plugin loaded before Toolbar plugin.');
+
+		return;
+	}
+
+	var ClipboardJS = window.ClipboardJS || undefined;
+
+	if (!ClipboardJS && typeof require === 'function') {
+		ClipboardJS = require('clipboard');
+	}
+
+	var callbacks = [];
+
+	if (!ClipboardJS) {
+		var script = document.createElement('script');
+		var head = document.querySelector('head');
+
+		script.onload = function() {
+			ClipboardJS = window.ClipboardJS;
+
+			if (ClipboardJS) {
+				while (callbacks.length) {
+					callbacks.pop()();
+				}
+			}
+		};
+
+		script.src = 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js';
+		head.appendChild(script);
+	}
+
+	Prism.plugins.toolbar.registerButton('copy-to-clipboard', function (env) {
+		var linkCopy = document.createElement('button');
+		linkCopy.textContent = '复制代码';
+
+		if (!ClipboardJS) {
+			callbacks.push(registerClipboard);
+		} else {
+			registerClipboard();
+		}
+
+		return linkCopy;
+
+		function registerClipboard() {
+			var clip = new ClipboardJS(linkCopy, {
+				'text': function () {
+					return env.code;
+				}
+			});
+
+			clip.on('success', function() {
+				linkCopy.textContent = '复制成功!';
+
+				resetText();
+			});
+			clip.on('error', function () {
+				linkCopy.textContent = '按 Ctrl+C 复制';
+
+				resetText();
+			});
+		}
+
+		function resetText() {
+			setTimeout(function () {
+				linkCopy.textContent = '复制代码';
+			}, 5000);
+		}
+	});
+})();
+
+</script>
+</body>
+</html>
