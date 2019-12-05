@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.60.1" />
+    <meta name="generator" content="Hugo 0.58.3" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -35,11 +35,6 @@
 
 <body>
 <header id="header" class="clearfix">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/styles/default.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/highlight.min.js"></script>
-    <script>
-        hljs.initHighlightingOnLoad();
-    </script>
     <div class="container">
         <div class="col-group">
             <div class="site-name ">
@@ -63,7 +58,12 @@
 <div id="body">
         
         <div id="virtual_toc_list" style="display: none">
-            <nav id="TableOfContents"></nav>
+            <nav id="TableOfContents">
+<ul>
+<li><a href="#环境搭建">环境搭建</a></li>
+<li><a href="#创建项目">创建项目</a></li>
+</ul>
+</nav>
         </div>
         <div id="float_toc_div" style="margin: 10px;border: 1px solid gray;z-index:99999;display: none;">
             <header style="background-color: #f3f3f3;color: black;border-bottom: 1px solid gray;padding: 10px 10px 10px 10px;">
@@ -191,25 +191,48 @@
                         
                         <div class="post-content">
                             <p>Cordova 的前身是 PhoneGap，是一个 Hybrid 框架，可以让开发者使用HTML、Javascript、CSS开发跨平台的App。</p>
-<h1 id="heading">环境搭建</h1>
+
+<h1 id="环境搭建">环境搭建</h1>
+
 <p>安装Cordova:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC">sudo npm install <span style="color:#f92672">-</span>g cordova
-</code></pre></div><p>如果提示错误，检查是否安装 Node.js</p>
-<h1 id="heading1">创建项目</h1>
+
+<pre><code class="language-ObjectiveC">sudo npm install -g cordova
+</code></pre>
+
+<p>如果提示错误，检查是否安装 Node.js</p>
+
+<h1 id="创建项目">创建项目</h1>
+
 <p><strong>创建工程项目：</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC">cordova create Cordova com.example.CordovaTest CordovaTest
-</code></pre></div><p>第一个参数为工程文件夹
+
+<pre><code class="language-ObjectiveC">cordova create Cordova com.example.CordovaTest CordovaTest
+</code></pre>
+
+<p>第一个参数为工程文件夹
 第二个参数为应用的的 id 名，和 Xcode 中的 bundle Id 类似
 第三个参数为工程名字</p>
+
 <p><strong>添加 iOS 平台支持</strong></p>
+
 <p>进入刚刚创建的工程目录下，执行：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC">cordova platform add ios
-</code></pre></div><p>执行这个命令只出现光标没有反应的话，是因为网络原因。由于国内的网络环境，虽然的 npm 官方站点 <a href="http://www.npmjs.org/">http://www.npmjs.org/</a> 并没有被墙，但是下载第三方依赖包的速度有时还是不理想，我们可以改用淘宝的 NPM 镜像。</p>
+
+<pre><code class="language-ObjectiveC">cordova platform add ios
+</code></pre>
+
+<p>执行这个命令只出现光标没有反应的话，是因为网络原因。由于国内的网络环境，虽然的 npm 官方站点 <a href="http://www.npmjs.org/">http://www.npmjs.org/</a> 并没有被墙，但是下载第三方依赖包的速度有时还是不理想，我们可以改用淘宝的 NPM 镜像。</p>
+
 <p>打开 ~/.npmrc 文件：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC">vim <span style="color:#f92672">~</span><span style="color:#f92672">/</span>.npmrc
-</code></pre></div><p>添加以下内容：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC">registry <span style="color:#f92672">=</span> https:<span style="color:#75715e">//registry.npm.taobao.org
-</span></code></pre></div><p>保存退出，再执行命令就会发现很快就配置好了。</p>
+
+<pre><code class="language-ObjectiveC">vim ~/.npmrc
+</code></pre>
+
+<p>添加以下内容：</p>
+
+<pre><code class="language-ObjectiveC">registry = https://registry.npm.taobao.org
+</code></pre>
+
+<p>保存退出，再执行命令就会发现很快就配置好了。</p>
+
 <p>打开 platforms/ios 目录，就可以运行我们的创建的工程了。</p>
                         </div>
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>科学上网 on 悉达多｜PainMaker</title>
@@ -17,7 +17,8 @@
       <pubDate>Fri, 29 Nov 2019 14:06:21 +0000</pubDate>
       
       <guid>http://superchun.cn/posts/%E5%A6%82%E4%BD%95%E7%94%A8V2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</guid>
-      <description>&lt;h2 id=&#34;-v2ray&#34;&gt;什么是 V2Ray&lt;/h2&gt;
+      <description>&lt;h2 id=&#34;什么是-v2ray&#34;&gt;什么是 V2Ray&lt;/h2&gt;
+
 &lt;p&gt;想要通过 V2Ray 科学上网，先得了解 V2Ray 是什么。根据 V2Ray 指南比较官方的描述：&lt;/p&gt;</description>
     </item>
     
