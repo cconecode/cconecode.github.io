@@ -69,7 +69,7 @@
 body {
     background-color:#FFF;
     color:#444;
-    font-size: 15px;
+    font-size: 16px;
     /**
     font-family:"TIBch", "Classic Grotesque W01", "Helvetica Neue", Arial, "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
     **/
@@ -100,8 +100,8 @@ mark {
 }
 pre, code {
     background:#f8f8f8;
-    font-family:Menlo, Monaco, Consolas, "Lucida Console", "Courier New", monospace;
-    font-size:.92857em;
+    font-family:Monaco, Menlo, Consolas, "Lucida Console", "Courier New", monospace;
+    font-size:.95em;
 }
 pre {
     margin: 2em 0;
