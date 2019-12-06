@@ -6,10 +6,19 @@
     <description>Recent content on 悉达多｜PainMaker</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 04 Dec 2019 16:27:10 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 06 Dec 2019 16:13:07 +0800</lastBuildDate>
     
 	<atom:link href="http://superchun.cn/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>关于Github访问慢及修改源的那些事</title>
+      <link>http://superchun.cn/posts/%E5%85%B3%E4%BA%8EGithub%E8%AE%BF%E9%97%AE%E6%85%A2%E5%8F%8A%E4%BF%AE%E6%94%B9%E6%BA%90%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/</link>
+      <pubDate>Fri, 06 Dec 2019 16:13:07 +0800</pubDate>
+      
+      <guid>http://superchun.cn/posts/%E5%85%B3%E4%BA%8EGithub%E8%AE%BF%E9%97%AE%E6%85%A2%E5%8F%8A%E4%BF%AE%E6%94%B9%E6%BA%90%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/</guid>
+      <description>Github 访问慢 由于一些特殊原因，国内访问 Github 一般会比较慢，可以通过修改 DNS 来提高访问速速 1. 获取 github 及 github global 的 DNS 用浏览器访问 https://www.ipaddress.com/，分别获取 github 和 github.global.ssl.fastly.net 对应的 IP： 2. 修改 hosts 文件 sudo vi /etc/hosts 获取到的IP github.com 获取到的IP github.global.ssl.fastly.net Windows 系统请自行搜索如何修改 hosts 3. 更新 DNS 缓存 sudo dscacheutil -flushcache sudo</description>
+    </item>
     
     <item>
       <title>搜索</title>
