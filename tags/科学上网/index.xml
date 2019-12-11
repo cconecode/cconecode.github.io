@@ -17,9 +17,7 @@
       <pubDate>Fri, 29 Nov 2019 14:06:21 +0000</pubDate>
       
       <guid>http://superchun.cn/posts/%E5%A6%82%E4%BD%95%E7%94%A8V2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</guid>
-      <description>&lt;h2 id=&#34;什么是-v2ray&#34;&gt;什么是 V2Ray&lt;/h2&gt;
-
-&lt;p&gt;想要通过 V2Ray 科学上网，先得了解 V2Ray 是什么。根据 V2Ray 指南比较官方的描述：&lt;/p&gt;</description>
+      <description>什么是 V2Ray 想要通过 V2Ray 科学上网，先得了解 V2Ray 是什么。根据 V2Ray 指南比较官方的描述： V2Ray 是 Project V 下的一个工具。Project V 是一个包含一系列构建特定网络环境工具的项目，而 V2Ray 属于最核心的一个。 官方中介绍Project V 提供了单一的内核和多种界面操作方式。内核（V2Ray）用于实际的网络交互、路由</description>
     </item>
     
   </channel>
