@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="generator" content="Hugo 0.60.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -94,84 +94,50 @@
                         
                         
                         <div class="post-content">
-                            
-
-<h2 id="github-访问慢">Github 访问慢</h2>
-
+                            <h2 id="github-">Github 访问慢</h2>
 <p>由于一些特殊原因，国内访问 Github 一般会比较慢，可以通过修改 DNS 来提高访问速速</p>
-
-<h3 id="1-获取-github-及-github-global-的-dns">1. 获取 github 及 github global 的 DNS</h3>
-
+<h3 id="1--github--github-global--dns">1. 获取 github 及 github global 的 DNS</h3>
 <p>用浏览器访问 <a href="https://www.ipaddress.com">https://www.ipaddress.com</a> ，分别获取 github 和 github.global.ssl.fastly.net 对应的 IP：</p>
-
-<p><img src="https://figurebed-1254477026.cos.ap-chengdu.myqcloud.com/2019-12-06-093146.png" alt="image-20191206173139048" style="zoom:50%;" /></p>
-
-<h3 id="2-修改-hosts-文件">2. 修改 hosts 文件</h3>
-
-<pre><code class="language-shell">sudo vi /etc/hosts
+<p><!-- raw HTML omitted --></p>
+<h3 id="2--hosts-">2. 修改 hosts 文件</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo vi /etc/hosts
 
 获取到的IP github.com
 获取到的IP github.global.ssl.fastly.net
-</code></pre>
-
-<p>Windows 系统请自行搜索如何修改 hosts</p>
-
-<h3 id="3-更新-dns-缓存">3. 更新 DNS 缓存</h3>
-
-<pre><code class="language-shell">sudo dscacheutil -flushcache
+</code></pre></div><p>Windows 系统请自行搜索如何修改 hosts</p>
+<h3 id="3--dns-">3. 更新 DNS 缓存</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo dscacheutil -flushcache
 sudo killall -HUP mDNSResponder
-</code></pre>
-
-<h2 id="homebrew-慢">Homebrew 慢</h2>
-
+</code></pre></div><h2 id="homebrew-">Homebrew 慢</h2>
 <p>通过将 homebrew 的源修改为国内的，可以加快 brew install 及 update 速度：</p>
-
-<h3 id="1-替换阿里云-homebrew-镜像">1. 替换阿里云 homebrew 镜像：</h3>
-
-<pre><code class="language-bash"># 替换 brew.git
-cd &quot;$(brew --repo)&quot;
+<h3 id="1--homebrew-">1. 替换阿里云 homebrew 镜像：</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 替换 brew.git</span>
+cd <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
 git remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git
 
-# 替换 homebrew-core.git
-cd &quot;$(brew --repo)&quot;/Library/Taps/homebrew-homebrew/homebrew-core
+<span style="color:#75715e"># 替换 homebrew-core.git</span>
+cd <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>/Library/Taps/homebrew-homebrew/homebrew-core
 git remote set-url origin ttps://mirrors.aliyun.com/homebrew/homebrew-core.git
 
-# 替换 homebrew-bottles，bash 用户将 ~/.zshrc 更为 ~/.bash_profile
-echo 'export HOMEBREW_BOTTLE_DOMAIN='https://mirrors.aliyun.com/homebrew/homebrew-bottles' &gt;&gt; ~/.zshrc
+<span style="color:#75715e"># 替换 homebrew-bottles，bash 用户将 ~/.zshrc 更为 ~/.bash_profile</span>
+echo <span style="color:#e6db74">&#39;export HOMEBREW_BOTTLE_DOMAIN=&#39;</span>https://mirrors.aliyun.com/homebrew/homebrew-bottles<span style="color:#960050;background-color:#1e0010">&#39;</span> &gt;&gt; ~/.zshrc
 source ~/.zshrc
-</code></pre>
-
-<h3 id="2-替换-homebrew-cask">2.  替换 homebrew-cask</h3>
-
-<pre><code class="language-bash">cd &quot;$(brew --repo)&quot;/Library/Taps/homebrew/homebrew-cask
+</code></pre></div><h3 id="2---homebrewcask">2.  替换 homebrew-cask</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>brew --repo<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>/Library/Taps/homebrew/homebrew-cask
 git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
-</code></pre>
-
-<h2 id="cocoapods-慢">CocoaPods 慢</h2>
-
+</code></pre></div><h2 id="cocoapods-">CocoaPods 慢</h2>
 <p>对于 cocoapods 慢的问题，也是采用换镜像的方式，采用清华大学的镜像：</p>
-
-<pre><code class="language-bash">cd ~/.cocoapods/repos
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/.cocoapods/repos
 pod repo remove master
 git clone https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git master
-</code></pre>
-
-<p>换成清华镜像后，需要在项目的 podFile 第一行加上：</p>
-
-<pre><code class="language-bash">source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
-</code></pre>
-
-<h2 id="访问-developer-apple-com-慢">访问 developer.apple.com 慢</h2>
-
+</code></pre></div><p>换成清华镜像后，需要在项目的 podFile 第一行加上：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">source <span style="color:#e6db74">&#39;https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git&#39;</span>
+</code></pre></div><h2 id="-developerapplecom-">访问 developer.apple.com 慢</h2>
 <p>访问 developer.apple.com 时，默认会走日本的服务器，这就会导致访问特别慢，其实苹果在香港也是有服务器的，访问香港的服务器速度则会快很多，首先在 <a href="http://ping.chinaz.com">http://ping.chinaz.com</a> 中查找 developer.apple.com，然后找到香港服务器的 IP，如：</p>
-
-<p><img src="https://figurebed-1254477026.cos.ap-chengdu.myqcloud.com/2019-12-06-095629.png" alt="image-20191206175541658" /></p>
-
+<p><img src="https://figurebed-1254477026.cos.ap-chengdu.myqcloud.com/2019-12-06-095629.png" alt="image-20191206175541658"></p>
 <p>获取到 IP 后，也是通过修改 hosts 文件，将 developer.apple.com 映射成刚刚获取的 IP：</p>
-
-<pre><code class="language-shell">17.253.87.206  developer.apple.com
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">17.253.87.206  developer.apple.com
+</code></pre></div>
                         </div>
 
                         
@@ -235,10 +201,6 @@ git clone https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git master
     </li>
     
     <li>
-        <a href="http://superchun.cn/posts/%E5%A6%82%E4%BD%95%E7%94%A8V2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" title="如何用V2Ray科学上网">如何用V2Ray科学上网</a>
-    </li>
-    
-    <li>
         <a href="http://superchun.cn/posts/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91/" title="git使用SSH配置一直需要输入密码的坑">git使用SSH配置一直需要输入密码的坑</a>
     </li>
     
@@ -295,8 +257,6 @@ git clone https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git master
     <a href="http://superchun.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
     
     <a href="http://superchun.cn/tags/%E6%9D%82%E8%B0%88%E4%BD%8E%E8%AF%AD/">杂谈低语</a>
-    
-    <a href="http://superchun.cn/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">科学上网</a>
     
     <a href="http://superchun.cn/tags/%E7%AE%97%E6%B3%95/">算法</a>
     

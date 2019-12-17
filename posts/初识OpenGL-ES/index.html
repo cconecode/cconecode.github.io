@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="generator" content="Hugo 0.60.1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -90,149 +90,106 @@
                         
                         
                         <div class="post-content">
-                            
-
-<p>在如今直播盛行，VR可能即将崛起的时代，OpenGL ES将会变得不可或缺。而OpenGL ES的学习曲线比较陡峭，所以写博文来记录学习过程，同时也希望能够帮助到一起想学习OpenGL ES的同学。由于能力尚浅，文中错误之处敬请指出，谢谢！</p>
-
-<h1 id="什么是opengl-es">什么是OpenGL ES</h1>
-
+                            <p>在如今直播盛行，VR可能即将崛起的时代，OpenGL ES将会变得不可或缺。而OpenGL ES的学习曲线比较陡峭，所以写博文来记录学习过程，同时也希望能够帮助到一起想学习OpenGL ES的同学。由于能力尚浅，文中错误之处敬请指出，谢谢！</p>
+<h1 id="opengl-es">什么是OpenGL ES</h1>
 <blockquote>
 <p>OpenGL ES（OpenGL for Embedded Systems）是 OpenGL 三维图形API的子集，针对手机、PDA和游戏主机等嵌入式设备而设计。该API由Khronos集团定义推广，Khronos是一个图形软硬件行业协会，该协会主要关注图形和多媒体方面的开放标准。</p>
-
+</blockquote>
+<blockquote>
 <p>OpenGL ES是从OpenGL裁剪定制而来的，去除了glBegin/glEnd，四边形（GL_QUADS）、多边形（GL_POLYGONS）等复杂图元等许多非绝对必要的特性。经过多年发展，现在主要有两个版本，OpenGL ES 1.x针对固定管线硬件的，OpenGL ES 2.x针对可编程管线硬件。OpenGL ES 1.0是以OpenGL 1.3规范为基础的，OpenGL ES 1.1是以OpenGL 1.5规范为基础的，它们分别又支持common和common lite两种profile。lite profile只支持定点实数，而common profile既支持定点数又支持浮点数。OpenGL ES 2.0则是参照OpenGL 2.0规范定义的，common profile发布于2005-8，引入了对可编程管线的支持。OpenGL ES 3.0于2012年公布，加入了大量新特性。              - - - - 维基百科</p>
 </blockquote>
-
 <p>苹果官方文档中对于OpenGL ES的描述为：
 OpenGL ES让App拥有了利用底层图形处理器的能力，iOS设备上的GPU可以执行复杂的2D和3D绘图，以及在最终图像上的每个像素的复杂着色计算。OpenGL ES是低级的、以硬件为中心的基于C的API，可以与iOS应用无缝集成。OpenGL ES规范没有定义窗口层，取而代之，当有任何绘图命令写入，主机操作系统必须定义一个方法来创建OpenGL ES<code>渲染上下文</code>，用来接受命令和帧缓冲。</p>
-
-<h1 id="opengl-es基本概念">OpenGL ES基本概念</h1>
-
+<h1 id="opengl-es1">OpenGL ES基本概念</h1>
 <p><strong>坐标系</strong></p>
-
-<div align="center">
-<img src="http://ooo.0o0.ooo/2016/08/29/57c3f86c6f12c.jpg" width="150" height="显示高度" alt="OpenGL ES坐标系"/>
-</div>
-
+<!-- raw HTML omitted -->
 <p>由于OpenGL ES可以用来绘制2D和3D图形，所以它的坐标是一个三维坐标，如果应用只涉及到2D，那么可以不考虑Z轴。</p>
-
 <p><strong>纹理坐标</strong></p>
-
-<div align="center">
-<img src="http://ooo.0o0.ooo/2016/08/29/57c3fcfd8bfc2.jpg" width="150" alt="纹理坐标系">
-</div>
-
+<!-- raw HTML omitted -->
 <p>一般OpenGL ES中的纹理坐标都是二维的，原点在左下角，与计算机中的图像坐标并不一致，二者的差别在于围绕横轴翻转180°。</p>
-
 <p><strong>顶点数据&amp;&amp;索引</strong></p>
-
 <p>顶点数据是一个数组，里面存的是顶点坐标。而索引则是顶点数组的对应的索引和串联关系。</p>
-
-<pre><code class="language-C">// 顶点数据
-GLFloat squareVertexData[] = {
-    0.5, -0.5, 0.0, //x,y,z
-    -0.5, 0.0, 0.0,
-    -0.5, -0.5, 0.0,
-    0.5, 0.5, 0.0 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#75715e">// 顶点数据
+</span><span style="color:#75715e"></span>GLFloat squareVertexData[] <span style="color:#f92672">=</span> {
+    <span style="color:#ae81ff">0.5</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.0</span>, <span style="color:#75715e">//x,y,z
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">-</span><span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">0.0</span>,
+    <span style="color:#f92672">-</span><span style="color:#ae81ff">0.5</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.0</span>,
+    <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.0</span> 
 }
 
-// 顶点索引
-GLuint indices[] = {
-    0, 1, 2,
-    1, 3, 0
+<span style="color:#75715e">// 顶点索引
+</span><span style="color:#75715e"></span>GLuint indices[] <span style="color:#f92672">=</span> {
+    <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>,
+    <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">0</span>
 }
-</code></pre>
-
-<p>上面顶点数组里面的一行就代表了坐标系里面的x,y,z三个坐标系，代表了一个顶点的位置，里面总共包含了4个点。索引数组则是顶点数据的索引，每一行代表一个连接关系，从0-1-2，从1-3-0。</p>
-
+</code></pre></div><p>上面顶点数组里面的一行就代表了坐标系里面的x,y,z三个坐标系，代表了一个顶点的位置，里面总共包含了4个点。索引数组则是顶点数据的索引，每一行代表一个连接关系，从0-1-2，从1-3-0。</p>
 <h1 id="eaglcontext">EAGLContext</h1>
-
 <p>在使用OpenGL ES之前，必须初始化一个EAGLContext对象，并且将它设置为当前上下文</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC"><span style="color:#75715e">// 初始化EAGLContext
+</span><span style="color:#75715e"></span>EAGLContext <span style="color:#f92672">*</span>context <span style="color:#f92672">=</span> [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2]; 
 
-<pre><code class="language-ObjectiveC">// 初始化EAGLContext
-EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2]; 
-
-// 设置为当前上下文
-[EAGLContext setCurrentContext:context];
-</code></pre>
-
-<p>注意事项：</p>
-
+<span style="color:#75715e">// 设置为当前上下文
+</span><span style="color:#75715e"></span>[EAGLContext setCurrentContext:context];
+</code></pre></div><p>注意事项：</p>
 <ul>
 <li>每个线程都会维护一个当前上下文。</li>
 <li>设置了一个新的上下文，EAGL会释放当前上下文，并且获取新的上下文。</li>
 <li>当在同一个线程中转换两个或者更多的上下文时，在设置一个新的上下文作为当前上下文之前，需要调用<code>glFlush</code>函数，确保之前的一些命令可以及时传递给图像硬件设备。</li>
 </ul>
-
 <p>调用<code>glFlush</code>函数时需导入<code>OpenGLES/ES2/gl.h</code>框架。</p>
-
-<pre><code class="language-C">glFlush()
-</code></pre>
-
-<h1 id="glkview">GLKView</h1>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">glFlush()
+</code></pre></div><h1 id="glkview">GLKView</h1>
 <p><strong>GLKView介绍</strong></p>
-
 <p>GLKView管理着OpenGL ES的基础，来提供绘制代码的地方。GLKView提供了基于OpenGL ES并等效于标准UIView的绘图生命周期。一个UIView实例自动配置图像上下文，所以<code>drawRect:</code>只需执行Quartz 2D绘图命令，GLKView实例自动配置本身，所以你的绘图方法只需执行OpenGL ES命令。GLKView通过维护一个保存着OpenGL ES绘图命令的帧缓冲对象来实现这一功能，一旦你的绘图方法完成，就会自动把结果呈现给Core Animation。</p>
-
-<div align="center">
-<img src="http://ooo.0o0.ooo/2016/08/29/57c460e7a3f36.png" height=300 alt="通过GLKView渲染OpenGL ES内容">
-</div>
-
+<!-- raw HTML omitted -->
 <p><strong>GLKView初始化方法</strong></p>
-
-<pre><code class="language-ObjectiveC">EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC">EAGLContext <span style="color:#f92672">*</span>context <span style="color:#f92672">=</span> [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
 [EAGLContext setCurrentContext:context];
 
-//  使用代码初始化
-//  GLKView *view = [GLKView alloc] initWithFrame:self.view.bounds context:context
-    
-//    使用Storyboard初始化
-GLKView *view = (GLKView *)self.view;
-view.context = context; // 关联上下文
-    
-view.drawableColorFormat = GLKViewDrawableColorFormatRGBA8888; // 颜色缓冲区格式
-view.drawableDepthFormat = GLKViewDrawableDepthFormat24; // 深度缓冲区格式
-view.drawableStencilFormat = GLKViewDrawableStencilFormat8; // 模型缓冲区格式
-view.drawableMultisample = GLKViewDrawableMultisample4X; // 允许多重采样 (多重采样主要用于反锯齿，只对多边形的边缘进行抗锯齿处理，资源消耗较小，最常见的反锯齿), 如果允许了多重采样，必须测试性能
-</code></pre>
-
-<p><strong>GLKViewDelegate</strong></p>
-
-<pre><code class="language-ObjectiveC">// 渲染场景代码
-- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
+<span style="color:#75715e">//  使用代码初始化
+</span><span style="color:#75715e"></span><span style="color:#75715e">//  GLKView *view = [GLKView alloc] initWithFrame:self.view.bounds context:context
+</span><span style="color:#75715e"></span>    
+<span style="color:#75715e">//    使用Storyboard初始化
+</span><span style="color:#75715e"></span>GLKView <span style="color:#f92672">*</span>view <span style="color:#f92672">=</span> (GLKView <span style="color:#f92672">*</span>)self.view;
+view.context <span style="color:#f92672">=</span> context; <span style="color:#75715e">// 关联上下文
+</span><span style="color:#75715e"></span>    
+view.drawableColorFormat <span style="color:#f92672">=</span> GLKViewDrawableColorFormatRGBA8888; <span style="color:#75715e">// 颜色缓冲区格式
+</span><span style="color:#75715e"></span>view.drawableDepthFormat <span style="color:#f92672">=</span> GLKViewDrawableDepthFormat24; <span style="color:#75715e">// 深度缓冲区格式
+</span><span style="color:#75715e"></span>view.drawableStencilFormat <span style="color:#f92672">=</span> GLKViewDrawableStencilFormat8; <span style="color:#75715e">// 模型缓冲区格式
+</span><span style="color:#75715e"></span>view.drawableMultisample <span style="color:#f92672">=</span> GLKViewDrawableMultisample4X; <span style="color:#75715e">// 允许多重采样 (多重采样主要用于反锯齿，只对多边形的边缘进行抗锯齿处理，资源消耗较小，最常见的反锯齿), 如果允许了多重采样，必须测试性能
+</span></code></pre></div><p><strong>GLKViewDelegate</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC"><span style="color:#75715e">// 渲染场景代码
+</span><span style="color:#75715e"></span>- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">glkView:</span>(GLKView <span style="color:#f92672">*</span>)view <span style="color:#a6e22e">drawInRect:</span>(CGRect)rect {
 
 }
 
-// 场景数据变化
-- (void)update {
+<span style="color:#75715e">// 场景数据变化
+</span><span style="color:#75715e"></span>- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">update</span> {
 
 }
-</code></pre>
-
-<p>GLKView能够为OpenGL ES的绘制提供一个简单的界面，因为它管理着OpenGL ES渲染过程的部分标准：</p>
-
+</code></pre></div><p>GLKView能够为OpenGL ES的绘制提供一个简单的界面，因为它管理着OpenGL ES渲染过程的部分标准：</p>
 <ul>
-<li><p>在调用绘图方法之前，视图：</p>
-
+<li>
+<p>在调用绘图方法之前，视图：</p>
 <ul>
 <li>使<code>EAGLContext</code>为当前上下文</li>
 <li>基于当前大小、比例因子和drawable属性（如果需要），创建帧缓冲对象和渲染缓冲区</li>
 <li>将帧缓冲对象作为绘图命令的当前目标</li>
 <li>设置OpenGL ES视图端口来匹配帧缓冲区大小</li>
-</ul></li>
-
-<li><p>绘图方法执行完后，视图：</p>
-
+</ul>
+</li>
+<li>
+<p>绘图方法执行完后，视图：</p>
 <ul>
 <li>解析多重采样缓冲区（如果允许多重采样）</li>
 <li>丢弃不需要的渲染缓冲区</li>
 <li>将渲染缓冲区内容交给Core Animation缓存和显示</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <p>参考：
-    <a href="https://developer.apple.com/library/ios/documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008793-CH1-SW1">OpenGL ES Programming Guide for iOS
- </a></p>
+<a href="https://developer.apple.com/library/ios/documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008793-CH1-SW1">OpenGL ES Programming Guide for iOS
+</a></p>
 
                         </div>
 
@@ -310,10 +267,6 @@ view.drawableMultisample = GLKViewDrawableMultisample4X; // 允许多重采样 (
     </li>
     
     <li>
-        <a href="http://superchun.cn/posts/%E5%A6%82%E4%BD%95%E7%94%A8V2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" title="如何用V2Ray科学上网">如何用V2Ray科学上网</a>
-    </li>
-    
-    <li>
         <a href="http://superchun.cn/posts/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91/" title="git使用SSH配置一直需要输入密码的坑">git使用SSH配置一直需要输入密码的坑</a>
     </li>
     
@@ -370,8 +323,6 @@ view.drawableMultisample = GLKViewDrawableMultisample4X; // 允许多重采样 (
     <a href="http://superchun.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
     
     <a href="http://superchun.cn/tags/%E6%9D%82%E8%B0%88%E4%BD%8E%E8%AF%AD/">杂谈低语</a>
-    
-    <a href="http://superchun.cn/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">科学上网</a>
     
     <a href="http://superchun.cn/tags/%E7%AE%97%E6%B3%95/">算法</a>
     

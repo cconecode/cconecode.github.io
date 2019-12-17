@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>悉达多｜PainMaker</title>
@@ -48,15 +48,6 @@
     </item>
     
     <item>
-      <title>如何用V2Ray科学上网</title>
-      <link>http://superchun.cn/posts/%E5%A6%82%E4%BD%95%E7%94%A8V2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</link>
-      <pubDate>Fri, 29 Nov 2019 14:06:21 +0000</pubDate>
-      
-      <guid>http://superchun.cn/posts/%E5%A6%82%E4%BD%95%E7%94%A8V2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</guid>
-      <description>什么是 V2Ray 想要通过 V2Ray 科学上网，先得了解 V2Ray 是什么。根据 V2Ray 指南比较官方的描述： V2Ray 是 Project V 下的一个工具。Project V 是一个包含一系列构建特定网络环境工具的项目，而 V2Ray 属于最核心的一个。 官方中介绍Project V 提供了单一的内核和多种界面操作方式。内核（V2Ray）用于实际的网络交互、路由</description>
-    </item>
-    
-    <item>
       <title>git使用SSH配置一直需要输入密码的坑</title>
       <link>http://superchun.cn/posts/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91/</link>
       <pubDate>Thu, 28 Nov 2019 10:07:07 +0000</pubDate>
@@ -80,7 +71,7 @@
       <pubDate>Tue, 05 Nov 2019 15:38:21 +0000</pubDate>
       
       <guid>http://superchun.cn/posts/What-s-New-in-Xcode11/</guid>
-      <description>WWDC19 - What&amp;rsquo;s New in Xcode11 WWDC 2019 已经过去快半年多了，Xcode 11 更新也有段时间了。用了一段时间之后，发现 Xcode 11 较之 Xcode 10 还是有许多地方不一样的，于是便看了 WWDC 2019 Session 401，顺便做一下记录。 首先，对 Xcode11 的整体改进做一个预览： 整体的改变还是挺多的，下面一一对改进的功能进行说明。 右上角功能键的改进 首先，Xcod</description>
+      <description>WWDC19 - What&#39;s New in Xcode11 WWDC 2019 已经过去快半年多了，Xcode 11 更新也有段时间了。用了一段时间之后，发现 Xcode 11 较之 Xcode 10 还是有许多地方不一样的，于是便看了 WWDC 2019 Session 401，顺便做一下记录。 首先，对 Xcode11 的整体改进做一个预览： 整体的改变还是挺多的，下面一一对改进的功能进行说明。 右上角功能键的改进 首先，Xcod</description>
     </item>
     
     <item>
