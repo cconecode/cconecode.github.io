@@ -746,7 +746,28 @@ colors[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart">mixin MusicalPerformer on Musician {
 	<span style="color:#75715e">// ...
 </span><span style="color:#75715e"></span>}
-</code></pre></div>
+</code></pre></div><h3 id="heading35">类变量和方法</h3>
+<p>使用 <code>static</code> 关键字实现类范围的变量和方法。</p>
+<h4 id="heading36">静态变量</h4>
+<p>静态变量对于类范围的状态和常量很有用：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Queue</span> {
+	<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> initialCapacity <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>;
+}
+</code></pre></div><p>静态变量直到使用的时候才被初始化。</p>
+<h4 id="heading37">静态方法</h4>
+<p>静态方法不在一个实例上进行操作，因此也不能访问 <code>this</code>。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dart" data-lang="dart"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Point</span> {
+  <span style="color:#66d9ef">num</span> x, y;
+  Point(<span style="color:#66d9ef">this</span>.x, <span style="color:#66d9ef">this</span>.y);
+  
+  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">num</span> distanceBetween(Point a, Point b) {
+    <span style="color:#66d9ef">var</span> dx <span style="color:#f92672">=</span> a.x <span style="color:#f92672">-</span> b.x;
+    <span style="color:#66d9ef">var</span> dy <span style="color:#f92672">=</span> a.y <span style="color:#f92672">-</span> b.y;
+    <span style="color:#66d9ef">return</span> sqrt(dx <span style="color:#f92672">*</span> dx <span style="color:#f92672">+</span> dy <span style="color:#f92672">*</span> dy);
+  }
+}
+</code></pre></div><h2 id="heading38">泛型</h2>
+
                         </div>
 
                         
@@ -900,52 +921,76 @@ colors[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span
 </div>
 <footer id="footer">
     <div class="container">
-        &copy; 2019 <a href="http://superchun.cn">悉达多｜PainMaker By 悉达多</a>.
-        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
-        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
-        
+        &copy; 2019 <a href="http://superchun.cn">悉达多｜PainMaker By 悉达多</a>. Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>. 
     </div>
 </footer>
 
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.8/raphael.min.js" crossorigin="anonymous"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/flowchart/1.12.2/flowchart.min.js" crossorigin="anonymous"></script>
-        <script>(function () {
-                if (!window.flowchart) return;
-                const blocks = document.querySelectorAll('pre code.language-flowchart, pre code.language-flow');
-                for (let i = 0; i < blocks.length; i++) {
-                    const block = blocks[i];
-                    const rootElement = block.parentNode;
-                    const container = document.createElement('div');
-                    const id = `js-flowchart-diagrams-${i}`;
-                    container.id = id;
-                    container.className = 'align-center';
-                    container.setAttribute("style", "overFlow-x:auto");
-                    rootElement.parentNode.replaceChild(container, rootElement);
-                    const diagram = flowchart.parse(block.childNodes[0].nodeValue);
-                    diagram.drawSVG(id, window.flowchartDiagramsOptions ? window.flowchartDiagramsOptions : {});
-                }
-            })();
-        </script>
-    <script type="text/javascript">
-        
-        (function () {
-            $("pre code").parent().addClass("line-numbers")
-        }());
-
-        window.MathJax = {
-            tex2jax: {
-                inlineMath: [['$', '$']],
-                processEscapes: true
-                }
-            };
-    </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.13.0/flowchart.min.js" crossorigin="anonymous"></script>
+<script>
+    {
+        {
+            -
+            if .Params.flowchartDiagrams.options -
+        }
+    }
+    window.flowchartDiagramsOptions = {
+        {.Params.flowchartDiagrams.options | safeJS
+        }
+    }; {
+        {
+            -
+            else if .Site.Params.flowchartDiagrams.options -
+        }
+    }
+    window.flowchartDiagramsOptions = {
+        {.Site.Params.flowchartDiagrams.options | safeJS
+        }
+    }; {
+        {
+            -end -
+        }
+    }
+    (function() {
+        if (!window.flowchart) return;
+        const blocks = document.querySelectorAll('pre code.language-flowchart, pre code.language-flow');
+        for (let i = 0; i < blocks.length; i++) {
+            const block = blocks[i];
+            const rootElement = block.parentNode;
+            const container = document.createElement('div');
+            const id = `js-flowchart-diagrams-${i}`;
+            container.id = id;
+            container.className = 'align-center';
+            container.setAttribute("style", "overFlow-x:auto");
+            rootElement.parentNode.replaceChild(container, rootElement);
+            const diagram = flowchart.parse(block.childNodes[0].nodeValue);
+            diagram.drawSVG(id, window.flowchartDiagramsOptions ? window.flowchartDiagramsOptions : {});
+        }
+    })();
+</script>
+<script type="text/javascript">
     
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+    (function() {
+        $("pre code").parent().addClass("line-numbers")
+    }());
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [
+                ['$', '$']
+            ],
+            processEscapes: true
+        }
+    };
+</script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 
 <a id="rocket" href="#top"></a>
-<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+<script type="text/javascript" src="/%20js/totop.js?v=0.0.0%20" async=""></script>
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -957,10 +1002,8 @@ if (!doNotTrack) {
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
-    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+ 
+<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
 
 
 
