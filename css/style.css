@@ -67,7 +67,7 @@
     content: "\e60d";
 }
 body {
-    background-color:#FFF;
+    background-color:#ebebeb;
     color:#444;
     font-size: 16px;
     /**
@@ -92,7 +92,7 @@ a, button.submit {
     transition:all .1s ease-in;
 }
 a:hover, a:active {
-    color:#6E7173;
+    color:#24292e;
 }
 mark {
     padding: 3px 3px 3px 5px;
@@ -113,6 +113,7 @@ code {
     display: inline-block;
 }
 blockquote {
+    background-color: #f6f8fa;
     display: block;
     margin-block-start: 1em;
     margin-block-end: 1em;
@@ -123,10 +124,10 @@ blockquote {
     margin: 2.5em 0;
     padding: 0 0 0 50px;
     color: #555;
-    border-left: none;
+    border-left: 4px solid #d1d1d1;
 }
 blockquote::before{
-    content: "\201C";
+    /* content: "\201C"; */
     display: block;
     font-family: times;
     font-style: normal;
@@ -146,6 +147,7 @@ h1, h2, h3 {
 input[type="text"], input[type="email"], input[type="url"], input[type="password"], textarea {
     padding:6px;
     border:1px solid #ddd;
+    border-radius: 10px;
     width:100%;
     -webkit-box-sizing:border-box;
     -moz-box-sizing:border-box;
@@ -158,6 +160,14 @@ button, input, optgroup, select, textarea {
 textarea {
     resize:vertical;
 }
+
+.res-cons {
+    background-color: #FFF;
+    border-radius: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 .clear {
     clear:both;
 }
@@ -181,9 +191,10 @@ textarea {
 #header {
     padding:58px 0 0;
     text-align:left;
+    background-color: #FFF;
 }
 #header .col-group {
-    border-bottom: 1px solid #ddd;
+    /* border-bottom: 1px solid #ddd; */
 }
 .site-name h1{
     padding: 0;
@@ -218,7 +229,7 @@ textarea {
     padding:0 1em;
     height:32px;
     line-height:32px;
-    color:#444;
+    color:#24292e;
 }
 #nav-menu a:first-child {
     border:none;
@@ -226,8 +237,8 @@ textarea {
 #nav-menu a:hover {
 }
 #nav-menu a.current {
-    border:1px solid #ddd;
-    border-bottom:1px solid #fff;
+    /* border:1px solid #ddd; */
+    border-bottom:1px solid #ddd;
 }
 .site-search {
     display:none;
@@ -237,7 +248,7 @@ textarea {
     overflow: hidden;
 }
 #search input {
-    padding: 1em 2em .75em 1em;
+    /* padding: 1em 2em .75em 1em; */
     line-height: 1.5;
 }
 #search button {
@@ -247,28 +258,32 @@ textarea {
     font-size: 20px;
     line-height: 1.5;
     border:none;
-    padding:14px 0;
+    /* padding:14px 0; */
     width:auto;
-    height:48px;
+    /* height:48px; */
     color:#444;
     background:none;
 }
 .col-8 {
-    width:800px;
+    width:900px;
 }
 .col-12{
     width: 100%;
 }
 .container {
-    width:1150px;
+    width:1250px;
     padding:0 60px;
     margin:0 auto;
 }
 #secondary {
+    background-color: #FFF;
+    border-radius: 8px;
     float:right;
-    width:245px;
-    border-left:1px solid #ddd;
-    padding-left:35px;
+    width:260px;
+    margin-top: 20px;
+    /* border-left:1px solid #ddd; */
+    padding-left:15px;
+    padding-right: 15px;
     word-wrap:break-word;
     display:block;
     padding-top:40px;
@@ -360,7 +375,7 @@ textarea {
 .post-content {
     font-size: 1em;
     line-height: 1.7;
-    color:#444;
+    color:#24292e;
     padding-top:27px;
 }
 .post-content h2,.post-content h3,.post-content h4,.post-content h5,.post-content h6 {
@@ -379,12 +394,15 @@ textarea {
 } */
 .post-content pre, .comment-content pre {
     padding: 1em 1.5em;
+    border-radius: 8px;
 }
 .post-content p code, .comment-content p code {
     display:inline;
     margin:0 5px;
     padding:3px 5px;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
+    border-radius: 5px;
+    background-color: rgba(27, 31, 35 .05);
 }
 .post-content p {
     margin:0 0 1.1em;
@@ -434,14 +452,15 @@ textarea {
     height:25px;
     line-height:25px;
     padding:5px 9px;
-    border:1px solid #DDD;
+    /* border:1px solid #DDD; */
+    border-radius: 5px;
 }
 .page-navigator a:hover {
     background:#F8F8F8;
     border-bottom-color:#D26911;
 }
 .page-navigator .current a {
-    background:#F8F8F8;
+    background:#ebebeb;
     border-bottom-color:#D26911;
 }
 .comment-list, .comment-list ol {
@@ -580,7 +599,7 @@ textarea.textarea {
     margin-bottom:30px;
 }
 .widget-title {
-    color:#6E7173;
+    color:#24292e;
     line-height:2.7;
     margin-top:0;
     font-size:16px;
@@ -989,8 +1008,8 @@ img.alignright {
     float: right; 
 }
 .readmore a:hover {
-    background: #F8F8F8;
-    border-bottom-color: #D26911; 
+    background: #ebebeb;
+    /* border-bottom-color: #D26911;  */
 }
 /* 版权声明 */
 .post-copyright {
