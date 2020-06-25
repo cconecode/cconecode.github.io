@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web on 悉达多｜PainMaker</title>
+    <link>https://superchun.net/tags/web/</link>
+    <description>Recent content in web on 悉达多｜PainMaker</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 25 Jun 2020 23:20:35 +0800</lastBuildDate>
+    
+	<atom:link href="https://superchun.net/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Lexical Scope</title>
+      <link>https://superchun.net/post/lexical_scope/</link>
+      <pubDate>Thu, 25 Jun 2020 23:20:35 +0800</pubDate>
+      
+      <guid>https://superchun.net/post/lexical_scope/</guid>
+      <description>最近在学习 JS，在看《JavaScript 权威指南》的时候看到 JavaScript uses lexical scoping，当时只以为是 JS 的一个语言特性而已，就没太注意。但看到后面却发现，这个特性与 JS 的 Closure 也就是闭包大有关联。于是，就想弄懂究竟什么是 lexical scoping，在 Stackoverflow 上我找到了答案。 lexical scoping还有另一个名字，叫</description>
+    </item>
+    
+  </channel>
+</rss>

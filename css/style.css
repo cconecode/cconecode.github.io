@@ -12,6 +12,13 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'Fira Code';
+    src:url('fonts/FiraCode-Regular.ttf') format('truetype'),
+        url('fonts/FiraCode-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 [class^="icon-"], [class*=" icon-"] {
     font-family: 'icomoon';
@@ -73,7 +80,7 @@ body {
     /**
     font-family:"TIBch", "Classic Grotesque W01", "Helvetica Neue", Arial, "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
     **/
-    font-family: "Iowan Old Style", "Ovo", "Hoefler Text", Georgia, "Times New Roman", "TIBch", "Source Han Sans", "PingFangSC-Regular", "Hiragino Sans GB", "STHeiti", "Microsoft Yahei", "Droid Sans Fallback", "WenQuanYi Micro Hei", sans-serif;
+    font-family: "Fira Code", "Iowan Old Style", "Ovo", "Hoefler Text", Georgia, "Times New Roman", "TIBch", "Source Han Sans", "PingFangSC-Regular", "Hiragino Sans GB", "STHeiti", "Microsoft Yahei", "Droid Sans Fallback", "WenQuanYi Micro Hei", sans-serif;
     /**-webkit-font-smoothing: antialiased;**/
     -moz-osx-font-smoothing: grayscale;
 }
@@ -100,7 +107,7 @@ mark {
 }
 pre, code {
     background:#f8f8f8;
-    font-family:Monaco, Menlo, Consolas, "Lucida Console", "Courier New", monospace;
+    font-family:"Fira Code", Monaco, Menlo, Consolas, "Lucida Console", "Courier New", monospace;
     font-size:.95em;
 }
 pre {
@@ -402,7 +409,8 @@ textarea {
     padding:3px 5px;
     /* border: 1px solid #ddd; */
     border-radius: 5px;
-    background-color: rgba(27, 31, 35 .05);
+    background-color: rgba(27, 31, 35, .08);
+    font-size: 90%;
 }
 .post-content p {
     margin:0 0 1.1em;

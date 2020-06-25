@@ -4,16 +4,36 @@
   
   <url>
     <loc>https://superchun.net/posts/</loc>
-    <lastmod>2019-12-06T16:13:07+08:00</lastmod>
+    <lastmod>2020-06-25T23:20:35+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://superchun.net/post/github-access-changesource/</loc>
-    <lastmod>2019-12-06T16:13:07+08:00</lastmod>
+    <loc>https://superchun.net/tags/JS/</loc>
+    <lastmod>2020-06-25T23:20:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://superchun.net/post/lexical_scope/</loc>
+    <lastmod>2020-06-25T23:20:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://superchun.net/tags/</loc>
+    <lastmod>2020-06-25T23:20:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://superchun.net/tags/web/</loc>
+    <lastmod>2020-06-25T23:20:35+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://superchun.net/</loc>
+    <lastmod>2020-06-25T23:20:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://superchun.net/post/github-access-changesource/</loc>
     <lastmod>2019-12-06T16:13:07+08:00</lastmod>
   </url>
   
@@ -25,11 +45,6 @@
   <url>
     <loc>https://superchun.net/archives/</loc>
     <lastmod>2019-12-04T16:25:22+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://superchun.net/tags/</loc>
-    <lastmod>2019-12-03T10:28:26+00:00</lastmod>
   </url>
   
   <url>
