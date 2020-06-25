@@ -90,7 +90,7 @@
                             </date>
                             
                             <div class="post-content">
-                                最近在学习 JS，在看《JavaScript 权威指南》的时候看到 JavaScript uses lexical scoping，当时只以为是 JS 的一个语言特性而已，就没太注意。但看到后面却发现，这个特性与 JS 的 Closure 也就是闭包大有关联。于是，就想弄懂究竟什么是 lexical scoping，在 Stackoverflow 上我找到了答案。 lexical scoping还有另一个名字，叫……
+                                最近在学习 JS，在看《JavaScript 权威指南》的时候看到 <code>JavaScript uses lexical scoping</code>，当时只以为是 JS 的一个语言特性而已，就没太注意。但看到后面却发现，这个特性与 JS 的 <code>Closure</code> 也就是闭包大有关联。于是，就想弄懂究竟什么是 <code>lexical scoping</code>。……
                             </div>
                             <p class="readmore"><a href="https://superchun.net/post/lexical_scope/">阅读全文</a></p>
                         </article>
@@ -108,7 +108,7 @@
                             </date>
                             
                             <div class="post-content">
-                                Github 访问慢 由于一些特殊原因，国内访问 Github 一般会比较慢，可以通过修改 DNS 来提高访问速速 1. 获取 github 及 github global 的 DNS 用浏览器访问 https://www.ipaddress.com ，分别获取 github 和 github.global.ssl.fastly.net 对应的 IP： 2. 修改 hosts 文件 sudo vi /etc/hosts 获取到的IP github.com 获取到的IP github.global.ssl.fastly.net Windows 系统请自行搜索如何修改 hosts 3. 更新 DNS 缓存 sudo dscacheutil -flushcache sudo killall -HUP mDNSResponder Homebrew 慢 通过将 homebrew 的源修改为国内的，可以加快 brew install 及……
+                                由于一些特殊原因，国内访问 Github 一般会比较慢，可以通过修改 DNS 来提高访问速度。……
                             </div>
                             <p class="readmore"><a href="https://superchun.net/post/github-access-changesource/">阅读全文</a></p>
                         </article>
@@ -126,7 +126,7 @@
                             </date>
                             
                             <div class="post-content">
-                                排序是最基本也是最广泛的一种算法，很多非常高效的算法都需要经过排序预处理。如果有了排好序的数据，那么许多问题的解决将会变得非常简单，例如： 搜索。采用二分搜索算法会使得搜索非常快速，其时间复杂度是 $O(logn)$ 最近点对。当数据是排好序时，最近点对必须按排序顺序彼此相邻，此时只要扫描列表就可以解……
+                                排序是最基本也是最广泛的一种算法，很多非常高效的算法都需要经过排序预处理。如果有了排好序的数据，那么许多问题的解决将会变得非常简单。……
                             </div>
                             <p class="readmore"><a href="https://superchun.net/post/sort-algorithm-heapsort-mergesort/">阅读全文</a></p>
                         </article>
@@ -144,7 +144,7 @@
                             </date>
                             
                             <div class="post-content">
-                                一般 git 提供了 HTTPS 和 SSH（Secure Shell） 两种认证方式。HTTPS 比较简单，只需要输入对应的 user 和 password 就可以了。SSH 则相对复杂一点，需要使用 ssh 命令生成 RSA 密钥对，将 public key 提交到服务器，本地保留 private key。SSH 还可以允许我们通过 config 来管理多用户，例如：一般我们会有一个自己的 github 账户，通……
+                                在逛 V2ex 的时候，看见有人遭遇了跟我之前一样的 git 使用 SSH 一直会要求输入密码的坑，所以便记录下来，希望能帮助到有需要的人。……
                             </div>
                             <p class="readmore"><a href="https://superchun.net/post/git-ssh-config/">阅读全文</a></p>
                         </article>
@@ -162,7 +162,7 @@
                             </date>
                             
                             <div class="post-content">
-                                Mac 内置了很多对于文本操作的快捷键组合，在 Apple 的官方文档里也给出了所有 Mac 操作的快捷键。熟悉这些快捷键可以让我们日常的使用和工作更有效率，双手不需要离开键盘去摸鼠标了。因为本身是个程序员，所以罗列了一些比较重要的快捷键组合，大部分都是关于文本操作的。 这些快捷键在 Mac 里面是通用的，也就意味……
+                                Mac 内置了很多对于文本操作的快捷键组合，在 Apple 的<a href="https://support.apple.com/zh-cn/HT201236">官方文档</a>里也给出了所有 Mac 操作的快捷键。熟悉这些快捷键可以让我们日常的使用和工作更有效率，双手不需要离开键盘去摸鼠标了。……
                             </div>
                             <p class="readmore"><a href="https://superchun.net/post/mac-shortcutkey/">阅读全文</a></p>
                         </article>
@@ -180,7 +180,7 @@
                             </date>
                             
                             <div class="post-content">
-                                WWDC19 - What's New in Xcode11 WWDC 2019 已经过去快半年多了，Xcode 11 更新也有段时间了。用了一段时间之后，发现 Xcode 11 较之 Xcode 10 还是有许多地方不一样的，于是便看了 WWDC 2019 Session 401，顺便做一下记录。 首先，对 Xcode11 的整体改进做一个预览： 整体的改变还是挺多的，下面一一对改进的功能进行说明。 右上角功能键的改进 首先，Xcod……
+                                WWDC 2019 已经过去快半年多了，Xcode 11 更新也有段时间了。用了一段时间之后，发现 Xcode 11 较之 Xcode 10 还是有许多地方不一样的，于是便看了 <a href="https://developer.apple.com/videos/play/wwdc2019/401/">WWDC 2019 Session 401</a>，顺便做一下记录。……
                             </div>
                             <p class="readmore"><a href="https://superchun.net/post/whats-new-in-xcode11/">阅读全文</a></p>
                         </article>
@@ -198,7 +198,7 @@
                             </date>
                             
                             <div class="post-content">
-                                <p>Cordova 的前身是 PhoneGap，是一个 Hybrid 框架，可以让开发者使用HTML、Javascript、CSS开发跨平台的App。</p>……
+                                Cordova 的前身是 PhoneGap，是一个 Hybrid 框架，可以让开发者使用HTML、Javascript、CSS开发跨平台的App。……
                             </div>
                             <p class="readmore"><a href="https://superchun.net/post/cordova-inios/">阅读全文</a></p>
                         </article>
@@ -216,7 +216,7 @@
                             </date>
                             
                             <div class="post-content">
-                                在项目中遇到一个需求，检测用户三分钟未点击屏幕，就出现广告轮播图。很自然的就联想到事件拦截了，然而之前对于 iOS 的事件机制并不是太过于了解，所以利用这次机会进行了深入学习。 iOS事件机制 iOS 中的事件分为三类：触摸事件（单点、多点、手势），传感器事件（加速传感器）和远程控制事件（官方文档……
+                                在项目中遇到一个需求，检测用户三分钟未点击屏幕，就出现广告轮播图。很自然的就联想到事件拦截了，然而之前对于 iOS 的事件机制并不是太过于了解，所以利用这次机会进行了深入学习。……
                             </div>
                             <p class="readmore"><a href="https://superchun.net/post/iOS-event/">阅读全文</a></p>
                         </article>
