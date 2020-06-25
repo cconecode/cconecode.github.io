@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.60.1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>iOS 事件拦截 | 悉达多｜PainMaker</title>
+    <meta property="og:title" content="iOS 事件拦截 - 悉达多｜PainMaker">
+    <meta property="og:type" content="article">
+        
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="iOS 事件拦截">
+        
+    <meta name="author" content="悉达多">
+    <meta property="og:url" content="https://superchun.net/post/iOS-event/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153875253-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-153875253-1');
+    </script>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.0/styles/monokai-sublime.min.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.0/highlight.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.0/languages/dart.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                <a id="logo" href="https://superchun.net">
+                        悉达多｜PainMaker
+                    </a>  
+                <p class="description">知也者，所以知也，而不必知</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://superchun.net">首页</a> 
+                    <a  href="https://superchun.net/archives/" title="归档">归档</a> 
+                    <a  href="https://superchun.net/about/" title="关于">关于</a> 
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="body">
+        
+        
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">iOS 事件拦截</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            1年1月1日
+                        </date>
+                        
+                        
+                        <div class="post-meta">
+                            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span> 阅读</span></span>
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            <p>在项目中遇到一个需求，检测用户三分钟未点击屏幕，就出现广告轮播图。很自然的就联想到事件拦截了，然而之前对于 iOS 的事件机制并不是太过于了解，所以利用这次机会进行了深入学习。</p>
+<h1 id="ios">iOS事件机制</h1>
+<p>iOS 中的事件分为三类：触摸事件（单点、多点、手势），传感器事件（加速传感器）和远程控制事件（<a href="https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/Introduction/Introduction.html">官方文档</a>），我们遇到情况是第一种也就是触摸事件的机制。</p>
+<h2 id="heading">响应者链</h2>
+<p>当一个事件发生时，如果 first responder 不做处理，那么就会往下传递，如果下一个 responder 也不处理，那么就会继续传递到再下一个 responder 中，直到有一个 responder 处理或者没有 responder 了，如果没有 responder 处理这个事件，那么这个事件就被抛弃了。这些 responder 按照传递顺序连接起来就构成了响应者链。</p>
+<p>iOS 中的响应者链：
+<img src="https://lh3.googleusercontent.com/-6DVPdEbo12A/V48oTEjGXfI/AAAAAAAAAAk/Vn_s04cJOlk/I/14689996896970.jpg" alt="苹果官方关于响应者链的描述"></p>
+<p>从图中我们可以观察到，响应者链有以下几个特点：</p>
+<ul>
+<li>
+<p>响应者链通常由 initial view 开始。</p>
+</li>
+<li>
+<p>View 的 nextResponder 是它的 superView，如果 View 已经是它所在的 ViewController 中的 top view，那么 next responder 就是它所在的 ViewConTroller。</p>
+</li>
+<li>
+<p>ViewController 如果有 superViewController，那么它的 nextResponder 就是它superViewController 最上面的 View。如果没有，那么它的 nextResponder 就是 Window。</p>
+</li>
+<li>
+<p>Window 的 nextResponder 指向 Application，Application 是整个响应者链的顶层，它的 nextResponder 指向 nil。也就是说当事件传递到 Application 不被处理的话就会被抛弃了。</p>
+</li>
+</ul>
+<p>由于 UI 的复杂性，整个响应者链是需要通过计算的，而计算顺序基本是与响应者链分发相反的。<code>无论哪种事件，都是系统本身先获得，再交给 UIApplication，由 UIApplication 决定交给谁去处理。</code> 关于事件分发的计算网上有很多文章，我就不赘述了。通过上述了解，我们可以得出一个结论：<code>如果我们需要拦截一个事件，最好的机会是在 UIApplication 里面。</code></p>
+<h1 id="heading1">需求具体实现</h1>
+<h2 id="oc-">OC 版</h2>
+<p>根据上面的结论，我们目前的思路是继承 UIApplication，然后实现某一方法，进行事件拦截。根据查阅资料，重写 UIApplication 的 <code>sendEvent</code>方法可以达到目的，sendEvent介绍如下：</p>
+<blockquote>
+<p><strong>sendEvent:</strong></p>
+</blockquote>
+<blockquote>
+<p>Dispatches an event to the appropriate responder objects in the application.</p>
+</blockquote>
+<blockquote>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC">-(<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">sendEvent:</span>(UIEvent <span style="color:#f92672">*</span>)event
+</code></pre></div><blockquote>
+<p><strong>Parameters</strong>
+event
+A UIEvent object encapsulating the information about an event, including the touches involved.</p>
+</blockquote>
+<blockquote>
+<p><strong>Discussion</strong>
+Subclasses may override this method to intercept incoming events for inspection and special dispatching. iOS calls this method for public events only.</p>
+</blockquote>
+<p>具体代码实现：</p>
+<ol>
+<li>新建一个继承 UIApplication 的 CTApplication，重写 sendEvent 方法，并判断是否为触摸事件：</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC"><span style="color:#75715e">#</span><span style="color:#75715e">import &#34;CTApplication.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">@implementation</span> <span style="color:#a6e22e">CTApplication</span>
+
+- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">sendEvent:</span>(UIEvent <span style="color:#f92672">*</span>)event {
+
+    <span style="color:#66d9ef">if</span> (event.type <span style="color:#f92672">=</span><span style="color:#f92672">=</span> UIEventTypeTouches) {
+        <span style="color:#66d9ef">if</span> ([[event.allTouches anyObject] phase] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> UITouchPhaseBegan) {
+
+        }
+    }
+ [super sendEvent:event];
+}
+
+<span style="color:#66d9ef">@end</span>
+</code></pre></div><p>2.由于需要检测用户多长时间没有点击屏幕，需要加一个定时器来进行倒计时，设置定时器的方法写在 CTApplication 的 init 方法中：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC"><span style="color:#75715e">#</span><span style="color:#75715e">import &#34;CTApplication.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">/** 不点击屏幕的时间 */</span>
+<span style="color:#66d9ef">static</span> NSTimeInterval <span style="color:#66d9ef">const</span> showTime <span style="color:#f92672">=</span> <span style="color:#ae81ff">180</span>;
+
+<span style="color:#66d9ef">@interface</span> <span style="color:#a6e22e">CTApplication</span> ()
+
+<span style="color:#66d9ef">@property</span> (<span style="color:#66d9ef">nonatomic</span>, <span style="color:#66d9ef">strong</span>) NSTimer <span style="color:#f92672">*</span>timer;
+
+<span style="color:#66d9ef">@end</span>
+
+<span style="color:#66d9ef">@implementation</span> <span style="color:#a6e22e">CTApplication</span>
+
+- (<span style="color:#66d9ef">instancetype</span>)<span style="color:#a6e22e">init</span> {
+
+    <span style="color:#66d9ef">if</span> (self <span style="color:#f92672">=</span><span style="color:#f92672">=</span> [super init]) {
+        [self setTimer];
+    }
+    <span style="color:#66d9ef">return</span> self;
+}
+- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">setTimer</span> {
+
+    self.timer <span style="color:#f92672">=</span> [NSTimer timerWithTimeInterval:showTime target:self selector:<span style="color:#66d9ef">@selector</span>(showPicture) userInfo:nil repeats:NO];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+}
+
+- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">showPicture</span> {
+	<span style="color:#75715e">/** 在这里对广告轮播图进行设置 */</span>
+}
+</code></pre></div><p>3.再回到 sendEvent 方法中，如果该方法被触发了，那么让定时器失效，重新开始定时：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC">- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">sendEvent:</span>(UIEvent <span style="color:#f92672">*</span>)event {
+    
+    [super sendEvent:event];
+    <span style="color:#66d9ef">if</span> (event.type <span style="color:#f92672">=</span><span style="color:#f92672">=</span> UIEventTypeTouches) {
+        <span style="color:#66d9ef">if</span> ([[event.allTouches anyObject] phase] <span style="color:#f92672">=</span><span style="color:#f92672">=</span> UITouchPhaseBegan) {
+
+            [self.timer invalidate];
+            [self setTimer];
+        }
+    }
+}
+</code></pre></div><p>4.最后，在 main 函数中还要做对应的更改，替换 UIApplication 的调用：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC"><span style="color:#75715e">#</span><span style="color:#75715e">import &lt;UIKit</span><span style="color:#75715e">/</span><span style="color:#75715e">UIKit.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">import &#34;AppDelegate.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">import &#34;CTApplication.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> argv[]) {
+    <span style="color:#66d9ef">@autoreleasepool</span> {
+<span style="color:#75715e">//        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> UIApplicationMain(argc, argv, NSStringFromClass([AppDelegate <span style="color:#66d9ef">class</span>]), NSStringFromClass([CTApplication <span style="color:#66d9ef">class</span>]));
+    }
+}
+</code></pre></div><h2 id="swift">Swift版</h2>
+<p>首先新建一个 UIApplication 的子类 CTApplication：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Swift" data-lang="Swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Foundation</span>
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">UIKit</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CTApplication</span>: UIApplication {
+
+    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">sendEvent</span>(event: UIEvent) {
+
+        <span style="color:#66d9ef">super</span>.sendEvent(event)
+    }
+}
+</code></pre></div><p>由于 Swift 中没有 main 函数，所以需要自己手动建一个 main 函数，并设置入口：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Swift" data-lang="Swift"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Foundation</span>
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">UIKit</span>
+
+UIApplicationMain(Process.argc, Process.unsafeArgv, NSStringFromClass(CTApplication), NSStringFromClass(AppDelegate))
+</code></pre></div><p>这时，Appdelegate 中的<code>@UIApplicationMain</code>会报错。下面是苹果官方对于<code>@UIApplicationMain</code>关键字的描述：</p>
+<blockquote>
+<p>Apply this attribute to a class to indicate that it is the application delegate. Using this attribute is equivalent to calling the UIApplicationMain function and passing this class’s name as the name of the delegate class.</p>
+</blockquote>
+<blockquote>
+<p>If you do not use this attribute, supply a main.swift file with a main function that calls the UIApplicationMain(::<em>:) function. For example, if your app uses a custom subclass of UIApplication
+as its principal class, call the UIApplicationMain(::</em>:) function instead of using this attribute.</p>
+</blockquote>
+<p>意思就是在类的最顶部声明 <code>@UIApplicationMain</code>，表示该类是Application 的 delegate，另外一种做法就是在 main.Swift 中调用 UIApplicationMain 函数，设置 delegate 和 application。而我们采取的是后面的办法，所以 delegate 冲突了，自然就会报错，只要把 Appdelegate 上的 <code>@UIApplicationMain</code> 关键字删除就可以了。剩下的操作与 OC 中的是一样的。</p>
+<p>具体的代码上传到 github 上了：</p>
+
+                        </div>
+
+                        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://superchun.net">悉达多</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://superchun.net/post/iOS-event/">https://superchun.net/post/iOS-event/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+                        
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://superchun.net/tags/%E4%BA%8B%E4%BB%B6%E6%8B%A6%E6%88%AA">事件拦截</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "superchun/blogcomment"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="/search/" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://superchun.net">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://superchun.net/post/github-access-changesource/" title="关于Github访问慢及修改源的那些事">关于Github访问慢及修改源的那些事</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/sort-algorithm-heapsort-mergesort/" title="从Heapsort与Mergesort看排序算法">从Heapsort与Mergesort看排序算法</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/git-ssh-config/" title="git使用SSH配置一直需要输入密码的坑">git使用SSH配置一直需要输入密码的坑</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/mac-shortcutkey/" title="Mac快捷键">Mac快捷键</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/whats-new-in-xcode11/" title="What&#39;s New in Xcode11">What&#39;s New in Xcode11</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/cordova-inios/" title="Cordova in iOS">Cordova in iOS</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/iOS-event/" title="iOS 事件拦截">iOS 事件拦截</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/opngeles-2/" title="OpenGL实战(一) - 简单图形绘制">OpenGL实战(一) - 简单图形绘制</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/opengles-1/" title="初识 OpenGL ES">初识 OpenGL ES</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://superchun.net/tags/Cordova/">Cordova</a>
+    
+    <a href="https://superchun.net/tags/OpenGL-ES/">OpenGL ES</a>
+    
+    <a href="https://superchun.net/tags/git-ssh/">git ssh</a>
+    
+    <a href="https://superchun.net/tags/iOS/">iOS</a>
+    
+    <a href="https://superchun.net/tags/%E4%BA%8B%E4%BB%B6%E6%8B%A6%E6%88%AA/">事件拦截</a>
+    
+    <a href="https://superchun.net/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+    
+    <a href="https://superchun.net/tags/%E6%9D%82%E8%B0%88%E4%BD%8E%E8%AF%AD/">杂谈低语</a>
+    
+    <a href="https://superchun.net/tags/%E7%AE%97%E6%B3%95/">算法</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://superchun.net/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="https://superchun.net">悉达多｜PainMaker By 悉达多</a>. Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>. 
+    </div>
+</footer>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.13.0/flowchart.min.js" crossorigin="anonymous"></script>
+<script>
+    {
+        {
+            -
+            if .Params.flowchartDiagrams.options -
+        }
+    }
+    window.flowchartDiagramsOptions = {
+        {.Params.flowchartDiagrams.options | safeJS
+        }
+    }; {
+        {
+            -
+            else if .Site.Params.flowchartDiagrams.options -
+        }
+    }
+    window.flowchartDiagramsOptions = {
+        {.Site.Params.flowchartDiagrams.options | safeJS
+        }
+    }; {
+        {
+            -end -
+        }
+    }
+    (function() {
+        if (!window.flowchart) return;
+        const blocks = document.querySelectorAll('pre code.language-flowchart, pre code.language-flow');
+        for (let i = 0; i < blocks.length; i++) {
+            const block = blocks[i];
+            const rootElement = block.parentNode;
+            const container = document.createElement('div');
+            const id = `js-flowchart-diagrams-${i}`;
+            container.id = id;
+            container.className = 'align-center';
+            container.setAttribute("style", "overFlow-x:auto");
+            rootElement.parentNode.replaceChild(container, rootElement);
+            const diagram = flowchart.parse(block.childNodes[0].nodeValue);
+            diagram.drawSVG(id, window.flowchartDiagramsOptions ? window.flowchartDiagramsOptions : {});
+        }
+    })();
+</script>
+<script type="text/javascript">
+    
+    (function() {
+        $("pre code").parent().addClass("line-numbers")
+    }());
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [
+                ['$', '$']
+            ],
+            processEscapes: true
+        }
+    };
+</script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-153875253-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+ 
+<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+<script type="text/javascript">
+(function(){
+	if (typeof self === 'undefined' || !self.Prism || !self.document) {
+		return;
+	}
+
+	if (!Prism.plugins.toolbar) {
+		console.warn('Copy to Clipboard plugin loaded before Toolbar plugin.');
+
+		return;
+	}
+
+	var ClipboardJS = window.ClipboardJS || undefined;
+
+	if (!ClipboardJS && typeof require === 'function') {
+		ClipboardJS = require('clipboard');
+	}
+
+	var callbacks = [];
+
+	if (!ClipboardJS) {
+		var script = document.createElement('script');
+		var head = document.querySelector('head');
+
+		script.onload = function() {
+			ClipboardJS = window.ClipboardJS;
+
+			if (ClipboardJS) {
+				while (callbacks.length) {
+					callbacks.pop()();
+				}
+			}
+		};
+
+		script.src = 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js';
+		head.appendChild(script);
+	}
+
+	Prism.plugins.toolbar.registerButton('copy-to-clipboard', function (env) {
+		var linkCopy = document.createElement('button');
+		linkCopy.textContent = '复制代码';
+
+		if (!ClipboardJS) {
+			callbacks.push(registerClipboard);
+		} else {
+			registerClipboard();
+		}
+
+		return linkCopy;
+
+		function registerClipboard() {
+			var clip = new ClipboardJS(linkCopy, {
+				'text': function () {
+					return env.code;
+				}
+			});
+
+			clip.on('success', function() {
+				linkCopy.textContent = '复制成功!';
+
+				resetText();
+			});
+			clip.on('error', function () {
+				linkCopy.textContent = '按 Ctrl+C 复制';
+
+				resetText();
+			});
+		}
+
+		function resetText() {
+			setTimeout(function () {
+				linkCopy.textContent = '复制代码';
+			}, 5000);
+		}
+	});
+})();
+
+</script>
+</body>
+</html>

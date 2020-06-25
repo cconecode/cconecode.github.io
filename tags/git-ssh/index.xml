@@ -13,10 +13,10 @@
     
     <item>
       <title>git使用SSH配置一直需要输入密码的坑</title>
-      <link>https://superchun.net/posts/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91/</link>
+      <link>https://superchun.net/post/git-ssh-config/</link>
       <pubDate>Thu, 28 Nov 2019 10:07:07 +0000</pubDate>
       
-      <guid>https://superchun.net/posts/git%E4%BD%BF%E7%94%A8SSH%E9%85%8D%E7%BD%AE%E4%B8%80%E7%9B%B4%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81%E7%9A%84%E5%9D%91/</guid>
+      <guid>https://superchun.net/post/git-ssh-config/</guid>
       <description>一般 git 提供了 HTTPS 和 SSH（Secure Shell） 两种认证方式。HTTPS 比较简单，只需要输入对应的 user 和 password 就可以了。SSH 则相对复杂一点，需要使用 ssh 命令生成 RSA 密钥对，将 public key 提交到服务器，本地保留 private key。SSH 还可以允许我们通过 config 来管理多用户，例如：一般我们会有一个自己的 github 账户，通</description>
     </item>
     

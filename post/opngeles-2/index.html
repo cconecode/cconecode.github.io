@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.60.1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>OpenGL实战(一) - 简单图形绘制 | 悉达多｜PainMaker</title>
+    <meta property="og:title" content="OpenGL实战(一) - 简单图形绘制 - 悉达多｜PainMaker">
+    <meta property="og:type" content="article">
+        
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="OpenGL实战(一) - 简单图形绘制">
+        
+    <meta name="author" content="悉达多">
+    <meta property="og:url" content="https://superchun.net/post/opngeles-2/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153875253-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-153875253-1');
+    </script>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.0/styles/monokai-sublime.min.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.0/highlight.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.0/languages/dart.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                <a id="logo" href="https://superchun.net">
+                        悉达多｜PainMaker
+                    </a>  
+                <p class="description">知也者，所以知也，而不必知</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://superchun.net">首页</a> 
+                    <a  href="https://superchun.net/archives/" title="归档">归档</a> 
+                    <a  href="https://superchun.net/about/" title="关于">关于</a> 
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="body">
+        
+        
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">OpenGL实战(一) - 简单图形绘制</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            1年1月1日
+                        </date>
+                        
+                        
+                        <div class="post-meta">
+                            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span> 阅读</span></span>
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            <p>在<a href="http://parisdog.club/OpenGLES-1.html">上一篇文章中</a>我们学习了OpenGL ES的一些基本概念，剩下的知识我们在实战中不断的补充，后续的文章会以代码+知识点+API解释的方式来写，同样的，如果有写的不好的地方，可以在评论中指出或者直接联系我</p>
+<h1 id="heading">渲染屏幕====</h1>
+<p>首先，将控制器继承自GLKViewController，并初始化一个GLKView，设置为它的View：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC"><span style="color:#75715e">// 直接把上篇文章的初始化方法copy过来
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// 创建一个上下文，并设置为当前上下文
+</span><span style="color:#75715e"></span>EAGLContext <span style="color:#f92672">*</span>context <span style="color:#f92672">=</span> [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+[EAGLContext setCurrentContext:context];
+    
+<span style="color:#75715e">//    使用代码初始化
+</span><span style="color:#75715e"></span><span style="color:#75715e">//    GLKView *view = [GLKView alloc] initWithFrame:self.view.bounds context:context
+</span><span style="color:#75715e"></span>    
+<span style="color:#75715e">//    使用Storyboard初始化
+</span><span style="color:#75715e"></span>GLKView <span style="color:#f92672">*</span>view <span style="color:#f92672">=</span> (GLKView <span style="color:#f92672">*</span>)self.view;
+view.context <span style="color:#f92672">=</span> context; <span style="color:#75715e">// 关联上下文
+</span></code></pre></div><p>只需在GLKView的代理方法<code>(void)glkView:(GLKView *)view drawInRect:(CGRect)rect</code>中，调用<code>glClear</code>的系列函数就可以用OpenGL ES对屏幕进行渲染了：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC">- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">glkView:</span>(GLKView <span style="color:#f92672">*</span>)view <span style="color:#a6e22e">drawInRect:</span>(CGRect)rect {
+
+    glClearColor(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// 清理屏幕的RGB颜色和alpha值，这里我们设置成了红色
+</span><span style="color:#75715e"></span>    glClear(GL_COLOR_BUFFER_BIT); <span style="color:#75715e">// 调用glClear来实际执行清理操作, 参数是一个缓冲区，缓冲区有多种格式，上篇文章有提及，现在我们执行的是颜色缓冲区
+</span><span style="color:#75715e"></span>}
+</code></pre></div><p>现在来做一个酷炫的效果，让屏幕显示闪烁。当设置GLKViewController代理的时候，每一帧动画GLKViewController都会告诉我们，它会在1秒内多次调用<code>draw</code>方法，GLKViewController的代理中，我们可以在GLKViewController的代理方法<code>(void)glkViewControllerUpdate:(GLKViewController *)controller</code>方法来更新屏幕的颜色。</p>
+<p>首先定义两个参数并初始化:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC"><span style="color:#66d9ef">@property</span> (<span style="color:#66d9ef">nonatomic</span>, <span style="color:#66d9ef">assign</span>) CGFloat redColorFloat; <span style="color:#75715e">// RGB中红色的色值
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">@property</span> (<span style="color:#66d9ef">nonatomic</span>, <span style="color:#66d9ef">assign</span>, <span style="color:#66d9ef">getter</span><span style="color:#f92672">=</span>isIncreasing) <span style="color:#66d9ef">BOOL</span> increasing; <span style="color:#75715e">// 判断是否增加
+</span><span style="color:#75715e"></span>
+self.increasing <span style="color:#f92672">=</span> YES;
+self.redColorFloat <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>;
+</code></pre></div><p>设定GLKViewController的刷新频率:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC">self.preferredFramesPerSecond <span style="color:#f92672">=</span> <span style="color:#ae81ff">60</span>;
+</code></pre></div><p>更新<code>(void)glkView:(GLKView *)view drawInRect:(CGRect)rect</code>中的代码，在GLKViewController的代理方法中更新屏幕颜色:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC">- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">glkView:</span>(GLKView <span style="color:#f92672">*</span>)view <span style="color:#a6e22e">drawInRect:</span>(CGRect)rect {
+
+    glClearColor(self.redColorFloat, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>); <span style="color:#75715e">// 清理屏幕的RGB颜色和alpha值
+</span><span style="color:#75715e"></span>    glClear(GL_COLOR_BUFFER_BIT); <span style="color:#75715e">// 调用glClear来实际执行清理操作, 参数是一个缓冲区，缓冲区有多种格式，上篇文章有提及，现在我们执行的是颜色缓冲区
+</span><span style="color:#75715e"></span>}
+
+- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">glkViewControllerUpdate:</span>(GLKViewController <span style="color:#f92672">*</span>)controller {
+    
+    <span style="color:#66d9ef">if</span> (self.isIncreasing) {
+        self.redColorFloat <span style="color:#f92672">+</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">*</span> self.timeSinceLastUpdate;
+    }<span style="color:#66d9ef">else</span> {
+        self.redColorFloat <span style="color:#f92672">-</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">*</span> self.timeSinceLastUpdate;
+    }
+    
+    <span style="color:#66d9ef">if</span> (self.redColorFloat <span style="color:#f92672">&gt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span>) {
+        self.redColorFloat <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span>;
+        self.increasing <span style="color:#f92672">=</span> NO;
+    }
+    
+    <span style="color:#66d9ef">if</span> (self.redColorFloat <span style="color:#f92672">&lt;</span><span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) {
+        self.redColorFloat <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        self.increasing <span style="color:#f92672">=</span> YES;
+    }
+}
+</code></pre></div><p>这样就实现了屏幕黑红闪烁效果，Demo可以在<a href="https://github.com/cconecode/OpenGLESTutorials/tree/master/Tutorial1-ScreenRendering">这里</a>找到。</p>
+<h1 id="heading1">绘制图形</h1>
+<p>现在我们来利用OpenGL ES绘制一个正方形。因为OpenGL ES只能渲染三角形，所以要用两个三角形来组成一个正方形。首先创建一组顶点数据和索引数据：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC"><span style="color:#75715e">// 顶点数据
+</span><span style="color:#75715e"></span>    GLfloat verties[] <span style="color:#f92672">=</span> {
+        <span style="color:#ae81ff">0.5</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.0</span>,  <span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">1.0</span>,   <span style="color:#75715e">// 前面为x, y, z, 后面为颜色
+</span><span style="color:#75715e"></span>        <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0</span>,     <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">1.0</span>,
+        <span style="color:#f92672">-</span><span style="color:#ae81ff">0.5</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0</span>,   <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">1.0</span>,
+        <span style="color:#f92672">-</span><span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0</span>,    <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">1.0</span>
+    };
+    
+    <span style="color:#75715e">// 索引数据
+</span><span style="color:#75715e"></span>    GLuint indecs[] <span style="color:#f92672">=</span> {
+        <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>,
+        <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">0</span>
+    };
+</code></pre></div><p>顶点数据中包括了顶点位置和对应的颜色，索引数据则是顶点数组的索引。然后我们需要向OpenGL ES发送数据和缓存数据：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC">    glGenBuffers(<span style="color:#ae81ff">1</span>, <span style="color:#f92672">&amp;</span>vertBuffer); <span style="color:#75715e">// 创建缓冲区对象
+</span><span style="color:#75715e"></span>    glBindBuffer(GL_ARRAY_BUFFER, vertBuffer); <span style="color:#75715e">// 指定当前活动缓冲区对象
+</span><span style="color:#75715e"></span>                                               <span style="color:#75715e">// GL_ARRAY_BUFFER 坐标，颜色等
+</span><span style="color:#75715e"></span>                                               <span style="color:#75715e">// GL_ELEMENT_ARRAY_BUFFER 索引坐标
+</span><span style="color:#75715e"></span>    
+    <span style="color:#75715e">// 把顶点数据从 CPU 复制到 GPU
+</span><span style="color:#75715e"></span>    glBufferData(GL_ARRAY_BUFFER, <span style="color:#66d9ef">sizeof</span>(verties), verties, GL_STATIC_DRAW);
+    <span style="color:#75715e">// glBufferData(&lt;#GLenum target#&gt;, &lt;#GLsizeiptr size#&gt;, &lt;#const GLvoid *data#&gt;, &lt;#GLenum usage#&gt;)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// target: 可以是GL_ARRAY_BUFFER(顶点数据)，或者GL_ELEMENT_ARRAY_BUFFER(索引数据)
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// size: 存储相关数据所需要的内存容量
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// data: 用于初始化缓冲区对象，可以是指向某一块内存地址，也可以是NULL
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//usage: 数据分配后如何读写，详细介绍见：http://parisdog.club/OpenGLES-2.html
+</span><span style="color:#75715e"></span>    
+    glGenBuffers(<span style="color:#ae81ff">1</span>, <span style="color:#f92672">&amp;</span>indeBuffer); <span style="color:#75715e">// 索引数据
+</span><span style="color:#75715e"></span>    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indeBuffer);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, <span style="color:#66d9ef">sizeof</span>(indecs), indecs, GL_STATIC_DRAW);
+</code></pre></div><p>关于 usage 的一些说明：</p>
+<ul>
+<li>GL_STREAM_DRAW: 数据只指定一次，并且最多只有几次作为绘图和指定图像函数的源数据</li>
+<li>GL_STREAM_READ: 数据从 OpenGL 缓冲区复制过来，并且最多只有几次由应用程序作为数据值使用</li>
+<li>GL_STREAM_COPY: 数据从 OpenGL 缓冲区复制过来，并且最多只有几次作为绘图和指定图像函数的源数据</li>
+<li>GL_STATIC_DRAW: 数据只指定一次，但是可以多次几次作为绘图和指定图像函数的源数据</li>
+<li>GL_STATIC_READ:  数据从 OpenGL 缓冲区复制过来，并且可以多次由应用程序作为数据值使用</li>
+<li>GL_STATIC_COPY: 数据从 OpenGL 缓冲区复制过来，并且可以多次几次作为绘图和指定图像函数的源数据</li>
+<li>GL_DYNAMIC_DRAW: 数据可以多次指定，并且可以多次几次作为绘图和指定图像函数的源数据</li>
+<li>GL_DYNAMIC_READ: 数据可以多次从 OpenGL 缓冲区复制过来，并且可以多次由应用程序作为数据值使用</li>
+<li>GL_DYNAMIC_COPY: 数据可以多次从 OpenGL 缓冲区复制过来，并且可以多次几次作为绘图和指定图像函数的源数据</li>
+</ul>
+<p>在OpenGL ES2.0当中，无论渲染什么图形，都必须用到着色器。着色器是用类C语言-GLSL语言写的，如果想要自定义一个着色器，那么学习这门语言十分有必要。现在<code>GLKBaseEffect</code>这个类为我们提供了一些通用的着色器，在还没有掌握GLSL的情况下，我们目前可以使用它来帮我们实现效果：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC"><span style="color:#75715e">// 定义和初始化一个GLKBaseEffect实例对象
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">@property</span> (<span style="color:#66d9ef">nonatomic</span>, <span style="color:#66d9ef">strong</span>) GLKBaseEffect <span style="color:#f92672">*</span>effect;
+
+self.effect <span style="color:#f92672">=</span> [[GLKBaseEffect alloc] init];
+<span style="color:#75715e">// 可以设置 effect 的一些属性，配置光，转化等
+</span></code></pre></div><p>最后在代理方法中启动着色器:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC">- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">glkView:</span>(GLKView <span style="color:#f92672">*</span>)view <span style="color:#a6e22e">drawInRect:</span>(CGRect)rect {
+
+    glClearColor(<span style="color:#ae81ff">0.3</span>, <span style="color:#ae81ff">0.6</span>, <span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">1.0</span>);
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    <span style="color:#75715e">// 启动着色器
+</span><span style="color:#75715e"></span>    [self.effect prepareToDraw];
+    glDrawElements(GL_TRIANGLES, self.count, GL_UNSIGNED_INT, <span style="color:#ae81ff">0</span>);
+}
+</code></pre></div><p>这样我们就可以看到最终的效果了：</p>
+<!-- raw HTML omitted -->
+<p>细心观察就会发现，我们想要的结果是一个正方形，现在出来的效果却是一个矩形，这是为什么呢？因为默认的，“Effect”的投影矩阵是一个单位矩阵，它不做任何变换，将场景（-1，-1，-1）到（1，1，1）的立文体范围的物体，投射到屏幕的X：-1，1，Y：-1，1。因此，当屏幕本身是非正方形时，正方形的物体将被拉伸，从而显示为矩形。所以我们要在<code>update</code> 中修改投影矩阵：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ObjectiveC" data-lang="ObjectiveC">- (<span style="color:#66d9ef">void</span>)<span style="color:#a6e22e">update</span> {
+ 
+    CGSize size <span style="color:#f92672">=</span> self.view.bounds.size;
+    <span style="color:#66d9ef">float</span> aspect <span style="color:#f92672">=</span> fabs(size.width <span style="color:#f92672">/</span> size.height);
+    
+    GLKMatrix4 projectMartix <span style="color:#f92672">=</span>    GLKMatrix4MakePerspective(GLKMathDegreesToRadians(<span style="color:#ae81ff">130.0</span>), aspect, <span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">10.0</span>);
+    <span style="color:#75715e">// 第一个参数代表视角
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 第二个参数代表比例
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 第三个参数代表近平面距离
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 第四个参数代表远平面距离
+</span><span style="color:#75715e"></span>    
+    self.effect.transform.projectionMatrix <span style="color:#f92672">=</span> projectMartix;
+    
+    GLKMatrix4 modelMatrix <span style="color:#f92672">=</span>     GLKMatrix4Translate(GLKMatrix4Identity, <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">0.0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1.0</span>); <span style="color:#75715e">// 修改 Z 轴的距离
+</span><span style="color:#75715e"></span>    self.effect.transform.modelviewMatrix <span style="color:#f92672">=</span> modelMatrix;
+}
+</code></pre></div><p>最终通过这段代码就能得到我们想要的结果了：一个正方形（Demo 在<a href="https://github.com/cconecode/OpenGLESTutorials">这里</a>）。在学习过程中，踩了很多坑，包括一开始的图像显示不出来，API 的意思也不明确。后来通过 Google 查阅相关资料，把一些 bug 解决了，同时也加深了对 OpenGL ES 的理解，学习到了很多的东西。上面的知识，在代码中我已经注释的很清楚了，如果有不懂的地方或者不正确的地方，欢迎指正交流~</p>
+                        </div>
+
+                        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://superchun.net">悉达多</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://superchun.net/post/opngeles-2/">https://superchun.net/post/opngeles-2/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/opengles-1/">初识 OpenGL ES</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://superchun.net/tags/OpenGL-ES">OpenGL ES</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "superchun/blogcomment"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="/search/" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://superchun.net">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://superchun.net/post/github-access-changesource/" title="关于Github访问慢及修改源的那些事">关于Github访问慢及修改源的那些事</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/sort-algorithm-heapsort-mergesort/" title="从Heapsort与Mergesort看排序算法">从Heapsort与Mergesort看排序算法</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/git-ssh-config/" title="git使用SSH配置一直需要输入密码的坑">git使用SSH配置一直需要输入密码的坑</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/mac-shortcutkey/" title="Mac快捷键">Mac快捷键</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/whats-new-in-xcode11/" title="What&#39;s New in Xcode11">What&#39;s New in Xcode11</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/cordova-inios/" title="Cordova in iOS">Cordova in iOS</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/iOS-event/" title="iOS 事件拦截">iOS 事件拦截</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/opngeles-2/" title="OpenGL实战(一) - 简单图形绘制">OpenGL实战(一) - 简单图形绘制</a>
+    </li>
+    
+    <li>
+        <a href="https://superchun.net/post/opengles-1/" title="初识 OpenGL ES">初识 OpenGL ES</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://superchun.net/tags/Cordova/">Cordova</a>
+    
+    <a href="https://superchun.net/tags/OpenGL-ES/">OpenGL ES</a>
+    
+    <a href="https://superchun.net/tags/git-ssh/">git ssh</a>
+    
+    <a href="https://superchun.net/tags/iOS/">iOS</a>
+    
+    <a href="https://superchun.net/tags/%E4%BA%8B%E4%BB%B6%E6%8B%A6%E6%88%AA/">事件拦截</a>
+    
+    <a href="https://superchun.net/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+    
+    <a href="https://superchun.net/tags/%E6%9D%82%E8%B0%88%E4%BD%8E%E8%AF%AD/">杂谈低语</a>
+    
+    <a href="https://superchun.net/tags/%E7%AE%97%E6%B3%95/">算法</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://superchun.net/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="https://superchun.net">悉达多｜PainMaker By 悉达多</a>. Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>. 
+    </div>
+</footer>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.13.0/flowchart.min.js" crossorigin="anonymous"></script>
+<script>
+    {
+        {
+            -
+            if .Params.flowchartDiagrams.options -
+        }
+    }
+    window.flowchartDiagramsOptions = {
+        {.Params.flowchartDiagrams.options | safeJS
+        }
+    }; {
+        {
+            -
+            else if .Site.Params.flowchartDiagrams.options -
+        }
+    }
+    window.flowchartDiagramsOptions = {
+        {.Site.Params.flowchartDiagrams.options | safeJS
+        }
+    }; {
+        {
+            -end -
+        }
+    }
+    (function() {
+        if (!window.flowchart) return;
+        const blocks = document.querySelectorAll('pre code.language-flowchart, pre code.language-flow');
+        for (let i = 0; i < blocks.length; i++) {
+            const block = blocks[i];
+            const rootElement = block.parentNode;
+            const container = document.createElement('div');
+            const id = `js-flowchart-diagrams-${i}`;
+            container.id = id;
+            container.className = 'align-center';
+            container.setAttribute("style", "overFlow-x:auto");
+            rootElement.parentNode.replaceChild(container, rootElement);
+            const diagram = flowchart.parse(block.childNodes[0].nodeValue);
+            diagram.drawSVG(id, window.flowchartDiagramsOptions ? window.flowchartDiagramsOptions : {});
+        }
+    })();
+</script>
+<script type="text/javascript">
+    
+    (function() {
+        $("pre code").parent().addClass("line-numbers")
+    }());
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [
+                ['$', '$']
+            ],
+            processEscapes: true
+        }
+    };
+</script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-153875253-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+ 
+<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+<script type="text/javascript">
+(function(){
+	if (typeof self === 'undefined' || !self.Prism || !self.document) {
+		return;
+	}
+
+	if (!Prism.plugins.toolbar) {
+		console.warn('Copy to Clipboard plugin loaded before Toolbar plugin.');
+
+		return;
+	}
+
+	var ClipboardJS = window.ClipboardJS || undefined;
+
+	if (!ClipboardJS && typeof require === 'function') {
+		ClipboardJS = require('clipboard');
+	}
+
+	var callbacks = [];
+
+	if (!ClipboardJS) {
+		var script = document.createElement('script');
+		var head = document.querySelector('head');
+
+		script.onload = function() {
+			ClipboardJS = window.ClipboardJS;
+
+			if (ClipboardJS) {
+				while (callbacks.length) {
+					callbacks.pop()();
+				}
+			}
+		};
+
+		script.src = 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js';
+		head.appendChild(script);
+	}
+
+	Prism.plugins.toolbar.registerButton('copy-to-clipboard', function (env) {
+		var linkCopy = document.createElement('button');
+		linkCopy.textContent = '复制代码';
+
+		if (!ClipboardJS) {
+			callbacks.push(registerClipboard);
+		} else {
+			registerClipboard();
+		}
+
+		return linkCopy;
+
+		function registerClipboard() {
+			var clip = new ClipboardJS(linkCopy, {
+				'text': function () {
+					return env.code;
+				}
+			});
+
+			clip.on('success', function() {
+				linkCopy.textContent = '复制成功!';
+
+				resetText();
+			});
+			clip.on('error', function () {
+				linkCopy.textContent = '按 Ctrl+C 复制';
+
+				resetText();
+			});
+		}
+
+		function resetText() {
+			setTimeout(function () {
+				linkCopy.textContent = '复制代码';
+			}, 5000);
+		}
+	});
+})();
+
+</script>
+</body>
+</html>
