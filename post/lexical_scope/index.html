@@ -99,8 +99,8 @@
                         
                         
                         <div class="post-content">
-                            <p>最近在学习 JS，在看《JavaScript 权威指南》的时候看到 <code>JavaScript uses lexical scoping</code>，当时只以为是 JS 的一个语言特性而已，就没太注意。但看到后面却发现，这个特性与 JS 的 <code>Closure</code> 也就是闭包大有关联。于是，就想弄懂究竟什么是 <code>lexical scoping</code>，在 <a href="https://stackoverflow.com/questions/1047454/what-is-lexical-scope">Stackoverflow</a> 上我找到了答案。</p>
-<p><code>lexical scoping</code>还有另一个名字，叫做 <code>static scoping</code>，也就是<strong>静态作用域</strong>。如给出以下代码：</p>
+                            <p>最近在学习 JS，在看《JavaScript 权威指南》的时候看到<code>JavaScript uses lexical scoping</code>，当时只以为是 JS 的一个语言特性而已，就没太注意。但看到后面却发现，这个特性与 JS 的<code>Closure</code>也就是闭包大有关联。于是，就想弄懂究竟什么是<code>lexical scoping</code>，在 <a href="https://stackoverflow.com/questions/1047454/what-is-lexical-scope">Stackoverflow</a> 上我找到了答案。</p>
+<p><code>lexical scoping</code>还有另一个名字，叫做<code>static scoping</code>，也就是<strong>静态作用域</strong>。如给出以下代码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test</span>() {
     <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
     
@@ -108,8 +108,8 @@
         print(x);
     }
 }
-</code></pre></div><p>对于上面的代码，其结果输出为 10。根据这段代码，可以给出 <code>lexical scoping</code> 的定义为：<strong>每一个内部函数都可以访问其外部函数的内容。</strong></p>
-<p>与 <code>lexical scoping</code> 相对应的就有 <code>dynamic scoping</code> ，即<strong>动态作用域</strong>。同样地，给出如下代码：</p>
+</code></pre></div><p>对于上面的代码，其结果输出为 10。根据这段代码，可以给出<code>lexical scoping</code> 的定义为：<strong>每一个内部函数都可以访问其外部函数的内容。</strong></p>
+<p>与<code>lexical scoping</code>相对应的就有<code>dynamic scoping</code> ，即<strong>动态作用域</strong>。同样地，给出如下代码：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test</span>() {
     print(x);
 }
@@ -123,9 +123,9 @@
     <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
     test();
 }
-</code></pre></div><p>在上面代码中，<code>test()</code> 可以分别从 <code>dynamic1</code> 或 <code>dynamic2</code> 中访问 <code>x</code>。即当调用 <code>dynamic1()</code> 时，会输出 5；当调用 <code>dynamic2()</code> 时，会输出 10。</p>
-<p>在第一个例子中，其结果在编译期间就可以推断出，所以称为 <code>static</code>。而在第二个例子中，其结果则取决于调用链，而调用链取决于运行时条件，所以称为 <code>dynamic</code>。</p>
-<p>通过<code>lexical scoping </code> ，也可以比较好的去理解 <code>Closure</code> ：<strong>内部函数包含了外部函数的作用域，即使外部函数已经 return</strong>。</p>
+</code></pre></div><p>在上面代码中，<code>test()</code>可以分别从<code>dynamic1</code>或<code>dynamic2</code> 中访问<code>x</code>。即当调用<code>dynamic1()</code> 时，会输出 5；当调用<code>dynamic2()</code>时，会输出 10。</p>
+<p>在第一个例子中，其结果在编译期间就可以推断出，所以称为 <code>static</code>。而在第二个例子中，其结果则取决于调用链，而调用链取决于运行时条件，所以称为<code>dynamic</code>。</p>
+<p>通过<code>lexical scoping </code> ，也可以比较好的去理解<code>Closure</code> ：<strong>内部函数包含了外部函数的作用域，即使外部函数已经 return</strong>。</p>
 
                         </div>
 

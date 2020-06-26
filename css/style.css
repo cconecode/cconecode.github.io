@@ -101,6 +101,20 @@ a, button.submit {
 a:hover, a:active {
     color:#24292e;
 }
+
+p {
+    text-indent: 2em;
+}
+
+blockquote p {
+    text-indent: 0;
+    padding: 10px;
+}
+
+ol, ul {
+    margin-left: 2em;
+}
+
 mark {
     padding: 3px 3px 3px 5px;
     background: #fffdd1;
