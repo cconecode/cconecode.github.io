@@ -135,7 +135,7 @@ code {
     padding-left: 3px;
     padding-right: 3px;
     background-color: rgba(27, 31, 35, .08);
-    border-radius: 5px;
+    border-radius: 3px;
 }
 blockquote {
     background-color: #f6f8fa;
@@ -426,7 +426,7 @@ textarea {
     margin:0 5px;
     padding:3px 5px;
     /* border: 1px solid #ddd; */
-    border-radius: 5px;
+    border-radius: 3px;
     background-color: rgba(27, 31, 35, .08);
     font-size: 90%;
 }
