@@ -7,20 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>What&#39;s New in Xcode11 | 悉达多｜PainMaker</title>
-    <meta property="og:title" content="What&#39;s New in Xcode11 - 悉达多｜PainMaker">
+    <title>CSS学习(六)：Flex布局 | 悉达多｜PainMaker</title>
+    <meta property="og:title" content="CSS学习(六)：Flex布局 - 悉达多｜PainMaker">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content="2019-11-05T15:38:21&#43;08:00">
+    <meta property="article:published_time" content="2020-06-28T13:29:40&#43;08:00">
         
         
-    <meta property="article:modified_time" content="2019-11-05T15:38:21&#43;08:00">
+    <meta property="article:modified_time" content="2020-06-28T13:29:40&#43;08:00">
         
     <meta name="Keywords" content="">
-    <meta name="description" content="What&#39;s New in Xcode11">
+    <meta name="description" content="CSS学习(六)：Flex布局">
         
     <meta name="author" content="悉达多">
-    <meta property="og:url" content="https://superchun.net/post/whats-new-in-xcode11/">
+    <meta property="og:url" content="https://superchun.net/post/css-study-flexbox/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="/css/normalize.css">
@@ -86,10 +86,10 @@
                 <div class="res-cons">
                     <article class="post">
                         <header>
-                            <h1 class="post-title">What&#39;s New in Xcode11</h1>
+                            <h1 class="post-title">CSS学习(六)：Flex布局</h1>
                         </header>
                         <date class="post-meta meta-date">
-                            2019年11月5日
+                            2020年6月28日
                         </date>
                         
                         
@@ -99,47 +99,98 @@
                         
                         
                         <div class="post-content">
-                            <p>WWDC 2019 已经过去快半年多了，Xcode 11 更新也有段时间了。用了一段时间之后，发现 Xcode 11 较之 Xcode 10 还是有许多地方不一样的，于是便看了 <a href="https://developer.apple.com/videos/play/wwdc2019/401/">WWDC 2019 Session 401</a>，顺便做一下记录。</p>
-<p>首先，对 Xcode11 的整体改进做一个预览：</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8n98whgi4j30wc0ha7fe.jpg" alt="preview"></p>
-<p>整体的改变还是挺多的，下面一一对改进的功能进行说明。</p>
-<h2 id="heading">右上角功能键的改进</h2>
-<p>首先，Xcode 11 改变的是右上角的按钮，Xcode 10 上是三个按钮，到了 11 已经变成了两个按钮：<!-- raw HTML omitted --> 			<!-- raw HTML omitted --></p>
-<p>原先的 Source Control Log 被移到了右侧栏里面：</p>
-<p><!-- raw HTML omitted --> 			<!-- raw HTML omitted --></p>
-<p>原先的比较常用的切换 Assitant Editor 和 Authors 一起并入到了 Editor Options 里面，并将 Editor Options 移到了每个独立的编辑窗口里面：</p>
-<p><!-- raw HTML omitted -->  			<!-- raw HTML omitted --></p>
-<p><em>上面 Xcode 11 的 Assistant 就是原先 Xcode 10 右上角的那两个圈圈</em></p>
-<p>Editor Options 中同时新增了一个 Swift UI 的预览，当项目中使用到了 Swfit UI 的时候，可以预览 Swift UI 的效果</p>
-<p>现在 Xcode 11 上面的两个按钮的功能变成了 Library 和 Code Review：</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8na7koerqj30b203iwex.jpg" alt="image-20191105171631101"></p>
-<p>Library 的主要功能是：选择 IB 控件、文档、代码块、图片资源以及颜色</p>
-<p>Code Review 的主要功能是：比较同一源文件源码的改动</p>
-<h2 id="editor-splitting">Editor Splitting</h2>
-<p>在 Xcode 11 里面，增加了一个 Editor Spliting 的功能，可以随时随地的增加一个 Editor：</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8na1dqbffj307c0460sm.jpg" alt="image-20191105171034560"></p>
-<p>Editor Spliting 默认的是往右边增加，按住 option 键再点击这个按钮，就可以在下面增加新的 Editor</p>
-<p>可以通过按住 shift + option 并点击源文件，来管理 Editor，点击的源文件那个窗口会变成选中效果，可以用鼠标或者键盘方向键进行移动，移动完成后，点击键盘上的 return，原先选中的源文件就会插入或者移动到当前位置</p>
-<h2 id="minimap">Minimap</h2>
-<p>Xcode 11 比较大的一个改动就是新增了 Minimap：</p>
+                            <p>在 CSS 普通流中，只有 float 和 position 能改变元素的位置。它们在某些方面有着一定的局限性，flex 盒子则会使得很多布局变得更加容易。</p>
+<h2 id="flexbox">Flexbox</h2>
+<p>Flexbox 是 CSS 弹性盒子布局模块（Flexible Box Layout Module）的缩写，它被专门设计出来用于创建横向或是纵向的一维页面布局。只需要将想要进行 flex 布局的父元素的 display 设为 <code>flex</code>，所有的子元素都会按照 flex 进行布局。</p>
+<h2 id="flex-">Flex 模型</h2>
+<p>当元素为 flex 盒子时，会沿着两个轴来布局：</p>
 <p><!-- raw HTML omitted --></p>
-<p>Minimap 主要是提供导航作用的，点击 Minimap 的任意位置，源码便会滚动到点击的地方。 当鼠标悬停在上面时，会显示当前的方法名：</p>
+<ul>
+<li><strong>主轴（main axis）</strong>：沿着 flex 元素放置的方向延伸的轴（页面上的行或列），该轴的开始和结束被称为 <strong>main start</strong> 和 <strong>main end</strong>。</li>
+<li><strong>交叉轴（cross axis）</strong>：是垂直于 flex 元素放置方向的轴，该轴的开始和结束被称为 <strong>cross start</strong> 和 <strong>cross end</strong>。</li>
+<li>设置了 <code>display: flex</code> 的父元素被称为 <strong>flex 容器</strong>。</li>
+<li>在 flex 容器中子元素被称为 <strong>flex item</strong>。</li>
+</ul>
+<h2 id="flex-1">Flex 特性及属性说明</h2>
+<h3 id="heading">主轴方向</h3>
+<p>flexbox 提供了 <code>flex-direction</code> 属性，用于确定主轴的方向，默认值为 <code>row</code>。将其设为 <code>column</code> 的话，元素将会按列布局。<code>row-reverse</code> 和 <code>column-reverse</code> 则是按行和列反向排列。</p>
+<h3 id="flexwrap">flex-wrap</h3>
+<p>默认情况下，flex items 会尽可能地排列在一行内，即使会溢出。使用<code>flex-wrap</code> 属性可以改变这一情况，它的默认值为 <code>nowrap</code>。将其设为 <code>wrap</code> ，如果 flex items 溢出的话，则会从上到下的换行显示。<code>wrap-reverse</code> 则是从下到上的换行显示。</p>
+<h3 id="flexflow">flex-flow</h3>
+<p><code>flex-flow</code> 是 <code>flex-direction</code> 和 <code>flex-wrap</code> 两个属性的缩写，默认值为 <code>row no-wrap</code>。</p>
+<h3 id="justifycontent">justify-content</h3>
+<p><code>justify-content</code> 属性定义了主轴的对齐方式。当一行内的 flex item 都为 inflexible，或它们为 flexible 但已经达到了最大尺寸时，它会帮助分配剩下的空间。默认值为 <code>flex-start</code></p>
+<ul>
+<li>
+<p><code>flex-start</code>：items 被挤向主轴开始处。</p>
+</li>
+<li>
+<p><code>flex-end</code>：items 被挤向主轴结尾的处。</p>
+</li>
+<li>
+<p><code>start</code>：items 被挤向<strong>书写模式</strong>的开始处。</p>
+</li>
+<li>
+<p><code>end</code>：items 被挤向<strong>书写模式</strong>的结尾处。</p>
+</li>
+<li>
+<p><code>left</code>：items 被挤向容器的左侧位置。除非 <code>flex-direction</code> 没有意义，不然会表现得跟 <code>start</code> 一样。</p>
+</li>
+<li>
+<p><code>right</code>：items 被挤向容器的右侧位置。除非 <code>flex-direction</code> 没有意义，不然会表现得跟 <code>end</code> 一样。</p>
+</li>
+<li>
+<p><code>center</code>：items 居中</p>
+</li>
+<li>
+<p><code>space-between</code>：item 平均分布，第一个 item 位于行开始的位置，最后一个 item 位于行结束的位置。</p>
+</li>
+<li>
+<p><code>space-around</code>：items 平均分布，并且周围有着相等的空间。所有 item 两侧都有相等的空间，所以第一个 item 左侧会有一个单位的空间，但与第二个 item 之间会有两个单位的空间。</p>
+</li>
+<li>
+<p><code>space-evenly</code>：items 平均分布，但每两个 item 之间的空间都相等。</p>
 <p><!-- raw HTML omitted --></p>
-<p>同时按住 cmd 键的话，会显示当前所有的方法名：</p>
+</li>
+</ul>
+<p><code>space-between</code> 在某些版本的 Edge 不被支持，<code>start/end/left/right</code> 不被 Chrome 支持。<code>flex-start</code>、<code>flex-end</code> 和 <code>center</code> 则是较为安全的，基本上所有浏览器都支持。</p>
+<p>还有两个额外的关键字 <code>safe</code> 和 <code>unsafe</code> 。使用 <code>safe</code> 会确保，无论使用哪种定位方式，都不能将元素推到无法显示内容的屏幕外（data loss）。</p>
+<h3 id="alignitems">align-items</h3>
+<p><code>align-items</code> 规定了 flex items 在当前行的交叉轴如何放置，默认为 <code>stretch</code>。</p>
+<ul>
+<li><code>stretch</code>：拉伸以填满整个容器（遵从 max-width / min-width）</li>
+<li><code>flex-start`/</code>start<code>/</code>self-start<code>：items 位于交叉轴的开始处。他们的区别在于遵循 </code>flex-direction` 规则还是书写模式规则</li>
+<li><code>flex-end`/</code>end<code>/</code>self-end<code>：items 位于交叉轴的结尾处。区别在于遵循 </code>flex-direction` 规则还是书写模式规则</li>
+<li><code>center</code>：items 居中于交叉轴</li>
+<li><code>baseline</code>：items 基于它们的 baseline 对齐</li>
+</ul>
 <p><!-- raw HTML omitted --></p>
-<p>当源码中有 warning 或者断点时，在 Minimap 中也会显示</p>
-<p>源码中的 marks 在 Minimap 里可以直接看到：</p>
+<h3 id="aligncontent">align-content</h3>
+<p>当交叉轴上有多余空间时，<code>align-content</code> 规定了容器内的每一行是怎么对齐的，与 <code>justify-content</code> 规定每个 item 在主轴上如何对齐类似，默认为 <code>stretch</code></p>
+<ul>
+<li><code>flex-start / start</code>：items 位于容器的开始处。flex-start 遵循 flex-direction 方向，start 遵循书写模式方向。</li>
+<li><code>flex-end / end</code>：items 位于容器的结尾处。遵循方向同上</li>
+<li><code>center</code>：items 居中于容器。</li>
+<li><code>space-between</code>：items 平均分布，第一个 item 位于容器开始处，最后一个 item 位于容器结尾处。</li>
+<li><code>space-around</code>：items 在每行周围平均分布，且间距相等。</li>
+<li><code>space-evenly</code>：items 平均分布，且周围空间相等。</li>
+<li><code>stretch</code>：每一行拉伸以占用剩余空间。</li>
+</ul>
 <p><!-- raw HTML omitted --></p>
-<p>当在源码中搜索关键字时，所有符合条件的在 Minimap 中会有选中效果：</p>
-<p><!-- raw HTML omitted --></p>
-<h2 id="-editor">源码 Editor</h2>
-<p>Xcode 11 中通过 cmd + 右键点击方法名，可以给方法添加参数注释。新增了参数时，通过这个方法会自动拼接新的参数：</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8nbutwblij31he0b67en.jpg" alt="image-20191105181327456"></p>
-<p>cmd + 右键点击参数，选择 Edit All in Scope，可以同时修改方法名、方法内、注释里面的参数名称：</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8nbwii6k1j314e08stb8.jpg" alt="image-20191105181504863"></p>
-<p>当对源码进行了修改时，在 Editor 的左侧会出现一个蓝色条，点击这个蓝色条，可以选择 Show Change 和 Discard Change。Discard Change 的作用是撤销修改，Show Change 的作用是显示哪些地方进行了改动：</p>
-<p><!-- raw HTML omitted --></p>
-<p>除此之外，Xcode 11 还有着更好的自动补全、增加了新的 Theme，优化了一些细节体验</p>
+<h2 id="flex-items-">flex items 属性</h2>
+<h3 id="order">order</h3>
+<p>flex items 可以通过 <code>order</code> 属性改变它们的显示顺序，但并不会改变原本的 DOM 结构。<code>order</code> 默认为 0，值越大越靠后，相同 order 的 items 以源顺序显示。</p>
+<h3 id="flexgrow">flex-grow</h3>
+<p><code>flex-grow</code> 决定了 items 在 flex 容器内可占用多少空间，它接受无单位的数值作为它的值，但负数无效。如果所有 item 的 <code>flex-grow</code> 都设为 1，那么容器的剩余空间将会均分地分配给所有子元素。如果某个子元素的值为 2，那么它会比其他子元素多占 2 倍的空间。</p>
+<h3 id="flexshrink">flex-shrink</h3>
+<p><code>flex-shrink</code> 给 items 提供了收缩的能力，默认为 1，负数无效。</p>
+<h3 id="flexbasic">flex-basic</h3>
+<p><code>flex-basic</code> 定义了在剩余空间分配之前元素的默认大小，它可以为长度或关键字。<code>auto</code> 关键字意味大小着取决于它的高度和宽度，<code>content</code> 关键字意味着 item 的大小取决于它的内容，但 <code>content</code> 关键字目前还不支持。</p>
+<p>如果 <code>flex-basic</code> 设为 0，那么内容周围不会有多余的空间；如果设为 auto，那么额外的空间将会按照 <code>flex-grow</code> 的值进行分配。</p>
+<h3 id="flex">flex</h3>
+<p><code>flex</code> 是 <code>flex-grow</code>、<code>flex-shrink</code> 和 <code>flex-basic</code> 组合的缩写，第二个和第三个参数为可选的，默认值为 <code>0 1 auto</code>。</p>
+<h3 id="alignself">align-self</h3>
+<p><code>align-self</code> 允许每个 flex item 覆盖默认的对齐方式（或由 <code>align-items</code> 属性指定的对齐方式）。它的值有 <code>auto</code>、<code>flex-start</code>、<code>flex-end</code>、<code>center</code>、<code>baseline</code>和 <code>stretch</code>。</p>
 
                         </div>
 
@@ -147,7 +198,7 @@
 <div class="post-archive">
     <ul class="post-copyright">
         <li><strong>原文作者：</strong><a rel="author" href="https://superchun.net">悉达多</a></li>
-        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://superchun.net/post/whats-new-in-xcode11/">https://superchun.net/post/whats-new-in-xcode11/</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://superchun.net/post/css-study-flexbox/">https://superchun.net/post/css-study-flexbox/</a></li>
         <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
     </ul>
 </div>
@@ -157,12 +208,31 @@
 
                         
 
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/css-study-visiual-style/">CSS学习(五)：视觉格式化模型</a></li>
+        
+        <li><a href="/post/css-study-box/">CSS学习(四)：盒子模型</a></li>
+        
+        <li><a href="/post/css-study-cascade-priority/">CSS学习(三)：CSS层叠与优先级</a></li>
+        
+        <li><a href="/post/css-study-childselector/">CSS学习(二)：兄弟和子选择器</a></li>
+        
+        <li><a href="/post/css-study-arrtibuteselector/">CSS学习(一)：属性选择器</a></li>
+        
+    </ul>
+</div>
+
 
                         <div class="post-meta meta-tags">
                             
                             <ul class="clearfix">
                                 
-                                <li><a href="https://superchun.net/tags/iOS">iOS</a></li>
+                                <li><a href="https://superchun.net/tags/Web">Web</a></li>
+                                
+                                <li><a href="https://superchun.net/tags/CSS">CSS</a></li>
                                 
                             </ul>
                             
